@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="padsoftmodelio" version="4">
+  <OBJECT>
+    <ID name="padsoftmodelio" mc="Standard.Package" uid="e0476d01-f3ee-41f1-a25e-bf91a720e7b5"/>
+    <PID name="PadsoftModelio" mc="Standard.Project" uid="bdbc7657-e60e-4927-8d60-a1f73053506f"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[padsoftmodelio]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Product">
+        <COMPID name="padsoftmodelio Use Case diagram" mc="Standard.UseCaseDiagram" uid="8caca6d4-8220-4e29-ac60-8f4d04413f58"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

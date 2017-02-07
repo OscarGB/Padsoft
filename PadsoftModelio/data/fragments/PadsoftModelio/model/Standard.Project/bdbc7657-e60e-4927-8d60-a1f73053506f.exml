@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="PadsoftModelio" version="4">
+  <OBJECT>
+    <ID name="PadsoftModelio" mc="Standard.Project" uid="bdbc7657-e60e-4927-8d60-a1f73053506f"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[PadsoftModelio]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="padsoftmodelio" mc="Standard.Package" uid="e0476d01-f3ee-41f1-a25e-bf91a720e7b5"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="PadsoftModelio" mc="Infrastructure.DiagramSet" uid="7bb23f32-3468-4cd7-9f06-451e26664b77"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
