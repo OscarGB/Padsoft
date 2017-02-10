@@ -15,24 +15,13 @@
     <DEPENDENCIES>
       <COMP relation="OwnedElement">
         <COMPID name="Actor" mc="Standard.Actor" uid="b9a165c3-1c4a-4be3-be99-ec2e8807f53b"/>
-        <COMPID name="Gestión de alumnos" mc="Standard.UseCase" uid="d106ee45-b041-43b0-a818-12aa0100ab8c"/>
-        <COMPID name="Aceptar solicitudes" mc="Standard.UseCase" uid="3dceeadf-3727-411b-ab94-78d718615988"/>
-        <COMPID name="Espulsar alumnos" mc="Standard.UseCase" uid="ec3e2cdb-944a-4b9a-8497-d3ed85c98f67"/>
-        <COMPID name="Acceder al listado de alumnos" mc="Standard.UseCase" uid="bd017bd6-f364-429f-b82b-4878e51f29f1"/>
-        <COMPID name="Gestión de contenidos" mc="Standard.UseCase" uid="09d59cb6-a912-49b4-a16b-aa50c66fb9a3"/>
-        <COMPID name="Subir apuntes" mc="Standard.UseCase" uid="095377bd-7072-4e6f-8bc8-7a402944e0c3"/>
-        <COMPID name="Crear temas/subtemas" mc="Standard.UseCase" uid="da467ea7-3472-4ff8-b0bc-2c8f60d2d854"/>
-        <COMPID name="Acceso a contenidos" mc="Standard.UseCase" uid="a1bd8079-c50e-4438-b8a2-f4e44ee3d166"/>
-        <COMPID name="Gestionar visibilidad" mc="Standard.UseCase" uid="96128afc-25f6-4972-bbfc-13ec6a0bbf07"/>
-        <COMPID name="Eliminación de contenido" mc="Standard.UseCase" uid="311ee604-6414-4246-92aa-ffbb712672de"/>
-        <COMPID name="Subir ejercicios" mc="Standard.UseCase" uid="94589cec-757d-40a9-9bc2-958103924813"/>
-        <COMPID name="Proporcionar preguntas/respuestas" mc="Standard.UseCase" uid="57f815bb-fd03-4383-a1e6-dbc7a75ba467"/>
-        <COMPID name="Elegir orden (preguntas/respuestas)" mc="Standard.UseCase" uid="b8612506-ede5-4337-be08-1c161221acd6"/>
-        <COMPID name="Elegir/modificar fechas" mc="Standard.UseCase" uid="18b0266e-cfd9-4dc3-8538-84b198bfa0b3"/>
-        <COMPID name="Elegir pesos (ejercicios/preguntas)" mc="Standard.UseCase" uid="3d505aef-778c-44c8-9cba-b2913fd008ce"/>
+        <COMPID name="Iniciar sesión introduciendo credenciales" mc="Standard.UseCase" uid="c6bc746a-d9dc-495e-9d9e-0937bfefea8d"/>
+        <COMPID name="Solicitar recuperación de contraseña" mc="Standard.UseCase" uid="df8b27bd-1bf6-48b5-a29e-b523aed14050"/>
       </COMP>
       <COMP relation="Product">
-        <COMPID name="padsoftmodelio Use Case diagram" mc="Standard.UseCaseDiagram" uid="8caca6d4-8220-4e29-ac60-8f4d04413f58"/>
+        <COMPID name="Profesor" mc="Standard.UseCaseDiagram" uid="8caca6d4-8220-4e29-ac60-8f4d04413f58"/>
+        <COMPID name="Alumno" mc="Standard.UseCaseDiagram" uid="37444dae-634f-41ed-842b-6b4a42e7ac91"/>
+        <COMPID name="Usuario no autenticado" mc="Standard.UseCaseDiagram" uid="de133387-cda3-4c01-b147-41944892a89a"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>
