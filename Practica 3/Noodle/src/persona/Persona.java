@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
+/**
+ * Clase Alumno
+ * @author Óscar Gómez Borzdynski
+ * @author Jose Ignacio Gómez García
+ * @date 07/03/2017
+ */
 
 /**
  * Clase Persona
