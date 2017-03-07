@@ -1,0 +1,57 @@
+package persona;
+
+/**
+ * Clase Alumno
+ * @author Óscar Gómez Borzdynski
+ * @author Jose Ignacio Gómez García
+ * @date 07/03/2017
+ */
+
+public class Alumno extends Persona {
+	/**
+	 * Email del Alumno
+	 */
+	private String email;
+
+	/**
+	 * Constructor de la clase Alumno
+	 * @param nia
+	 * @param nombre
+	 * @param password
+	 * @param email
+	 */
+	public Alumno(String nia, String nombre, String password, String email) {
+		super(nia, nombre, password);
+		this.email = email;
+	}
+	
+	/**
+	 * devuelve el email de un alumno
+	 * @return String
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Da valor al email de Alumno
+	 * @param email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * (Override) toString()
+	 * Escribe en un String los datos de un Alumno
+	 * @return String 
+	 */
+	@Override
+	public String toString() {
+		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password + ". Email: " + this.email + ".";
+		;
+	}
+	
+	
+	
+}

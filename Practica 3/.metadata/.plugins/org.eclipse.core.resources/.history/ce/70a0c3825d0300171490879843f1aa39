@@ -1,0 +1,40 @@
+package persona;
+
+public abstract class Persona {
+	
+	private String nia;
+	private String nombre;
+	private String password;
+	
+	public Persona(String nia, String nombre, String password) {
+		this.nia = nia;
+		this.nombre = nombre;
+		this.password = password;
+	}
+	
+	public String getNia() {
+		return nia;
+	}
+	public void setNia(String nia) {
+		this.nia = nia;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". password" + this.password + ".";
+	}
+	
+	
+}
