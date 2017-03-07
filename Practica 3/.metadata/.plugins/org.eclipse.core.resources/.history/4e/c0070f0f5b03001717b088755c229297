@@ -1,0 +1,180 @@
+package contenido;
+
+import java.util.ArrayList;
+
+public class Pregunta {
+	private String enunciado;
+	private ArrayList<String> respuestas;
+	private ArrayList<String> respuestaCorrecta;
+	private ArrayList<String> respuestaEscogida;
+	private int nota;
+	private int restaFallo;
+	private boolean aleatorio;
+	private int notaPorPregunta;
+	private int nRespuestasPregunta;
+	private int nRespuestasCorrectas;
+	
+	public Pregunta(String enunciado, ArrayList<String> respuestas, ArrayList<String> respuestaCorrecta,
+			int restaFallo, boolean aleatorio, int notaPorPregunta) {
+		
+		this.enunciado = enunciado;
+		this.respuestas = respuestas;
+		this.respuestaCorrecta = respuestaCorrecta;
+		this.respuestaEscogida = new ArrayList<String>();
+		this.nota = 0;
+		this.restaFallo = restaFallo;
+		this.aleatorio = aleatorio;
+		this.notaPorPregunta = notaPorPregunta;
+		this.nRespuestasPregunta = 0;
+		this.nRespuestasCorrectas = 0;
+	}
+
+	/**
+	 * Getter de enunciado
+	 * @return enunciado
+	 */
+	public String getEnunciado() {
+		return enunciado;
+	}
+
+	/**
+	 * Setter de enunciado
+	 * @param enunciado
+	 */
+	public void setEnunciado(String enunciado) {
+		this.enunciado = enunciado;
+	}
+
+	/**
+	 * Getter de respuestas
+	 * @return respuestas
+	 */
+	public ArrayList<String> getRespuestas() {
+		return respuestas;
+	}
+
+	/**
+	 * Setter de respuestas
+	 * @param respuestas
+	 */
+	public void setRespuestas(ArrayList<String> respuestas) {
+		this.respuestas = respuestas;
+	}
+
+	/**
+	 * Getter de respuestaCorrecta
+	 * @return respuestaCorrecta
+	 */
+	public ArrayList<String> getRespuestaCorrecta() {
+		return respuestaCorrecta;
+	}
+
+	/**
+	 * @param respuestaCorrecta the respuestaCorrecta to set
+	 */
+	public void setRespuestaCorrecta(ArrayList<String> respuestaCorrecta) {
+		this.respuestaCorrecta = respuestaCorrecta;
+	}
+
+	/**
+	 * @return the respuestaEscogida
+	 */
+	public ArrayList<String> getRespuestaEscogida() {
+		return respuestaEscogida;
+	}
+
+	/**
+	 * @param respuestaEscogida the respuestaEscogida to set
+	 */
+	public void setRespuestaEscogida(ArrayList<String> respuestaEscogida) {
+		this.respuestaEscogida = respuestaEscogida;
+	}
+
+	/**
+	 * @return the nota
+	 */
+	public int getNota() {
+		return nota;
+	}
+
+	/**
+	 * @param nota the nota to set
+	 */
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
+
+	/**
+	 * @return the restaFallo
+	 */
+	public int getRestaFallo() {
+		return restaFallo;
+	}
+
+	/**
+	 * @param restaFallo the restaFallo to set
+	 */
+	public void setRestaFallo(int restaFallo) {
+		this.restaFallo = restaFallo;
+	}
+
+	/**
+	 * @return the aleatorio
+	 */
+	public boolean isAleatorio() {
+		return aleatorio;
+	}
+
+	/**
+	 * @param aleatorio the aleatorio to set
+	 */
+	public void setAleatorio(boolean aleatorio) {
+		this.aleatorio = aleatorio;
+	}
+
+	/**
+	 * @return the notaPorPregunta
+	 */
+	public int getNotaPorPregunta() {
+		return notaPorPregunta;
+	}
+
+	/**
+	 * @param notaPorPregunta the notaPorPregunta to set
+	 */
+	public void setNotaPorPregunta(int notaPorPregunta) {
+		this.notaPorPregunta = notaPorPregunta;
+	}
+
+	/**
+	 * @return the nRespuestasPregunta
+	 */
+	public int getnRespuestasPregunta() {
+		return nRespuestasPregunta;
+	}
+
+	/**
+	 * @param nRespuestasPregunta the nRespuestasPregunta to set
+	 */
+	public void setnRespuestasPregunta(int nRespuestasPregunta) {
+		this.nRespuestasPregunta = nRespuestasPregunta;
+	}
+
+	/**
+	 * @return the nRespuestasCorrectas
+	 */
+	public int getnRespuestasCorrectas() {
+		return nRespuestasCorrectas;
+	}
+
+	/**
+	 * @param nRespuestasCorrectas the nRespuestasCorrectas to set
+	 */
+	public void setnRespuestasCorrectas(int nRespuestasCorrectas) {
+		this.nRespuestasCorrectas = nRespuestasCorrectas;
+	}
+	
+	
+	
+	
+}

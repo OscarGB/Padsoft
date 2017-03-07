@@ -1,0 +1,10 @@
+package contenido;
+
+public class extends Contenido Tema {
+	
+
+	public Tema() {
+		
+	}
+
+}

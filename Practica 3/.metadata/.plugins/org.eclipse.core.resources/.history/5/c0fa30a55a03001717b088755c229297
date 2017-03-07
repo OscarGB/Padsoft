@@ -1,0 +1,34 @@
+package contenido;
+
+import java.util.ArrayList;
+
+public class Pregunta {
+	private String enunciado;
+	private ArrayList<String> respuestas;
+	private ArrayList<String> respuestaCorrecta;
+	private ArrayList<String> respuestaEscogida;
+	private int nota;
+	private int restaFallo;
+	private boolean aleatorio;
+	private int notaPorPregunta;
+	private int nRespuestasPregunta;
+	private int nRespuestasCorrectas;
+	
+	public Pregunta(String enunciado, ArrayList<String> respuestas, ArrayList<String> respuestaCorrecta,
+			int nota, int restaFallo, boolean aleatorio, int notaPorPregunta,
+			int nRespuestasPregunta, int nRespuestasCorrectas) {
+		
+		this.enunciado = enunciado;
+		this.respuestas = respuestas;
+		this.respuestaCorrecta = respuestaCorrecta;
+		this.respuestaEscogida = new ArrayList<String>();
+		this.nota = 0;
+		this.restaFallo = restaFallo;
+		this.aleatorio = aleatorio;
+		this.notaPorPregunta = 1;
+		this.nRespuestasPregunta = 0;
+		this.nRespuestasCorrectas = 0;
+	}
+	
+	
+}

@@ -1,0 +1,28 @@
+package contenido;
+
+/**
+ * Clase Tema
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+public class Tema extends Contenido {
+	/**
+	 * Array de subtemas
+	 */
+	private Contenido subtemas[];
+	
+	/**
+	 * Constructor de la clase Tema
+	 * @param titulo
+	 * @param visibilidad
+	 * @param subtemas
+	 */
+	public Tema(String titulo, boolean visibilidad, Contenido[] subtemas) {
+		super(titulo, visibilidad);
+		this.subtemas = subtemas;
+	}
+	
+
+	
+}
