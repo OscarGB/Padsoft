@@ -1,0 +1,16 @@
+package contenido;
+
+public class Tema extends Contenido {
+	private Contenido subtemas[];
+
+	/**
+	 * Constructor de la clase Tema
+	 * @param String titulo
+	 * @param boolean visibilidad
+	 */
+	public Tema(String titulo, boolean visibilidad) {
+		super(titulo, visibilidad);
+	}
+
+	
+}

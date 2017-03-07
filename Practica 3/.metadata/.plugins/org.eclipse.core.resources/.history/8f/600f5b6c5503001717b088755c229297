@@ -1,0 +1,9 @@
+package contenido;
+
+public class extends Tema {
+
+	public Tema() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
