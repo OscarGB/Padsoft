@@ -1,9 +1,0 @@
-package contenido;
-
-public class Ejercicio {
-
-	public Ejercicio() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
