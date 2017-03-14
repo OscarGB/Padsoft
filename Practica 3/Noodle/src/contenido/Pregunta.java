@@ -11,22 +11,13 @@ public class Pregunta {
 	/**
 	 * Array de respuestas posbiles
 	 */
-	private ArrayList<String> respuestas;
+	private ArrayList<Opciones> respuestas;
 	
 	/**
 	 * Array de respuestas correctas (varias si es de respuesta múltiple)
 	 */
-	private ArrayList<String> respuestaCorrecta;
+	private ArrayList<Opciones> respuestaCorrecta;
 	
-	/**
-	 * Array de respuestas escogidas por el alumno (varias si es de respuesta múltiple)
-	 */
-	private ArrayList<String> respuestaEscogida;
-	
-	/**
-	 * Nota del alumno en la pregunta
-	 */
-	private int nota;
 	
 	/**
 	 * Puntos que resta un fallo en esta pregunta
@@ -39,9 +30,19 @@ public class Pregunta {
 	private boolean aleatorio;
 	
 	/**
-	 * Nota media de los alumnos que han contestado a esta pregunta
+	 * Nota media entre las respuestas de esta pregunta
 	 */
 	private int notaMedia;
+	
+	/**
+	 * Valor de la pregunta dentro del ejercicio
+	 */
+	private float pesoPregunta;
+	
+	/**
+	 * Valor constante del peso por defecto
+	 */
+	public static final float PESO_POR_DEFECTO = 1;
 	
 	/**
 	 * Número de veces que la pregunta ha sido respondida
@@ -62,17 +63,42 @@ public class Pregunta {
 	 * @param aleatorio
 	 * @param notaMedia
 	 */
-	public Pregunta(String enunciado, ArrayList<String> respuestas, ArrayList<String> respuestaCorrecta,
+	public Pregunta(String enunciado, ArrayList<Opciones> respuestas, ArrayList<Opciones> respuestaCorrecta,
 			int restaFallo, boolean aleatorio, int notaMedia) {
 		
 		this.enunciado = enunciado;
 		this.respuestas = respuestas;
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.respuestaEscogida = new ArrayList<String>();
-		this.nota = 0;
 		this.restaFallo = restaFallo;
 		this.aleatorio = aleatorio;
 		this.notaMedia = notaMedia;
+		this.pesoPregunta = Pregunta.PESO_POR_DEFECTO;
+		this.nRespuestasPregunta = 0;
+		this.nRespuestasCorrectas = 0;
+	}
+	
+	/**
+	 * Constructor de Pregunta con peso definido
+	 * @param enunciado
+	 * @param respuestas
+	 * @param respuestaCorrecta
+	 * @param restaFallo
+	 * @param aleatorio
+	 * @param notaMedia
+	 * @param peso
+	 */
+	public Pregunta(String enunciado, ArrayList<Opciones> respuestas, ArrayList<Opciones> respuestaCorrecta,
+			int restaFallo, boolean aleatorio, int notaMedia, float peso) {
+		
+		this.enunciado = enunciado;
+		this.respuestas = respuestas;
+		this.respuestaCorrecta = respuestaCorrecta;
+		this.respuestaEscogida = new ArrayList<String>();
+		this.restaFallo = restaFallo;
+		this.aleatorio = aleatorio;
+		this.notaMedia = notaMedia;
+		this.pesoPregunta = peso;
 		this.nRespuestasPregunta = 0;
 		this.nRespuestasCorrectas = 0;
 	}
