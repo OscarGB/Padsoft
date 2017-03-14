@@ -5,13 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 /**
- * Clase Alumno
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
- * @date 07/03/2017
- */
-
-/**
  * Clase Persona
  * @author Óscar Gómez Borzdynski
  * @author Jose Ignacio Gómez García
@@ -47,7 +40,7 @@ public abstract class Persona {
 		this.nia = nia;
 		this.nombre = nombre;
 		this.password = password;
-		DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.fechaInscripcion = LocalDate.parse(fecha, dtf);
 	}
 	

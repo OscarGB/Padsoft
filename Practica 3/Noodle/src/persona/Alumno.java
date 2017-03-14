@@ -27,16 +27,6 @@ public class Alumno extends Persona {
 	 * Estadísticas del Alumno
 	 */
 	private ArrayList<EstadisticasAlumno> estadisticas;
-	
-	/**
-	 * Número de asignaturas del Alumno
-	 */
-	private int numAsignaturas;
-	
-	/**
-	 * Número de estadísticas del Alumno
-	 */
-	private int numEstadisticas;
 
 	/**
 	 * Constructor de la clase Alumno
@@ -50,8 +40,6 @@ public class Alumno extends Persona {
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();
 		this.email = email;
-		this.numAsignaturas = 0;
-		this.numEstadisticas = 0;
 	}
 	
 	/**
@@ -83,8 +71,13 @@ public class Alumno extends Persona {
 	 * @param asignatura
 	 */
 	public void addAsignatura(Asignatura asignatura) {
+		if(asignatura == null){
+			return;
+		}
+		if(this.asignaturas.contains(asignatura) == true){
+			return;
+		}
 		this.asignaturas.add(asignatura);
-		this.numAsignaturas++;
 	}
 	
 	/**
@@ -92,8 +85,13 @@ public class Alumno extends Persona {
 	 * @param asignatura
 	 */
 	public void eraseAsignatura(Asignatura asignatura) {
+		if(asignatura == null){
+			return;
+		}
+		if(this.asignaturas.contains(asignatura) == false){
+			return;
+		}
 		this.asignaturas.remove(asignatura);
-		this.numAsignaturas--;
 	}
 
 	/**
@@ -109,8 +107,13 @@ public class Alumno extends Persona {
 	 * @param estadistica
 	 */
 	public void addEstadistica(EstadisticasAlumno estadistica) {
+		if(estadistica == null){
+			return;
+		}
+		if(this.estadisticas.contains(estadistica) == true){
+			return;
+		}
 		this.estadisticas.add(estadistica);
-		this.numEstadisticas++;
 	}
 	
 	/**
@@ -118,17 +121,22 @@ public class Alumno extends Persona {
 	 * @param asignaturas
 	 */
 	public void eraseEstadistica(EstadisticasAlumno estadistica) {
+		if(estadistica == null){
+			return;
+		}
+		if(this.estadisticas.contains(estadistica) == false){
+			return;
+		}
 		this.estadisticas.remove(estadistica);
-		this.numEstadisticas--;
 	}
 	
 	/**
 	 * Solicita el acceso del Alumno a una Asignatura
 	 * @param asignatura
 	 */
-	public void solicitarAcceso(Asignatura asignatura){
+	/*public void solicitarAcceso(Asignatura asignatura){
 		Solicitud a = new Solicitud(asignatura, this);
-	}
+	}*/
 
 	/**
 	 * (Override) toString()
@@ -139,7 +147,7 @@ public class Alumno extends Persona {
 	public String toString() {
 		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password +
 				". Fecha de inscripción: " + this.fechaInscripcion +  ". Email: " + this.email +
-				". Matriculado en " + this.numAsignaturas+ " Asignaturas. Almacena" + this.numEstadisticas +
+				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena" + this.estadisticas.size() +
 				"Estadísticas.";
 	}
 	

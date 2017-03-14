@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.*;
 
 /**
@@ -14,7 +15,8 @@ import persona.*;
  */
 
 public class Plataforma {
-	public static String name = "NOODLE";
+	
+	public static final String NAME = "NOODLE";
 	
 	public static ArrayList<Asignatura> asignaturas;
 	
@@ -25,9 +27,20 @@ public class Plataforma {
 	public static LocalDate fechaActual;
 	
 	public static Persona loggedAs;
+	
+	public static EmailSystem emailSystem;
 
+	public Plataforma(ArrayList<Asignatura> asignaturas, ArrayList<Alumno> alumnos, Profesor profesor){
+		this.asignaturas = asignaturas;
+		this.alumnos = alumnos;
+		this.profesor = profesor;
+		this.fechaActual = LocalDate.now();
+		this.loggedAs = null;
+		this.emailSystem = new EmailSystem();
+	}
+	
 	public static String getName() {
-		return name;
+		return NAME;
 	}
 
 	public static ArrayList<Asignatura> getAsignaturas() {
