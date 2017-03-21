@@ -16,6 +16,7 @@ public abstract class Persona {
 	 * NIA de la persona
 	 */
 	protected String nia;
+	
 	/**
 	 * Nombre de la persona
 	 */

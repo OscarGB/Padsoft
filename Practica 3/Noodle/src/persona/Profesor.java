@@ -1,5 +1,9 @@
 package persona;
 
-public class Profesor extends Persona {
+import java.time.LocalDate;
 
+public class Profesor extends Persona {
+	public Profesor(String nia, String password){
+		super(nia, "Profesor", password, LocalDate.now().toString());
+	}
 }
