@@ -100,6 +100,14 @@ public class Asignatura {
 	}
 	
 	/**
+	 * Getter de Solicitudes
+	 * @return ArrayList solicitudes
+	 */
+	public ArrayList<Solicitud> getSolicitudes(){
+		return this.solicitudes;
+	}
+	
+	/**
 	 * Método para saber si un alumno está inscrito en la asignatura
 	 * @param a
 	 * @return
@@ -112,5 +120,7 @@ public class Asignatura {
 			return false;
 		}
 	}
+	
+	
 	
 }
