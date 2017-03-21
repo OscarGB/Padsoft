@@ -8,6 +8,7 @@ import asignatura.Asignatura;
 import contenido.*;
 import persona.*;
 import plataforma.Plataforma;
+import solicitud.Solicitud;
 
 /**
  * Tester de toda la aplicación
@@ -56,9 +57,9 @@ public class Tester {
 		//TODO Comprobar que existe
 		p1.denegarSolicitud(s2);
 		
-		Solicitud s1 = a1.solicitarAcceso(asig1);
+		s1 = a1.solicitarAcceso(asig1);
 		// TODO Comprobar equals
-		Solicitud s2 = a1.solicitarAcceso(asig1);
+		s2 = a1.solicitarAcceso(asig1);
 		
 		System.out.println(s1);
 		System.out.println(s2);	
