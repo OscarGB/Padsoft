@@ -11,13 +11,7 @@ public class Pregunta {
 	/**
 	 * Array de respuestas posbiles
 	 */
-	private ArrayList<Opciones> respuestas;
-	
-	/**
-	 * Array de respuestas correctas (varias si es de respuesta múltiple)
-	 */
-	private ArrayList<Opciones> respuestaCorrecta;
-	
+	private ArrayList<Opciones> respuestas;	
 	
 	/**
 	 * Puntos que resta un fallo en esta pregunta
@@ -63,13 +57,11 @@ public class Pregunta {
 	 * @param aleatorio
 	 * @param notaMedia
 	 */
-	public Pregunta(String enunciado, ArrayList<Opciones> respuestas, ArrayList<Opciones> respuestaCorrecta,
+	public Pregunta(String enunciado, ArrayList<Opciones> respuestas,
 			int restaFallo, boolean aleatorio, int notaMedia) {
 		
 		this.enunciado = enunciado;
 		this.respuestas = respuestas;
-		this.respuestaCorrecta = respuestaCorrecta;
-		this.respuestaEscogida = new ArrayList<String>();
 		this.restaFallo = restaFallo;
 		this.aleatorio = aleatorio;
 		this.notaMedia = notaMedia;
@@ -88,13 +80,11 @@ public class Pregunta {
 	 * @param notaMedia
 	 * @param peso
 	 */
-	public Pregunta(String enunciado, ArrayList<Opciones> respuestas, ArrayList<Opciones> respuestaCorrecta,
+	public Pregunta(String enunciado, ArrayList<Opciones> respuestas,
 			int restaFallo, boolean aleatorio, int notaMedia, float peso) {
 		
 		this.enunciado = enunciado;
 		this.respuestas = respuestas;
-		this.respuestaCorrecta = respuestaCorrecta;
-		this.respuestaEscogida = new ArrayList<String>();
 		this.restaFallo = restaFallo;
 		this.aleatorio = aleatorio;
 		this.notaMedia = notaMedia;
@@ -123,7 +113,7 @@ public class Pregunta {
 	 * Getter de respuestas
 	 * @return respuestas
 	 */
-	public ArrayList<String> getRespuestas() {
+	public ArrayList<Opciones> getRespuestas() {
 		return respuestas;
 	}
 
@@ -131,56 +121,8 @@ public class Pregunta {
 	 * Setter de respuestas
 	 * @param respuestas
 	 */
-	public void setRespuestas(ArrayList<String> respuestas) {
+	public void setRespuestas(ArrayList<Opciones> respuestas) {
 		this.respuestas = respuestas;
-	}
-
-	/**
-	 * Getter de respuestaCorrecta
-	 * @return respuestaCorrecta
-	 */
-	public ArrayList<String> getRespuestaCorrecta() {
-		return respuestaCorrecta;
-	}
-
-	/**
-	 * Setter de respuestaCorrecta
-	 * @param respuestaCorrecta
-	 */
-	public void setRespuestaCorrecta(ArrayList<String> respuestaCorrecta) {
-		this.respuestaCorrecta = respuestaCorrecta;
-	}
-
-	/**
-	 * Getter de respuestaEscogida
-	 * @return respuestaEscogida
-	 */
-	public ArrayList<String> getRespuestaEscogida() {
-		return respuestaEscogida;
-	}
-
-	/**
-	 * Setter de respuestaEscogida
-	 * @param respuestaEscogida
-	 */
-	public void setRespuestaEscogida(ArrayList<String> respuestaEscogida) {
-		this.respuestaEscogida = respuestaEscogida;
-	}
-
-	/**
-	 * Getter de nota
-	 * @return nota
-	 */
-	public int getNota() {
-		return nota;
-	}
-
-	/**
-	 * Setter de nota
-	 * @param nota
-	 */
-	public void setNota(int nota) {
-		this.nota = nota;
 	}
 
 	/**
@@ -261,18 +203,6 @@ public class Pregunta {
 	 */
 	public void setnRespuestasCorrectas(int nRespuestasCorrectas) {
 		this.nRespuestasCorrectas = nRespuestasCorrectas;
-	}
-	
-	/**
-	 * Comprueba si la respuesta escogida es la correcta
-	 * @return boolean
-	 */
-	public boolean checkRespuesta() {
-		if (this.respuestaEscogida.equals(this.respuestaCorrecta)){
-			return true;
-		}
-		
-		return false;
 	}
 	
 	/**

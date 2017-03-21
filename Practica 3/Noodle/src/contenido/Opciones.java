@@ -8,8 +8,7 @@ public class Opciones {
 	private String respuesta;
 	
 	/**
-	 * Si la respuesta escogida por el alumno es correcta o no
-	 * Por defecto será false
+	 * Si la respuesta correcta o no
 	 */
 	private boolean correcta;
 	

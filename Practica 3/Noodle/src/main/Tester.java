@@ -109,6 +109,21 @@ public class Tester {
 		
 		System.out.println(Plataforma.asignaturas);
 		
+		System.out.println(a1.getAsignaturas());
+		
+		ej.setPeso(8);
+		ej.setAleatoriedad(true);
+		ej.setAleatoriedad(false);
+		ej.setFechaFin(LocalDate.now().toString());
+		ej.setFechaIni(LocalDate.now().toString());
+		
+		ArrayList<Opciones> opc = new ArrayList<Opciones>();
+		opc.add(new Opciones("4", true));
+		opc.add(new Opciones("3", false));
+		
+		
+		
+		Pregunta p1 = new Pregunta("Cuánto es 2 + 2", opc, 0, false, 0);
 		
 		
 	}
