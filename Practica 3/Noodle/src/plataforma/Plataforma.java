@@ -30,10 +30,10 @@ public class Plataforma {
 	
 	public static EmailSystem emailSystem;
 
-	public Plataforma(ArrayList<Asignatura> asignaturas, ArrayList<Alumno> alumnos, Profesor profesor){
-		this.asignaturas = asignaturas;
-		this.alumnos = alumnos;
-		this.profesor = profesor;
+	public Plataforma(){
+		this.asignaturas = new ArrayList<Asignatura>();
+		this.alumnos = new ArrayList<Alumno>();
+		this.profesor = new Profesor("1", "Profesor");
 		this.fechaActual = LocalDate.now();
 		this.loggedAs = null;
 		this.emailSystem = new EmailSystem();

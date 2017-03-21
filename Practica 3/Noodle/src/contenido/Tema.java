@@ -20,9 +20,9 @@ public class Tema extends Contenido {
 	 * @param visibilidad
 	 * @param subtemas
 	 */
-	public Tema(String titulo, boolean visibilidad, ArrayList<Contenido> subtemas) {
+	public Tema(String titulo, boolean visibilidad) {
 		super(titulo, visibilidad);
-		this.subtemas = subtemas;
+		this.subtemas = new ArrayList<Contenido>();
 	}
 
 	/**
