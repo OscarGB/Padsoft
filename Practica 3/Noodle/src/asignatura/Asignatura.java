@@ -51,6 +51,7 @@ public class Asignatura {
 	public void addAlumno(Alumno alumno){
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
+		//TODO email al alumno
 	}
 	
 	/**
@@ -82,8 +83,7 @@ public class Asignatura {
 		for(Solicitud s : this.expulsados){
 			if(s.equals(readmision) == true){
 				this.expulsados.remove(s);
-				this.alumnos.add(alumno);
-				alumno.addAsignatura(this);
+				this.addAlumno(alumno);
 				return true;
 			}
 		}
@@ -96,7 +96,21 @@ public class Asignatura {
 	 * @param solicitud
 	 */
 	public void denegarSolicitud(Solicitud solicitud) {
-		this.solicitudes.remove(solicitud);		
+		this.solicitudes.remove(solicitud);	
+		//TODO email al alumo
+	}
+	
+	/**
+	 * Añade una solicitud al array de pendientes
+	 * @param sol
+	 */
+	public boolean addSolicitudPendiente(Solicitud sol){
+		if(this.solicitudes.add(sol) == true){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
 	/**
@@ -120,7 +134,26 @@ public class Asignatura {
 			return false;
 		}
 	}
+
+	/**
+	 * Método para aceptar una solicitud que comprueba si
+	 * la solicitud está en el array de pendientes y, si 
+	 * lo está, añade al alumno y la saca de pendientes
+	 * @param sol
+	 * @return
+	 */
+	public boolean aceptarSolicitud(Solicitud sol) {
+		if(this.solicitudes.contains(sol) == true){
+			Alumno alumno = sol.getAlumno();
+			this.addAlumno(alumno);
+			this.solicitudes.remove(sol);
+		}
+		return false;
+	}
 	
-	
+	@Override
+	public String toString(){
+		return "Alumnos en la asignatura: " + this.alumnos;
+	}
 	
 }

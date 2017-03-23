@@ -21,11 +21,14 @@ public class Profesor extends Persona {
 	/**
 	 * Método que acepta solicitud
 	 * @param sol
-	 * @return
+	 * @return true si ha sido aceptada
 	 */
-	public int aceptarSolicitud(Solicitud sol){
-		/*TODO llamará a aceptar solicitud de Solicitud*/
-		return 0;
+	public boolean aceptarSolicitud(Solicitud sol){
+		if(sol.getAsignatura().aceptarSolicitud(sol) == true){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
@@ -33,7 +36,7 @@ public class Profesor extends Persona {
 	 * @param sol
 	 */
 	public void denegarSolicitud(Solicitud sol) {
-		/*TODO llamará a denegar solicitud de Solicitud*/
+		sol.getAsignatura().denegarSolicitud(sol);
 	}
 
 	/**

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import estadisticas.EstadisticasAlumno;
+import solicitud.Solicitud;
 
 /**
  * Clase Alumno
@@ -132,12 +133,24 @@ public class Alumno extends Persona {
 	}
 	
 	/**
-	 * Solicita el acceso del Alumno a una Asignatura
-	 * @param asignatura
+	 * Método para solicitar acceso a una asignatura
+	 * que creará una solicitud y la añadirá a las
+	 * solicitudes pendientes de la asignatura
+	 * @param asig
+	 * @return solicitud
 	 */
-	/*public void solicitarAcceso(Asignatura asignatura){
-		Solicitud a = new Solicitud(asignatura, this);
-	}*/
+	public Solicitud solicitarAcceso(Asignatura asig) {
+		if(asig.isAlumnoIn(this) == true) {
+			return null;
+		}
+		else {
+			Solicitud sol = new Solicitud(this, asig);
+			if(asig.addSolicitudPendiente(sol) == true){
+				return sol;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * (Override) toString()
@@ -150,6 +163,8 @@ public class Alumno extends Persona {
 				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena" + this.estadisticas.size() +
 				"Estadísticas.";
 	}
+
+	
 	
 	
 	
