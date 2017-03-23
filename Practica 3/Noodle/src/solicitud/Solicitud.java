@@ -25,10 +25,10 @@ public class Solicitud {
 	}
 	
 	/**
-	 * Método para aceptar solicitud
+	 * Método para aceptar solicitud que llamará 
+	 * a asignatura.addAlumno
 	 */
 	public void aceptarSolicitud(){
-		/*TODO Tramitará la inserción del alumno*/
 		this.asignatura.addAlumno(this.alumno);
 	}
 	
@@ -38,6 +38,14 @@ public class Solicitud {
 	public void denegarSolicitud(){
 		/*TODO Tramitará la denegación de la solicitud*/
 		this.asignatura.denegarSolicitud(this);
+	}
+	
+	/**
+	 * Getter de Asginatura
+	 * @return
+	 */
+	public Asignatura getAsignatura(){
+		return this.asignatura;
 	}
 	
 	/**
@@ -53,5 +61,13 @@ public class Solicitud {
 		else {
 			return false;
 		}
+	}
+
+	/**
+	 * Getter de Alumno de la Solicitud
+	 * @return Alumno
+	 */
+	public Alumno getAlumno() {
+		return this.alumno;
 	}
 }
