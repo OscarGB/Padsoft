@@ -1,8 +1,5 @@
 package persona;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 
 /**
  * Clase Persona
@@ -26,10 +23,6 @@ public abstract class Persona {
 	 */
 	protected String password;
 	
-	/**
-	 * Fecha de Inscripción de una Persona
-	 */
-	protected LocalDate fechaInscripcion;
 	
 	/**
 	 * Constructor de la clase Persona
@@ -37,12 +30,10 @@ public abstract class Persona {
 	 * @param nombre
 	 * @param password
 	 */
-	public Persona(String nia, String nombre, String password, String fecha) {
+	public Persona(String nia, String nombre, String password) {
 		this.nia = nia;
 		this.nombre = nombre;
 		this.password = password;
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		this.fechaInscripcion = LocalDate.parse(fecha, dtf);
 	}
 	
 	/**
@@ -95,7 +86,7 @@ public abstract class Persona {
 	 */
 	@Override
 	public String toString() {
-		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password" + this.password + ". Fecha de inscripción: " + this.fechaInscripcion;
+		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password" + this.password;
 	}
 	
 	

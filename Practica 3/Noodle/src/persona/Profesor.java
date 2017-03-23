@@ -1,6 +1,5 @@
 package persona;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
@@ -16,7 +15,7 @@ public class Profesor extends Persona {
 	 * @param password
 	 */
 	public Profesor(String nia, String password){
-		super(nia, "Profesor", password, LocalDate.now().toString());
+		super(nia, "Profesor", password);
 	}
 	
 	/**

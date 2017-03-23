@@ -1,5 +1,6 @@
 package persona;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
@@ -35,8 +36,8 @@ public class Alumno extends Persona {
 	 * @param password
 	 * @param email
 	 */
-	public Alumno(String nia, String nombre, String password, String fecha, String email) {
-		super(nia, nombre, password, fecha);
+	public Alumno(String nia, String nombre, String password, String email) {
+		super(nia, nombre, password);
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();
 		this.email = email;
@@ -145,8 +146,7 @@ public class Alumno extends Persona {
 	 */
 	@Override
 	public String toString() {
-		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password +
-				". Fecha de inscripción: " + this.fechaInscripcion +  ". Email: " + this.email +
+		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password  +  ". Email: " + this.email +
 				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena" + this.estadisticas.size() +
 				"Estadísticas.";
 	}

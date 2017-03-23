@@ -1,5 +1,10 @@
 package plataforma;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -37,6 +42,39 @@ public class Plataforma {
 		this.fechaActual = LocalDate.now();
 		this.loggedAs = null;
 		this.emailSystem = new EmailSystem();
+		this.readFile();
+	}
+	
+	/**
+	 * Función que lee el fichero y guarda todos los datos necesarios
+	 */
+	private void readFile(){
+		String cadena;
+		File archivo = new File ("./data/datosalumnos.txt");
+	    FileReader f = null;
+		try {
+			f = new FileReader(archivo);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	    BufferedReader b = new BufferedReader(f);
+	    try {
+			while((cadena = b.readLine())!=null) {
+				LocalDate.now();
+				String[] toks = cadena.split(";");
+				if(EmailSystem.isValidEmailAddr(toks[2]) == true){
+					Alumno a = new Alumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
+					Plataforma.alumnos.add(a);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    try {
+			b.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static String getName() {
