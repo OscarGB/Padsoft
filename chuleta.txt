@@ -1,0 +1,5 @@
+LocalDate f1 = LocalDate new(); //fecha actual
+DateTimeFormatter dtf = DateTimeFormatterofLocalizedDate(FormatStyle SHORT);
+LocalDate f2 = LocalDate parse ("29/02/17", dtf);
+f1.isAfter(f2); //True/False
+f1.isBefore(f1); //True/False
