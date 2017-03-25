@@ -37,7 +37,7 @@ public class Asignatura {
 	private ArrayList<Contenido> contenido;
 	
 	
-	//Constructor
+	//Constructores
 	
 	/**
 	 * Constructor de Asignatura
@@ -63,6 +63,22 @@ public class Asignatura {
 	}
 	
 	/**
+	 * Getter de Solicitudes de Alumnos expulsados
+	 * @return ArrayList solicitudes
+	 */
+	public ArrayList<Solicitud> getSolicitudesExpulsados(){
+		return this.expulsados;
+	}
+	
+	/**
+	 * Getter de Alumnos matriculados
+	 * @return ArrayList alumnos
+	 */
+	public ArrayList<Alumno> getAlumnos(){
+		return this.alumnos;
+	}
+	
+	/**
 	 * Getter del nombre de la Asignatura
 	 * @return nombre
 	 */
@@ -80,7 +96,8 @@ public class Asignatura {
 	public void addAlumno(Alumno alumno){
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
-		//TODO email al alumno
+		//EmailSystem.send(alumno.getEmail(), "Admisión", "Has sido admitido a la asignatura " + this.getNombre());
+		
 	}
 	
 	/**
@@ -93,6 +110,7 @@ public class Asignatura {
 			this.alumnos.remove(alumno);
 			this.expulsados.add(new Solicitud(alumno, this));
 			alumno.eraseAsignatura(this);
+			//EmailSystem.send(alumno.getEmail(), "Expulsión", "Has sido expulsado de la asignatura " + this.getNombre());
 			return true;
 		}
 		else {
@@ -113,10 +131,10 @@ public class Asignatura {
 			if(s.equals(readmision) == true){
 				this.expulsados.remove(s);
 				this.addAlumno(alumno);
+				//EmailSystem.send(alumno.getEmail(), "Readmisión", "Has sido readmitido a la asignatura " + this.getNombre());
 				return true;
 			}
 		}
-		
 		return false;
 	}
 
@@ -126,7 +144,7 @@ public class Asignatura {
 	 */
 	public void denegarSolicitud(Solicitud solicitud) {
 		this.solicitudes.remove(solicitud);	
-		//TODO email al alumo
+		//EmailSystem.send(alumno.getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
 	}
 	
 	/**
@@ -135,6 +153,19 @@ public class Asignatura {
 	 */
 	public boolean addSolicitudPendiente(Solicitud sol){
 		if(this.solicitudes.add(sol) == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	/**
+	 * Añade una solicitud al array de pendientes
+	 * @param sol
+	 */
+	public boolean addSolicitudExpulsado(Solicitud sol){
+		if(this.expulsados.add(sol) == true){
 			return true;
 		}
 		else{

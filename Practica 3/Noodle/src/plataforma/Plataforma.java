@@ -4,13 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import persona.*;
+import solicitud.Solicitud;
 
 /**
  * Clase Plataforma
@@ -50,8 +54,11 @@ public class Plataforma {
 	 */
 	private void readFile(){
 		String cadena;
+		
+		/*Alumnos*/
 		File archivo = new File ("./data/datosalumnos.txt");
 	    FileReader f = null;
+	    Alumno a = null;
 		try {
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
@@ -59,14 +66,21 @@ public class Plataforma {
 		}
 	    BufferedReader b = new BufferedReader(f);
 	    try {
+	    	
 			while((cadena = b.readLine())!=null) {
 				LocalDate.now();
 				String[] toks = cadena.split(";");
 				if(EmailSystem.isValidEmailAddr(toks[2]) == true){
-					Alumno a = new Alumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
+					try {
+						a = new Alumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
+					} catch (InvalidEmailAddressException e) {
+						System.out.println("Correo inválido");
+						e.printStackTrace();
+					}
 					Plataforma.alumnos.add(a);
 				}
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -75,6 +89,124 @@ public class Plataforma {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	    
+	    /*Asignaturas*/
+	    archivo = new File("./data/datosasignaturas.txt");
+	    try {
+			f = new FileReader(archivo);
+		
+		    b = new BufferedReader(f);
+		    try {
+		    	while((cadena = b.readLine())!=null) {
+		    		
+		    		//Titulo
+		    		String titulo = cadena;
+		    		
+		    		// Alumnos matriculados
+		    		Asignatura asig = new Asignatura(titulo);
+		    		cadena = b.readLine();
+		    		int n = Integer.parseInt(cadena);
+		    		for( int i = 0; i < n; i++){
+		    			cadena = b.readLine();
+		    			for(Alumno alum : Plataforma.alumnos){
+		    				if(alum.getNia() == cadena){
+		    					asig.addAlumno(alum);
+		    					break;
+		    				}
+		    			}
+		    		}
+		    		
+		    		// Solicitudes pendientes
+		    		cadena = b.readLine();
+		    		n = Integer.parseInt(cadena);
+		    		for( int i = 0; i < n; i++){
+		    			cadena = b.readLine();
+		    			for(Alumno alum : Plataforma.alumnos){
+		    				if(alum.getNia() == cadena){
+		    					Solicitud s = new Solicitud(alum, asig);
+		    					asig.addSolicitudPendiente(s);
+		    					break;
+		    				}
+		    			}
+		    		}
+		    		
+		    		// Solicitudes de los expulsados
+		    		cadena = b.readLine();
+		    		n = Integer.parseInt(cadena);
+		    		for( int i = 0; i < n; i++){
+		    			cadena = b.readLine();
+		    			for(Alumno alumn : Plataforma.alumnos){
+		    				if(alumn.getNia() == cadena){
+		    					Solicitud sol = new Solicitud(alumn, asig);
+		    					asig.addSolicitudExpulsado(sol);
+		    					break;
+		    				}
+		    			}
+		    		}
+		    		
+		    		// TODO falta el contenido
+		    		
+		    		Plataforma.addAsignatura(asig);
+				}	    	
+		    } catch (IOException e) {
+				e.printStackTrace();
+			}
+		    try {
+				b.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    } catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Archivo que guarda el estado de la plataforma
+	 */
+	public void writeFile(){
+		PrintWriter f = null;
+		
+		// Alumnos
+	    try {
+			f = new PrintWriter("./data/datosalumnos.txt", "UTF-8");
+			for(Alumno a : Plataforma.alumnos){
+		    	String aux = a.getNombre();
+		    	String[] n = aux.split(" ");
+		    	f.println(n[0] + ";" + n[1] + ";" + a.getEmail() + ";" + a.getNia() + ";" + a.getPassword());
+		    }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    
+	    // Asignaturas
+	    try {
+			f = new PrintWriter("./data/datosasignaturas.txt", "UTF-8");
+			for(Asignatura asig : Plataforma.asignaturas){
+				f.println(asig.getNombre());
+				ArrayList<Alumno> alumnos = asig.getAlumnos();
+				f.println(alumnos.size());
+				for(Alumno a : alumnos){
+					f.println(a.getNia());
+				}
+				ArrayList<Solicitud> solicitudes = asig.getSolicitudes();
+				f.println(solicitudes.size());
+				for(Solicitud s : solicitudes){
+					f.println(s.getAlumno().getNia());
+				}
+				solicitudes = asig.getSolicitudesExpulsados();
+				f.println(solicitudes.size());
+				for(Solicitud s : solicitudes){
+					f.println(s.getAlumno().getNia());
+				}
+				
+				// TODO contenido
+			
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    	    
 	}
 	
 	public static String getName() {
