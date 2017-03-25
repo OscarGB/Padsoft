@@ -70,4 +70,9 @@ public class Solicitud {
 	public Alumno getAlumno() {
 		return this.alumno;
 	}
+	
+	@Override
+	public String toString(){
+		return "El alumno: " + this.alumno.getNombre() + " solicita acceso a la asignatura: " + this.asignatura.getNombre();
+	}
 }

@@ -151,6 +151,14 @@ public class Asignatura {
 		return false;
 	}
 	
+	/**
+	 * Getter del nombre de la Asignatura
+	 * @return
+	 */
+	public String getNombre(){
+		return this.nombre;
+	}
+	
 	@Override
 	public String toString(){
 		return "Alumnos en la asignatura: " + this.alumnos;

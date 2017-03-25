@@ -24,9 +24,9 @@ public class AlumnoTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		alumno1 = new Alumno("1", "Fulanito", "1234", "12/05/2015", "Hola@gmail.com");
-		asignatura1 = new Asignatura();
-		asignatura2 = new Asignatura();
+		alumno1 = new Alumno("1", "Fulanito", "1234", "Hola@gmail.com");
+		asignatura1 = new Asignatura("Mates");
+		asignatura2 = new Asignatura("Lengua");
 	}
 
 	/**
