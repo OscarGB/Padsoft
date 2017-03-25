@@ -1,9 +1,12 @@
 package solicitud;
 
 import asignatura.Asignatura;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.Alumno;
 
 public class Solicitud {
+	
+	//Variables
 	/**
 	 * Alumno que solicita acceso
 	 */
@@ -14,6 +17,8 @@ public class Solicitud {
 	 */
 	Asignatura asignatura;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de Solicitud
 	 * @param alumno
@@ -21,14 +26,35 @@ public class Solicitud {
 	 */
 	public Solicitud (Alumno alumno, Asignatura asig){
 		this.alumno = alumno;
-		this.asignatura = asignatura;
+		this.asignatura = asig;
 	}
+	
+	//Getters y Setters
+	
+	/**
+	 * Getter de Asignatura
+	 * @return
+	 */
+	public Asignatura getAsignatura(){
+		return this.asignatura;
+	}
+	
+	/**
+	 * Getter de Alumno de la Solicitud
+	 * @return Alumno
+	 */
+	public Alumno getAlumno() {
+		return this.alumno;
+	}
+	
+	// Métodos
 	
 	/**
 	 * Método para aceptar solicitud que llamará 
 	 * a asignatura.addAlumno
 	 */
 	public void aceptarSolicitud(){
+		//TODO email alumno
 		this.asignatura.addAlumno(this.alumno);
 	}
 	
@@ -36,17 +62,12 @@ public class Solicitud {
 	 * Método para denegar solicitud
 	 */
 	public void denegarSolicitud(){
-		/*TODO Tramitará la denegación de la solicitud*/
+		//TODO email alumno
 		this.asignatura.denegarSolicitud(this);
 	}
 	
-	/**
-	 * Getter de Asginatura
-	 * @return
-	 */
-	public Asignatura getAsignatura(){
-		return this.asignatura;
-	}
+	
+	//Overrides
 	
 	/**
 	 * Override de equals() para Solicitud
@@ -63,14 +84,11 @@ public class Solicitud {
 		}
 	}
 
-	/**
-	 * Getter de Alumno de la Solicitud
-	 * @return Alumno
+
+	/** 
+	 * (Override) toString de la solicitud
+	 * @return String
 	 */
-	public Alumno getAlumno() {
-		return this.alumno;
-	}
-	
 	@Override
 	public String toString(){
 		return "El alumno: " + this.alumno.getNombre() + " solicita acceso a la asignatura: " + this.asignatura.getNombre();

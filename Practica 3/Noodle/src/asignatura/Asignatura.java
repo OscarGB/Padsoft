@@ -3,10 +3,14 @@ package asignatura;
 import java.util.ArrayList;
 
 import contenido.Contenido;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.Alumno;
 import solicitud.Solicitud;
 
 public class Asignatura {
+	
+	//Variables
+	
 	/**
 	 * ArrayList de alumnos inscritos en la asignatura 
 	 */
@@ -32,6 +36,9 @@ public class Asignatura {
 	 */
 	private ArrayList<Contenido> contenido;
 	
+	
+	//Constructor
+	
 	/**
 	 * Constructor de Asignatura
 	 * @param nombre
@@ -43,6 +50,28 @@ public class Asignatura {
 		this.contenido = new ArrayList<Contenido>();
 		this.nombre = nombre;
 	}
+	
+	
+	//Setters y getters
+	
+	/**
+	 * Getter de Solicitudes
+	 * @return ArrayList solicitudes
+	 */
+	public ArrayList<Solicitud> getSolicitudes(){
+		return this.solicitudes;
+	}
+	
+	/**
+	 * Getter del nombre de la Asignatura
+	 * @return nombre
+	 */
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+	
+	//Métodos
 	
 	/**
 	 * Método para añadir alumno a la asignatura
@@ -113,18 +142,11 @@ public class Asignatura {
 		}
 	}
 	
-	/**
-	 * Getter de Solicitudes
-	 * @return ArrayList solicitudes
-	 */
-	public ArrayList<Solicitud> getSolicitudes(){
-		return this.solicitudes;
-	}
 	
 	/**
 	 * Método para saber si un alumno está inscrito en la asignatura
 	 * @param a
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isAlumnoIn(Alumno a){
 		if(alumnos.contains(a) == true){
@@ -140,24 +162,19 @@ public class Asignatura {
 	 * la solicitud está en el array de pendientes y, si 
 	 * lo está, añade al alumno y la saca de pendientes
 	 * @param sol
-	 * @return
+	 * @return boolean
 	 */
 	public boolean aceptarSolicitud(Solicitud sol) {
 		if(this.solicitudes.contains(sol) == true){
 			Alumno alumno = sol.getAlumno();
 			this.addAlumno(alumno);
 			this.solicitudes.remove(sol);
+			return true;
 		}
 		return false;
 	}
 	
-	/**
-	 * Getter del nombre de la Asignatura
-	 * @return
-	 */
-	public String getNombre(){
-		return this.nombre;
-	}
+	//Overrides
 	
 	@Override
 	public String toString(){

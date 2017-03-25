@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import estadisticas.EstadisticasAlumno;
 import solicitud.Solicitud;
 
@@ -15,6 +17,8 @@ import solicitud.Solicitud;
  */
 
 public class Alumno extends Persona {
+	
+	//Variables
 	/**
 	 * Email del Alumno
 	 */
@@ -30,6 +34,8 @@ public class Alumno extends Persona {
 	 */
 	private ArrayList<EstadisticasAlumno> estadisticas;
 
+	//Constructor
+	
 	/**
 	 * Constructor de la clase Alumno
 	 * @param nia
@@ -37,11 +43,46 @@ public class Alumno extends Persona {
 	 * @param password
 	 * @param email
 	 */
-	public Alumno(String nia, String nombre, String password, String email) {
+	public Alumno(String nia, String nombre, String password, String email) throws InvalidEmailAddressException{
 		super(nia, nombre, password);
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();
+		if(EmailSystem.isValidEmailAddr(email) == false){
+			System.out.println("El email introducido no es válido");
+		}
+		
 		this.email = email;
+	}
+	
+	//Getters y Setters
+	
+	/**
+	 * Da valor al email de Alumno
+	 * @param email
+	 */
+	public void setEmail(String email) {
+		if(EmailSystem.isValidEmailAddr(email) == false){
+			System.out.println("El email introducido no es válido");
+			return;
+		}
+		
+		this.email = email;
+	}
+	
+	/**
+	 * Devuelve las asignaturas en las que está matriculado el Alumno
+	 * @return ArrayList<Asignatura>
+	 */
+	public ArrayList<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+	
+	/**
+	 * Devuelve las estadísitcas de un Alumno
+	 * @return ArrayList<EstadisticasIndividuales>
+	 */
+	public ArrayList<EstadisticasAlumno> getEstadisticas() {
+		return estadisticas;
 	}
 	
 	/**
@@ -51,22 +92,9 @@ public class Alumno extends Persona {
 	public String getEmail() {
 		return email;
 	}
-
-	/**
-	 * Da valor al email de Alumno
-	 * @param email
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * Devuelve las asignaturas en las que está matriculado el Alumno
-	 * @return ArrayList<Asignatura>
-	 */
-	public ArrayList<Asignatura> getAsignaturas() {
-		return asignaturas;
-	}
+	
+	
+	//Métodos
 
 	/**
 	 * Añade una asigatura al alumno
@@ -96,13 +124,7 @@ public class Alumno extends Persona {
 		this.asignaturas.remove(asignatura);
 	}
 
-	/**
-	 * Devuelve las estadísitcas de un Alumno
-	 * @return ArrayList<EstadisticasIndividuales>
-	 */
-	public ArrayList<EstadisticasAlumno> getEstadisticas() {
-		return estadisticas;
-	}
+	
 
 	/**
 	 * Añade una estadística al alumno
@@ -141,6 +163,7 @@ public class Alumno extends Persona {
 	 */
 	public Solicitud solicitarAcceso(Asignatura asig) {
 		if(asig.isAlumnoIn(this) == true) {
+			System.out.println("Alumno in");
 			return null;
 		}
 		else {
@@ -151,6 +174,9 @@ public class Alumno extends Persona {
 		}
 		return null;
 	}
+	
+	
+	//Overrides
 
 	/**
 	 * (Override) toString()

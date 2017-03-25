@@ -9,6 +9,8 @@ package persona;
  */
 public abstract class Persona {
 	
+	//Variables
+	
 	/**
 	 * NIA de la persona
 	 */
@@ -23,6 +25,7 @@ public abstract class Persona {
 	 */
 	protected String password;
 	
+	//Constructor
 	
 	/**
 	 * Constructor de la clase Persona
@@ -35,6 +38,8 @@ public abstract class Persona {
 		this.nombre = nombre;
 		this.password = password;
 	}
+	
+	//Setters y getters
 	
 	/**
 	 * Devuelve el NIA de una persona
@@ -78,6 +83,8 @@ public abstract class Persona {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	//Override
 
 	/**
 	 * (Override) toString()
