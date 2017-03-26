@@ -1,236 +1,224 @@
-//package contenido;
-//
-//import java.util.ArrayList;
-//
-//public class Pregunta {
-//	/**
-//	 * Enunciado de la pregunta
-//	 */
-//	private String enunciado;
-//	
-//	/**
-//	 * Array de respuestas posbiles
-//	 */
-//	private ArrayList<Opciones> respuestas;	
-//	
-//	/**
-//	 * Puntos que resta un fallo en esta pregunta
-//	 */
-//	private int restaFallo;
-//	
-//	/**
-//	 * Variable para la aleatoriedad del orden de las respuestas
-//	 */
-//	private boolean aleatorio;
-//	
-//	/**
-//	 * Nota media entre las respuestas de esta pregunta
-//	 */
-//	private int notaMedia;
-//	
-//	/**
-//	 * Valor de la pregunta dentro del ejercicio
-//	 */
-//	private float pesoPregunta;
-//	
-//	/**
-//	 * Valor constante del peso por defecto
-//	 */
-//	public static final float PESO_POR_DEFECTO = 1;
-//	
-//	/**
-//	 * Número de veces que la pregunta ha sido respondida
-//	 */
-//	private int nRespuestasPregunta;
-//	
-//	/**
-//	 * Número de veces que se ha contestado correctamente esta pregunta
-//	 */
-//	private int nRespuestasCorrectas;
-//	
-//	/**
-//	 * Constructor de Pregunta
-//	 * @param enunciado
-//	 * @param respuestas
-//	 * @param respuestaCorrecta
-//	 * @param restaFallo
-//	 * @param aleatorio
-//	 * @param notaMedia
-//	 */
-//	public Pregunta(String enunciado, ArrayList<Opciones> respuestas,
-//			int restaFallo, boolean aleatorio, int notaMedia) {
-//		
-//		this.enunciado = enunciado;
-//		this.respuestas = respuestas;
-//		this.restaFallo = restaFallo;
-//		this.aleatorio = aleatorio;
-//		this.notaMedia = notaMedia;
-//		this.pesoPregunta = Pregunta.PESO_POR_DEFECTO;
-//		this.nRespuestasPregunta = 0;
-//		this.nRespuestasCorrectas = 0;
-//	}
-//	
-//	/**
-//	 * Constructor de Pregunta con peso definido
-//	 * @param enunciado
-//	 * @param respuestas
-//	 * @param respuestaCorrecta
-//	 * @param restaFallo
-//	 * @param aleatorio
-//	 * @param notaMedia
-//	 * @param peso
-//	 */
-//	public Pregunta(String enunciado, ArrayList<Opciones> respuestas,
-//			int restaFallo, boolean aleatorio, int notaMedia, float peso) {
-//		
-//		this.enunciado = enunciado;
-//		this.respuestas = respuestas;
-//		this.restaFallo = restaFallo;
-//		this.aleatorio = aleatorio;
-//		this.notaMedia = notaMedia;
-//		this.pesoPregunta = peso;
-//		this.nRespuestasPregunta = 0;
-//		this.nRespuestasCorrectas = 0;
-//	}
-//
-//	/**
-//	 * Getter de enunciado
-//	 * @return enunciado
-//	 */
-//	public String getEnunciado() {
-//		return enunciado;
-//	}
-//
-//	/**
-//	 * Setter de enunciado
-//	 * @param enunciado
-//	 */
-//	public void setEnunciado(String enunciado) {
-//		this.enunciado = enunciado;
-//	}
-//
-//	/**
-//	 * Getter de respuestas
-//	 * @return respuestas
-//	 */
-//	public ArrayList<Opciones> getRespuestas() {
-//		return respuestas;
-//	}
-//
-//	/**
-//	 * Setter de respuestas
-//	 * @param respuestas
-//	 */
-//	public void setRespuestas(ArrayList<Opciones> respuestas) {
-//		this.respuestas = respuestas;
-//	}
-//
-//	/**
-//	 * Getter de restaFallo
-//	 * @return restaFallo
-//	 */
-//	public int getRestaFallo() {
-//		return restaFallo;
-//	}
-//
-//	/**
-//	 * Setter de restaFallo
-//	 * @param restaFallo
-//	 */
-//	public void setRestaFallo(int restaFallo) {
-//		this.restaFallo = restaFallo;
-//	}
-//
-//	/**
-//	 * Getter de aleatorio
-//	 * @return boolean aleatorio
-//	 */
-//	public boolean isAleatorio() {
-//		return aleatorio;
-//	}
-//
-//	/**
-//	 * Setter de aleatorio
-//	 * @param aleatorio
-//	 */
-//	public void setAleatorio(boolean aleatorio) {
-//		this.aleatorio = aleatorio;
-//	}
-//
-//	/**
-//	 * Getter de notaMedia
-//	 * @return notaMedia
-//	 */
-//	public int getnotaMedia() {
-//		return notaMedia;
-//	}
-//
-//	/**
-//	 * Setter de notaMedia
-//	 * @param notaMedia
-//	 */
-//	public void setnotaMedia(int notaMedia) {
-//		this.notaMedia = notaMedia;
-//	}
-//
-//	/**
-//	 * Getter de nRespuestasPregunta
-//	 * @return nRespuestasPregunta
-//	 */
-//	public int getnRespuestasPregunta() {
-//		return nRespuestasPregunta;
-//	}
-//
-//	/**
-//	 * Setter de nRespuestasPregunta
-//	 * @param nRespuestasPregunta
-//	 */
-//	public void setnRespuestasPregunta(int nRespuestasPregunta) {
-//		this.nRespuestasPregunta = nRespuestasPregunta;
-//	}
-//
-//	/**
-//	 * Getter de nRespuestasCorrectas
-//	 * @return nRespuestasCorrectas
-//	 */
-//	public int getnRespuestasCorrectas() {
-//		return nRespuestasCorrectas;
-//	}
-//
-//	/**
-//	 * Setter de nRespuestasCorrectas
-//	 * @param nRespuestasCorrectas
-//	 */
-//	public void setnRespuestasCorrectas(int nRespuestasCorrectas) {
-//		this.nRespuestasCorrectas = nRespuestasCorrectas;
-//	}
-//	
-//	/**
-//	 * Añade una respuesta al array de respuestas
-//	 * @param respuesta
-//	 * @return boolean
-//	 */
-//	public boolean addRespuesta(String respuesta) {
-//		if(this.respuestas.add(respuesta)) {
-//			return true;
-//		}
-//		
-//		return false;
-//	}
-//	
-//	/**
-//	 * Borrará una respuesta del array de respuestas
-//	 * @param respuesta
-//	 * @return
-//	 */
-//	public boolean eraseRespuesta(String respuesta) {
-//		if(this.respuestas.remove(respuesta)){
-//			return true;
-//		}
-//		else {
-//			return false;
-//		}
-//	}
-//	
-//	
-//}
+package contenido;
+
+import java.util.ArrayList;
+
+public abstract class Pregunta {
+	
+	//Variables
+	
+	/**
+	 * Enunciado de la pregunta
+	 */
+	protected String enunciado;
+	
+	/**
+	 * Flag que indica si las respuestas se mostrarán en orden aleatorio
+	 * o en orden de creación
+	 */
+	protected boolean aleatorio;
+	
+	/**
+	 * Valor de penalización de un fallo
+	 */
+	protected float penalizacion;
+	
+	/**
+	 * Valor de la pregunta dentro del ejercicio
+	 */
+	protected float valorPregunta;
+	
+	/**
+	 * Array de posibles respuestas
+	 */
+	protected ArrayList<Opciones> opciones;
+	
+	//Variables para las estadísticas	
+	/**
+	 * Número de alumnos que ha contestado a la pregunta
+	 */
+	protected int numRespuestas;
+	
+	/**
+	 * Número de alumnos que han respondido correctamente
+	 */
+	protected int numCorrectas;
+	
+	
+	//Constructores
+	
+	/**
+	 * Constructor de Pregunta con todos los valores
+	 * @param enunciado
+	 * @param aleatorio
+	 * @param penalizacion
+	 * @param valorPregunta
+	 */
+	public Pregunta(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta){
+		this.enunciado = enunciado;
+		this.aleatorio = aleatorio;
+		this.penalizacion = penalizacion;
+		this.valorPregunta = valorPregunta;
+		this.numCorrectas = 0;
+		this.numRespuestas = 0;
+		this.opciones = new ArrayList<Opciones>();
+	}
+	
+	/**
+	 * Constructor de Pregunta con penalización por defecto (0)
+	 * @param enunciado
+	 * @param aleatorio
+	 * @param valorPregunta
+	 * @param opciones
+	 */
+	public Pregunta(String enunciado, boolean aleatorio, float valorPregunta){
+		this.enunciado = enunciado;
+		this.aleatorio = aleatorio;
+		this.penalizacion = 0f;
+		this.valorPregunta = valorPregunta;
+		this.opciones = new ArrayList<Opciones>();
+		this.numCorrectas = 0;
+		this.numRespuestas = 0;
+	}
+	
+	
+	//Getters y setters
+
+	/**
+	 * Getter enunciado
+	 * @return enunciado
+	 */
+	public String getEnunciado() {
+		return enunciado;
+	}
+
+	/**
+	 * Setter enunciado
+	 * @param enunciado
+	 */
+	public void setEnunciado(String enunciado) {
+		this.enunciado = enunciado;
+	}
+
+	/**
+	 * Getter aleatorio
+	 * @return the aleatorio
+	 */
+	public boolean getAleatorio() {
+		return aleatorio;
+	}
+
+	/**
+	 * set aleatorio
+	 * @param aleatorio 
+	 */
+	public void setAleatorio(boolean aleatorio) {
+		this.aleatorio = aleatorio;
+	}
+
+	/**
+	 * Getter penalizacion
+	 * @return penalizacion
+	 */
+	public float getPenalizacion() {
+		return penalizacion;
+	}
+
+	/**
+	 * Set penalizacion
+	 * @param penalizacion
+	 */
+	public void setPenalizacion(float penalizacion) {
+		this.penalizacion = penalizacion;
+	}
+
+	/**
+	 * Get valorPregunta
+	 * @return valorPregunta
+	 */
+	public float getValorPregunta() {
+		return valorPregunta;
+	}
+
+	/**
+	 * Set valorPregunta
+	 * @param valorPregunta
+	 */
+	public void setValorPregunta(float valorPregunta) {
+		this.valorPregunta = valorPregunta;
+	}
+
+	/**
+	 * Get opciones
+	 * @return opciones
+	 */
+	public ArrayList<Opciones> getOpciones() {
+		return opciones;
+	}
+
+	/**
+	 * Get numrespuestas
+	 * @return numRespuestas
+	 */
+	public int getNumRespuestas() {
+		return numRespuestas;
+	}
+
+	/**
+	 * Get numCorrectas
+	 * @return numCorrectas
+	 */
+	public int getNumCorrectas() {
+		return numCorrectas;
+	}
+	
+	
+	
+	//Métodos
+	
+	/**
+	 * Método para añadir una opción a la pregunta
+	 * Se va a sobreescribir
+	 * @param opcion
+	 * @return boolean
+	 */
+	public boolean addOpcion(Opciones opcion){
+		return this.opciones.add(opcion);
+	}
+	
+	/**
+	 * Método para eliminar una opción de la pregunta
+	 * @param opcion
+	 */
+	public void removeOpcion(Opciones opcion){
+		this.opciones.remove(opcion);
+		return;
+	}
+	
+	/**
+	 * Método para incrementar el número de preguntas respondidas
+	 */
+	public void addRespondida(){
+		this.numRespuestas ++;
+	}
+	
+	/**
+	 * Método para incrementar el número de preguntas respondidas correctamente
+	 */
+	public void addCorrecta(){
+		this.numCorrectas ++;
+	}
+	
+	
+	//Override
+	
+	@Override
+	public String toString(){
+		String aux = "";
+		for(Opciones o: this.opciones){
+			aux += "- " + o.getRespuesta() + "\n";
+		}
+		return "Pregunta: " + this.enunciado + "\n" + aux + "Valor: " + this.valorPregunta
+				+ "\nPenalización: " + this.penalizacion;
+	}
+	
+}

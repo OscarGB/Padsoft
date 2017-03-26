@@ -10,12 +10,12 @@ public class Solicitud {
 	/**
 	 * Alumno que solicita acceso
 	 */
-	Alumno alumno;
+	private Alumno alumno;
 	
 	/**
 	 * Asignatura a la que se solicita acceso
 	 */
-	Asignatura asignatura;
+	private Asignatura asignatura;
 	
 	//Constructor
 	
@@ -54,7 +54,6 @@ public class Solicitud {
 	 * a asignatura.addAlumno
 	 */
 	public void aceptarSolicitud(){
-		//TODO email alumno
 		this.asignatura.addAlumno(this.alumno);
 	}
 	
@@ -62,7 +61,6 @@ public class Solicitud {
 	 * Método para denegar solicitud
 	 */
 	public void denegarSolicitud(){
-		//TODO email alumno
 		this.asignatura.denegarSolicitud(this);
 	}
 	

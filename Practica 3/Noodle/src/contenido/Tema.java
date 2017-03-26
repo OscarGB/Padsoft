@@ -2,6 +2,8 @@ package contenido;
 
 import java.util.ArrayList;
 
+import asignatura.Asignatura;
+
 /**
  * Clase Tema
  * @author Jose Ignacio Gomez
@@ -9,37 +11,65 @@ import java.util.ArrayList;
  * @date 07/03/2017
  */
 public class Tema extends Contenido {
-	/**
-	 * Array de subtemas
-	 */
-	private ArrayList<Contenido> subtemas;
+	
+	//Variables
 	
 	/**
-	 * Constructor de la clase Tema
+	 * ArrayList de contenidos
+	 */
+	protected ArrayList<Contenido> subcontenido;
+	
+	//Constructores
+	
+	/**
+	 * Constructor de Tema en el directorio raiz
 	 * @param titulo
 	 * @param visibilidad
-	 * @param subtemas
+	 * @param asignatura
 	 */
-	public Tema(String titulo, boolean visibilidad) {
-		super(titulo, visibilidad);
-		this.subtemas = new ArrayList<Contenido>();
+	public Tema(String titulo, boolean visibilidad, Asignatura asig){
+		super(titulo, visibilidad, asig);
+		this.subcontenido = new ArrayList<Contenido>();
 	}
-
+	
 	/**
-	 * Getter de subtemas
-	 * @return ArrayList<Contenido>
+	 * Constructor de Tema con un padre
+	 * @param titulo
+	 * @param visibilidad
+	 * @param asignatura
+	 * @param padre
 	 */
-	public ArrayList<Contenido> getSubtemas() {
-		return subtemas;
+	public Tema(String titulo, boolean visibilidad, Asignatura asig, Tema padre){
+		super(titulo, visibilidad, asig, padre);
+		this.subcontenido = new ArrayList<Contenido>();
 	}
-
+	
+	
+	
+	//Métodos
+	
 	/**
-	 * Setter de subtemas
-	 * @param ArrayList<Contenido> subtemas
+	 * Método para añadir contenido al tema actual
+	 * También setea el padre del contenido a añadir
+	 * @param contenido
+	 * @return boolean
 	 */
-	public void setSubtemas(ArrayList<Contenido> subtemas) {
-		this.subtemas = subtemas;
+	public boolean addSubcontenido(Contenido con){
+		con.setPadre(this);
+		return this.subcontenido.add(con);
 	}
+	
+	/**
+	 * Método para eliminar un contenido del array de subcontenidos
+	 * @param contenido
+	 */
+	public void eraseSubcontenido(Contenido con){
+		this.subcontenido.remove(con);
+		return;
+	}
+	
+	
+	//Override
 	
 	/**
 	 * (Override) toString()
@@ -51,11 +81,13 @@ public class Tema extends Contenido {
 		String aux;
 		aux = "";
 		
-		for(Contenido i: subtemas){
-			aux += i.titulo;
-			aux += " ";
+		for(Contenido s: subcontenido){
+			if(s.getVisibilidad() == true){
+				aux += s.titulo;
+				aux += " ";
+			}
 		}
-		return "Titulo del tema: " + this.titulo + "\nTitulos de subtemas: " + aux + "\n";
+		return "Titulo del tema: " + this.titulo + "\nTitulos de subcontenidos: " + aux + "\n";
 	}
 	
 

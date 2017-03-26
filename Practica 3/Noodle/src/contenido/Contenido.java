@@ -1,5 +1,7 @@
 package contenido;
 
+import asignatura.Asignatura;
+
 /**
  * Clase Contenido
  * @author Jose Ignacio Gomez
@@ -11,6 +13,14 @@ package contenido;
  *
  */
 public abstract class Contenido {
+	//Variables
+	
+	/**
+	 * Contenido padre
+	 * Si es null, se encuentra en el directorio raiz
+	 */
+	protected Tema padre;
+	
 	/**
 	 * Titulo del contenido
 	 */
@@ -19,18 +29,66 @@ public abstract class Contenido {
 	/**
 	 * Visibilidad del contenido
 	 */
-	protected boolean visibilidad;
+	protected boolean visibilidad;	
 	
 	/**
-	 * Constructor de Contenido
+	 * Asignatura a la que pertenece el contenido
+	 */
+	protected Asignatura asignatura;
+	
+	
+	//Constructor
+	
+	/**
+	 * Constructor de Contenido en el directorio raiz
+	 * Va a inicializar los campos del contenido (padre = null)
+	 * Introduce el contenido en el array raiz de la Asignatura
 	 * @param titulo
 	 * @param visibilidad
 	 */
-	public Contenido(String titulo, boolean visibilidad){
+	public Contenido(String titulo, boolean visibilidad, Asignatura asig){
+		this.asignatura = asig;
 		this.titulo = titulo;
 		this.visibilidad = visibilidad;
+		this.padre = null;
+		this.asignatura.addContenidoRaiz(this);
 	}
+	
+	/**
+	 * Constructor de Contenido con un padre definido, que ya inserta el
+	 * contenido en el padre
+	 * @param titulo
+	 * @param visibilidad
+	 */
+	public Contenido(String titulo, boolean visibilidad, Asignatura asig, Tema padre){
+		this.asignatura = asig;
+		this.titulo = titulo;
+		this.visibilidad = visibilidad;
+		this.padre = padre;
+		this.padre.addSubcontenido(this);
+	}
+	
 
+	
+	//Getters y setters
+	
+	/**
+	 * Setter de Padre
+	 * @param tema
+	 */
+	public void setPadre(Tema tema){
+		this.padre = tema;
+		return; 
+	}
+	
+	/**
+	 * Getter de Padre
+	 * @return Tema padre
+	 */
+	public Tema getPadre(){
+		return this.padre;
+	}
+	
 	/**
 	 * Getter de titulo
 	 * @return
@@ -62,4 +120,35 @@ public abstract class Contenido {
 	public void setVisibilidad(boolean visibilidad) {
 		this.visibilidad = visibilidad;
 	}
+	
+	/**
+	 * Get asignatura
+	 * @return Asignatura
+	 */
+	public Asignatura getAsignatura(){
+		return this.asignatura;
+	}
+	
+	//Métodos
+	
+	/**
+	 * Método para borrar un contenido.
+	 * Primero lo saca del array de subcontenidos del tema padre
+	 * Luego le quita la visibilidad
+	 * Si el tema está en la raíz, lo borra de Asignatura.raiz
+	 * @param contenido
+	 */
+	public void eraseContenido(Contenido con){
+		if(this.padre != null){
+			this.padre.eraseSubcontenido(this);
+		}
+		else {
+			this.asignatura.eraseContenidoRaiz(con);
+		}
+		this.setVisibilidad(false);
+		
+		return;
+	}
+	
+	
 }

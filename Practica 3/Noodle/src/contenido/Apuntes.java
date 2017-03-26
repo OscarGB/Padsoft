@@ -1,5 +1,7 @@
 package contenido;
 
+import asignatura.Asignatura;
+
 /**
  * Clase Apuntes
  * @author Jose Ignacio Gomez
@@ -7,22 +9,43 @@ package contenido;
  * @date 07/03/2017
  */
 public class Apuntes extends Contenido{
+	//Variables
+	
 	/**
 	 * Texto de los apuntes
 	 */
 	private String texto;
 	
+	
+	//Constructor
 	/**
-	 * Constructor para la clase Apuntes
+	 * Constructor para la clase Apuntes en directorio raiz
 	 * @param String texto
 	 * @param String titulo
 	 * @param boolean visibilidad
+	 * @param asignatura
 	 */
-	public Apuntes(String texto, String titulo, boolean visibilidad) {
-		super(titulo, visibilidad);
+	public Apuntes(String texto, String titulo, boolean visibilidad, Asignatura asig) {
+		super(titulo, visibilidad, asig);
+		this.texto = texto;
+	}
+	
+	/**
+	 * Constructor para la clase Apuntes como subcontenido
+	 * @param String texto
+	 * @param String titulo
+	 * @param boolean visibilidad
+	 * @param asignatura
+	 * @param padre
+	 */
+	public Apuntes(String texto, String titulo, boolean visibilidad, Asignatura asig, Tema padre) {
+		super(titulo, visibilidad, asig, padre);
 		this.texto = texto;
 	}
 
+	
+	//Getters y setters
+	
 	/**
 	 * Getter de texto
 	 */
@@ -38,6 +61,8 @@ public class Apuntes extends Contenido{
 		this.texto = texto;
 	}
 	
+	
+	//Overrides
 	
 	/**
 	 * (Override) toString()

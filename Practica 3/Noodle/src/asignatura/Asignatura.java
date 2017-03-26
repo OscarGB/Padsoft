@@ -3,6 +3,7 @@ package asignatura;
 import java.util.ArrayList;
 
 import contenido.Contenido;
+import contenido.Tema;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.Alumno;
 import solicitud.Solicitud;
@@ -10,6 +11,11 @@ import solicitud.Solicitud;
 public class Asignatura {
 	
 	//Variables
+	
+	/**
+	 * Directorio raiz donde almacenar contenidos (raiz)
+	 */
+	private ArrayList<Contenido> raiz;
 	
 	/**
 	 * ArrayList de alumnos inscritos en la asignatura 
@@ -31,10 +37,6 @@ public class Asignatura {
 	 */
 	private String nombre;
 	
-	/**
-	 * Contenido de la asignatura
-	 */
-	private ArrayList<Contenido> contenido;
 	
 	
 	//Constructores
@@ -47,8 +49,8 @@ public class Asignatura {
 		this.alumnos = new ArrayList<Alumno>();
 		this.solicitudes = new ArrayList<Solicitud>();
 		this.expulsados = new ArrayList<Solicitud>();
-		this.contenido = new ArrayList<Contenido>();
 		this.nombre = nombre;
+		this.raiz = new ArrayList<Contenido>();
 	}
 	
 	
@@ -205,11 +207,41 @@ public class Asignatura {
 		return false;
 	}
 	
+	
+	/**
+	 * Método para añadir un tema a la raiz
+	 * @param tema
+	 * @return boolean
+	 */
+	public boolean addContenidoRaiz(Contenido con){
+		return this.raiz.add(con);
+	}
+	
+	/**
+	 * Método para eliminar un tema de la raíz
+	 * @param tema
+	 */
+	public void eraseContenidoRaiz(Contenido con){
+		this.raiz.remove(con);
+			return;
+	}
+	
 	//Overrides
 	
+	/**
+	 * (Override) toString
+	 * Devolverá un string con los alumnos de la asignatura
+	 * @return String
+	 */
 	@Override
 	public String toString(){
-		return "Alumnos en la asignatura: " + this.alumnos;
+		String aux = "";
+		for(Contenido c: this.raiz){
+			if(c.getVisibilidad() == true){
+				aux += c.toString();
+			}
+		}
+		return "Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
 	}
 	
 }
