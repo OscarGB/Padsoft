@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import contenido.Contenido;
 import contenido.Tema;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import persona.Alumno;
 import solicitud.Solicitud;
 
@@ -98,7 +100,13 @@ public class Asignatura {
 	public void addAlumno(Alumno alumno){
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
-		//EmailSystem.send(alumno.getEmail(), "Admisión", "Has sido admitido a la asignatura " + this.getNombre());
+		try {
+			EmailSystem.send(alumno.getEmail(), "Admisión", "Has sido admitido a la asignatura " + this.getNombre());
+		} catch (InvalidEmailAddressException e) {
+			e.printStackTrace();
+		} catch (FailedInternetConnectionException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -112,7 +120,13 @@ public class Asignatura {
 			this.alumnos.remove(alumno);
 			this.expulsados.add(new Solicitud(alumno, this));
 			alumno.eraseAsignatura(this);
-			//EmailSystem.send(alumno.getEmail(), "Expulsión", "Has sido expulsado de la asignatura " + this.getNombre());
+			try {
+				EmailSystem.send(alumno.getEmail(), "Expulsión", "Has sido expulsado de la asignatura " + this.getNombre());
+			} catch (InvalidEmailAddressException e) {
+				e.printStackTrace();
+			} catch (FailedInternetConnectionException e) {
+				e.printStackTrace();
+			}
 			return true;
 		}
 		else {
@@ -133,7 +147,13 @@ public class Asignatura {
 			if(s.equals(readmision) == true){
 				this.expulsados.remove(s);
 				this.addAlumno(alumno);
-				//EmailSystem.send(alumno.getEmail(), "Readmisión", "Has sido readmitido a la asignatura " + this.getNombre());
+				try {
+					EmailSystem.send(alumno.getEmail(), "Readmisión", "Has sido readmitido a la asignatura " + this.getNombre());
+				} catch (InvalidEmailAddressException e) {
+					e.printStackTrace();
+				} catch (FailedInternetConnectionException e) {
+					e.printStackTrace();
+				}
 				return true;
 			}
 		}
@@ -146,7 +166,13 @@ public class Asignatura {
 	 */
 	public void denegarSolicitud(Solicitud solicitud) {
 		this.solicitudes.remove(solicitud);	
-		//EmailSystem.send(alumno.getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
+		try {
+			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
+		} catch (InvalidEmailAddressException e) {
+			e.printStackTrace();
+		} catch (FailedInternetConnectionException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
