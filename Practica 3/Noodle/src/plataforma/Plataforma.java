@@ -6,9 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
@@ -24,8 +22,8 @@ import solicitud.Solicitud;
 
 /**
  * Clase Plataforma
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 
@@ -116,7 +114,7 @@ public class Plataforma implements Serializable {
 	private void saveData(){
 		 try {
 
-	         FileOutputStream out = new FileOutputStream("plataforma");
+	         FileOutputStream out = new FileOutputStream("./data/plataforma");
 	         ObjectOutputStream oout = new ObjectOutputStream(out);
 
 	         oout.writeObject(Plataforma.plat);
@@ -137,7 +135,7 @@ public class Plataforma implements Serializable {
 		 try {
 
 	         // create a new file with an ObjectOutputStream
-	          out = new FileInputStream("plataforma");
+	          out = new FileInputStream("./data/plataforma");
 		 } catch (Exception FileNotFoundException){
 			 return false;
 		 }
@@ -178,13 +176,13 @@ public class Plataforma implements Serializable {
 				LocalDate.now();
 				String[] toks = cadena.split(";");
 				if(EmailSystem.isValidEmailAddr(toks[2]) == true){
-					try {
-						a = new Alumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
-					} catch (InvalidEmailAddressException e) {
+					a = Alumno.CreaAlumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
+					if(a == null){
 						System.out.println("Correo inválido");
-						e.printStackTrace();
 					}
-					Plataforma.alumnos.add(a);
+					else{
+						Plataforma.alumnos.add(a);
+					}
 				}
 			}
 			

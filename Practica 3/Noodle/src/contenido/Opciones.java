@@ -1,9 +1,23 @@
 package contenido;
 
-public class Opciones {
+import java.io.Serializable;
+
+/**
+ * Clase Opciones
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public class Opciones implements Serializable {
 	
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * String de la opción
 	 */

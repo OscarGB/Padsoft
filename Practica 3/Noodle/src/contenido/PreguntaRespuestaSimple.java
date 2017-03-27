@@ -1,8 +1,21 @@
 package contenido;
+import java.io.Serializable;
 
-public class PreguntaRespuestaSimple extends Pregunta {
+/**
+ * Clase PreguntaRespuestaSimple
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
 	
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Constructores
 	/**
 	 * Constructor de PreguntaRespuestaSimple con penalización

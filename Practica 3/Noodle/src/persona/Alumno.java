@@ -1,6 +1,6 @@
 package persona;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
@@ -11,13 +11,18 @@ import solicitud.Solicitud;
 
 /**
  * Clase Alumno
- * @author Ã“scar GÃ³mez Borzdynski
- * @author Jose Ignacio GÃ³mez GarcÃ­a
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 
-public class Alumno extends Persona {
+public class Alumno extends Persona implements Serializable{
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Variables
 	/**
 	 * Email del Alumno
@@ -43,15 +48,19 @@ public class Alumno extends Persona {
 	 * @param password
 	 * @param email
 	 */
-	public Alumno(String nia, String nombre, String password, String email) throws InvalidEmailAddressException{
+	private Alumno(String nia, String nombre, String password, String email){
 		super(nia, nombre, password);
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();
-		if(EmailSystem.isValidEmailAddr(email) == false){
-			System.out.println("El email introducido no es vï¿½lido");
-		}
-		
 		this.email = email;
+	}
+	
+	public static Alumno CreaAlumno(String nia, String nombre, String password, String email){
+		if(EmailSystem.isValidEmailAddr(email) == false){
+			return null;
+		}
+		return new Alumno(nia, nombre, password, email);
+		
 	}
 	
 	//Getters y Setters
@@ -94,10 +103,10 @@ public class Alumno extends Persona {
 	}
 	
 	
-	//Mï¿½todos
+	//Métodos
 
 	/**
-	 * Aï¿½ade una asigatura al alumno
+	 * Añade una asigatura al alumno
 	 * @param asignatura
 	 */
 	public void addAsignatura(Asignatura asignatura) {
@@ -127,7 +136,7 @@ public class Alumno extends Persona {
 	
 
 	/**
-	 * Aï¿½ade una estadï¿½stica al alumno
+	 * Añade una estadistica al alumno
 	 * @param estadistica
 	 */
 	public void addEstadistica(EstadisticasAlumno estadistica) {

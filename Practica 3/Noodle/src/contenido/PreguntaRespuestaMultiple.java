@@ -1,8 +1,22 @@
 package contenido;
 
-public class PreguntaRespuestaMultiple extends Pregunta{
+import java.io.Serializable;
+
+/**
+ * Clase RespuestaMultiple
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 	
 	//Variables
+	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Numero de respuestas correctas que hay

@@ -1,4 +1,5 @@
 package contenido;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,14 @@ import asignatura.Asignatura;
  * @author Oscar Gomez
  * @date 07/03/2017
  */
-public class Tema extends Contenido {
+public class Tema extends Contenido  implements Serializable{
 	
 	//Variables
+	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * ArrayList de contenidos

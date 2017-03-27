@@ -10,7 +10,7 @@ public class testersolicitud {
 
 	public static void main(String[] args) throws InvalidEmailAddressException {
 		
-		Alumno alumno = new Alumno("1", "nacho", "abcd", "nagomez97@gmail.com");
+		Alumno alumno = Alumno.CreaAlumno("1", "nacho", "abcd", "nagomez97@gmail.com");
 		Asignatura mates = new Asignatura("Mates");
 		Asignatura lengua = new Asignatura("Lengua");
 		Asignatura cono = new Asignatura("Cono");

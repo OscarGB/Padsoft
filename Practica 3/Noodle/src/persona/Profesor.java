@@ -1,12 +1,24 @@
 package persona;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import plataforma.Plataforma;
 import solicitud.Solicitud;
 
-public class Profesor extends Persona {
+/**
+ * Clase Profesor
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public class Profesor extends Persona implements Serializable{
+	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Profesor de la plataforma (singleton)

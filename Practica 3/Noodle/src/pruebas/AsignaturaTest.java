@@ -11,6 +11,12 @@ import contenido.Tema;
 import persona.Alumno;
 import solicitud.Solicitud;
 
+/**
+ * Test de Asignatura
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 public class AsignaturaTest {
 	private Asignatura mates;
 	private Alumno nacho;
@@ -20,7 +26,7 @@ public class AsignaturaTest {
 	@Before
 	public void setUp() throws Exception {
 		mates = new Asignatura("Mates");
-		nacho = new Alumno("2", "Nacho", "Password", "nacho@gmail.com");
+		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
 		tema1 = new Tema("Tema 1", true, mates);
 	}
