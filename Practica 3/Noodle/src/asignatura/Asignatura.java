@@ -96,6 +96,14 @@ public class Asignatura {
 		return this.nombre;
 	}
 	
+	/**
+	 * Getter de Raiz
+	 * @return raiz (array)
+	 */
+	public ArrayList<Contenido> getRaiz(){
+		return this.raiz;
+	}
+	
 	
 	//Mï¿½todos
 	
@@ -103,7 +111,10 @@ public class Asignatura {
 	 * Mï¿½todo para aï¿½adir alumno a la asignatura
 	 * @param alumno
 	 */
-	public void addAlumno(Alumno alumno){
+	public boolean addAlumno(Alumno alumno){
+		if(this.isAlumnoIn(alumno) == true){
+			return false;
+		}
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
 		try {
@@ -113,6 +124,8 @@ public class Asignatura {
 		} catch (FailedInternetConnectionException e) {
 			e.printStackTrace();
 		}
+		
+		return true;
 		
 	}
 	
@@ -186,12 +199,13 @@ public class Asignatura {
 	 * @param sol
 	 */
 	public boolean addSolicitudPendiente(Solicitud sol){
-		if(this.solicitudes.add(sol) == true){
-			return true;
+		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false){
+			if(this.solicitudes.add(sol) == true){
+				return true;
+			}
 		}
-		else{
-			return false;
-		}
+		
+		return false;
 	}
 	
 	/**
@@ -199,12 +213,14 @@ public class Asignatura {
 	 * @param sol
 	 */
 	public boolean addSolicitudExpulsado(Solicitud sol){
-		if(this.expulsados.add(sol) == true){
-			return true;
+		if(this.expulsados.contains(sol) == false){
+			if(this.expulsados.add(sol) == true){
+				return true;
+			}
 		}
-		else{
-			return false;
-		}
+		
+		return false;
+
 	}
 	
 	
@@ -256,6 +272,23 @@ public class Asignatura {
 	public void eraseContenidoRaiz(Contenido con){
 		this.raiz.remove(con);
 			return;
+	}
+	
+	/**
+	 * Metodo para añadir subcontenido
+	 * Si padre es null, lo añade a la raiz
+	 * @param subcontenido
+	 * @param padre
+	 * @return boolean
+	 */
+	public boolean addSubcontenido(Contenido sub, Tema padre){
+		if(padre == null){
+			return this.addContenidoRaiz(sub);
+		}
+		else if(this.getRaiz().contains(padre) == true){
+			return padre.addSubcontenido(sub);
+		}
+		return false;
 	}
 	
 	//Overrides

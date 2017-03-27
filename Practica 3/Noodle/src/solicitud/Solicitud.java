@@ -47,23 +47,6 @@ public class Solicitud {
 		return this.alumno;
 	}
 	
-	// Métodos
-	
-	/**
-	 * Método para aceptar solicitud que llamará 
-	 * a asignatura.addAlumno
-	 */
-	public void aceptarSolicitud(){
-		this.asignatura.addAlumno(this.alumno);
-	}
-	
-	/**
-	 * Método para denegar solicitud
-	 */
-	public void denegarSolicitud(){
-		this.asignatura.denegarSolicitud(this);
-	}
-	
 	
 	//Overrides
 	

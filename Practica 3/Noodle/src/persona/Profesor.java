@@ -8,15 +8,18 @@ import solicitud.Solicitud;
 
 public class Profesor extends Persona {
 	
+	/**
+	 * Profesor de la plataforma (singleton)
+	 */
+	private static Profesor profesor;
+	
 	//Constructor
 	
 	/**
 	 * Constructor de Profesor
-	 * @param nia
-	 * @param password
 	 */
-	public Profesor(String nia, String password){
-		super(nia, "Profesor", password);
+	private Profesor(){
+		super("1", "Profesor", "contraseniaprofe");
 	}
 	
 	//Setters y getters
@@ -37,6 +40,18 @@ public class Profesor extends Persona {
 	
 	
 	//Métodos
+	
+	/**
+	 * Método para crear un nuevo profesor (singleton)
+	 * @return profesor
+	 */
+	public static Profesor newProfesor(){
+		if(Profesor.profesor == null){
+			Profesor.profesor = new Profesor();
+		}
+		
+		return Profesor.profesor;
+	}
 	
 	/**
 	 * Método que acepta solicitud

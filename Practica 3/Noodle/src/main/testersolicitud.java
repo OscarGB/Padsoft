@@ -14,7 +14,7 @@ public class testersolicitud {
 		Asignatura mates = new Asignatura("Mates");
 		Asignatura lengua = new Asignatura("Lengua");
 		Asignatura cono = new Asignatura("Cono");
-		Profesor prof = new Profesor("1234", "profe");
+		Profesor prof = Profesor.newProfesor();
 		
 		//Nacho solicita acceso a Mates y se acepta su solicitud		
 		Solicitud sol = alumno.solicitarAcceso(mates);

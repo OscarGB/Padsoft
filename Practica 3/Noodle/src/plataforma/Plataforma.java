@@ -82,7 +82,7 @@ public class Plataforma implements Serializable {
 	private Plataforma(){
 		Plataforma.asignaturas = new ArrayList<Asignatura>();
 		Plataforma.alumnos = new ArrayList<Alumno>();
-		Plataforma.profesor = new Profesor("1", "Profesor");
+		Plataforma.profesor = Profesor.newProfesor();
 		Plataforma.fechaActual = LocalDate.now();
 		Plataforma.loggedAs = null;
 		Plataforma.emailSystem = new EmailSystem();
@@ -96,7 +96,7 @@ public class Plataforma implements Serializable {
 	 * Método para abrir la plataforma, crea la plataforma en si.
 	 * @return Plataforma
 	 */
-	public Plataforma openPlataforma(){
+	public static Plataforma openPlataforma(){
 		if(Plataforma.plat == null){
 			Plataforma.plat = new Plataforma();
 		}
