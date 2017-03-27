@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
+import contenido.Apuntes;
+import contenido.Tema;
 import persona.Alumno;
 import solicitud.Solicitud;
 
@@ -13,12 +15,14 @@ public class AsignaturaTest {
 	private Asignatura mates;
 	private Alumno nacho;
 	private Solicitud sol1;
+	private Tema tema1;
 	
 	@Before
 	public void setUp() throws Exception {
 		mates = new Asignatura("Mates");
 		nacho = new Alumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
+		tema1 = new Tema("Tema 1", true, mates);
 	}
 	
 	/**
@@ -195,7 +199,70 @@ public class AsignaturaTest {
 	public void testReadmitirAlumno2(){
 		assertFalse(mates.readmitirAlumno(sol1.getAlumno()));
 	}
-
+	
+	/**
+	 * Test para añadir un contenido a la raiz
+	 */
+	@Test
+	public void testAddContenidoRaiz(){
+		Tema tema2 = new Tema("Tema 2", true, mates);
+		assertTrue(mates.getRaiz().contains(tema2));
+	}
+	
+	/**
+	 * Test para añadir subcontenido a un tema
+	 */
+	@Test
+	public void testAddSubcontenido(){
+		//El constructor de tema lo añade a un tema padre directamente
+		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
+		assertEquals(subtema1.getPadre(), tema1);
+		assertTrue(tema1.getSubcontenido().contains(subtema1));
+	}
+	
+	/**
+	 * Test para borrar contenido de la raiz
+	 */
+	@Test
+	public void eraseContenidoRaiz1(){
+		mates.eraseContenido(tema1); //Llama a eraseContenidoRaiz
+		assertFalse(mates.getRaiz().contains(tema1));
+		assertFalse(tema1.getVisibilidad());
+	}
+	
+	/**
+	 * Test para borrar un contenido de la raiz
+	 * que a su vez es padre de otro subcontenido
+	 * Debe borrar los dos
+	 */
+	@Test
+	public void eraseContenidoRaiz2(){
+		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
+		
+		mates.eraseContenido(tema1);
+		
+		assertFalse(mates.getRaiz().contains(tema1));
+		assertFalse(tema1.getVisibilidad());
+		assertFalse(subtema1.getVisibilidad());
+	}
+	
+	/**
+	 * Test para borrar una cadena de contenidos
+	 * Debe borrar los tres
+	 */
+	@Test
+	public void eraseContenidoRaiz3(){
+		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
+		Tema subtema2 = new Tema("Tema 1.1.1", true, mates, subtema1);
+		
+		mates.eraseContenido(tema1);
+		
+		assertFalse(mates.getRaiz().contains(tema1));
+		assertFalse(tema1.getVisibilidad());
+		assertFalse(subtema1.getVisibilidad());
+		assertFalse(subtema2.getVisibilidad());
+	}
+	
 	
 	
 }

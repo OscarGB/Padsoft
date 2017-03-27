@@ -51,7 +51,7 @@ public abstract class Contenido {
 		this.titulo = titulo;
 		this.visibilidad = visibilidad;
 		this.padre = null;
-		this.asignatura.addContenidoRaiz(this);
+		this.asignatura.addSubcontenido(this, null);
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public abstract class Contenido {
 		this.titulo = titulo;
 		this.visibilidad = visibilidad;
 		this.padre = padre;
-		this.padre.addSubcontenido(this);
+		this.asignatura.addSubcontenido(this, padre);
 	}
 	
 
@@ -131,24 +131,31 @@ public abstract class Contenido {
 	
 	//Métodos
 	
+	
 	/**
-	 * Método para borrar un contenido.
+	 * Método para borrar un contenido.En Asignatura se comprueba que el padre
+	 * no sea null
 	 * Primero lo saca del array de subcontenidos del tema padre
 	 * Luego le quita la visibilidad
 	 * Si el tema está en la raíz, lo borra de Asignatura.raiz
 	 * @param contenido
 	 */
-	public void eraseContenido(Contenido con){
-		if(this.padre != null){
-			this.padre.eraseSubcontenido(this);
-		}
-		else {
-			this.asignatura.eraseContenidoRaiz(con);
-		}
+	public void eraseContenido(){
+		
+		this.padre.eraseSubcontenido(this);
 		this.setVisibilidad(false);
 		
 		return;
 	}
+	
+	/**
+	 * Método que oculta todo el contenido para cuando se borra
+	 * un tema
+	 */
+	public void ocultarContenido(){
+		return;
+	}
+	
 	
 	
 }

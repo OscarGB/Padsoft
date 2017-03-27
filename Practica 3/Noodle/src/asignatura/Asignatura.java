@@ -267,16 +267,35 @@ public class Asignatura {
 	
 	/**
 	 * Mï¿½todo para eliminar un tema de la raï¿½z
+	 * También oculta todos los subcontenidos, si se trata 
+	 * de un tema
 	 * @param tema
 	 */
 	public void eraseContenidoRaiz(Contenido con){
 		this.raiz.remove(con);
-			return;
+		con.ocultarContenido();
+		con.setVisibilidad(false);
+		return;
+	}
+	
+	/**
+	 * Método para eliminar un contenido
+	 * Si está en la raíz (padre == null) llama a eraseContenidoRaiz
+	 * Si es un subcontenido, llama a contenido.eraseContenido
+	 * @param con
+	 */
+	public void eraseContenido(Contenido con){
+		if(con.getPadre() == null){
+			this.eraseContenidoRaiz(con);
+		}
+		else {
+			con.eraseContenido();
+		}
 	}
 	
 	/**
 	 * Metodo para añadir subcontenido
-	 * Si padre es null, lo añade a la raiz
+	 * Si padre es null, lo añade a la raiz 
 	 * @param subcontenido
 	 * @param padre
 	 * @return boolean
@@ -285,10 +304,9 @@ public class Asignatura {
 		if(padre == null){
 			return this.addContenidoRaiz(sub);
 		}
-		else if(this.getRaiz().contains(padre) == true){
+		else {
 			return padre.addSubcontenido(sub);
 		}
-		return false;
 	}
 	
 	//Overrides

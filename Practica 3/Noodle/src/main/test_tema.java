@@ -18,6 +18,10 @@ public class test_tema {
 		//Crea un subtema en tema 1
 		Tema tema11 = new Tema("Tema 1.1", true, mates, tema1);
 		
+		if(tema1.getSubcontenido().contains(tema11)){
+			System.out.println("SIIIIIIIIIIIIIIIIIIII\n");
+		}
+		
 		System.out.println(mates);
 		
 		//Crea otro tema en la raiz
@@ -30,6 +34,10 @@ public class test_tema {
 		
 		//Borra un subtema del tema 1
 		tema1.eraseSubcontenido(tema11);
+		
+		System.out.println(tema1);
+		
+		mates.eraseContenido(tema1);
 		
 		System.out.println(tema1);
 		
