@@ -5,11 +5,17 @@ import java.util.ArrayList;
 
 import asignatura.Asignatura;
 
+/**
+ * Clase Ejercicio
+ * @author Ã“scar GÃ³mez Borzdynski
+ * @author Jose Ignacio GÃ³mez GarcÃ­a
+ * @date 07/03/2017
+ */
 public class Ejercicio extends Contenido {
 	//Variables
 	
 	/**
-	 * Número de alumnos que han terminado el ejercicio
+	 * Nï¿½mero de alumnos que han terminado el ejercicio
 	 */
 	private int numTerminados;
 	
@@ -17,6 +23,11 @@ public class Ejercicio extends Contenido {
 	 * Peso del ejercicio en la asignatura
 	 */
 	private int peso;
+	
+	/**
+	 * Peso total de las preguntas
+	 */
+	private int pesoPreguntas;
 	
 	/**
 	 * Flag de aleatoriedad para las preguntas
@@ -66,6 +77,7 @@ public class Ejercicio extends Contenido {
 		this.fechaFin = fechaFin;
 		this.preguntas = new ArrayList<Pregunta>();
 		this.notaMedia = 0;
+		this.pesoPreguntas = 0;
 	}
 	
 	/**
@@ -87,6 +99,7 @@ public class Ejercicio extends Contenido {
 		this.fechaFin = fechaFin;
 		this.preguntas = new ArrayList<Pregunta>();
 		this.notaMedia = 0;
+		this.pesoPreguntas = 0;
 	}
 
 	
@@ -98,6 +111,14 @@ public class Ejercicio extends Contenido {
 	 */
 	public int getPeso() {
 		return peso;
+	}
+	
+	/**
+	 * Get pesoPreguntas
+	 * @return pesoPreguntas
+	 */
+	public int getPesoPreguntas(){
+		return this.pesoPreguntas;
 	}
 
 	/**
@@ -173,7 +194,7 @@ public class Ejercicio extends Contenido {
 	}
 	
 	/**
-	 * Get del número de alumnos que han terminado
+	 * Get del nï¿½mero de alumnos que han terminado
 	 * el ejercicio
 	 * @return numterminados
 	 */
@@ -185,16 +206,17 @@ public class Ejercicio extends Contenido {
 	//Metodos
 	
 	/**
-	 * Método para añadir una pregunta al ejercicio
+	 * Mï¿½todo para aï¿½adir una pregunta al ejercicio
 	 * @param pregunta
 	 * @return boolean
 	 */
 	public boolean addPregunta(Pregunta preg){
-		return this.preguntas.add(preg);		
+		this.pesoPreguntas += preg.getValorPregunta();
+		return this.preguntas.add(preg);	
 	}
 	
 	/**
-	 * Método para eliminar una pregunta
+	 * Mï¿½todo para eliminar una pregunta
 	 * @param pregunta
 	 */
 	public void removePregunta(Pregunta preg){
@@ -203,8 +225,8 @@ public class Ejercicio extends Contenido {
 	
 	
 	/**
-	 * Método que recibe una nueva nota y recalcula la media, 
-	 * incrementando el número de terminados
+	 * Mï¿½todo que recibe una nueva nota y recalcula la media, 
+	 * incrementando el nï¿½mero de terminados
 	 * @param nota
 	 */
 	public void addNota(float nota){
@@ -223,7 +245,7 @@ public class Ejercicio extends Contenido {
 			aux += "- " + p.enunciado + " [Peso: " + p.valorPregunta + "]\n";
 		}
 		
-		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + "Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia;
+		return "Tï¿½tulo del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + "Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia;
 	}
 	
 

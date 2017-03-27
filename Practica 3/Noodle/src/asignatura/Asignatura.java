@@ -10,6 +10,12 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import persona.Alumno;
 import solicitud.Solicitud;
 
+/**
+ * Clase Asignatura
+ * @author Ã“scar GÃ³mez Borzdynski
+ * @author Jose Ignacio GÃ³mez GarcÃ­a
+ * @date 07/03/2017
+ */
 public class Asignatura {
 	
 	//Variables
@@ -91,17 +97,17 @@ public class Asignatura {
 	}
 	
 	
-	//Métodos
+	//Mï¿½todos
 	
 	/**
-	 * Método para añadir alumno a la asignatura
+	 * Mï¿½todo para aï¿½adir alumno a la asignatura
 	 * @param alumno
 	 */
 	public void addAlumno(Alumno alumno){
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
 		try {
-			EmailSystem.send(alumno.getEmail(), "Admisión", "Has sido admitido a la asignatura " + this.getNombre());
+			EmailSystem.send(alumno.getEmail(), "Admisiï¿½n", "Has sido admitido a la asignatura " + this.getNombre());
 		} catch (InvalidEmailAddressException e) {
 			e.printStackTrace();
 		} catch (FailedInternetConnectionException e) {
@@ -111,7 +117,7 @@ public class Asignatura {
 	}
 	
 	/**
-	 * Método para expulsar alumno de la asignatura
+	 * Mï¿½todo para expulsar alumno de la asignatura
 	 * Introduce el alumno en la lista de expulsados
 	 * @param alumno
 	 */
@@ -121,7 +127,7 @@ public class Asignatura {
 			this.expulsados.add(new Solicitud(alumno, this));
 			alumno.eraseAsignatura(this);
 			try {
-				EmailSystem.send(alumno.getEmail(), "Expulsión", "Has sido expulsado de la asignatura " + this.getNombre());
+				EmailSystem.send(alumno.getEmail(), "Expulsiï¿½n", "Has sido expulsado de la asignatura " + this.getNombre());
 			} catch (InvalidEmailAddressException e) {
 				e.printStackTrace();
 			} catch (FailedInternetConnectionException e) {
@@ -135,8 +141,8 @@ public class Asignatura {
 	}
 	
 	/**
-	 * Método para readmitir Alumno
-	 * Saca el alumno de la lista de expulsados y lo añade a alumnos
+	 * Mï¿½todo para readmitir Alumno
+	 * Saca el alumno de la lista de expulsados y lo aï¿½ade a alumnos
 	 * @param alumno
 	 * @return
 	 */
@@ -148,7 +154,7 @@ public class Asignatura {
 				this.expulsados.remove(s);
 				this.addAlumno(alumno);
 				try {
-					EmailSystem.send(alumno.getEmail(), "Readmisión", "Has sido readmitido a la asignatura " + this.getNombre());
+					EmailSystem.send(alumno.getEmail(), "Readmisiï¿½n", "Has sido readmitido a la asignatura " + this.getNombre());
 				} catch (InvalidEmailAddressException e) {
 					e.printStackTrace();
 				} catch (FailedInternetConnectionException e) {
@@ -161,13 +167,13 @@ public class Asignatura {
 	}
 
 	/**
-	 * Método para denegar (y borrar) una solicitud de acceso
+	 * Mï¿½todo para denegar (y borrar) una solicitud de acceso
 	 * @param solicitud
 	 */
 	public void denegarSolicitud(Solicitud solicitud) {
 		this.solicitudes.remove(solicitud);	
 		try {
-			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
+			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegaciï¿½n", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
 		} catch (InvalidEmailAddressException e) {
 			e.printStackTrace();
 		} catch (FailedInternetConnectionException e) {
@@ -176,7 +182,7 @@ public class Asignatura {
 	}
 	
 	/**
-	 * Añade una solicitud al array de pendientes
+	 * Aï¿½ade una solicitud al array de pendientes
 	 * @param sol
 	 */
 	public boolean addSolicitudPendiente(Solicitud sol){
@@ -189,7 +195,7 @@ public class Asignatura {
 	}
 	
 	/**
-	 * Añade una solicitud al array de pendientes
+	 * Aï¿½ade una solicitud al array de pendientes
 	 * @param sol
 	 */
 	public boolean addSolicitudExpulsado(Solicitud sol){
@@ -203,7 +209,7 @@ public class Asignatura {
 	
 	
 	/**
-	 * Método para saber si un alumno está inscrito en la asignatura
+	 * Mï¿½todo para saber si un alumno estï¿½ inscrito en la asignatura
 	 * @param a
 	 * @return boolean
 	 */
@@ -217,9 +223,9 @@ public class Asignatura {
 	}
 
 	/**
-	 * Método para aceptar una solicitud que comprueba si
-	 * la solicitud está en el array de pendientes y, si 
-	 * lo está, añade al alumno y la saca de pendientes
+	 * Mï¿½todo para aceptar una solicitud que comprueba si
+	 * la solicitud estï¿½ en el array de pendientes y, si 
+	 * lo estï¿½, aï¿½ade al alumno y la saca de pendientes
 	 * @param sol
 	 * @return boolean
 	 */
@@ -235,7 +241,7 @@ public class Asignatura {
 	
 	
 	/**
-	 * Método para añadir un tema a la raiz
+	 * Mï¿½todo para aï¿½adir un tema a la raiz
 	 * @param tema
 	 * @return boolean
 	 */
@@ -244,7 +250,7 @@ public class Asignatura {
 	}
 	
 	/**
-	 * Método para eliminar un tema de la raíz
+	 * Mï¿½todo para eliminar un tema de la raï¿½z
 	 * @param tema
 	 */
 	public void eraseContenidoRaiz(Contenido con){
@@ -256,7 +262,7 @@ public class Asignatura {
 	
 	/**
 	 * (Override) toString
-	 * Devolverá un string con los alumnos de la asignatura
+	 * Devolverï¿½ un string con los alumnos de la asignatura
 	 * @return String
 	 */
 	@Override

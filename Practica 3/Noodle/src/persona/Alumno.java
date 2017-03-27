@@ -11,8 +11,8 @@ import solicitud.Solicitud;
 
 /**
  * Clase Alumno
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Ã“scar GÃ³mez Borzdynski
+ * @author Jose Ignacio GÃ³mez GarcÃ­a
  * @date 07/03/2017
  */
 
@@ -30,7 +30,7 @@ public class Alumno extends Persona {
 	private ArrayList<Asignatura> asignaturas;
 	
 	/**
-	 * Estadísticas del Alumno
+	 * Estadï¿½sticas del Alumno
 	 */
 	private ArrayList<EstadisticasAlumno> estadisticas;
 
@@ -48,7 +48,7 @@ public class Alumno extends Persona {
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();
 		if(EmailSystem.isValidEmailAddr(email) == false){
-			System.out.println("El email introducido no es válido");
+			System.out.println("El email introducido no es vï¿½lido");
 		}
 		
 		this.email = email;
@@ -62,7 +62,7 @@ public class Alumno extends Persona {
 	 */
 	public void setEmail(String email) {
 		if(EmailSystem.isValidEmailAddr(email) == false){
-			System.out.println("El email introducido no es válido");
+			System.out.println("El email introducido no es vï¿½lido");
 			return;
 		}
 		
@@ -70,7 +70,7 @@ public class Alumno extends Persona {
 	}
 	
 	/**
-	 * Devuelve las asignaturas en las que está matriculado el Alumno
+	 * Devuelve las asignaturas en las que estï¿½ matriculado el Alumno
 	 * @return ArrayList<Asignatura>
 	 */
 	public ArrayList<Asignatura> getAsignaturas() {
@@ -78,7 +78,7 @@ public class Alumno extends Persona {
 	}
 	
 	/**
-	 * Devuelve las estadísitcas de un Alumno
+	 * Devuelve las estadï¿½sitcas de un Alumno
 	 * @return ArrayList<EstadisticasIndividuales>
 	 */
 	public ArrayList<EstadisticasAlumno> getEstadisticas() {
@@ -94,10 +94,10 @@ public class Alumno extends Persona {
 	}
 	
 	
-	//Métodos
+	//Mï¿½todos
 
 	/**
-	 * Añade una asigatura al alumno
+	 * Aï¿½ade una asigatura al alumno
 	 * @param asignatura
 	 */
 	public void addAsignatura(Asignatura asignatura) {
@@ -127,7 +127,7 @@ public class Alumno extends Persona {
 	
 
 	/**
-	 * Añade una estadística al alumno
+	 * Aï¿½ade una estadï¿½stica al alumno
 	 * @param estadistica
 	 */
 	public void addEstadistica(EstadisticasAlumno estadistica) {
@@ -155,8 +155,8 @@ public class Alumno extends Persona {
 	}
 	
 	/**
-	 * Método para solicitar acceso a una asignatura
-	 * que creará una solicitud y la añadirá a las
+	 * Mï¿½todo para solicitar acceso a una asignatura
+	 * que crearï¿½ una solicitud y la aï¿½adirï¿½ a las
 	 * solicitudes pendientes de la asignatura
 	 * @param asig
 	 * @return solicitud
@@ -187,7 +187,7 @@ public class Alumno extends Persona {
 	public String toString() {
 		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password  +  ". Email: " + this.email +
 				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena" + this.estadisticas.size() +
-				"Estadísticas.";
+				"Estadï¿½sticas.";
 	}
 
 	
