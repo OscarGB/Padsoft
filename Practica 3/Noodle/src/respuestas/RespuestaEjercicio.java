@@ -6,8 +6,8 @@ import contenido.Ejercicio;
 
 /**
  * Clase RespuestaEjercicio
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 

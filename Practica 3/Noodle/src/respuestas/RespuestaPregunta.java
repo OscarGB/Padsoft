@@ -4,8 +4,8 @@ import contenido.Pregunta;
 
 /**
  * Clase RespuestaPregunta
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 
@@ -33,9 +33,6 @@ public abstract class RespuestaPregunta {
 	 * @return float
 	 */
 	public float CalcularNota(){
-		if(this.nota != 0){
-			return this.nota;
-		}
 		if(this.esCorrecta() == true){
 			nota = this.preguntaRespondida.getValorPregunta();
 		}

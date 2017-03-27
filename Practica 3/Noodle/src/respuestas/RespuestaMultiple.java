@@ -8,8 +8,8 @@ import contenido.PreguntaRespuestaAbierta;
 
 /**
  * Clase RespuestaMultiple
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 
@@ -51,6 +51,7 @@ public class RespuestaMultiple extends RespuestaPregunta{
 					// Si lo es
 					else{
 						flag = 1;
+						break;
 					}
 				}
 			}

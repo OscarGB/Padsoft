@@ -71,7 +71,7 @@ public class Alumno extends Persona implements Serializable{
 	 */
 	public void setEmail(String email) {
 		if(EmailSystem.isValidEmailAddr(email) == false){
-			System.out.println("El email introducido no es vï¿½lido");
+			System.out.println("El email introducido no es válido");
 			return;
 		}
 		
