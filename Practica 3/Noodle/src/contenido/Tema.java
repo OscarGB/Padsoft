@@ -50,6 +50,15 @@ public class Tema extends Contenido  implements Serializable{
 		this.subcontenido = new ArrayList<Contenido>();
 	}
 	
+	//Getters y setters
+	
+	/**
+	 * Getter de subcontenido
+	 * @return ArrayList subcontenido
+	 */
+	public ArrayList<Contenido> getSubcontenido(){
+		return this.subcontenido;
+	}
 	
 	
 	//Métodos
@@ -70,7 +79,20 @@ public class Tema extends Contenido  implements Serializable{
 	 * @param contenido
 	 */
 	public void eraseSubcontenido(Contenido con){
+		con.setVisibilidad(false);
 		this.subcontenido.remove(con);
+		return;
+	}
+	
+	/**
+	 * Método que oculta todo el contenido recursivamente para cuando se borra
+	 * un tema
+	 */
+	public void ocultarContenido(){
+		for(Contenido c: this.subcontenido){
+			c.ocultarContenido();
+			c.setVisibilidad(false);
+		}
 		return;
 	}
 	
