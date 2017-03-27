@@ -1,10 +1,23 @@
 package contenido;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class PreguntaRespuestaAbierta extends Pregunta {
+/**
+ * Clase PreguntaRespuestaAbierta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	
 	//Variables
+	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Respuesta

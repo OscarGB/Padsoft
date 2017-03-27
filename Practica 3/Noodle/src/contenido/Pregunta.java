@@ -1,11 +1,24 @@
 package contenido;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public abstract class Pregunta {
+/**
+ * Clase Pregunta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+public abstract class Pregunta implements Serializable{
 	
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Enunciado de la pregunta
 	 */

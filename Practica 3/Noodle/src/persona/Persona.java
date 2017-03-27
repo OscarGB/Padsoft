@@ -1,16 +1,23 @@
 package persona;
 
+import java.io.Serializable;
+
 
 /**
  * Clase Persona
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
 	
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * NIA de la persona
 	 */

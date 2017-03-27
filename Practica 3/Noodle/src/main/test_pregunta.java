@@ -3,15 +3,12 @@ package main;
 import java.time.LocalDate;
 
 import asignatura.Asignatura;
-import contenido.Apuntes;
 import contenido.Ejercicio;
 import contenido.Opciones;
-import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
-import contenido.Tema;
 
 public class test_pregunta {
 	public static void main(String[] args) {

@@ -7,9 +7,14 @@ import org.junit.Test;
 
 import asignatura.Asignatura;
 import persona.Alumno;
-import persona.Profesor;
 import solicitud.Solicitud;
 
+/**
+ * Test de Solicitud
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 public class SolicitudTest {
 	private Alumno nacho;
 	private Asignatura mates;
@@ -21,7 +26,7 @@ public class SolicitudTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		nacho = new Alumno("2", "Nacho", "password", "nacho@email.com");
+		nacho = Alumno.CreaAlumno("2", "Nacho", "password", "nacho@email.com");
 		
 		mates = new Asignatura("Mates");	
 		

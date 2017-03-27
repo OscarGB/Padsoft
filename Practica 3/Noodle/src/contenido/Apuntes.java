@@ -1,6 +1,7 @@
 package contenido;
 
 import asignatura.Asignatura;
+import java.io.Serializable;
 
 /**
  * Clase Apuntes
@@ -8,7 +9,11 @@ import asignatura.Asignatura;
  * @author Oscar Gomez
  * @date 07/03/2017
  */
-public class Apuntes extends Contenido{
+public class Apuntes extends Contenido implements Serializable{
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	//Variables
 	
 	/**

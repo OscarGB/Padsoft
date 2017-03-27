@@ -1,19 +1,26 @@
 package estadisticas;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-import respuestas.RespuestaEjercicio;
+import java.util.ArrayList;
 
 /**
  * Clase EstadisticasAlumno
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
 
-public class EstadisticasAlumno {
+import respuestas.RespuestaEjercicio;
+
+public class EstadisticasAlumno implements Serializable{
 	
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Respuestas de los ejercicios
 	 */

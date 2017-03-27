@@ -1,5 +1,6 @@
 package contenido;
 
+import java.io.Serializable;
 import asignatura.Asignatura;
 
 /**
@@ -8,13 +9,14 @@ import asignatura.Asignatura;
  * @author Oscar Gomez
  * @date 07/03/2017
  */
-/**
- * @author Nacho
- *
- */
-public abstract class Contenido {
+public abstract class Contenido implements Serializable {
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Contenido padre
 	 * Si es null, se encuentra en el directorio raiz

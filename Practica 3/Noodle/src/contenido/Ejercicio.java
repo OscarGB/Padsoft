@@ -1,19 +1,25 @@
 package contenido;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
 
 /**
  * Clase Ejercicio
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
-public class Ejercicio extends Contenido {
+public class Ejercicio extends Contenido implements Serializable{
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * N�mero de alumnos que han terminado el ejercicio
 	 */

@@ -1,5 +1,6 @@
 package asignatura;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import contenido.Contenido;
@@ -12,14 +13,19 @@ import solicitud.Solicitud;
 
 /**
  * Clase Asignatura
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
  * @date 07/03/2017
  */
-public class Asignatura {
+public class Asignatura implements Serializable {
 	
 	//Variables
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Directorio raiz donde almacenar contenidos (raiz)
 	 */
