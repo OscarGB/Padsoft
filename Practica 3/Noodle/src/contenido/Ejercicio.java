@@ -226,6 +226,14 @@ public class Ejercicio extends Contenido implements Serializable{
 		return this.numTerminados;
 	}
 
+	/**
+	 * Getter de EstadoEjercicio
+	 * @return estado
+	 */
+	public EstadoEjercicio getEstado(){
+		return this.estado;
+	}
+	
 	
 	//Metodos
 	
@@ -289,6 +297,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	public void addNota(float nota){
 		this.notaMedia = (this.notaMedia * this.numTerminados + nota) / (this.numTerminados + 1);
 		this.numTerminados ++;
+		this.estado = EstadoEjercicio.RESPONDIDO;
 	}
 	
 	/**
@@ -337,7 +346,10 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean esBorrable(){
-		if(this.estado == EstadoEjercicio.ESPERA || this.estado == EstadoEjercicio.ABIERTO){
+		if(this.enPlazo() && this.estado == EstadoEjercicio.RESPONDIDO){
+			return false;
+		}
+		else if(this.estado == EstadoEjercicio.ESPERA || this.estado == EstadoEjercicio.ABIERTO){
 			return true;
 		}
 		else {

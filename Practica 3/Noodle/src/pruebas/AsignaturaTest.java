@@ -16,6 +16,7 @@ import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
+import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
@@ -70,6 +71,18 @@ public class AsignaturaTest {
 		mates.addSolicitudPendiente(sol1);
 		assertFalse(mates.addSolicitudPendiente(sol2));
 		assertEquals(mates.getSolicitudes().size(), 1);
+	}
+	
+	/**
+	 * Test para comprobar que no se añade una solicitud si el
+	 * alumno ha sido expulsado
+	 */
+	@Test
+	public void testAddSolicitudPendiente3(){
+		mates.addAlumno(nacho);
+		mates.expulsarAlumno(nacho);
+		assertFalse(mates.addSolicitudExpulsado(sol1));
+		assertFalse(mates.getSolicitudes().contains(sol1));
 	}
 	
 	/**
@@ -238,10 +251,29 @@ public class AsignaturaTest {
 	}
 	
 	/**
+	 * Test para añadir subcontenido a la raiz
+	 */
+	@Test
+	public void testAddSubcontenidoALaRaiz(){
+		//El constructor de tema lo añade a la raiz si el padre es null
+		Tema subtema1 = new Tema("Tema 1.1", true, mates, null);
+		assertEquals(subtema1.getPadre(), null);
+		assertTrue(mates.getRaiz().contains(subtema1));
+	}
+	
+	/**
+	 * Test para comprobar esBorrable
+	 */
+	@Test
+	public void testEsBorrable(){
+		assertTrue(tema1.esBorrable());
+	}
+	
+	/**
 	 * Test para borrar contenido de la raiz
 	 */
 	@Test
-	public void eraseContenidoRaiz1(){
+	public void testEraseContenidoRaiz1(){
 		mates.eraseContenido(tema1); //Llama a eraseContenidoRaiz
 		assertFalse(mates.getRaiz().contains(tema1));
 		assertFalse(tema1.getVisibilidad());
@@ -253,7 +285,7 @@ public class AsignaturaTest {
 	 * Debe borrar los dos
 	 */
 	@Test
-	public void eraseContenidoRaiz2(){
+	public void testEraseContenidoRaiz2(){
 		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
 		
 		mates.eraseContenido(tema1);
@@ -268,7 +300,7 @@ public class AsignaturaTest {
 	 * Debe borrar los cuatro
 	 */
 	@Test
-	public void eraseContenidoRaiz3(){
+	public void testEraseContenidoRaiz3(){
 		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
 		Tema subtema2 = new Tema("Tema 1.1.1", true, mates, subtema1);
 		Tema subtema3 = new Tema("Tema 1.1.1.1", true, mates, subtema2);
@@ -282,16 +314,25 @@ public class AsignaturaTest {
 		assertFalse(subtema3.getVisibilidad());
 	}
 	
+	/**
+	 * Test para probar que se pueda borrar un ejercicio que esté en fecha de 
+	 * realización pero aún no haya sido contestado por nadie
+	 */
 	@Test
-	public void eraseContenidoRaiz4(){
+	public void testEraseContenidoRaiz4(){
 		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
 		
 		assertTrue(mates.eraseContenido(tema1));
 	}
 	
+	/**
+	 * Test para probar que un ejercicio ya contestado no se puede borrar
+	 */
 	@Test
-	public void eraseContenidoRaiz5(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+	public void testEraseContenidoRaiz5(){
+		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		
+		assertTrue(ej1.enPlazo());
 		
 		mates.addAlumno(nacho);
 		
@@ -306,11 +347,61 @@ public class AsignaturaTest {
 		array.add(res);
 		ej1.responderEjercicio(nacho, array);
 		
-		
+		assertFalse(tema1.esBorrable());
 		
 		assertFalse(mates.eraseContenido(tema1));
 	}
 	
+	/**
+	 * Test para probar que un ejercicio ya terminado no se puede borrar
+	 */
+	@Test
+	public void testEraseContenidoRaiz6(){
+		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		
+		assertTrue(ej1.enPlazo());
+		
+		mates.addAlumno(nacho);
+		
+		//Creamos las preguntas y las respuestas
+		Pregunta pre = new PreguntaRespuestaUnica("Prueba", true, -1, true);
+		
+		ej1.addPregunta(pre);
+		
+		RespuestaPregunta res = new RespuestaUnica(pre, true);
+
+		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
+		array.add(res);
+		ej1.responderEjercicio(nacho, array);
+		
+		assertFalse(tema1.esBorrable());
+		
+		assertFalse(mates.eraseContenido(tema1));
+		
+		assertTrue(mates.getRaiz().contains(tema1));
+		assertTrue(tema1.getSubcontenido().contains(ej1));
+	}
 	
+	/**
+	 * Test para comprobar que un subcontenido se borra correctamente
+	 * y desaparece del array de subcontenidos del padre
+	 */
+	@Test
+	public void testEraseSubcontenido(){
+		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
+		
+		assertTrue(mates.eraseContenido(subtema1));
+		assertFalse(subtema1.getPadre().getSubcontenido().contains(subtema1));
+	}
+	
+	/**
+	 * Test para añadir estadistica
+	 */
+	@Test
+	public void testAddEstadisitica(){
+		EstadisticasAlumno est = new EstadisticasAlumno(mates, nacho);
+		
+		assertTrue(mates.getEstadisticas().contains(est));
+	}
 	
 }

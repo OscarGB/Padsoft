@@ -95,6 +95,7 @@ public class Tema extends Contenido  implements Serializable{
 			c.ocultarContenido();
 			c.setVisibilidad(false);
 		}
+		this.setVisibilidad(false);
 		return;
 	}
 	
