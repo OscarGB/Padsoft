@@ -70,7 +70,6 @@ public class RespuestaEjercicio {
 		if(this.nota < 0){
 			this.nota = 0;
 		}
-		System.out.println(this.nota);
 		return this.nota;
 	}	
 }

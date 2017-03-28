@@ -32,6 +32,9 @@ public class RespuestaEjercicioTest {
 		
 	}
 
+	/**
+	 * Test que comprueba el calculo de la nota
+	 */
 	@Test
 	public void testNotaVerdad() {
 		pre = new RespuestaUnica(pregunta, true);
@@ -39,6 +42,9 @@ public class RespuestaEjercicioTest {
 		assertTrue(res.calcularNota() == 4);		
 	}
 	
+	/**
+	 * Test que comprueba el calculo de la nota con preguntas incorrectas
+	 */
 	@Test
 	public void testNotaVerdad2() {
 		pre = new RespuestaUnica(pregunta, false);
@@ -47,5 +53,30 @@ public class RespuestaEjercicioTest {
 		res.addRespuesta(pre2);
 		assertTrue(res.calcularNota() == 2);		
 	}
+	
+	/**
+	 * Test que comprueba el calculo de la nota con preguntas correctas
+	 */
+	@Test
+	public void testNotaVerdad3() {
+		pre = new RespuestaUnica(pregunta, true);
+		res.addRespuesta(pre);
+		pre2 = new RespuestaUnica(pregunta2, false);
+		res.addRespuesta(pre2);
+		assertTrue(res.calcularNota() == 10);		
+	}
+	
+	/**
+	 * Test que comprueba el calculo de la nota con todas las preguntas erroneas
+	 */
+	@Test
+	public void testNotaVerdad4() {
+		pre = new RespuestaUnica(pregunta, false);
+		res.addRespuesta(pre);
+		pre2 = new RespuestaUnica(pregunta2, true);
+		res.addRespuesta(pre2);
+		assertTrue(res.calcularNota() == 0);		
+	}
+
 
 }

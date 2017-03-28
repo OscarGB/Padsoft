@@ -59,7 +59,7 @@ public class EstadisticasAlumno implements Serializable{
 			nota += re.calcularNota()*re.getEjercicio().getPeso();
 			pesototal += re.getEjercicio().getPeso();
 		}
-		this.notaMedia = nota/pesototal;
+		this.notaMedia = (nota/pesototal)*RespuestaEjercicio.NOTAMAX;
 	}
 	
 	
