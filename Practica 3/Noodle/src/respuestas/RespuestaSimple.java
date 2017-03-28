@@ -41,5 +41,12 @@ public class RespuestaSimple extends RespuestaPregunta{
 		return false;
 	}
 	
-
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Pregunta Simple: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuesta;
+	}
 }

@@ -31,7 +31,7 @@ public class RespuestaMultiple extends RespuestaPregunta{
 	}
 	
 	/**
-	 * MÃ©todo para comprobar si la respuesta multiple es correcta
+	 * Método para comprobar si la respuesta multiple es correcta
 	 * @return boolean
 	 */
 	@Override
@@ -62,6 +62,15 @@ public class RespuestaMultiple extends RespuestaPregunta{
 		}
 		// Si todo es correcto y no hay ninguna correcta sin responder
 		return true;
+	}
+	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Pregunta Multiple: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuestas;
 	}
 
 }

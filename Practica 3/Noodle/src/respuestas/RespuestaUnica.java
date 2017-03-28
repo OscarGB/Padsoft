@@ -36,4 +36,13 @@ public class RespuestaUnica extends RespuestaPregunta{
 		}
 		return false;
 	}
+	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Pregunta Única: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respondido;
+	}
 }

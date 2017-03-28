@@ -38,4 +38,13 @@ public class RespuestaAbierta extends RespuestaPregunta {
 		}
 		return false;
 	}
+	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Pregunta Abierta: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respondido;
+	}
 }

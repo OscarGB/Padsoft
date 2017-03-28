@@ -32,7 +32,6 @@ public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
 	 * Constructor de PreguntaRespuestaSimple sin penalización
 	 * @param enunciado
 	 * @param aleatorio
-	 * @param penalizacion
 	 * @param valorPregunta
 	 */
 	public PreguntaRespuestaSimple(String enunciado, boolean aleatorio, float valorPregunta){

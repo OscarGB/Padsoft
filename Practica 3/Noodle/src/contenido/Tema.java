@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import persona.Alumno;
+import plataforma.Plataforma;
 
 /**
  * Clase Tema
@@ -126,8 +128,14 @@ public class Tema extends Contenido  implements Serializable{
 		String aux;
 		aux = "";
 		
-		for(Contenido s: subcontenido){
-			if(s.getVisibilidad() == true){
+		if(Plataforma.loggedAs.getClass() == Alumno.class){
+			for(Contenido s: subcontenido){
+				if(s.getVisibilidad() == true){
+					aux += s.toString();
+				}
+			}
+		}else{
+			for(Contenido s: subcontenido){
 				aux += s.toString();
 			}
 		}
