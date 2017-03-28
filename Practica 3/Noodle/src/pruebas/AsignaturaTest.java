@@ -238,6 +238,14 @@ public class AsignaturaTest {
 	}
 	
 	/**
+	 * Test para comprobar esBorrable
+	 */
+	@Test
+	public void testEsBorrable(){
+		assertTrue(tema1.esBorrable());
+	}
+	
+	/**
 	 * Test para borrar contenido de la raiz
 	 */
 	@Test
@@ -292,6 +300,8 @@ public class AsignaturaTest {
 	@Test
 	public void eraseContenidoRaiz5(){
 		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+		
+		assertTrue(ej1.enPlazo());
 		
 		mates.addAlumno(nacho);
 		

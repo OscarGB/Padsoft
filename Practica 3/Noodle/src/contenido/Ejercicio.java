@@ -323,6 +323,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean esBorrable(){
+		if(this.enPlazo()){
+			
+		}
 		if(this.estado == EstadoEjercicio.ESPERA || this.estado == EstadoEjercicio.ABIERTO){
 			return true;
 		}
