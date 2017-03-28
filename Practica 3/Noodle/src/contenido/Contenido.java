@@ -155,7 +155,17 @@ public abstract class Contenido implements Serializable {
 	 * un tema
 	 */
 	public void ocultarContenido(){
+		this.setVisibilidad(false);
 		return;
+	}
+	
+	/**
+	 * Método para comprobar si un contenido es borrable
+	 * es decir, está fuera de plazo y no ha sido respondido
+	 * @return boolean
+	 */
+	public boolean esBorrable(){
+		return true;
 	}
 	
 	

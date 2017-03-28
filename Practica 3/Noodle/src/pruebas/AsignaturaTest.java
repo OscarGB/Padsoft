@@ -2,13 +2,23 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
 import contenido.Apuntes;
+import contenido.Ejercicio;
+import contenido.Opciones;
+import contenido.Pregunta;
+import contenido.PreguntaRespuestaSimple;
+import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import persona.Alumno;
+import respuestas.RespuestaEjercicio;
+import respuestas.RespuestaUnica;
 import solicitud.Solicitud;
 
 /**
@@ -254,19 +264,51 @@ public class AsignaturaTest {
 	
 	/**
 	 * Test para borrar una cadena de contenidos
-	 * Debe borrar los tres
+	 * Debe borrar los cuatro
 	 */
 	@Test
 	public void eraseContenidoRaiz3(){
 		Tema subtema1 = new Tema("Tema 1.1", true, mates, tema1);
 		Tema subtema2 = new Tema("Tema 1.1.1", true, mates, subtema1);
+		Tema subtema3 = new Tema("Tema 1.1.1.1", true, mates, subtema2);
 		
-		mates.eraseContenido(tema1);
+		assertTrue(mates.eraseContenido(tema1));
 		
 		assertFalse(mates.getRaiz().contains(tema1));
 		assertFalse(tema1.getVisibilidad());
 		assertFalse(subtema1.getVisibilidad());
 		assertFalse(subtema2.getVisibilidad());
+		assertFalse(subtema3.getVisibilidad());
+	}
+	
+	@Test
+	public void eraseContenidoRaiz4(){
+		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+		
+		assertTrue(mates.eraseContenido(tema1));
+	}
+	
+	@Test
+	public void eraseContenidoRaiz5(){
+		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+		
+		mates.addAlumno(nacho);
+		
+		//Creamos las preguntas y las respuestas
+		Pregunta pre = new PreguntaRespuestaUnica("Prueba", true, -1, true);
+		
+		ej1.addPregunta(pre);
+		
+		RespuestaEjercicio res = new RespuestaEjercicio(ej1);
+		res.addRespuesta(new RespuestaUnica(pre, true));
+
+		
+		//Metemos null para no meter respuestas
+		ej1.responderEjercicio(nacho, new ArrayList<RespuestaEjercicio>(res));
+		
+		
+		
+		assertFalse(mates.eraseContenido(tema1));
 	}
 	
 	

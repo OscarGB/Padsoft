@@ -280,7 +280,6 @@ public class Asignatura implements Serializable {
 	public void eraseContenidoRaiz(Contenido con){
 		this.raiz.remove(con);
 		con.ocultarContenido();
-		con.setVisibilidad(false);
 		return;
 	}
 	
@@ -290,13 +289,18 @@ public class Asignatura implements Serializable {
 	 * Si es un subcontenido, llama a contenido.eraseContenido
 	 * @param con
 	 */
-	public void eraseContenido(Contenido con){
-		if(con.getPadre() == null){
+	public boolean eraseContenido(Contenido con){
+		if(con.esBorrable() == false){
+			return false;
+		}
+		else if(con.getPadre() == null){
 			this.eraseContenidoRaiz(con);
 		}
 		else {
 			con.eraseContenido();
 		}
+		
+		return true;
 	}
 	
 	/**

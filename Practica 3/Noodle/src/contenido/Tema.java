@@ -96,6 +96,20 @@ public class Tema extends Contenido  implements Serializable{
 		return;
 	}
 	
+	/**
+	 * Método para comprobar si un tema es borrable
+	 * es decir, si sus contenidos son borrables
+	 */
+	public boolean esBorrable(){
+		for(Contenido c: this.subcontenido){
+			if(c.esBorrable() == false){
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	
 	//Override
 	

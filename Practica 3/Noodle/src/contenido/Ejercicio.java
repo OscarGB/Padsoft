@@ -16,6 +16,11 @@ public class Ejercicio extends Contenido implements Serializable{
 	//Variables
 	
 	/**
+	 * Estado del ejercicio (enum)
+	 */
+	private EstadoEjercicio estado;
+	
+	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
@@ -106,6 +111,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		this.preguntas = new ArrayList<Pregunta>();
 		this.notaMedia = 0;
 		this.pesoPreguntas = 0;
+		this.estado = EstadoEjercicio.ESPERA;
 	}
 
 	
@@ -238,6 +244,60 @@ public class Ejercicio extends Contenido implements Serializable{
 	public void addNota(float nota){
 		this.notaMedia = (this.notaMedia * this.numTerminados + nota) / (this.numTerminados + 1);
 		this.numTerminados ++;
+	}
+	
+	/**
+	 * Método que comprueba si un ejercicio está en plazo
+	 * @return boolean
+	 */
+	public boolean enPlazo(){
+		if(this.estado == EstadoEjercicio.ABIERTO){
+			return true;
+		}
+		else if(this.estado == EstadoEjercicio.TERMINADO){
+			return false;
+		}
+		else if(LocalDate.now().isBefore(this.fechaFin) && LocalDate.now().isAfter(this.fechaIni)){
+			if(this.estado != EstadoEjercicio.RESPONDIDO){
+				this.estado = EstadoEjercicio.ABIERTO;
+			}
+			return true;
+		}
+		else if(this.estado == EstadoEjercicio.ESPERA){
+			return false;
+		}
+		else {
+			this.estado = EstadoEjercicio.TERMINADO;
+			return false;
+		}
+	}
+	
+	/**
+	 * Método para comprobar si se puede responder un ejercicio
+	 * @return boolean
+	 */
+	public boolean sePuedeResponder(){
+		if(enPlazo() == true && this.getVisibilidad() == true){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Método para comprobar si un ejercicio es borrable, es decir,
+	 * si está en espera (la fecha de inicio no ha llegado) o
+	 * si aún no ha sido respondido
+	 * @return boolean
+	 */
+	public boolean esBorrable(){
+		if(this.estado == EstadoEjercicio.ESPERA || this.estado == EstadoEjercicio.ABIERTO){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	
