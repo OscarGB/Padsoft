@@ -119,6 +119,14 @@ public class Asignatura implements Serializable {
 		return this.raiz;
 	}
 	
+	/**
+	 * Getter de Estadisticas
+	 * @return estadisticas (ArrayList)
+	 */
+	public ArrayList<EstadisticasAlumno> getEstadisticas(){
+		return this.estadisticas;
+	}
+	
 	
 	//Mï¿½todos
 	
@@ -214,7 +222,7 @@ public class Asignatura implements Serializable {
 	 * @param sol
 	 */
 	public boolean addSolicitudPendiente(Solicitud sol){
-		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false){
+		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false && this.getSolicitudesExpulsados().contains(sol) == false){
 			if(this.solicitudes.add(sol) == true){
 				return true;
 			}
@@ -332,8 +340,8 @@ public class Asignatura implements Serializable {
 	 * Añade una estadisitica de un alumno a la asignatura
 	 * @param estadisticasAlumno
 	 */
-	public void addEstadistica(EstadisticasAlumno estadisticasAlumno) {
-		this.estadisticas.add(estadisticasAlumno);
+	public boolean addEstadistica(EstadisticasAlumno estadisticasAlumno) {
+		return this.estadisticas.add(estadisticasAlumno);
 	}
 	
 	//Overrides
