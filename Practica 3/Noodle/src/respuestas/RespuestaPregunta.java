@@ -36,6 +36,18 @@ public abstract class RespuestaPregunta implements Serializable{
 		this.preguntaRespondida = p;
 	}
 	
+	//Getters y Setters
+	
+	/**
+	 * Getter de preguntaRespondida
+	 * @return pregunta
+	 */
+	public Pregunta getPregunta(){
+		return this.preguntaRespondida;
+	}
+	
+	//Métodos
+	
 	/** MÃ©todo que calcula la nota obtenida en la pregunta
 	 * @return float
 	 */

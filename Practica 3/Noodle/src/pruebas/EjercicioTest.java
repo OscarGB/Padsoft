@@ -127,5 +127,16 @@ public class EjercicioTest {
 		assertTrue(ej1.getPreguntas().isEmpty());
 	}
 	
+	/**
+	 * Test para eliminar pregunta
+	 */
+	@Test
+	public void testRemovePregunta(){
+		ej1.addPregunta(pre);
+		ej1.removePregunta(pre);
+		assertFalse(ej1.getPreguntas().contains(pre));
+	}
+	
+	
 
 }

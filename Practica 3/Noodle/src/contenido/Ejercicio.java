@@ -348,7 +348,9 @@ public class Ejercicio extends Contenido implements Serializable{
 		}
 		RespuestaEjercicio respuestas = new RespuestaEjercicio(this);
 		for(RespuestaPregunta resi : res){
-			respuestas.addRespuesta(resi);
+			if(this.getPreguntas().contains(resi.getPregunta())){
+				respuestas.addRespuesta(resi);
+			}
 		}
 		ArrayList<EstadisticasAlumno> ests = al.getEstadisticas();
 		for(EstadisticasAlumno estadisticas : ests){
