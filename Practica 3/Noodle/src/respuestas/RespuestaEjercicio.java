@@ -28,6 +28,20 @@ public class RespuestaEjercicio {
 	private Ejercicio ej;
 	
 	/**
+	 * nota máxima de un ejercicio
+	 */
+	public static final float NOTAMAX = 10;
+	
+	/**
+	 * Constructor de respuesta ejercicio
+	 */
+	public RespuestaEjercicio(Ejercicio ej){
+		respuestas = new ArrayList<RespuestaPregunta>();
+		nota = 0;
+		this.ej = ej;
+	}
+	
+	/**
 	 * Get Ejercicio
 	 * @return Ejercicio
 	 */
@@ -36,15 +50,7 @@ public class RespuestaEjercicio {
 	}
 	
 	/**
-	 * Constructor de respuesta ejercicio
-	 */
-	public RespuestaEjercicio(){
-		respuestas = new ArrayList<RespuestaPregunta>();
-		nota = 0;
-	}
-	
-	/**
-	 * MÃ©todo para aÃ±adir una respuesta
+	 * Método para añadir una respuesta
 	 * @param r
 	 */
 	public void addRespuesta(RespuestaPregunta r){
@@ -60,7 +66,11 @@ public class RespuestaEjercicio {
 		for(RespuestaPregunta rp : this.respuestas){
 			nota += rp.CalcularNota();
 		}
-		this.nota = nota/this.ej.getPesoPreguntas();
+		this.nota = (nota/this.ej.getPesoPreguntas())*NOTAMAX;
+		if(this.nota < 0){
+			this.nota = 0;
+		}
+		System.out.println(this.nota);
 		return this.nota;
 	}	
 }

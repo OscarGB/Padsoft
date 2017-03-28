@@ -16,7 +16,7 @@ public class RespuestaUnica extends RespuestaPregunta{
 	private boolean respondido;
 	
 	/**
-	 * Constructor de respuesta única.
+	 * Constructor de respuesta Unica.
 	 * @param p
 	 * @param respondido
 	 */
