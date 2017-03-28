@@ -2,9 +2,11 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +20,7 @@ import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
+import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaUnica;
@@ -34,9 +37,15 @@ public class AsignaturaTest {
 	private Alumno nacho;
 	private Solicitud sol1;
 	private Tema tema1;
+	private Plataforma plataforma;
+	private File file;
 	
 	@Before
 	public void setUp() throws Exception {
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		mates = new Asignatura("Mates");
 		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
@@ -320,7 +329,8 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testEraseContenidoRaiz4(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
 		
 		assertTrue(mates.eraseContenido(tema1));
 	}
@@ -330,7 +340,8 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testEraseContenidoRaiz5(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
 		
 		assertTrue(ej1.enPlazo());
 		
@@ -355,7 +366,8 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testEraseContenidoRaiz6(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));		
 		
 		mates.addAlumno(nacho);
 		
@@ -396,6 +408,11 @@ public class AsignaturaTest {
 		EstadisticasAlumno est = new EstadisticasAlumno(mates, nacho);
 		
 		assertTrue(mates.getEstadisticas().contains(est));
+	}
+	
+	@After
+	public void afterTest(){
+		Plataforma.closePlataforma();
 	}
 	
 }

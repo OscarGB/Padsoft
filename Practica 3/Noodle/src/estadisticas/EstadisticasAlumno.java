@@ -80,6 +80,14 @@ public class EstadisticasAlumno implements Serializable{
 	}
 	
 	/**
+	 * Getter de respuestas
+	 * @return respuestas
+	 */
+	public ArrayList<RespuestaEjercicio> getRespuestas(){
+		return this.respuestas;
+	}
+	
+	/**
 	 * Get asignatura
 	 * @return
 	 */
