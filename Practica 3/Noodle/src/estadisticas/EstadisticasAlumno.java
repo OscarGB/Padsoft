@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 
+import asignatura.Asignatura;
+import persona.Alumno;
+
 /**
  * Clase EstadisticasAlumno
  * @author Jose Ignacio Gomez
@@ -12,6 +15,13 @@ import java.util.ArrayList;
  */
 
 import respuestas.RespuestaEjercicio;
+
+/**
+ * Clase EstadisitcasAlumno
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 
 public class EstadisticasAlumno implements Serializable{
 	
@@ -32,11 +42,25 @@ public class EstadisticasAlumno implements Serializable{
 	private float notaMedia;
 	
 	/**
-	 * Constructor de wstadisticas alumno
+	 * Asignatura a la que pertenece la estadistica
 	 */
-	public EstadisticasAlumno(){
+	private Asignatura asig;
+	
+	/**
+	 * Alumno al que pertenece esta estadística
+	 */
+	private Alumno alumno;
+	
+	/**
+	 * Constructor de estadisticas alumno
+	 */
+	public EstadisticasAlumno(Asignatura asig, Alumno al){
 		this.notaMedia = 0;
 		this.respuestas = new ArrayList<RespuestaEjercicio>();
+		this.asig = asig;
+		asig.addEstadistica(this);
+		this.alumno = al;
+		al.addEstadistica(this);
 	}
 	
 	/**
@@ -48,7 +72,22 @@ public class EstadisticasAlumno implements Serializable{
 	}
 	
 	/**
-	 * AÃ±ade una nueva respuesta a ejercicio y calcula la nota media.
+	 * Get alumno
+	 * @return
+	 */
+	public Alumno getAlumno(){
+		return alumno;
+	}
+	
+	/**
+	 * Get asignatura
+	 * @return
+	 */
+	public Asignatura getAsignatura(){
+		return asig;
+	}
+	/**
+	 * Añade una nueva respuesta a ejercicio y calcula la nota media.
 	 * @param r
 	 */
 	public void addRespuestaEjercicio(RespuestaEjercicio r){

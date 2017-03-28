@@ -199,6 +199,25 @@ public abstract class Pregunta implements Serializable{
 	}
 	
 	/**
+	 * Método para añadir una posible respuesta abierta
+	 * Se va a sobreescribir
+	 * @param respuesta
+	 * @return boolean
+	 */
+	public boolean addOpcion(String respuesta){
+		return false;
+	}
+	
+	/**
+	 * Método para eliminar una posible respuesta abierta
+	 * Se va a sobreescribir
+	 * @param respuesta
+	 */
+	public void removeOpcion(String respuesta){
+		return;
+	}
+	
+	/**
 	 * Método para eliminar una opción de la pregunta
 	 * @param opcion
 	 */

@@ -2,6 +2,8 @@ package contenido;
 
 import java.io.Serializable;
 import asignatura.Asignatura;
+import persona.Alumno;
+import plataforma.Plataforma;
 
 /**
  * Clase Contenido
@@ -158,6 +160,21 @@ public abstract class Contenido implements Serializable {
 		return;
 	}
 	
+	public String toString(){
+		if(Plataforma.loggedAs.getClass() == Alumno.class){
+			if(this.getVisibilidad() == true){
+				return "Titulo: " + this.titulo + " \n";
+			}
+			return "";
+		}
+		else if(Plataforma.loggedAs.getClass() == Alumno.class){
+			return "Titulo: " + this.titulo + " \n";
+			
+		}
+		else{
+			return "";
+		}
+	}
 	
 	
 }

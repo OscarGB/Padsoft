@@ -5,6 +5,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import estadisticas.EstadisticasAlumno;
+import persona.Alumno;
+import respuestas.RespuestaEjercicio;
+import respuestas.RespuestaPregunta;
 
 /**
  * Clase Ejercicio
@@ -229,6 +233,33 @@ public class Ejercicio extends Contenido implements Serializable{
 		this.preguntas.remove(preg);
 	}
 	
+	public boolean responderEjercicio(Alumno al, ArrayList<RespuestaPregunta> res){
+		if(res == null){
+			return false;
+		}
+		if(this.asignatura.getAlumnos().contains(al) == false){
+			return false;
+		}
+		else if(this.sePuedeResponder() == false){
+			return false;
+		}
+		RespuestaEjercicio respuestas = new RespuestaEjercicio(this);
+		for(RespuestaPregunta resi : res){
+			respuestas.addRespuesta(resi);
+		}
+		ArrayList<EstadisticasAlumno> ests = al.getEstadisticas();
+		for(EstadisticasAlumno estadisticas : ests){
+			if(estadisticas.getAsignatura() == this.asignatura){
+				estadisticas.addRespuestaEjercicio(respuestas);
+				this.addNota(respuestas.calcularNota());
+				return true;
+			}
+		}
+		EstadisticasAlumno nuevo = new EstadisticasAlumno(this.asignatura, al);
+		nuevo.addRespuestaEjercicio(respuestas);
+		this.addNota(respuestas.calcularNota());
+		return true;		
+	}
 	
 	/**
 	 * M�todo que recibe una nueva nota y recalcula la media, 

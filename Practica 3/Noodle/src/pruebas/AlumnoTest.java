@@ -25,7 +25,7 @@ public class AlumnoTest {
 	public void setUp() throws Exception {
 		this.al = Alumno.CreaAlumno("1234", "Pepito", "pep1234", "pepito@gmail.com");
 		this.asig = new Asignatura("Lengua");
-		this.es = new EstadisticasAlumno();
+		this.es = new EstadisticasAlumno(asig, al);
 	}
 
 	/**
@@ -52,11 +52,10 @@ public class AlumnoTest {
 	}
 	
 	/**
-	 * Comprueba que la estadistica se añade correctamente
+	 * Comprueba que la estadistica se ha añadido correctamente
 	 */
 	@Test
 	public void testAddEstadistica() {
-		al.addEstadistica(es);
 		assertTrue(al.getEstadisticas().contains(es));
 		assertEquals(1, al.getEstadisticas().size());
 		
@@ -67,7 +66,6 @@ public class AlumnoTest {
 	 */
 	@Test
 	public void testEraseEstadistica() {
-		al.addEstadistica(es);
 		al.eraseAsignatura(null);
 		assertEquals(1, al.getEstadisticas().size());		
 		al.eraseEstadistica(es);

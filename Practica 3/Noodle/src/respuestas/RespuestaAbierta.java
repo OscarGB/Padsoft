@@ -28,7 +28,7 @@ public class RespuestaAbierta extends RespuestaPregunta {
 	}
 	
 	/**
-	 * MÃ©todo para comprobar si la respuesta abierta es correcta
+	 * Método para comprobar si la respuesta abierta es correcta
 	 * @return boolean
 	 */
 	@Override
