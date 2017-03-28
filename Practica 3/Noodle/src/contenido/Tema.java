@@ -79,7 +79,7 @@ public class Tema extends Contenido  implements Serializable{
 	 * @param contenido
 	 */
 	public void eraseSubcontenido(Contenido con){
-		con.setVisibilidad(false);
+		con.ocultarContenido();
 		this.subcontenido.remove(con);
 		return;
 	}
