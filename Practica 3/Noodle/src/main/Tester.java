@@ -1,132 +1,197 @@
-//package main;
-//
-//import java.time.LocalDate;
-//import java.time.format.DateTimeFormatter;
-//import java.util.ArrayList;
-//
-//import asignatura.Asignatura;
-//import contenido.*;
-//import persona.*;
-//import plataforma.Plataforma;
-//import solicitud.Solicitud;
-//
-///**
-// * Tester de toda la aplicación
-// * @author Óscar Gómez Borzdynski
-// * @author Jose Ignacio Gómez García
-// * @date 21/03/2017
-// */
-//public class Tester {
-//
-//	public static void main(String[] args) {
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//		Asignatura asig1;
-//		Asignatura asig2;
-//		Plataforma Noodle = new Plataforma();
-//		
-//		Profesor p1 = Plataforma.profesor;
-//		
-//		Plataforma.addAlumno("352689", "Pepe", "1234", LocalDate.now().toString(), "pepe@noodle.es");
-//		Alumno a1 = Plataforma.alumnos.get(0);
-//		
-//		Plataforma.createAsignatura("Matemáticas");
-//		Plataforma.createAsignatura("Lengua");
-//		
-//		asig1 = Plataforma.asignaturas.get(0);
-//		asig2 = Plataforma.asignaturas.get(1);
-//		
-//		p1.eraseAsignatura(asig2);
-//		
-//		System.out.println(a1);
-//		System.out.println(asig1);
-//		System.out.println(p1);
-//		
-//		Solicitud s1 = a1.solicitarAcceso(asig1);
-//		// TODO Comprobar equals
-//		Solicitud s2 = a1.solicitarAcceso(asig1);
-//		
-//		System.out.println(s1);
-//		System.out.println(s2);	
-//		System.out.println(asig1);
-//		
-//		ArrayList<Solicitud> solis = p1.getSolicitudes();
-//		
-//		System.out.println(solis);	
-//		
-//		p1.denegarSolicitud(s1);
-//		//TODO Comprobar que existe
-//		p1.denegarSolicitud(s2);
-//		
-//		s1 = a1.solicitarAcceso(asig1);
-//		// TODO Comprobar equals
-//		s2 = a1.solicitarAcceso(asig1);
-//		
-//		System.out.println(s1);
-//		System.out.println(s2);	
-//		
-//		p1.aceptarSolicitud(s1);
-//		//TODO Comprobar que existe
-//		p1.aceptarSolicitud(s2);
-//		
-//		System.out.println(asig1);
-//		
-//		p1.expulsarAlumno(asig1, a1);
-//		
-//		System.out.println(asig1);
-//		
-//		// TODO los expulsados se guardan en un array aparte y se comprueba al crear una nueva solicitud
-//		p1.readmitirAlumno(asig1, a1);
-//		
-//		System.out.println(asig1.getAlumnos());
-//		
-//		// Añadir un tema, null es la raiz
-//		asig1.addContenido(new Tema("Tema 1", true), null);
-//		
-//		//Obtener el tema para añadir contenido
-//		Tema t1 = (Tema)asig1.getContenido().get(0);
-//		
-//		//Añadir un subtema, t1 es el tema donde se añade
-//		asig1.addContenido(new Tema("Tema 1.1", true), t1);
-//		
-//		Tema t11 = (Tema)t1.getContenido().get(0);
-//		
-//		asig1.eraseContenido(t11);
-//		
-//		asig1.addContenido(new Apuntes("Esto son unos apuntes muy bonitos", "Apunte1", true), t1);
-//		
-//		// TODO Crear un ejercicio
-//		Ejercicio ej = new Ejercicio();
-//		
-//		asig1.addContenido(ej, t1);
-//		
-//		//Cambia a oculto el ejercicio
-//		asig1.setVisibilidad(ej, false);
-//
-//		System.out.println(asig1.getContenidoVisible());
-//		
-//		System.out.println(asig1.getContenido());
-//		
-//		asig1.setVisibilidad(ej, true);
-//		
-//		System.out.println(Plataforma.asignaturas);
-//		
-//		System.out.println(a1.getAsignaturas());
-//		
-//		ej.setPeso(8);
-//		ej.setAleatoriedad(true);
-//		ej.setAleatoriedad(false);
-//		ej.setFechaFin(LocalDate.now().toString());
-//		ej.setFechaIni(LocalDate.now().toString());
-//		
-//		ArrayList<Opciones> opc = new ArrayList<Opciones>();
-//		opc.add(new Opciones("4", true));
-//		opc.add(new Opciones("3", false));
-//		
-//		
-//		
-//		Pregunta preg1 = new Pregunta("Cuánto es 2 + 2", opc, 0, false, 0);
-//		
-//		
-//	}
-//
-//}
+package main;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import asignatura.Asignatura;
+import contenido.*;
+import persona.*;
+import plataforma.Plataforma;
+import respuestas.*;
+import solicitud.Solicitud;
+
+/**
+ * Tester de toda la aplicación
+ * @author Óscar Gómez Borzdynski
+ * @author Jose Ignacio Gómez García
+ * @date 21/03/2017
+ */
+public class Tester {
+
+	public static void main(String[] args) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		Asignatura asig1;
+		Asignatura asig2;
+		Plataforma Noodle = Plataforma.openPlataforma();
+		
+		Profesor p1 = Plataforma.profesor;
+			
+		Alumno a1 = Plataforma.alumnos.get(0);
+		
+		//Login como alumno
+		Plataforma.login(a1.getNia(), a1.getPassword());
+		
+		//Creación de Asignaturas
+		asig1 = new Asignatura("matematicas");
+		asig2 = new Asignatura("lengua");
+		
+		//Añadir las asignaturas
+		Plataforma.addAsignatura(asig1);
+		Plataforma.addAsignatura(asig2);
+		
+		//Borrar un asignatura
+		Plataforma.eraseAsignatura(asig2);
+		
+		System.out.println(a1);
+		System.out.println(asig1);
+		System.out.println(p1);
+		
+		//Solicitudes de acceso
+		Solicitud s1 = a1.solicitarAcceso(asig1);
+		// Solicita acceso de nuevo, pero no se le deja (imprime null)
+		Solicitud s2 = a1.solicitarAcceso(asig1);
+		
+		System.out.println(s1);
+		System.out.println(s2);	
+		System.out.println(asig1);
+		
+		ArrayList<Solicitud> solis = p1.getSolicitudes();
+		
+		System.out.println("Solicitudes: " + solis + "\n");	
+		
+		//Denegar las solicitudes
+		p1.denegarSolicitud(s1);
+		//Comprobar que existe
+		p1.denegarSolicitud(s2);
+		
+		s1 = a1.solicitarAcceso(asig1);
+		// Solicita acceso de nuevo, pero no se le deja (imprime null)
+		s2 = a1.solicitarAcceso(asig1);
+		
+		System.out.println(s1);
+		System.out.println(s2);	
+		
+		p1.aceptarSolicitud(s1);
+		//Comprobar que existe
+		p1.aceptarSolicitud(s2);
+		
+		System.out.println(asig1);
+		
+		//Expulsar a un alumno
+		p1.expulsarAlumno(asig1, a1);
+		
+		System.out.println(asig1);
+		
+		//Los expulsados se guardan en un array aparte y se comprueba al crear una nueva solicitud
+		p1.readmitirAlumno(asig1, a1);
+		
+		System.out.println(asig1);
+		System.out.println(asig1.getAlumnos());
+		
+		//Añadir un tema, null es la raiz
+		Tema t1 = new Tema("Tema 1", true, asig1);
+		
+		//Añadir un subtema, t1 es el tema donde se añade
+		Tema t11 = new Tema("Tema 1.1", true, asig1, t1);
+		
+		System.out.println("\n" + asig1);
+		
+		//Borrar un tema
+		asig1.eraseContenido(t11);
+		
+		System.out.println("\n" + asig1);
+		
+		//Crear una solicitud
+		Apuntes apun = new Apuntes("Esto son unos apuntes muy bonitos", "Apunte1", true, asig1, t1);
+
+		System.out.println("\n" + asig1);
+		
+		//Crear un ejercicio
+		Ejercicio aborrar = new Ejercicio(2, false, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), t1, "Ejercicio a borrar", true, asig1);
+		
+		//Borrar un ejercicio
+		asig1.eraseContenido(aborrar);		
+		
+		//Crear un ejercicio
+		Ejercicio ej = new Ejercicio(2, false, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), t1, "Ejercicio", true, asig1);
+		
+		System.out.println("\n" + asig1);
+
+		//Modifica visibilidad
+		ej.setVisibilidad(false);
+		
+		System.out.println("\n" + asig1);
+		
+		//Login como profesor para ver los elementos invisibles
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+
+		System.out.println("\n" + asig1);
+
+		//Login como alumno
+		Plataforma.logout();
+		Plataforma.login(a1.getNia(), a1.getPassword());
+
+		ej.setVisibilidad(true);
+		
+		ej.setPeso(8);
+		ej.setAleatorio(true);
+		
+		//Crear preguntas varias para el ejercicio
+		ArrayList<Opciones> opc = new ArrayList<Opciones>();
+		opc.add(new Opciones("4", true));
+		opc.add(new Opciones("3", false));
+		
+		Pregunta preg1 = new PreguntaRespuestaSimple("Cuánto es 2 + 2", false, 6);
+		for(Opciones op : opc){
+			preg1.addOpcion(op);
+		}
+		
+		ej.addPregunta(preg1);
+		
+		System.out.println("\n" + asig1);
+		
+		opc = new ArrayList<Opciones>();
+		opc.add(new Opciones("Colón descubrió América", true));
+		opc.add(new Opciones("El cielo es rosa", false));
+		opc.add(new Opciones("El cielo es azul", true));
+		
+		Pregunta preg2 = new PreguntaRespuestaMultiple("Selecciona las verdaderas", false, 3);
+		for(Opciones op : opc){
+			preg2.addOpcion(op);
+		}
+		
+		ej.addPregunta(preg2);
+		
+		Pregunta preg3 = new PreguntaRespuestaUnica("¿Java es un lenguaje de programación orientado a objetos?", false, -4, 8, true);
+		
+		ej.addPregunta(preg3);
+		
+		Pregunta preg4 = new PreguntaRespuestaAbierta("¿Quíen escribió 'Los Hijos del Capitán Grant'?", false, -1, 3);
+		preg4.addOpcion("Verne");
+		preg4.addOpcion("Julio");
+		preg4.addOpcion("Julio Verne");
+		
+		ej.addPregunta(preg4);
+		
+		System.out.println("\n" + asig1);
+		
+		ArrayList<RespuestaPregunta> res = new ArrayList<RespuestaPregunta>();
+		
+		//Correcta
+		res.add(new RespuestaSimple(preg1, new Opciones("4", true)));
+		//Incorrecta
+		res.add(new RespuestaMultiple(preg2, opc));
+		//Correcta
+		res.add(new RespuestaUnica(preg3, true));
+		//Incorrecta
+		res.add(new RespuestaAbierta(preg4, "Lorca"));
+		
+		ej.responderEjercicio(a1, res);
+		
+		System.out.println("\n" + asig1);
+		
+	}
+
+}

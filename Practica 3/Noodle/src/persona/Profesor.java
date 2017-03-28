@@ -71,6 +71,9 @@ public class Profesor extends Persona implements Serializable{
 	 * @return true si ha sido aceptada
 	 */
 	public boolean aceptarSolicitud(Solicitud sol){
+		if(sol == null){
+			return false;
+		}
 		if(sol.getAsignatura().aceptarSolicitud(sol) == true){
 			return true;
 		}
@@ -83,6 +86,9 @@ public class Profesor extends Persona implements Serializable{
 	 * @param sol
 	 */
 	public void denegarSolicitud(Solicitud sol) {
+		if(sol == null){
+			return;
+		}
 		sol.getAsignatura().denegarSolicitud(sol);
 	}
 

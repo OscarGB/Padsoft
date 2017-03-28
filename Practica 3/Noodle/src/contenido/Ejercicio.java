@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import asignatura.Asignatura;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
+import persona.Profesor;
+import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 
@@ -30,7 +32,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Nï¿½mero de alumnos que han terminado el ejercicio
+	 * Número de alumnos que han terminado el ejercicio
 	 */
 	private int numTerminados;
 	
@@ -174,7 +176,10 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param fechaIni
 	 */
 	public void setFechaIni(LocalDate fechaIni) {
-		this.fechaIni = fechaIni;
+		if(Plataforma.loggedAs.getClass() == Profesor.class){
+			this.fechaIni = fechaIni;
+		}
+		return;
 	}
 
 	/**
@@ -190,7 +195,10 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param fechaFin
 	 */
 	public void setFechaFin(LocalDate fechaFin) {
-		this.fechaFin = fechaFin;
+		if(Plataforma.loggedAs.getClass() == Profesor.class){
+			this.fechaFin = fechaFin;
+		}
+		return;
 	}
 
 	/**
@@ -239,6 +247,12 @@ public class Ejercicio extends Contenido implements Serializable{
 		this.preguntas.remove(preg);
 	}
 	
+	/**
+	 * Método para responder a un ejercicio
+	 * @param al
+	 * @param res
+	 * @return
+	 */
 	public boolean responderEjercicio(Alumno al, ArrayList<RespuestaPregunta> res){
 		if(res == null){
 			return false;
@@ -268,8 +282,8 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 	
 	/**
-	 * Mï¿½todo que recibe una nueva nota y recalcula la media, 
-	 * incrementando el nï¿½mero de terminados
+	 * Método que recibe una nueva nota y recalcula la media, 
+	 * incrementando el número de terminados
 	 * @param nota
 	 */
 	public void addNota(float nota){
@@ -342,7 +356,7 @@ public class Ejercicio extends Contenido implements Serializable{
 			aux += "- " + p.enunciado + " [Peso: " + p.valorPregunta + "]\n";
 		}
 		
-		return "Tï¿½tulo del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + "Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia;
+		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + " Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia;
 	}
 	
 

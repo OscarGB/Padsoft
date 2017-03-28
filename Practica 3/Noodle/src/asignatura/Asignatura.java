@@ -123,7 +123,7 @@ public class Asignatura implements Serializable {
 	//Mï¿½todos
 	
 	/**
-	 * Mï¿½todo para aï¿½adir alumno a la asignatura
+	 * Método para añadir alumno a la asignatura
 	 * @param alumno
 	 */
 	public boolean addAlumno(Alumno alumno){
@@ -145,7 +145,7 @@ public class Asignatura implements Serializable {
 	}
 	
 	/**
-	 * Mï¿½todo para expulsar alumno de la asignatura
+	 * Mïétodo para expulsar alumno de la asignatura
 	 * Introduce el alumno en la lista de expulsados
 	 * @param alumno
 	 */
@@ -240,7 +240,7 @@ public class Asignatura implements Serializable {
 	
 	
 	/**
-	 * Mï¿½todo para saber si un alumno estï¿½ inscrito en la asignatura
+	 * Mïétodo para saber si un alumno está inscrito en la asignatura
 	 * @param a
 	 * @return boolean
 	 */
@@ -254,9 +254,9 @@ public class Asignatura implements Serializable {
 	}
 
 	/**
-	 * Mï¿½todo para aceptar una solicitud que comprueba si
-	 * la solicitud estï¿½ en el array de pendientes y, si 
-	 * lo estï¿½, aï¿½ade al alumno y la saca de pendientes
+	 * Método para aceptar una solicitud que comprueba si
+	 * la solicitud está en el array de pendientes y, si 
+	 * lo está, añade al alumno y la saca de pendientes
 	 * @param sol
 	 * @return boolean
 	 */
@@ -272,7 +272,7 @@ public class Asignatura implements Serializable {
 	
 	
 	/**
-	 * Mï¿½todo para aï¿½adir un tema a la raiz
+	 * Mïétodo para añadir un tema a la raiz
 	 * @param tema
 	 * @return boolean
 	 */
@@ -346,12 +346,20 @@ public class Asignatura implements Serializable {
 	@Override
 	public String toString(){
 		String aux = "";
-		for(Contenido c: this.raiz){
-			if(c.getVisibilidad() == true){
+		if(Plataforma.loggedAs.getClass() == Alumno.class){
+			for(Contenido c: this.raiz){
+				if(c.getVisibilidad() == true){
+					aux += c.toString();
+				}
+			}
+			return "Asignatura: "+ this.nombre + " Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
+		}
+		else{
+			for(Contenido c: this.raiz){
 				aux += c.toString();
 			}
+			return "Asignatura: "+ this.nombre + " Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
 		}
-		return "Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
 	}
 
 	

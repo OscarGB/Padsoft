@@ -196,8 +196,8 @@ public class Alumno extends Persona implements Serializable{
 	@Override
 	public String toString() {
 		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password  +  ". Email: " + this.email +
-				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena" + this.estadisticas.size() +
-				"Estadï¿½sticas.";
+				". Matriculado en " + this.asignaturas.size() + " Asignaturas. Almacena " + this.estadisticas.size() +
+				" Estadísticas.";
 	}
 
 	
