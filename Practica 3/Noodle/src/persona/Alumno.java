@@ -90,6 +90,7 @@ public class Alumno extends Persona implements Serializable{
 	 * Devuelve las estad�sitcas de un Alumno
 	 * @return ArrayList<EstadisticasIndividuales>
 	 */
+	@Override
 	public ArrayList<EstadisticasAlumno> getEstadisticas() {
 		return estadisticas;
 	}

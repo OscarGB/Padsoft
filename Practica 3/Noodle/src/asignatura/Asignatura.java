@@ -10,6 +10,8 @@ import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
+import persona.Profesor;
+import plataforma.Plataforma;
 import solicitud.Solicitud;
 
 /**
@@ -326,11 +328,19 @@ public class Asignatura implements Serializable {
 		}
 	}
 	
+	/**
+	 * Añade una estadisitica de un alumno a la asignatura
+	 * @param estadisticasAlumno
+	 */
+	public void addEstadistica(EstadisticasAlumno estadisticasAlumno) {
+		this.estadisticas.add(estadisticasAlumno);
+	}
+	
 	//Overrides
 	
 	/**
 	 * (Override) toString
-	 * Devolverï¿½ un string con los alumnos de la asignatura
+	 * Devolvería un string con los alumnos de la asignatura
 	 * @return String
 	 */
 	@Override
@@ -344,10 +354,5 @@ public class Asignatura implements Serializable {
 		return "Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
 	}
 
-
-	public void addEstadistica(EstadisticasAlumno estadisticasAlumno) {
-		this.estadisticas.add(estadisticasAlumno);
-		
-	}
 	
 }
