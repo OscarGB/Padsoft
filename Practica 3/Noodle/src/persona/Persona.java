@@ -1,6 +1,9 @@
 package persona;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import estadisticas.EstadisticasAlumno;
 
 
 /**
@@ -89,6 +92,14 @@ public abstract class Persona implements Serializable{
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	/**
+	 * Metodo para ser sobreescrito en Alumno
+	 * @return ArrayList<EstadisticasAlumno>
+	 */
+	public ArrayList<EstadisticasAlumno> getEstadisticas(){
+		return null;
 	}
 	
 	//Override

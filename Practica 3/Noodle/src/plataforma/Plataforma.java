@@ -267,54 +267,6 @@ public class Plataforma implements Serializable {
 	}
 	
 	/**
-	 * Archivo que guarda el estado de la plataforma
-	 */
-	public void writeFile(){
-		PrintWriter f = null;
-		
-		// Alumnos
-	    try {
-			f = new PrintWriter("./data/datosalumnos.txt", "UTF-8");
-			for(Alumno a : Plataforma.alumnos){
-		    	String aux = a.getNombre();
-		    	String[] n = aux.split(" ");
-		    	f.println(n[0] + ";" + n[1] + ";" + a.getEmail() + ";" + a.getNia() + ";" + a.getPassword());
-		    }
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	    
-	    // Asignaturas
-	    try {
-			f = new PrintWriter("./data/datosasignaturas.txt", "UTF-8");
-			for(Asignatura asig : Plataforma.asignaturas){
-				f.println(asig.getNombre());
-				ArrayList<Alumno> alumnos = asig.getAlumnos();
-				f.println(alumnos.size());
-				for(Alumno a : alumnos){
-					f.println(a.getNia());
-				}
-				ArrayList<Solicitud> solicitudes = asig.getSolicitudes();
-				f.println(solicitudes.size());
-				for(Solicitud s : solicitudes){
-					f.println(s.getAlumno().getNia());
-				}
-				solicitudes = asig.getSolicitudesExpulsados();
-				f.println(solicitudes.size());
-				for(Solicitud s : solicitudes){
-					f.println(s.getAlumno().getNia());
-				}
-				
-				// TODO contenido
-			
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	    	    
-	}
-	
-	/**
 	 * Devuelve el nombre de la plataforma
 	 * @return
 	 */
@@ -384,6 +336,14 @@ public class Plataforma implements Serializable {
 			}
 		}
 		return false;
+	}
+	
+	
+	/**
+	 * Método para salir de la plataforma.
+	 */
+	public static void logout(){
+		Plataforma.loggedAs = null;
 	}
 	
 }
