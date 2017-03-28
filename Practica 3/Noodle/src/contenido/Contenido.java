@@ -146,6 +146,12 @@ public abstract class Contenido implements Serializable {
 	 */
 	public void eraseContenido(){
 		
+		if(this.padre == null){
+			this.getAsignatura().getRaiz().remove(this);
+			this.setVisibilidad(false);
+			return;
+		}
+		
 		this.padre.eraseSubcontenido(this);
 		this.setVisibilidad(false);
 		

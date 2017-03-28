@@ -347,8 +347,6 @@ public class AsignaturaTest {
 		array.add(res);
 		ej1.responderEjercicio(nacho, array);
 		
-		assertFalse(tema1.esBorrable());
-		
 		assertFalse(mates.eraseContenido(tema1));
 	}
 	
@@ -358,8 +356,6 @@ public class AsignaturaTest {
 	@Test
 	public void testEraseContenidoRaiz6(){
 		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), tema1, "Ejercicio 1", true, mates);
-		
-		assertTrue(ej1.enPlazo());
 		
 		mates.addAlumno(nacho);
 		
@@ -373,8 +369,6 @@ public class AsignaturaTest {
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
 		ej1.responderEjercicio(nacho, array);
-		
-		assertFalse(tema1.esBorrable());
 		
 		assertFalse(mates.eraseContenido(tema1));
 		

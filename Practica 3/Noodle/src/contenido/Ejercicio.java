@@ -28,6 +28,21 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Peso por defecto de un ejercicio
+	 */
+	private static final int PESO_DEFECTO = 1;
+	
+	/**
+	 * Fecha de inicio por defecto
+	 */
+	private static final LocalDate FECHA_INICIO = LocalDate.now().plusDays(1);
+	
+	/**
+	 * Fecha de cierre por defecto
+	 */
+	private static final LocalDate FECHA_FIN = LocalDate.now().plusDays(10);
 
 	/**
 	 * Nï¿½mero de alumnos que han terminado el ejercicio
@@ -85,14 +100,31 @@ public class Ejercicio extends Contenido implements Serializable{
 	 */
 	public Ejercicio(int peso, boolean aleatorio, LocalDate fechaIni, LocalDate fechaFin, Tema padre,
 			String titulo, boolean visibilidad, Asignatura asignatura) {
+		
 		super(titulo, visibilidad, asignatura, padre);
-		this.peso = peso;
+		
+		if(peso >= 0){
+			this.peso = peso;
+		}
+		else{
+			this.peso = Ejercicio.PESO_DEFECTO;
+		}
+		
 		this.aleatorio = aleatorio;
-		this.fechaIni = fechaIni;
-		this.fechaFin = fechaFin;
+		
+		if(fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
+			this.fechaIni = Ejercicio.FECHA_INICIO;
+			this.fechaFin = Ejercicio.FECHA_FIN;
+		}
+		else {
+			this.fechaIni = fechaIni;
+			this.fechaFin = fechaFin;
+		}
+		
 		this.preguntas = new ArrayList<Pregunta>();
 		this.notaMedia = 0;
 		this.pesoPreguntas = 0;
+		this.estado = EstadoEjercicio.ESPERA;
 	}
 	
 	/**
@@ -107,11 +139,27 @@ public class Ejercicio extends Contenido implements Serializable{
 	 */
 	public Ejercicio(int peso, boolean aleatorio, LocalDate fechaIni, LocalDate fechaFin,
 			String titulo, boolean visibilidad, Asignatura asignatura) {
+		
 		super(titulo, visibilidad, asignatura);
-		this.peso = peso;
+		
+		if(peso >= 0){
+			this.peso = peso;
+		}
+		else{
+			this.peso = Ejercicio.PESO_DEFECTO;
+		}
+		
 		this.aleatorio = aleatorio;
-		this.fechaIni = fechaIni;
-		this.fechaFin = fechaFin;
+		
+		if(fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
+			this.fechaIni = Ejercicio.FECHA_INICIO;
+			this.fechaFin = Ejercicio.FECHA_FIN;
+		}
+		else {
+			this.fechaIni = fechaIni;
+			this.fechaFin = fechaFin;
+		}
+		
 		this.preguntas = new ArrayList<Pregunta>();
 		this.notaMedia = 0;
 		this.pesoPreguntas = 0;
@@ -127,6 +175,14 @@ public class Ejercicio extends Contenido implements Serializable{
 	 */
 	public int getPeso() {
 		return peso;
+	}
+	
+	/**
+	 * Método para obtener el peso por defecto de un ejercicio
+	 * @return int
+	 */
+	public int getPesoDefecto(){
+		return Ejercicio.PESO_DEFECTO;
 	}
 	
 	/**
@@ -168,6 +224,14 @@ public class Ejercicio extends Contenido implements Serializable{
 	public LocalDate getFechaIni() {
 		return fechaIni;
 	}
+	
+	/**
+	 * Métod para obtener la fecha de inicio por defecto
+	 * @return localdate
+	 */
+	public LocalDate getFechaIniDefecto(){
+		return Ejercicio.FECHA_INICIO;
+	}
 
 	/**
 	 * Set fecha inicio
@@ -183,6 +247,15 @@ public class Ejercicio extends Contenido implements Serializable{
 	 */
 	public LocalDate getFechaFin() {
 		return fechaFin;
+	}
+	
+	
+	/**
+	 * Métod para obtener la fecha de cierre por defecto
+	 * @return localdate
+	 */
+	public LocalDate getFechaFinDefecto(){
+		return Ejercicio.FECHA_FIN;
 	}
 
 	/**
@@ -235,6 +308,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean addPregunta(Pregunta preg){
+		if(preg == null) return false;
 		this.pesoPreguntas += preg.getValorPregunta();
 		return this.preguntas.add(preg);	
 	}
@@ -244,6 +318,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param pregunta
 	 */
 	public void removePregunta(Pregunta preg){
+		if(preg == null) return;
 		this.preguntas.remove(preg);
 	}
 	
