@@ -30,6 +30,13 @@ import solicitud.Solicitud;
 public class Plataforma implements Serializable {
 	
 	/**
+	 * Para poder guardar el objeto
+	 */
+	private ArrayList<Asignatura> asigs;
+	private ArrayList<Alumno> alus;
+	private Profesor prof;
+	
+	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
@@ -84,7 +91,7 @@ public class Plataforma implements Serializable {
 		Plataforma.fechaActual = LocalDate.now();
 		Plataforma.loggedAs = null;
 		Plataforma.emailSystem = new EmailSystem();
-		if( this.loadData() == false){
+		if(this.loadData() == false){
 			this.readFile();
 		}
 		Plataforma.plat = this;
@@ -104,17 +111,25 @@ public class Plataforma implements Serializable {
 	/**
 	 * Método para cerrar la plataforma.
 	 */
-	public void closePlataforma(){
-		this.saveData();
+	public static void closePlataforma(){
+		Plataforma.plat.saveData();
+		Plataforma.alumnos = null;
+		Plataforma.asignaturas = null;
+		Plataforma.emailSystem = null;
+		Plataforma.profesor = null;
+		Plataforma.loggedAs = null;
+		Plataforma.plat = null;
 	}
 	
 	/**
 	 * Guarda los datos de la plataforma completa.
 	 */
 	private void saveData(){
+		this.asigs = Plataforma.asignaturas;
+		this.alus  = Plataforma.alumnos;
+		this.prof = Plataforma.profesor;
 		 try {
-
-	         FileOutputStream out = new FileOutputStream("./data/plataforma");
+			 FileOutputStream out = new FileOutputStream(new File("./data/plataforma"));
 	         ObjectOutputStream oout = new ObjectOutputStream(out);
 
 	         oout.writeObject(Plataforma.plat);
@@ -135,7 +150,7 @@ public class Plataforma implements Serializable {
 		 try {
 
 	         // create a new file with an ObjectOutputStream
-	          out = new FileInputStream("./data/plataforma");
+	          out = new FileInputStream(new File("./data/plataforma"));
 		 } catch (Exception FileNotFoundException){
 			 return false;
 		 }
@@ -150,7 +165,10 @@ public class Plataforma implements Serializable {
 		 } catch (Exception ex) {
 	         ex.printStackTrace();
 	     }
-		 return true;
+		Plataforma.asignaturas = Plataforma.plat.asigs;
+		Plataforma.alumnos = Plataforma.plat.alus;
+		Plataforma.profesor = Plataforma.plat.prof;
+		return true;
 
 	}
 	
@@ -276,4 +294,13 @@ public class Plataforma implements Serializable {
 		Plataforma.loggedAs = null;
 	}
 	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Plataforma: " + Plataforma.NAME + "\nAlumnos: " + Plataforma.alumnos + 
+				"\nAsignaturas: " + Plataforma.asignaturas + "\nProfesor: " + Plataforma.profesor;
+	}
 }

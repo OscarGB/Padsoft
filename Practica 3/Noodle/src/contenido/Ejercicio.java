@@ -360,6 +360,10 @@ public class Ejercicio extends Contenido implements Serializable{
 	
 	//Override
 	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
 	@Override
 	public String toString(){
 		String aux = "";
@@ -368,7 +372,7 @@ public class Ejercicio extends Contenido implements Serializable{
 			aux += "- " + p.enunciado + " [Peso: " + p.valorPregunta + "]\n";
 		}
 		
-		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + " Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia;
+		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + " Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia + "\n";
 	}
 	
 

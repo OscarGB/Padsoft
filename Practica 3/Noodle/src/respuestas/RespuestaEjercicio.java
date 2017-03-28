@@ -1,5 +1,6 @@
 package respuestas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import contenido.Ejercicio;
@@ -11,7 +12,12 @@ import contenido.Ejercicio;
  * @date 07/03/2017
  */
 
-public class RespuestaEjercicio {
+public class RespuestaEjercicio implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Respuestas de las preguntas
 	 */
@@ -72,4 +78,13 @@ public class RespuestaEjercicio {
 		}
 		return this.nota;
 	}	
+	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return "Respuestas al ejercicio " + this.ej.getTitulo() + "\n\tRespuestas: " + this.respuestas;
+	}
 }

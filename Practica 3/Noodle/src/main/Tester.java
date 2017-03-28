@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class Tester {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		Asignatura asig1;
 		Asignatura asig2;
+		File file = new File("./data/plataforma");
+		file.delete();
 		Plataforma Noodle = Plataforma.openPlataforma();
 		
 		Profesor p1 = Plataforma.profesor;
@@ -191,6 +194,20 @@ public class Tester {
 		ej.responderEjercicio(a1, res);
 		
 		System.out.println("\n" + asig1);
+		
+		//Imprimir las Estadisticas de la asignatura
+		System.out.println(asig1.getEstadisticas());
+		
+		System.out.println("\n" + a1.getEstadisticas());
+		
+		Plataforma.closePlataforma();
+		
+		Plataforma.openPlataforma();
+		
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		
+		System.out.println("\n" + Plataforma.plat);
+		
 		
 	}
 

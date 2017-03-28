@@ -1,5 +1,7 @@
 package respuestas;
 
+import java.io.Serializable;
+
 import contenido.Pregunta;
 
 /**
@@ -9,7 +11,12 @@ import contenido.Pregunta;
  * @date 07/03/2017
  */
 
-public abstract class RespuestaPregunta {
+public abstract class RespuestaPregunta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Almacena la nota obtenida en la pregunta
 	 */
@@ -48,5 +55,14 @@ public abstract class RespuestaPregunta {
 	 */
 	public boolean esCorrecta(){
 		return false;
+	}
+	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return null;
 	}
 }

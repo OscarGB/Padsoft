@@ -76,6 +76,15 @@ public class Opciones implements Serializable {
 		this.correcta = correcta;
 	}
 	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
+	@Override
+	public String toString(){
+		return this.respuesta;
+	}
+	
 	
 	
 }
