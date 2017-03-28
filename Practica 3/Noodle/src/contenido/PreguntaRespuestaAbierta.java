@@ -73,7 +73,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * @param respuesta
 	 * @return boolean
 	 */
-	public boolean addRespuestaAbierta(String respuesta){
+	public boolean addOpcion(String respuesta){
 		return this.respuestas.add(respuesta);
 	}
 	
@@ -81,7 +81,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * Método para eliminar una posible respuesta abierta
 	 * @param respuesta
 	 */
-	public void removeRespuestaAbierta(String respuesta){
+	public void removeOpcion(String respuesta){
 		this.respuestas.remove(respuesta);
 		return;
 	}

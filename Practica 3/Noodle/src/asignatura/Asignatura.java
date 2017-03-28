@@ -8,6 +8,7 @@ import contenido.Tema;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
+import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
 import solicitud.Solicitud;
 
@@ -47,6 +48,11 @@ public class Asignatura implements Serializable {
 	private ArrayList<Solicitud> expulsados;
 	
 	/**
+	 * Array con las estadisticas de todos los alumnos
+	 */
+	private ArrayList<EstadisticasAlumno> estadisticas;
+	
+	/**
 	 * Nombre de la asignatura
 	 */
 	private String nombre;
@@ -65,6 +71,7 @@ public class Asignatura implements Serializable {
 		this.expulsados = new ArrayList<Solicitud>();
 		this.nombre = nombre;
 		this.raiz = new ArrayList<Contenido>();
+		this.estadisticas = new ArrayList<EstadisticasAlumno>();
 	}
 	
 	
@@ -335,6 +342,12 @@ public class Asignatura implements Serializable {
 			}
 		}
 		return "Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
+	}
+
+
+	public void addEstadistica(EstadisticasAlumno estadisticasAlumno) {
+		this.estadisticas.add(estadisticasAlumno);
+		
 	}
 	
 }

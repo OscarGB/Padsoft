@@ -65,6 +65,7 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 * Método que añade una opción e incrementa el número de respuestas
 		 * correctas
 		 */
+		@Override
 		public boolean addOpcion(Opciones opcion){
 			this.numCorrectas ++;
 			return this.opciones.add(opcion);

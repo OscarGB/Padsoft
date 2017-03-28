@@ -18,6 +18,7 @@ import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import persona.Alumno;
 import respuestas.RespuestaEjercicio;
+import respuestas.RespuestaPregunta;
 import respuestas.RespuestaUnica;
 import solicitud.Solicitud;
 
@@ -299,12 +300,11 @@ public class AsignaturaTest {
 		
 		ej1.addPregunta(pre);
 		
-		RespuestaEjercicio res = new RespuestaEjercicio(ej1);
-		res.addRespuesta(new RespuestaUnica(pre, true));
+		RespuestaPregunta res = new RespuestaUnica(pre, true);
 
-		
-		//Metemos null para no meter respuestas
-		ej1.responderEjercicio(nacho, new ArrayList<RespuestaEjercicio>(res));
+		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
+		array.add(res);
+		ej1.responderEjercicio(nacho, array);
 		
 		
 		

@@ -125,11 +125,10 @@ public class Tema extends Contenido  implements Serializable{
 		
 		for(Contenido s: subcontenido){
 			if(s.getVisibilidad() == true){
-				aux += s.titulo;
-				aux += " ";
+				aux += s.toString();
 			}
 		}
-		return "Titulo del tema: " + this.titulo + "\nTitulos de subcontenidos: " + aux + "\n";
+		return "Titulo del tema: " + this.titulo + "\nSubcontenidos: " + aux + "\n";
 	}
 	
 

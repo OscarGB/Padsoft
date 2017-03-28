@@ -39,8 +39,8 @@ public class test_pregunta {
 		p2.addOpcion(o3);
 		p2.addOpcion(o4);
 		
-		p4.addRespuestaAbierta("HOLA");
-		p4.addRespuestaAbierta("Hola");
+		p4.addOpcion("HOLA");
+		p4.addOpcion("Hola");
 		
 		e1.addPregunta(p1);
 		e1.addPregunta(p2);

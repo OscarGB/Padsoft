@@ -22,6 +22,12 @@ public class RespuestaPreguntaTest {
 		pre = new PreguntaRespuestaSimple("Prueba", true, -1, 4);
 		Opciones correcta = new Opciones("Es", true);
 		pre.addOpcion(correcta);
+		if(pre.getClass() == PreguntaRespuestaSimple.class){
+			assertTrue(true);
+		}
+		else{
+			assertTrue(false);
+		}
 		res = new RespuestaSimple(pre, correcta);
 		assertTrue(res.esCorrecta());
 		assertTrue(res.CalcularNota() == 4);
@@ -50,7 +56,7 @@ public class RespuestaPreguntaTest {
 	@Test
 	public void testRespuestaPreguntaAbierta() {
 		pre = new PreguntaRespuestaAbierta("Prueba", true, -1, 4);
-		((PreguntaRespuestaAbierta)pre).addRespuestaAbierta("Mola");
+		pre.addOpcion("Mola");
 		res = new RespuestaAbierta(pre, "Moli");
 		assertFalse(res.esCorrecta());
 		assertTrue(res.CalcularNota() == -1);
@@ -68,9 +74,9 @@ public class RespuestaPreguntaTest {
 		Opciones o2 = new Opciones("Esta tambien", true);
 		Opciones o3 = new Opciones("Esta no", false);
 		pre = new PreguntaRespuestaMultiple("Prueba", true, -1, 4);
-		((PreguntaRespuestaMultiple)pre).addOpcion(o1);
-		((PreguntaRespuestaMultiple)pre).addOpcion(o2);
-		((PreguntaRespuestaMultiple)pre).addOpcion(o3);
+		pre.addOpcion(o1);
+		pre.addOpcion(o2);
+		pre.addOpcion(o3);
 		ArrayList<Opciones> opc = new ArrayList<Opciones>();
 		opc.add(o1);
 		res = new RespuestaMultiple(pre, opc);
