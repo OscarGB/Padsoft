@@ -2,7 +2,6 @@ package respuestas;
 
 import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
 
 /**
  * Clase RespuestaUnica
@@ -12,14 +11,20 @@ import contenido.PreguntaRespuestaAbierta;
  */
 
 public class RespuestaUnica extends RespuestaPregunta{
+	
+	//Variables
+	
 	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Respuesta escogida
 	 */
 	private Opciones respuesta;
+	
+	//Cosntructor
 
 	/**
 	 * constructor de respuesta simple
@@ -31,8 +36,10 @@ public class RespuestaUnica extends RespuestaPregunta{
 		this.respuesta=respuesta;
 	}
 	
+	//Método
+	
 	/**
-	 * MÃ©todo para comprobar si la respuesta simple es correcta
+	 * Método para comprobar si la respuesta simple es correcta
 	 * @return boolean
 	 */
 	@Override
@@ -44,6 +51,8 @@ public class RespuestaUnica extends RespuestaPregunta{
 		}
 		return false;
 	}
+	
+	//Override
 	
 	/**
 	 * toString, Override

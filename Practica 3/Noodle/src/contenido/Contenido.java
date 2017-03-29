@@ -84,6 +84,9 @@ public abstract class Contenido implements Serializable {
 		if(tema == null){
 			return;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.padre = tema;
 		return; 
 	}
@@ -112,6 +115,9 @@ public abstract class Contenido implements Serializable {
 		if(titulo == null || titulo == ""){
 			return;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.titulo = titulo;
 	}
 
@@ -128,6 +134,9 @@ public abstract class Contenido implements Serializable {
 	 * @param visibilidad
 	 */
 	public void setVisibilidad(boolean visibilidad) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.visibilidad = visibilidad;
 	}
 	
@@ -141,7 +150,6 @@ public abstract class Contenido implements Serializable {
 	
 	//Métodos
 	
-	
 	/**
 	 * Método para borrar un contenido.En Asignatura se comprueba que el padre
 	 * no sea null
@@ -151,6 +159,10 @@ public abstract class Contenido implements Serializable {
 	 * @param contenido
 	 */
 	public void eraseContenido(){
+		
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		
 		if(this.padre == null){
 			this.getAsignatura().getRaiz().remove(this);
@@ -169,6 +181,9 @@ public abstract class Contenido implements Serializable {
 	 * un tema
 	 */
 	public void ocultarContenido(){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.setVisibilidad(false);
 		return;
 	}

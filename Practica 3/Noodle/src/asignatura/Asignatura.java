@@ -123,6 +123,9 @@ public class Asignatura implements Serializable {
 	 * @return estadisticas (ArrayList)
 	 */
 	public ArrayList<EstadisticasAlumno> getEstadisticas(){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return null;
+		}
 		return this.estadisticas;
 	}
 	
@@ -135,6 +138,9 @@ public class Asignatura implements Serializable {
 	 */
 	public boolean addAlumno(Alumno alumno){
 		if(alumno == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return false;
 		}
 		if(this.isAlumnoIn(alumno) == true){
@@ -161,6 +167,9 @@ public class Asignatura implements Serializable {
 	 */
 	public boolean expulsarAlumno(Alumno alumno){
 		if(alumno == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return false;
 		}
 		if(isAlumnoIn(alumno) == true){
@@ -191,6 +200,9 @@ public class Asignatura implements Serializable {
 		if(alumno == null){
 			return false;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		Solicitud readmision = new Solicitud(alumno, this);
 		
 		for(Solicitud s : this.expulsados){
@@ -218,6 +230,9 @@ public class Asignatura implements Serializable {
 		if(solicitud == null){
 			return;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.solicitudes.remove(solicitud);	
 		try {
 			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
@@ -236,6 +251,9 @@ public class Asignatura implements Serializable {
 		if(sol == null){
 			return false;
 		}
+		if(Plataforma.loggedAs == null){
+			return false;
+		}
 		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false && this.getSolicitudesExpulsados().contains(sol) == false){
 			if(this.solicitudes.add(sol) == true){
 				return true;
@@ -251,6 +269,9 @@ public class Asignatura implements Serializable {
 	 */
 	public boolean addSolicitudExpulsado(Solicitud sol){
 		if(sol == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return false;
 		}
 		if(this.expulsados.contains(sol) == false){
@@ -292,6 +313,9 @@ public class Asignatura implements Serializable {
 		if(sol == null){
 			return false;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if(this.solicitudes.contains(sol) == true){
 			Alumno alumno = sol.getAlumno();
 			this.addAlumno(alumno);
@@ -311,6 +335,9 @@ public class Asignatura implements Serializable {
 		if(con == null){
 			return false;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		return this.raiz.add(con);
 	}
 	
@@ -322,6 +349,9 @@ public class Asignatura implements Serializable {
 	 */
 	public void eraseContenidoRaiz(Contenido con){
 		if(con == null){
+			return;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return;
 		}
 		this.raiz.remove(con);
@@ -337,6 +367,9 @@ public class Asignatura implements Serializable {
 	 */
 	public boolean eraseContenido(Contenido con){
 		if(con == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return false;
 		}
 		if(con.esBorrable() == false){
@@ -363,6 +396,9 @@ public class Asignatura implements Serializable {
 		if(sub == null){
 			return false;
 		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if(padre == null){
 			return this.addContenidoRaiz(sub);
 		}
@@ -377,6 +413,9 @@ public class Asignatura implements Serializable {
 	 */
 	public boolean addEstadistica(EstadisticasAlumno estadisticasAlumno) {
 		if(estadisticasAlumno == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null){
 			return false;
 		}
 		return this.estadisticas.add(estadisticasAlumno);

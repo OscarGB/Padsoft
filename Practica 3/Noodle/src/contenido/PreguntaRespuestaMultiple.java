@@ -2,6 +2,9 @@ package contenido;
 
 import java.io.Serializable;
 
+import persona.Alumno;
+import plataforma.Plataforma;
+
 /**
  * Clase RespuestaMultiple
  * @author Jose Ignacio Gomez
@@ -67,6 +70,9 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 */
 		@Override
 		public boolean addOpcion(Opciones opcion){
+			if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+				return false;
+			}
 			if(opcion == null) return false;
 			this.numCorrectas ++;
 			return this.opciones.add(opcion);
@@ -77,6 +83,9 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 */
 		@Override
 		public void removeOpcion(Opciones opcion){
+			if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+				return;
+			}
 			if(opcion == null) return;
 			this.opciones.remove(opcion);
 			return;

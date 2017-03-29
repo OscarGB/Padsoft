@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
 
 /**
  * Clase RespuestaMultiple
@@ -14,12 +13,21 @@ import contenido.PreguntaRespuestaAbierta;
  */
 
 public class RespuestaMultiple extends RespuestaPregunta{
-
+	
+	//Variables
+	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Respuestas escogidas
 	 */
 	private ArrayList<Opciones> respuestas;
 		
+	//Constructor
+	
 	/**
 	 * Constructor de respuesta multiple
 	 * @param p
@@ -29,6 +37,8 @@ public class RespuestaMultiple extends RespuestaPregunta{
 		super(p);
 		this.respuestas = respuestas;
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método para comprobar si la respuesta multiple es correcta
@@ -63,6 +73,8 @@ public class RespuestaMultiple extends RespuestaPregunta{
 		// Si todo es correcto y no hay ninguna correcta sin responder
 		return true;
 	}
+	
+	//Override
 	
 	/**
 	 * toString, Override

@@ -263,6 +263,9 @@ public class Plataforma implements Serializable {
 	 */
 	public static void addAsignatura(Asignatura asignatura) {
 		if(asignatura == null) return;
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		if(Plataforma.asignaturas.contains(asignatura)){
 			return;
 		}
@@ -274,6 +277,9 @@ public class Plataforma implements Serializable {
 	 * @param asignatura
 	 */
 	public static void eraseAsignatura(Asignatura asignatura) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		if(asignatura == null) return;
 		Plataforma.asignaturas.remove(asignatura);
 	}

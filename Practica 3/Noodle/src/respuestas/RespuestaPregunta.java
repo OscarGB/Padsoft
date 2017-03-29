@@ -12,8 +12,11 @@ import contenido.Pregunta;
  */
 
 public abstract class RespuestaPregunta implements Serializable{
+	
+	//Variables
+	
 	/**
-	 * 
+	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +34,8 @@ public abstract class RespuestaPregunta implements Serializable{
 	 * Pregunta que ha sido respondida en esta pregunta
 	 */
 	protected Pregunta preguntaRespondida;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de RespuestaPregunta
@@ -76,12 +81,14 @@ public abstract class RespuestaPregunta implements Serializable{
 	}
 	
 	/**
-	 * MÃ©todo que comprueba si la respuesta es correcta
+	 * Método que comprueba si la respuesta es correcta
 	 * @return boolean
 	 */
 	public boolean esCorrecta(){
 		return false;
 	}
+	
+	//Override
 	
 	/**
 	 * toString, Override
