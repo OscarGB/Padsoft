@@ -1,6 +1,9 @@
 package contenido;
 import java.io.Serializable;
 
+import persona.Alumno;
+import plataforma.Plataforma;
+
 /**
  * Clase PreguntaRespuestaUnica
  * @author Jose Ignacio Gomez
@@ -61,6 +64,9 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 */
 	@Override
 	public boolean addOpcion(Opciones op){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if((op.esCorrecta() == true) && (this.numCorrectas() >=1)){
 			return false;
 		}
@@ -73,6 +79,9 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 */
 	@Override
 	public void removeOpcion(Opciones opcion){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		if(opcion == null) return;
 		this.opciones.remove(opcion);
 		return;

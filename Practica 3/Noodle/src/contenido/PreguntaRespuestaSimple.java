@@ -1,6 +1,9 @@
 package contenido;
 import java.io.Serializable;
 
+import persona.Alumno;
+import plataforma.Plataforma;
+
 /**
  * Clase PreguntaRespuestaSimple
  * @author Jose Ignacio Gomez
@@ -67,6 +70,9 @@ public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
 	 * @param respuesta
 	 */
 	public void setRespuesta(boolean respuesta) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.respuesta = respuesta;
 	}
 	

@@ -1,6 +1,10 @@
 package contenido;
 
 import java.util.ArrayList;
+
+import persona.Alumno;
+import plataforma.Plataforma;
+
 import java.io.Serializable;
 
 /**
@@ -123,6 +127,9 @@ public abstract class Pregunta implements Serializable{
 	 */
 	public void setEnunciado(String enunciado) {
 		if(enunciado == null || enunciado == "") return;
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.enunciado = enunciado;
 	}
 
@@ -139,6 +146,9 @@ public abstract class Pregunta implements Serializable{
 	 * @param aleatorio 
 	 */
 	public void setAleatorio(boolean aleatorio) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.aleatorio = aleatorio;
 	}
 
@@ -155,6 +165,9 @@ public abstract class Pregunta implements Serializable{
 	 * @param penalización
 	 */
 	public void setPenalizacion(float penalizacion) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.penalizacion = - Math.abs(penalizacion);
 	}
 
@@ -171,6 +184,9 @@ public abstract class Pregunta implements Serializable{
 	 * @param valorPregunta
 	 */
 	public void setValorPregunta(float valorPregunta) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.valorPregunta = Math.abs(valorPregunta);
 	}
 

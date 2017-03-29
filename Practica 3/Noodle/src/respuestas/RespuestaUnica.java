@@ -2,7 +2,6 @@ package respuestas;
 
 import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
 
 /**
  * Clase RespuestaUnica

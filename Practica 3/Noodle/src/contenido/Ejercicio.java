@@ -200,6 +200,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param peso
 	 */
 	public void setPeso(int peso) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		if(peso < 0){
 			this.peso = -peso;
 			return;
@@ -220,6 +223,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param aleatorio
 	 */
 	public void setAleatorio(boolean aleatorio) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.aleatorio = aleatorio;
 	}
 
@@ -245,6 +251,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean setFechaIni(LocalDate fechaIni) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if(fechaIni == null){
 			return false;
 		}
@@ -289,6 +298,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean setFechaFin(LocalDate fechaFin) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if(fechaFin == null){
 			return false;
 		}
@@ -350,6 +362,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean addPregunta(Pregunta preg){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return false;
+		}
 		if(preg == null) return false;
 		if(preg.bienFormada() == false) return false;
 		this.pesoPreguntas += preg.getValorPregunta();
@@ -361,6 +376,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param pregunta
 	 */
 	public void removePregunta(Pregunta preg){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		if(preg == null) return;
 		this.preguntas.remove(preg);
 	}
@@ -373,6 +391,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 */
 	public boolean responderEjercicio(Alumno al, ArrayList<RespuestaPregunta> res){
 		if(res == null || al == null){
+			return false;
+		}
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Profesor.class){
 			return false;
 		}
 		if(this.asignatura.getAlumnos().contains(al) == false){
@@ -416,6 +437,9 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param nota
 	 */
 	public void addNota(float nota){
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Profesor.class){
+			return;
+		}
 		if(nota < 0) return;
 		this.notaMedia = (this.notaMedia * this.numTerminados + nota) / (this.numTerminados + 1);
 		this.numTerminados ++;

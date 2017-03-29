@@ -1,6 +1,9 @@
 package contenido;
 
 import asignatura.Asignatura;
+import persona.Alumno;
+import plataforma.Plataforma;
+
 import java.io.Serializable;
 
 /**
@@ -65,6 +68,9 @@ public class Apuntes extends Contenido implements Serializable{
 	 * @param texto
 	 */
 	public void setTexto(String texto) {
+		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+			return;
+		}
 		this.texto = texto;
 	}
 	
