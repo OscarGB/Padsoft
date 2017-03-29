@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import contenido.Opciones;
 import contenido.PreguntaRespuestaAbierta;
 
 /**
@@ -69,7 +68,6 @@ public class PreguntaRespuestaAbiertaTest {
 	 */
 	@Test
 	public void testAddOpcion2(){
-		Opciones op = new Opciones("2", true);
 		assertFalse(preg.addOpcion((String)null));
 		assertTrue(preg.getRespuestas().isEmpty());
 	}

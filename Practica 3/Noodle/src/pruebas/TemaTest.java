@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -31,16 +30,14 @@ public class TemaTest {
 	private Asignatura mates = new Asignatura("Mates");
 	private String titulo = "Tema 1";
 	private Tema tema1 = new Tema(titulo, true, mates);
-	private File file;
-	private Plataforma plataforma;
 	
 	
 	@Before
 	public void setUp(){
-		
-		file = new File("./data/plataforma");
+		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 	}
 	
 	/**
@@ -133,8 +130,11 @@ public class TemaTest {
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
-		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		assertFalse(tema1.esBorrable());
 	}
 	

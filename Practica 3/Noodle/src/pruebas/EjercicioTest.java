@@ -42,7 +42,6 @@ public class EjercicioTest {
 	private Tema tema1;
 	private Ejercicio ej1;
 	private Ejercicio ej2;
-	private Plataforma plataforma;
 	private File file;
 	
 	@Before
@@ -51,7 +50,9 @@ public class EjercicioTest {
 		file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		
 		mates = new Asignatura("Mates");
 		tema1 = new Tema("Tema1", true, mates);
 		nacho = Alumno.CreaAlumno("2", "nacho", "Password", "nacho@gmail.com");
@@ -185,6 +186,8 @@ public class EjercicioTest {
 	@Test
 	public void testResponderEjercicio1(){
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertFalse(nacho.getEstadisticas().isEmpty());
 	}
@@ -233,6 +236,8 @@ public class EjercicioTest {
 		RespuestaEjercicio respuestas = new RespuestaEjercicio(ej2);
 		nuevo.addRespuestaEjercicio(respuestas);
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertTrue(nuevo.getRespuestas().contains(respuestas));
 	}
@@ -244,6 +249,8 @@ public class EjercicioTest {
 	@Test
 	public void testResponderEjercicio6(){
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertFalse(ej1.responderEjercicio(nacho, array));
 	}
@@ -253,6 +260,8 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testAddNota(){
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.addNota(6);
 		ej1.addNota(8);
 		assertTrue(ej1.getNotaMedia() == 7);
@@ -359,7 +368,8 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testSetFecha2(){
-		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		LocalDate fin = Plataforma.fechaActual.plusDays(10);
 		LocalDate ini = Plataforma.fechaActual.plusDays(2);
 		assertFalse(ej1.setFechaFin(fin));

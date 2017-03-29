@@ -2,11 +2,15 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
 import contenido.Apuntes;
 import contenido.Tema;
+import plataforma.Plataforma;
 
 /**
  * Test de Apuntes
@@ -20,6 +24,15 @@ public class ApuntesTest {
 	Tema tema1 = new Tema("Tema 1", true, mates);
 	String texto = "Estos son los apuntes";
 	String titulo = "Apuntes tema 1";
+	
+	@Before
+	public void setUp() throws Exception {
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		
+	}
 
 	/**
 	 * Test para crear unos apuntes en la raiz

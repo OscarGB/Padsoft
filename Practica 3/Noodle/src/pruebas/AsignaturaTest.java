@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -11,16 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
-import contenido.Apuntes;
 import contenido.Ejercicio;
-import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaUnica;
 import contenido.PreguntaRespuestaSimple;
 import contenido.Tema;
 import persona.Alumno;
 import plataforma.Plataforma;
-import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
 import solicitud.Solicitud;
@@ -36,15 +31,13 @@ public class AsignaturaTest {
 	private Alumno nacho;
 	private Solicitud sol1;
 	private Tema tema1;
-	private Plataforma plataforma;
-	private File file;
 	
 	@Before
 	public void setUp() throws Exception {
-		file = new File("./data/plataforma");
+		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		mates = new Asignatura("Mates");
 		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
@@ -305,7 +298,14 @@ public class AsignaturaTest {
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		
 		assertFalse(mates.eraseContenido(tema1));
 	}
 	
@@ -328,7 +328,12 @@ public class AsignaturaTest {
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		
 		assertFalse(mates.eraseContenido(tema1));
 		

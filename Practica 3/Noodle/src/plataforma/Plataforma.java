@@ -9,16 +9,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
-import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import persona.*;
-import solicitud.Solicitud;
 
 /**
  * Clase Plataforma

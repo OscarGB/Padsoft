@@ -37,16 +37,6 @@ public class Ejercicio extends Contenido implements Serializable{
 	private static final int PESO_DEFECTO = 1;
 	
 	/**
-	 * Fecha de inicio por defecto
-	 */
-	private static final LocalDate FECHA_INICIO = Plataforma.getFechaActual().plusDays(0);
-	
-	/**
-	 * Fecha de cierre por defecto
-	 */
-	private static final LocalDate FECHA_FIN = Plataforma.getFechaActual().plusDays(10);
-
-	/**
 	 * Número de alumnos que han terminado el ejercicio
 	 */
 	private int numTerminados;
@@ -115,8 +105,8 @@ public class Ejercicio extends Contenido implements Serializable{
 		this.aleatorio = aleatorio;
 		
 		if(fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
-			this.fechaIni = Ejercicio.FECHA_INICIO;
-			this.fechaFin = Ejercicio.FECHA_FIN;
+			this.fechaIni = Plataforma.getFechaActual().plusDays(0);
+			this.fechaFin = Plataforma.getFechaActual().plusDays(10);
 		}
 		else {
 			this.fechaIni = fechaIni;
@@ -154,8 +144,8 @@ public class Ejercicio extends Contenido implements Serializable{
 		this.aleatorio = aleatorio;
 		
 		if(fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
-			this.fechaIni = Ejercicio.FECHA_INICIO;
-			this.fechaFin = Ejercicio.FECHA_FIN;
+			this.fechaIni = Plataforma.getFechaActual().plusDays(0);
+			this.fechaFin = Plataforma.getFechaActual().plusDays(10);
 		}
 		else {
 			this.fechaIni = fechaIni;
@@ -242,7 +232,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return localdate
 	 */
 	public LocalDate getFechaIniDefecto(){
-		return Ejercicio.FECHA_INICIO;
+		return Plataforma.getFechaActual().plusDays(0);
 	}
 
 	/**
@@ -289,7 +279,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return localdate
 	 */
 	public LocalDate getFechaFinDefecto(){
-		return Ejercicio.FECHA_FIN;
+		return Plataforma.getFechaActual().plusDays(10);
 	}
 
 	/**

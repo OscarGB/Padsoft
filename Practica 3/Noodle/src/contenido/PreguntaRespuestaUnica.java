@@ -44,21 +44,6 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	//Metodos
 	
 	/**
-	 * Método privado para saber el número de respuestas correctas que hay
-	 * @return
-	 */
-	private int numCorrectas(){
-		int num = 0;
-		for(Opciones op: this.opciones){
-			if(op.esCorrecta() == true){
-				num ++;
-			}
-		}
-		
-		return num;
-	}
-	
-	/**
 	 * Método que añade opciones al array de opciones
 	 * Si ya hay una correcta, no permite meter otra
 	 */

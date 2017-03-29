@@ -2,10 +2,13 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import contenido.*;
+import plataforma.Plataforma;
 import respuestas.*;
 
 /**
@@ -23,6 +26,10 @@ public class RespuestaUnicaTest {
 
 	@Before
 	public void setUp() throws Exception {
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		pre = new PreguntaRespuestaUnica("Ej", false, 3, 6);
 		pre.addOpcion(new Opciones("1", true));
 		pre.addOpcion(new Opciones("2", false));

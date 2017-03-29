@@ -21,11 +21,6 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	/**
-	 * Numero de respuestas correctas que hay
-	 */
-	private int numCorrectas;
-	
 	//Constructores
 		/**
 		 * Constructor de PreguntaRespuestaSimple con penalización
@@ -48,18 +43,6 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 */
 		public PreguntaRespuestaMultiple(String enunciado, boolean aleatorio, float valorPregunta){
 			super(enunciado, aleatorio, valorPregunta);
-			this.numCorrectas = 0;
-		}
-		
-		//Getters y setters
-		
-		
-		/**
-		 * Get del número de respuestas correctas
-		 * @return numCorrectas
-		 */
-		public int getNum(){
-			return this.numCorrectas;
 		}
 		
 		//Métodos
@@ -74,8 +57,8 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 				return false;
 			}
 			if(opcion == null) return false;
-			this.numCorrectas ++;
 			return this.opciones.add(opcion);
+			
 		}
 		
 		/**

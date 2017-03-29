@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 
 import org.junit.After;
 import org.junit.Before;
@@ -41,9 +40,12 @@ public class EstadisticasAlumnoTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		al = Alumno.CreaAlumno("1234", "Pedro", "Pe12", "pedro@gmail.com");
 		asig = new Asignatura("mates");
-		Plataforma.openPlataforma();
 	}
 	
 	@After

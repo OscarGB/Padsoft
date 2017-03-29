@@ -30,15 +30,13 @@ public class RespuestaEjercicioTest {
 	private Pregunta pregunta;
 	private Ejercicio ej;
 	private Asignatura asig;
-	private Plataforma plataforma;
-	private File file;
 	
 	@Before
 	public void setUp() throws Exception {
-		
-		file = new File("./data/plataforma");
+		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		pregunta = new PreguntaRespuestaSimple("Prueba", false, -4, 4, true);
 		pregunta2 = new PreguntaRespuestaSimple("Prueba2", false, -8, 6, false);
 		asig = new Asignatura("Lengua");

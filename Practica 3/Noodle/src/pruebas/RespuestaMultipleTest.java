@@ -2,6 +2,7 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaMultiple;
+import plataforma.Plataforma;
 import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
 
@@ -32,6 +34,10 @@ public class RespuestaMultipleTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		o1 = new Opciones("Esta", true);
 		o2 = new Opciones("Esta tambien", true);
 		o3 = new Opciones("Esta no", false);
