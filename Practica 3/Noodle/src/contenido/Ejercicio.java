@@ -39,12 +39,12 @@ public class Ejercicio extends Contenido implements Serializable{
 	/**
 	 * Fecha de inicio por defecto
 	 */
-	private static final LocalDate FECHA_INICIO = LocalDate.now().plusDays(1);
+	private static final LocalDate FECHA_INICIO = Plataforma.getFechaActual().plusDays(0);
 	
 	/**
 	 * Fecha de cierre por defecto
 	 */
-	private static final LocalDate FECHA_FIN = LocalDate.now().plusDays(10);
+	private static final LocalDate FECHA_FIN = Plataforma.getFechaActual().plusDays(10);
 
 	/**
 	 * Número de alumnos que han terminado el ejercicio
@@ -334,10 +334,10 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * Método para responder a un ejercicio
 	 * @param al
 	 * @param res
-	 * @return
+	 * @return boolean
 	 */
 	public boolean responderEjercicio(Alumno al, ArrayList<RespuestaPregunta> res){
-		if(res == null){
+		if(res == null || al == null){
 			return false;
 		}
 		if(this.asignatura.getAlumnos().contains(al) == false){
@@ -346,20 +346,29 @@ public class Ejercicio extends Contenido implements Serializable{
 		else if(this.sePuedeResponder() == false){
 			return false;
 		}
+		//Crea la respuesta
 		RespuestaEjercicio respuestas = new RespuestaEjercicio(this);
 		for(RespuestaPregunta resi : res){
 			if(this.getPreguntas().contains(resi.getPregunta())){
 				respuestas.addRespuesta(resi);
 			}
 		}
+		//Busca las estadísticas del alumno en esta asignatura 
+		//y les añade la respuesta y la nota de este ejercicio
 		ArrayList<EstadisticasAlumno> ests = al.getEstadisticas();
 		for(EstadisticasAlumno estadisticas : ests){
 			if(estadisticas.getAsignatura() == this.asignatura){
+				for(RespuestaEjercicio estas: estadisticas.getRespuestas()){
+					if(estas.getEjercicio() == this){
+						return false;
+					}
+				}
 				estadisticas.addRespuestaEjercicio(respuestas);
 				this.addNota(respuestas.calcularNota());
 				return true;
 			}
 		}
+		//Si el alumno no tiene estadísticas en esta asignatura, las crea
 		EstadisticasAlumno nuevo = new EstadisticasAlumno(this.asignatura, al);
 		nuevo.addRespuestaEjercicio(respuestas);
 		this.addNota(respuestas.calcularNota());
@@ -372,6 +381,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param nota
 	 */
 	public void addNota(float nota){
+		if(nota < 0) return;
 		this.notaMedia = (this.notaMedia * this.numTerminados + nota) / (this.numTerminados + 1);
 		this.numTerminados ++;
 		this.estado = EstadoEjercicio.RESPONDIDO;
@@ -388,7 +398,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		else if(this.estado == EstadoEjercicio.TERMINADO){
 			return false;
 		}
-		else if(LocalDate.now().isBefore(this.fechaFin) && LocalDate.now().isAfter(this.fechaIni)){
+		else if(Plataforma.getFechaActual().isBefore(this.fechaFin) && Plataforma.getFechaActual().isAfter(this.fechaIni)){
 			if(this.estado != EstadoEjercicio.RESPONDIDO){
 				this.estado = EstadoEjercicio.ABIERTO;
 			}
@@ -408,6 +418,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean sePuedeResponder(){
+		
 		if(enPlazo() == true && this.getVisibilidad() == true){
 			return true;
 		}

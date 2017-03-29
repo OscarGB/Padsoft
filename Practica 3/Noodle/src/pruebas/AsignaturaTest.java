@@ -2,9 +2,11 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +19,7 @@ import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import persona.Alumno;
+import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaUnica;
@@ -33,9 +36,15 @@ public class AsignaturaTest {
 	private Alumno nacho;
 	private Solicitud sol1;
 	private Tema tema1;
+	private Plataforma plataforma;
+	private File file;
 	
 	@Before
 	public void setUp() throws Exception {
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		mates = new Asignatura("Mates");
 		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
@@ -57,7 +66,6 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testAddSolicitudPendiente1(){
-		assertTrue(mates.addSolicitudPendiente(sol1));
 		assertTrue(mates.getSolicitudes().contains(sol1));
 	}
 	
@@ -67,7 +75,6 @@ public class AsignaturaTest {
 	@Test
 	public void testAddSolicitudPendiente2(){
 		Solicitud sol2 = new Solicitud(nacho, mates);
-		mates.addSolicitudPendiente(sol1);
 		assertFalse(mates.addSolicitudPendiente(sol2));
 		assertEquals(mates.getSolicitudes().size(), 1);
 	}
@@ -133,7 +140,6 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testAceptarSolicitud1(){
-		mates.addSolicitudPendiente(sol1);
 		mates.aceptarSolicitud(sol1);
 		
 		assertTrue(mates.isAlumnoIn(sol1.getAlumno()));
@@ -141,20 +147,10 @@ public class AsignaturaTest {
 	}
 	
 	/**
-	 * Test para aceptar una solicitud que no está en pendientes
-	 */
-	@Test
-	public void testAceptarSolicitud2(){
-		assertFalse(mates.aceptarSolicitud(sol1));
-		assertFalse(mates.isAlumnoIn(nacho));
-	}
-	
-	/**
 	 * Test para denegar una solicitud
 	 */
 	@Test
 	public void testDenegarSolicitud1(){
-		mates.addSolicitudPendiente(sol1);
 		mates.denegarSolicitud(sol1);
 		
 		assertFalse(mates.isAlumnoIn(sol1.getAlumno()));
@@ -283,15 +279,41 @@ public class AsignaturaTest {
 	}
 	
 	@Test
-	public void eraseContenidoRaiz4(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
-		
+	public void testEraseContenidoRaiz4(){
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));		
 		assertTrue(mates.eraseContenido(tema1));
 	}
 	
 	@Test
-	public void eraseContenidoRaiz5(){
-		Ejercicio ej1 = new Ejercicio(1, true, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), "Ejercicio 1", true, mates);
+	public void testEraseContenidoRaiz5(){
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		
+		assertTrue(ej1.enPlazo());
+		
+		mates.addAlumno(nacho);
+		
+		//Creamos las preguntas y las respuestas
+		Pregunta pre = new PreguntaRespuestaUnica("Prueba", true, -1, true);
+		
+		ej1.addPregunta(pre);
+		
+		RespuestaPregunta res = new RespuestaUnica(pre, true);
+
+		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
+		array.add(res);
+		ej1.responderEjercicio(nacho, array);
+		assertFalse(mates.eraseContenido(tema1));
+	}
+	
+	/**
+	 * Test para probar que un ejercicio ya terminado no se puede borrar
+	 */
+	@Test
+	public void testEraseContenidoRaiz6(){
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));		
 		
 		mates.addAlumno(nacho);
 		
@@ -306,11 +328,17 @@ public class AsignaturaTest {
 		array.add(res);
 		ej1.responderEjercicio(nacho, array);
 		
-		
-		
 		assertFalse(mates.eraseContenido(tema1));
+		
+		assertTrue(mates.getRaiz().contains(tema1));
+		assertTrue(tema1.getSubcontenido().contains(ej1));
 	}
 	
 	
+	
+	@After
+	public void afterTest(){
+		Plataforma.closePlataforma();
+	}
 	
 }

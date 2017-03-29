@@ -124,4 +124,12 @@ public class ProfesorTest {
 		assertFalse(profe.readmitirAlumno(asig1, null));
 	}
 	
+	/**
+	 * Prueba que no se puede readmitir a un alumno que no ha sido expulsado
+	 */
+	@Test
+	public void testsolicitud8() {
+		assertFalse(profe.readmitirAlumno(asig1, al));
+	}
+	
 }
