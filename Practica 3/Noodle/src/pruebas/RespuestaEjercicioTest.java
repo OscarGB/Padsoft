@@ -30,8 +30,6 @@ public class RespuestaEjercicioTest {
 	private Pregunta pregunta;
 	private Ejercicio ej;
 	private Asignatura asig;
-	private Plataforma plataforma;
-	private File file;
 	
 	@Before
 	public void setUp() throws Exception {

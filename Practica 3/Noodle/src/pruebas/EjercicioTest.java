@@ -42,7 +42,6 @@ public class EjercicioTest {
 	private Tema tema1;
 	private Ejercicio ej1;
 	private Ejercicio ej2;
-	private Plataforma plataforma;
 	private File file;
 	
 	@Before

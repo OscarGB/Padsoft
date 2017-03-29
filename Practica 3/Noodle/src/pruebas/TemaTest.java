@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -31,8 +30,6 @@ public class TemaTest {
 	private Asignatura mates = new Asignatura("Mates");
 	private String titulo = "Tema 1";
 	private Tema tema1 = new Tema(titulo, true, mates);
-	private File file;
-	private Plataforma plataforma;
 	
 	
 	@Before

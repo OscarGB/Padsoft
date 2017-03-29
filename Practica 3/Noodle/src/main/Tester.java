@@ -37,8 +37,8 @@ public class Tester {
 			
 		Alumno a1 = Plataforma.alumnos.get(0);
 		
-		//Login como alumno
-		Plataforma.login(a1.getNia(), a1.getPassword());
+		//Login como profesor
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		
 		//Creación de Asignaturas
 		asig1 = new Asignatura("matematicas");
@@ -77,6 +77,7 @@ public class Tester {
 		// Solicita acceso de nuevo, pero no se le deja (imprime null)
 		s2 = a1.solicitarAcceso(asig1);
 		
+		System.out.println("Asignaturas existentes" + Plataforma.asignaturas);
 		System.out.println(s1);
 		System.out.println(s2);	
 		
@@ -110,7 +111,7 @@ public class Tester {
 		
 		System.out.println("\n" + asig1);
 		
-		//Crear una solicitud
+		//Crear unos apuntes
 		Apuntes apun = new Apuntes("Esto son unos apuntes muy bonitos", "Apunte1", true, asig1, t1);
 
 		System.out.println("\n" + asig1);
@@ -130,19 +131,20 @@ public class Tester {
 
 		//Modifica visibilidad
 		ej.setVisibilidad(false);
-		
+
+		//Como es profesor podemos ver los elementos invisibles
 		System.out.println("\n" + asig1);
 		
-		//Login como profesor para ver los elementos invisibles
-		Plataforma.logout();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
-
-		System.out.println("\n" + asig1);
-
 		//Login como alumno
 		Plataforma.logout();
 		Plataforma.login(a1.getNia(), a1.getPassword());
 
+		//Como somos alumno no vemos los elementos invisibles
+		System.out.println("\n Asignaturas del alumno: \n" + Plataforma.loggedAs.getAsignaturas());
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		
 		ej.setVisibilidad(true);
 		
 		ej.setPeso(8);
@@ -187,6 +189,11 @@ public class Tester {
 		
 		System.out.println("\n" + asig1);
 		
+		//Login como alumno
+		Plataforma.logout();
+		Plataforma.login(a1.getNia(), a1.getPassword());
+		
+		//Comienzo de Responder al ejercicio
 		ArrayList<RespuestaPregunta> res = new ArrayList<RespuestaPregunta>();
 		
 		//Correcta
@@ -199,7 +206,16 @@ public class Tester {
 		res.add(new RespuestaAbierta(preg4, "Lorca"));
 		
 		ej.responderEjercicio(a1, res);
+	
+		//Ver una corrección a la pregunta1:
+		System.out.println(preg1.getEnunciado());
+		for(Opciones op : preg1.getOpciones()){
+			System.out.println("\t" + op.getRespuesta() + " ¿Correcta? " + op.esCorrecta());
+		}
 		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+				
 		System.out.println("\n" + asig1);
 		
 		//Imprimir las Estadisticas de la asignatura
@@ -207,16 +223,16 @@ public class Tester {
 		
 		System.out.println("\n" + a1.getEstadisticas());
 		
+		//Comprobar que se guarda todo correctamente
 		Plataforma.closePlataforma();
 		
 		Plataforma.openPlataforma();
 		
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		
 		System.out.println("\n" + Plataforma.plat);
 		
 		Plataforma.closePlataforma();
-		
 		
 	}
 

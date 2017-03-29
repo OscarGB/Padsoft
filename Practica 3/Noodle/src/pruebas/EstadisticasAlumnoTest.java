@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 
 import org.junit.After;
 import org.junit.Before;

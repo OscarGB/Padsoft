@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import contenido.Opciones;
-import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
 
 /**

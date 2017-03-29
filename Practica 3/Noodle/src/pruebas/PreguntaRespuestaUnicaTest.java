@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import contenido.Opciones;
-import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
 import plataforma.Plataforma;
 

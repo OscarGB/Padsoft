@@ -89,6 +89,7 @@ public class Alumno extends Persona implements Serializable{
 	 * Devuelve las asignaturas en las que está matriculado el Alumno
 	 * @return ArrayList<Asignatura>
 	 */
+	@Override
 	public ArrayList<Asignatura> getAsignaturas() {
 		return asignaturas;
 	}

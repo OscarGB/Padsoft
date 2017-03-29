@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -11,16 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
-import contenido.Apuntes;
 import contenido.Ejercicio;
-import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaUnica;
 import contenido.PreguntaRespuestaSimple;
 import contenido.Tema;
 import persona.Alumno;
 import plataforma.Plataforma;
-import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
 import solicitud.Solicitud;
@@ -36,8 +31,6 @@ public class AsignaturaTest {
 	private Alumno nacho;
 	private Solicitud sol1;
 	private Tema tema1;
-	private Plataforma plataforma;
-	private File file;
 	
 	@Before
 	public void setUp() throws Exception {

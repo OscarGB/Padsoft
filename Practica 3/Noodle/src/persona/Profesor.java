@@ -48,7 +48,7 @@ public class Profesor extends Persona implements Serializable{
 		return Profesor.profesor;
 	}
 		
-	//Setters y getters
+	//Métodos
 	
 	/**
 	 * Método para obtener un ArrayList con todas las solicitudes pendientes
@@ -63,8 +63,6 @@ public class Profesor extends Persona implements Serializable{
 		
 		return solicitudes;
 	}
-	
-	//Métodos
 		
 	/**
 	 * Método que acepta solicitud
@@ -118,8 +116,5 @@ public class Profesor extends Persona implements Serializable{
 		}
 		
 	}
-	
-	
-	
 	
 }

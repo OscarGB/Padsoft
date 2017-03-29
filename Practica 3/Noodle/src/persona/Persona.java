@@ -3,6 +3,7 @@ package persona;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import asignatura.Asignatura;
 import estadisticas.EstadisticasAlumno;
 
 
@@ -50,6 +51,15 @@ public abstract class Persona implements Serializable{
 	}
 	
 	//Setters y getters
+	
+	/**
+	 * Devuelve las asignaturas en las que está matriculado el Alumno
+	 * Va a ser sobreescrito
+	 * @return ArrayList<Asignatura>
+	 */
+	public ArrayList<Asignatura> getAsignaturas() {
+		return null;
+	}
 	
 	/**
 	 * Devuelve el NIA de una persona
