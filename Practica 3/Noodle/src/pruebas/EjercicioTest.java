@@ -369,7 +369,8 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testSetFecha2(){
-		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		LocalDate fin = Plataforma.fechaActual.plusDays(10);
 		LocalDate ini = Plataforma.fechaActual.plusDays(2);
 		assertFalse(ej1.setFechaFin(fin));

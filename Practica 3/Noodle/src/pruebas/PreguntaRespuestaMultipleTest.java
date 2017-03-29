@@ -2,11 +2,14 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import contenido.Opciones;
 import contenido.PreguntaRespuestaMultiple;
+import plataforma.Plataforma;
 
 /**
  * Test PreguntaRespuestaMultiple
@@ -21,6 +24,10 @@ public class PreguntaRespuestaMultipleTest {
 	
 	@Before
 	public void setUp() throws Exception{
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		enunciado = "Elige una opcion";
 		preg = new PreguntaRespuestaMultiple(enunciado,
 				 true, 0.f, 1);

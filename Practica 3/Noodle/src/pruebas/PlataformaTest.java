@@ -25,6 +25,7 @@ public class PlataformaTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 	}
 	
 	@After
@@ -85,6 +86,7 @@ public class PlataformaTest {
 	 */
 	@Test
 	public void testLogin(){
+		Plataforma.logout();
 		assertTrue(Plataforma.loggedAs == null);
 		assertTrue(Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword()));
 		assertTrue(Plataforma.loggedAs.getClass() == Profesor.class);

@@ -4,12 +4,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import contenido.Opciones;
 import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
+import plataforma.Plataforma;
 
 public class PreguntaRespuestaUnicaTest {
 	
@@ -19,6 +22,10 @@ public class PreguntaRespuestaUnicaTest {
 	
 	@Before
 	public void setUp() throws Exception{
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		enunciado = "Elige una opcion";
 		preg = new PreguntaRespuestaUnica(enunciado,
 				 true, 0.f, 1);
