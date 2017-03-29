@@ -60,9 +60,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 * Si ya hay una correcta, no permite meter otra
 	 */
 	public boolean addOpcion(Opciones op){
-		if((op.esCorrecta() == true) && (this.numCorrectas() >=1)){
-			return false;
-		}
+		if(op == null) return false;
 		
 		return this.opciones.add(op);
 	}

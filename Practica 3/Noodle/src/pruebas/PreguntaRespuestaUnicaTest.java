@@ -1,32 +1,36 @@
 package pruebas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import contenido.Opciones;
 import contenido.PreguntaRespuestaMultiple;
+import contenido.PreguntaRespuestaUnica;
 
-public class PreguntaRespuestaMultipleTest {
-	private PreguntaRespuestaMultiple preg;
+public class PreguntaRespuestaUnicaTest {
+	
+	private PreguntaRespuestaUnica preg;
 	private String enunciado;
-	private Opciones op1;
+	private Opciones true1;
 	
 	@Before
 	public void setUp() throws Exception{
 		enunciado = "Elige una opcion";
-		preg = new PreguntaRespuestaMultiple(enunciado,
+		preg = new PreguntaRespuestaUnica(enunciado,
 				 true, 0.f, 1);
-		op1 = new Opciones("1", true);
+		true1 = new Opciones("1", true);
 	}
 	
 	/**
-	 * Test para preguntaRespuestaMultiple
+	 * Test para preguntaRespuestaUnica
 	 */
 	@Test
-	public void testPreguntaMultiple1(){
-		PreguntaRespuestaMultiple preg1 = new PreguntaRespuestaMultiple(enunciado,
+	public void testPreguntaUnica1(){
+		PreguntaRespuestaUnica preg1 = new PreguntaRespuestaUnica(enunciado,
 				 true, 0.f, 1);
 		
 		assertEquals(preg1.getEnunciado(), enunciado);
@@ -41,11 +45,11 @@ public class PreguntaRespuestaMultipleTest {
 	}
 	
 	/**
-	 * Test para preguntaRespuestaMultiple
+	 * Test para preguntaRespuestaUNica
 	 */
 	@Test
-	public void testPreguntaMultiple2(){
-		PreguntaRespuestaMultiple preg1 = new PreguntaRespuestaMultiple(enunciado,
+	public void testPreguntaUnica2(){
+		PreguntaRespuestaUnica preg1 = new PreguntaRespuestaUnica(enunciado,
 				 true, 1);
 		
 		assertEquals(preg1.getEnunciado(), enunciado);
@@ -64,8 +68,8 @@ public class PreguntaRespuestaMultipleTest {
 	 */
 	@Test
 	public void testAddOpcion1(){
-		assertTrue(preg.addOpcion(op1));
-		assertTrue(preg.getOpciones().contains(op1));
+		assertTrue(preg.addOpcion(true1));
+		assertTrue(preg.getOpciones().contains(true1));
 	}
 	
 	/**
@@ -91,9 +95,9 @@ public class PreguntaRespuestaMultipleTest {
 	 */
 	@Test
 	public void testRemoveOpcion(){
-		preg.addOpcion(op1);
-		preg.removeOpcion(op1);
-		assertFalse(preg.getOpciones().contains(op1));
+		preg.addOpcion(true1);
+		preg.removeOpcion(true1);
+		assertFalse(preg.getOpciones().contains(true1));
 	}
 	
 	/**
@@ -101,7 +105,7 @@ public class PreguntaRespuestaMultipleTest {
 	 */
 	@Test
 	public void testBienFormada1(){
-		preg.addOpcion(op1);
+		preg.addOpcion(true1);
 		assertTrue(preg.bienFormada());
 	}
 	
@@ -122,4 +126,20 @@ public class PreguntaRespuestaMultipleTest {
 	public void testBienFormada3(){
 		assertFalse(preg.bienFormada());
 	}
+	
+	/**
+	 * Test para bienFormada con dos verdaderas
+	 */
+	@Test
+	public void testBienFormada4(){
+		Opciones true2 = new Opciones("2", true);
+		
+		preg.addOpcion(true1);
+		preg.addOpcion(true2);
+		
+		assertTrue(preg.getOpciones().size() == 2);
+		assertFalse(preg.bienFormada());
+	}
+	
+	
 }

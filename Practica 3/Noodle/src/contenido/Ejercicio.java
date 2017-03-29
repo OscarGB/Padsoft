@@ -239,11 +239,12 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * Set fecha inicio
 	 * @param fechaIni
 	 */
-	public void setFechaIni(LocalDate fechaIni) {
+	public boolean setFechaIni(LocalDate fechaIni) {
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
 			this.fechaIni = fechaIni;
+			return true;
 		}
-		return;
+		return false;
 	}
 
 	/**
@@ -267,11 +268,12 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * Set fecha fin ejercicio
 	 * @param fechaFin
 	 */
-	public void setFechaFin(LocalDate fechaFin) {
+	public boolean setFechaFin(LocalDate fechaFin) {
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
 			this.fechaFin = fechaFin;
+			return true;
 		}
-		return;
+		return false;
 	}
 
 	/**

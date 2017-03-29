@@ -13,8 +13,10 @@ import org.junit.Test;
 import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.EstadoEjercicio;
+import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
+import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
@@ -134,7 +136,7 @@ public class EjercicioTest {
 	 * Test para añadir una pregunta
 	 */
 	@Test
-	public void testAddPregunta(){
+	public void testAddPregunta1(){
 		assertTrue(ej1.addPregunta(pre));
 		assertTrue(ej1.getPreguntas().contains(pre));
 	}
@@ -143,9 +145,27 @@ public class EjercicioTest {
 	 * Test para añadir una pregunta null
 	 */
 	@Test
-	public void testAddPregunta1(){
+	public void testAddPregunta2(){
 		assertFalse(ej1.addPregunta(null));
 		assertTrue(ej1.getPreguntas().isEmpty());
+	}
+	
+	/**
+	 * Test para comprobar que una pregunta mal formada no
+	 * se añade
+	 */
+	@Test
+	public void testAddPregunta3(){
+		//Pregunta mal formada con dos respuestas correctas
+		PreguntaRespuestaUnica preg = new PreguntaRespuestaUnica("Enunciado", true, 0.f, 1);
+		Opciones op1 = new Opciones("1", true);
+		Opciones op2 = new Opciones("2", true);
+		
+		preg.addOpcion(op1);
+		preg.addOpcion(op2);
+		
+		assertFalse(ej1.addPregunta(preg));
+		assertFalse(ej1.getPreguntas().contains(preg));
 	}
 	
 	/**
@@ -310,6 +330,20 @@ public class EjercicioTest {
 	public void testRespondible4(){
 		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(20));
 		assertFalse(ej1.sePuedeResponder());
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * se añaden correctamente
+	 */
+	@Test
+	public void testSetFecha(){
+		LocalDate fin = Plataforma.fechaActual.plusDays(10);
+		LocalDate ini = Plataforma.fechaActual.plusDays(2);
+		assertTrue(ej1.setFechaFin(fin));
+		assertTrue(ej1.setFechaIni(ini));
+		assertEquals(ej1.getFechaIni(), ini);
+		assertEquals(ej1.getFechaFin(), fin);
 	}
 	
 	
