@@ -84,7 +84,7 @@ public class PreguntaRespuestaSimpleTest {
 	 * Test para comprobar que no se pueden añadir opciones
 	 */
 	@Test
-	public void testPreguntaAddOpcion1(){
+	public void testPreguntaAddOpcion(){
 		PreguntaRespuestaSimple preg = new PreguntaRespuestaSimple(enunciado, 
 				true, -1, 1, true);
 		Opciones op = new Opciones("Si", true);

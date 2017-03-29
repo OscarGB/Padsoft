@@ -235,7 +235,6 @@ public abstract class Pregunta implements Serializable{
 	 * @param opcion
 	 */
 	public void removeOpcion(Opciones opcion){
-		this.opciones.remove(opcion);
 		return;
 	}
 	
