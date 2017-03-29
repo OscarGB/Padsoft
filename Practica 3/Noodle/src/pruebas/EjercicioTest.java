@@ -13,8 +13,10 @@ import org.junit.Test;
 import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.EstadoEjercicio;
+import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
+import contenido.PreguntaRespuestaUnica;
 import contenido.Tema;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
@@ -61,9 +63,9 @@ public class EjercicioTest {
 		array.add(res);
 		arrayfalso = new ArrayList<RespuestaPregunta>();
 		array.add(falsa);
-		ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(1), Plataforma.getFechaActual().plusDays(4),
+		ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4),
 				tema1, "Ejercicio1", true, mates);
-		ej2 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(1), Plataforma.getFechaActual().plusDays(4),
+		ej2 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4),
 				tema1, "Ejercicio2", true, mates);
 	}
 	
@@ -134,7 +136,7 @@ public class EjercicioTest {
 	 * Test para añadir una pregunta
 	 */
 	@Test
-	public void testAddPregunta(){
+	public void testAddPregunta1(){
 		assertTrue(ej1.addPregunta(pre));
 		assertTrue(ej1.getPreguntas().contains(pre));
 	}
@@ -143,9 +145,27 @@ public class EjercicioTest {
 	 * Test para añadir una pregunta null
 	 */
 	@Test
-	public void testAddPregunta1(){
+	public void testAddPregunta2(){
 		assertFalse(ej1.addPregunta(null));
 		assertTrue(ej1.getPreguntas().isEmpty());
+	}
+	
+	/**
+	 * Test para comprobar que una pregunta mal formada no
+	 * se añade
+	 */
+	@Test
+	public void testAddPregunta3(){
+		//Pregunta mal formada con dos respuestas correctas
+		PreguntaRespuestaUnica preg = new PreguntaRespuestaUnica("Enunciado", true, 0.f, 1);
+		Opciones op1 = new Opciones("1", true);
+		Opciones op2 = new Opciones("2", true);
+		
+		preg.addOpcion(op1);
+		preg.addOpcion(op2);
+		
+		assertFalse(ej1.addPregunta(preg));
+		assertFalse(ej1.getPreguntas().contains(preg));
 	}
 	
 	/**
@@ -310,6 +330,155 @@ public class EjercicioTest {
 	public void testRespondible4(){
 		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(20));
 		assertFalse(ej1.sePuedeResponder());
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * se añaden correctamente
+	 */
+	@Test
+	public void testSetFecha1(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		LocalDate fin = Plataforma.fechaActual.plusDays(10);
+		LocalDate ini = Plataforma.fechaActual.plusDays(2);
+		assertTrue(ej1.setFechaFin(fin));
+		assertTrue(ej1.setFechaIni(ini));
+		assertEquals(ej1.getFechaIni(), ini);
+		assertEquals(ej1.getFechaFin(), fin);
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * no se modifican por alumno
+	 */
+	@Test
+	public void testSetFecha2(){
+		
+		LocalDate fin = Plataforma.fechaActual.plusDays(10);
+		LocalDate ini = Plataforma.fechaActual.plusDays(2);
+		assertFalse(ej1.setFechaFin(fin));
+		assertFalse(ej1.setFechaIni(ini));
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * no se añaden si no son correctas
+	 */
+	@Test
+	public void testSetFecha3(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		LocalDate fin = Plataforma.fechaActual.plusDays(10);
+		LocalDate ini = Plataforma.fechaActual.plusDays(12);
+		assertTrue(ej1.setFechaFin(fin));
+		assertFalse(ej1.setFechaIni(ini));
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * no se añaden si no son correctas
+	 */
+	@Test
+	public void testSetFecha4(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		LocalDate fin = Plataforma.fechaActual.minusDays(10);;
+		assertFalse(ej1.setFechaFin(fin));
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * no se añaden si no son correctas
+	 */
+	@Test
+	public void testSetFecha5(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		LocalDate ini = Plataforma.fechaActual.minusDays(2);
+		assertFalse(ej1.setFechaIni(ini));
+	}
+	
+	/**
+	 * Test para comprobar que las fechas
+	 * no se añaden si no son correctas
+	 */
+	@Test
+	public void testSetFecha6(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		LocalDate ini = Plataforma.fechaActual.plusDays(12);
+		assertFalse(ej1.setFechaIni(ini));
+	}
+	
+	/**
+	 * Test para comprobar que se puede modificar
+	 * la fecha de fin si se ha respondido ya un ejercicio,
+	 * pero no la de inicio
+	 */
+	@Test
+	public void testSetFecha7(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		ej1.responderEjercicio(nacho, array);
+				
+		LocalDate fin = Plataforma.fechaActual.plusDays(10);
+		LocalDate ini = Plataforma.fechaActual.plusDays(3);
+		assertTrue(ej1.setFechaFin(fin));
+		assertFalse(ej1.setFechaIni(ini));
+	}
+	
+	/**
+	 * Test para comprobar que se puede modificar
+	 * la fecha de fin si se ha respondido ya un ejercicio,
+	 * pero no la de inicio
+	 */
+	@Test
+	public void testSetFecha8(){
+		Plataforma.closePlataforma();
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login("1", "contraseniaprofe");
+		
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(21));
+				
+		LocalDate fin = Plataforma.fechaActual.plusDays(30);
+		LocalDate ini = Plataforma.fechaActual.plusDays(25);
+		assertFalse(ej1.setFechaFin(fin));
+		assertFalse(ej1.setFechaIni(ini));
 	}
 	
 	

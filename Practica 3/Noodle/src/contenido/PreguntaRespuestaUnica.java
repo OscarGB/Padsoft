@@ -67,9 +67,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
 			return false;
 		}
-		if((op.esCorrecta() == true) && (this.numCorrectas() >=1)){
-			return false;
-		}
+		if(op == null) return false;
 		
 		return this.opciones.add(op);
 	}
