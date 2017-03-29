@@ -470,9 +470,8 @@ public class EjercicioTest {
 	}
 	
 	/**
-	 * Test para comprobar que se puede modificar
-	 * la fecha de fin si se ha respondido ya un ejercicio,
-	 * pero no la de inicio
+	 * Test para comprobar que no se puede modificar
+	 * la fecha de un ejercicio terminado
 	 */
 	@Test
 	public void testSetFecha8(){
@@ -483,10 +482,13 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(21));
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(5));
+		ej1.enPlazo();
+		
+		assertEquals(ej1.getEstado(), EstadoEjercicio.TERMINADO);
 				
-		LocalDate fin = Plataforma.fechaActual.plusDays(30);
-		LocalDate ini = Plataforma.fechaActual.plusDays(25);
+		LocalDate fin = Plataforma.fechaActual.plusDays(6);
+		LocalDate ini = Plataforma.fechaActual.plusDays(10);
 		assertFalse(ej1.setFechaFin(fin));
 		assertFalse(ej1.setFechaIni(ini));
 	}
