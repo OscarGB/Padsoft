@@ -1,5 +1,12 @@
 package main;
 
+/**
+ * Tester
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
+ */
+
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -207,6 +214,8 @@ public class Tester {
 		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		
 		System.out.println("\n" + Plataforma.plat);
+		
+		Plataforma.closePlataforma();
 		
 		
 	}

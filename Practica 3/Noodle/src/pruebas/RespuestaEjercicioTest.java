@@ -12,6 +12,13 @@ import org.junit.Test;
 
 import asignatura.Asignatura;
 
+/**
+ * Test Respuesta a ejercicio
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
+ */
+
 public class RespuestaEjercicioTest {
 	RespuestaEjercicio res;
 	RespuestaPregunta pre;

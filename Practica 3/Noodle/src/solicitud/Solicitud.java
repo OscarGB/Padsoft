@@ -1,11 +1,18 @@
 package solicitud;
 
+import java.io.Serializable;
+
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.Alumno;
 
-public class Solicitud {
+public class Solicitud implements Serializable{
 	
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Variables
 	/**
 	 * Alumno que solicita acceso
@@ -27,6 +34,7 @@ public class Solicitud {
 	public Solicitud (Alumno alumno, Asignatura asig){
 		this.alumno = alumno;
 		this.asignatura = asig;
+		asig.addSolicitudPendiente(this);
 	}
 	
 	//Getters y Setters

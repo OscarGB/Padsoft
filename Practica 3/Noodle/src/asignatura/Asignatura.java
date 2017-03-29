@@ -128,7 +128,7 @@ public class Asignatura implements Serializable {
 	}
 	
 	
-	//Mï¿½todos
+	//Métodos
 	
 	/**
 	 * Método para añadir alumno a la asignatura

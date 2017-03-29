@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
-import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import estadisticas.EstadisticasAlumno;
 import solicitud.Solicitud;
 

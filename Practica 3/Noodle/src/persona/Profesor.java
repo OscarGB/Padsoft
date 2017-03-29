@@ -23,7 +23,7 @@ public class Profesor extends Persona implements Serializable{
 	/**
 	 * Profesor de la plataforma (singleton)
 	 */
-	private static Profesor profesor;
+	public static Profesor profesor;
 	
 	//Constructor
 	
@@ -109,6 +109,9 @@ public class Profesor extends Persona implements Serializable{
 	 * @return boolean
 	 */
 	public boolean readmitirAlumno(Asignatura asig1, Alumno a1) {
+		if(asig1 == null || a1 == null){
+			return false;
+		}
 		if(asig1.readmitirAlumno(a1) == true){
 			return true;
 		}

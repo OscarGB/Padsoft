@@ -10,6 +10,13 @@ import org.junit.Test;
 import contenido.*;
 import respuestas.*;
 
+
+/**
+ * Test Respuesta a Pregunta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
+ */
 public class RespuestaPreguntaTest {
 	RespuestaPregunta res;
 	Pregunta pre;

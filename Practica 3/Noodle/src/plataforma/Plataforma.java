@@ -112,6 +112,9 @@ public class Plataforma implements Serializable {
 	 * Método para cerrar la plataforma.
 	 */
 	public static void closePlataforma(){
+		if(Plataforma.plat == null){
+			return;
+		}
 		Plataforma.plat.saveData();
 		Plataforma.alumnos = null;
 		Plataforma.asignaturas = null;
@@ -135,6 +138,7 @@ public class Plataforma implements Serializable {
 	         oout.writeObject(Plataforma.plat);
 
 	         oout.close();
+	         out.close();
 		 } catch (Exception ex) {
 	         ex.printStackTrace();
 	     }
@@ -146,22 +150,18 @@ public class Plataforma implements Serializable {
 	 * @return boolean
 	 */
 	private boolean loadData(){
+		File archivo = new File("./data/plataforma");
 		FileInputStream out = null;
 		 try {
-
-	         // create a new file with an ObjectOutputStream
-	          out = new FileInputStream(new File("./data/plataforma"));
+	          out = new FileInputStream(archivo);
 		 } catch (Exception FileNotFoundException){
 			 return false;
 		 }
 		 try{
-			ObjectInputStream oout = new ObjectInputStream(out);
-
-	         // write something in the file
+			 ObjectInputStream oout = new ObjectInputStream(out);
 	         Plataforma.plat = (Plataforma) oout.readObject();
-
-	         // close the stream
 	         oout.close();
+	         out.close();
 		 } catch (Exception ex) {
 	         ex.printStackTrace();
 	     }
@@ -208,6 +208,7 @@ public class Plataforma implements Serializable {
 			e.printStackTrace();
 		}
 	    try {
+	    	f.close();
 			b.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -235,6 +236,9 @@ public class Plataforma implements Serializable {
 	 * @param asignatura
 	 */
 	public static void addAsignatura(Asignatura asignatura) {
+		if(Plataforma.asignaturas.contains(asignatura)){
+			return;
+		}
 		Plataforma.asignaturas.add(asignatura);
 	}
 	
@@ -269,6 +273,9 @@ public class Plataforma implements Serializable {
 	 * @return boolean
 	 */
 	public static boolean login(String Nia, String password){
+		if(Plataforma.loggedAs != null){
+			return false;
+		}
 		if(Plataforma.profesor.getNia() == Nia){
 			if(Plataforma.profesor.getPassword() == password){
 				Plataforma.loggedAs = Plataforma.profesor;
