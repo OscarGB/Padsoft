@@ -29,7 +29,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	}
 	
 	/**
-	 * Constructor de PreguntaRespuestaSimple sin penalización
+	 * Constructor de PreguntaRespuestaUnica sin penalización
 	 * @param enunciado
 	 * @param aleatorio
 	 * @param valorPregunta
@@ -59,22 +59,17 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 * Método que añade opciones al array de opciones
 	 * Si ya hay una correcta, no permite meter otra
 	 */
+	@Override
 	public boolean addOpcion(Opciones op){
 		if(op == null) return false;
 		
 		return this.opciones.add(op);
 	}
-	
-	/**
-	 * AddOpcion(string) devuelve false en unica
-	 */
-	public boolean addOpcion(String str){
-		return false;
-	}
-	
+		
 	/**
 	 * Método para borrar una opción
 	 */
+	@Override
 	public void removeOpcion(Opciones opcion){
 		if(opcion == null) return;
 		this.opciones.remove(opcion);
@@ -85,6 +80,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 * Método para comprobar que una pregunta está
 	 * bien formada
 	 */
+	@Override
 	public boolean bienFormada(){
 		int numTrue = 0;
 		for(Opciones op: this.opciones){

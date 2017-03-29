@@ -58,7 +58,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	//Getters and setters
 	
 	/**
-	 * Get respuesta abierta
+	 * Get respuestas correctas
 	 * @return respuesta
 	 */
 	public ArrayList<String> getRespuestas() {
@@ -73,22 +73,18 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * @param respuesta
 	 * @return boolean
 	 */
+	@Override
 	public boolean addOpcion(String respuesta){
 		if(respuesta == null) return false;
 		return this.respuestas.add(respuesta);
 	}
 	
-	/**
-	 * AddOpcion(Opciones) devuelve false en abierta
-	 */
-	public boolean addOpcion(Opciones op){
-		return false;
-	}
 	
 	/**
 	 * Método para eliminar una posible respuesta abierta
 	 * @param respuesta
 	 */
+	@Override
 	public void removeOpcion(String respuesta){
 		if(respuesta == null) return;
 		this.respuestas.remove(respuesta);
@@ -99,6 +95,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * Método para comprobar que una pregunta está
 	 * bien formada
 	 */
+	@Override
 	public boolean bienFormada(){
 		if(this.respuestas.isEmpty()){
 			return false;

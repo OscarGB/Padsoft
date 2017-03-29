@@ -73,7 +73,7 @@ public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
 	//Override
 	
 		/**
-		 * (Override) toString para respuesta unica
+		 * (Override) toString para respuesta simple
 		 */
 		@Override
 		public String toString(){

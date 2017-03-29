@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Clase Opciones
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
- * @date 07/03/2017
+ * @date 09/03/2017
  */
 
 public class Opciones implements Serializable {
@@ -24,7 +24,7 @@ public class Opciones implements Serializable {
 	private String respuesta;
 	
 	/**
-	 * Si la respuesta correcta o no
+	 * Si la es respuesta correcta o no
 	 */
 	private boolean correcta;
 	
@@ -57,6 +57,7 @@ public class Opciones implements Serializable {
 	 * @param respuesta
 	 */
 	public void setRespuesta(String respuesta) {
+		if(respuesta == null) return;
 		this.respuesta = respuesta;
 	}
 
