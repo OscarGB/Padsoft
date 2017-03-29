@@ -66,4 +66,39 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 		
 		return this.opciones.add(op);
 	}
+	
+	/**
+	 * AddOpcion(string) devuelve false en unica
+	 */
+	public boolean addOpcion(String str){
+		return false;
+	}
+	
+	/**
+	 * Método para borrar una opción
+	 */
+	public void removeOpcion(Opciones opcion){
+		if(opcion == null) return;
+		this.opciones.remove(opcion);
+		return;
+	}
+	
+	/**
+	 * Método para comprobar que una pregunta está
+	 * bien formada
+	 */
+	public boolean bienFormada(){
+		int numTrue = 0;
+		for(Opciones op: this.opciones){
+			if(op.esCorrecta() == true){
+				numTrue ++;
+			}
+		}
+		if(numTrue == 1){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

@@ -253,6 +253,14 @@ public abstract class Pregunta implements Serializable{
 		this.numCorrectas ++;
 	}
 	
+	/**
+	 * Método para comprobar que una pregunta está bien formada
+	 * @return boolean
+	 */
+	public boolean bienFormada(){
+		return true;
+	}
+	
 	
 	//Override
 	

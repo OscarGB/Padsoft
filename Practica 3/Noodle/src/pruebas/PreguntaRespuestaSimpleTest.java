@@ -103,6 +103,7 @@ public class PreguntaRespuestaSimpleTest {
 		
 		preg.addRespondida();
 		assertTrue(preg.getNumRespuestas() == 1);
+		assertTrue(preg.getNumCorrectas() == 0);
 	}
 	
 	/**

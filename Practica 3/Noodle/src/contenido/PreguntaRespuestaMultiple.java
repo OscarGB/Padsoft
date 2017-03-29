@@ -66,8 +66,16 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 * correctas
 		 */
 		public boolean addOpcion(Opciones opcion){
+			if(opcion == null) return false;
 			this.numCorrectas ++;
 			return this.opciones.add(opcion);
+		}
+		
+		/**
+		 * AddOpcion(string) devuelve false en multiple
+		 */
+		public boolean addOpcion(String str){
+			return false;
 		}
 		
 		/**
@@ -77,5 +85,20 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 			if(opcion == null) return;
 			this.opciones.remove(opcion);
 			return;
+		}
+		
+		/**
+		 * Método para comprobar si una pregunta está bien formada
+		 */
+		public boolean bienFormada(){
+			if(this.getOpciones().isEmpty()){
+				return false;
+			}
+			for(Opciones op: this.opciones){
+				if(op.esCorrecta() == true){
+					return true;
+				}
+			}
+			return false;
 		}
 }

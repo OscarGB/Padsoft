@@ -79,6 +79,13 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	}
 	
 	/**
+	 * AddOpcion(Opciones) devuelve false en abierta
+	 */
+	public boolean addOpcion(Opciones op){
+		return false;
+	}
+	
+	/**
 	 * Método para eliminar una posible respuesta abierta
 	 * @param respuesta
 	 */
@@ -86,6 +93,19 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 		if(respuesta == null) return;
 		this.respuestas.remove(respuesta);
 		return;
+	}
+	
+	/**
+	 * Método para comprobar que una pregunta está
+	 * bien formada
+	 */
+	public boolean bienFormada(){
+		if(this.respuestas.isEmpty()){
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 	
 	//Override
