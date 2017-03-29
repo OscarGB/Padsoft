@@ -23,6 +23,11 @@ public abstract class RespuestaPregunta implements Serializable{
 	protected float nota;
 	
 	/**
+	 * flag para addPregunta
+	 */
+	private boolean flag;
+	
+	/**
 	 * Pregunta que ha sido respondida en esta pregunta
 	 */
 	protected Pregunta preguntaRespondida;
@@ -34,6 +39,7 @@ public abstract class RespuestaPregunta implements Serializable{
 	public RespuestaPregunta(Pregunta p){
 		this.nota = 0;
 		this.preguntaRespondida = p;
+		this.flag = false;
 	}
 	
 	//Getters y Setters
@@ -48,14 +54,22 @@ public abstract class RespuestaPregunta implements Serializable{
 	
 	//Métodos
 	
-	/** MÃ©todo que calcula la nota obtenida en la pregunta
+	/** Método que calcula la nota obtenida en la pregunta
 	 * @return float
 	 */
 	public float CalcularNota(){
 		if(this.esCorrecta() == true){
+			if(this.flag == false){
+				this.preguntaRespondida.addCorrecta();
+				this.flag = true;
+			}
 			nota = this.preguntaRespondida.getValorPregunta();
 		}
 		else{
+			if(this.flag == false){
+				this.preguntaRespondida.addRespondida();
+				this.flag = true;
+			}
 			nota = this.preguntaRespondida.getPenalizacion();
 		}
 		return nota;

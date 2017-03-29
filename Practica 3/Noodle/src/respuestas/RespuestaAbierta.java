@@ -2,7 +2,6 @@ package respuestas;
 
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
-import contenido.PreguntaRespuestaSimple;
 
 /**
  * Clase RespuestaAbierta
@@ -12,6 +11,10 @@ import contenido.PreguntaRespuestaSimple;
  */
 
 public class RespuestaAbierta extends RespuestaPregunta {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Strign respondido
 	 */

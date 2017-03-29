@@ -11,6 +11,10 @@ import contenido.PreguntaRespuestaSimple;
  */
 public class RespuestaSimple extends RespuestaPregunta{
 	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Respuesta a la pregunta
 	 */
 	private boolean respondido;
@@ -26,7 +30,7 @@ public class RespuestaSimple extends RespuestaPregunta{
 	}
 	
 	/**
-	 * Método para comprobar si la respuesta única es correcta
+	 * M�todo para comprobar si la respuesta única es correcta
 	 * @return boolean
 	 */
 	@Override

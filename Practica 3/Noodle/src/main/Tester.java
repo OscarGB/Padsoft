@@ -192,7 +192,7 @@ public class Tester {
 		ArrayList<RespuestaPregunta> res = new ArrayList<RespuestaPregunta>();
 		
 		//Correcta
-		res.add(new RespuestUnica(preg1, new Opciones("4", true)));
+		res.add(new RespuestaUnica(preg1, new Opciones("4", true)));
 		//Incorrecta
 		res.add(new RespuestaMultiple(preg2, opc));
 		//Correcta
