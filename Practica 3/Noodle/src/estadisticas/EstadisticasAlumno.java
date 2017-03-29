@@ -54,13 +54,23 @@ public class EstadisticasAlumno implements Serializable{
 	/**
 	 * Constructor de estadisticas alumno
 	 */
-	public EstadisticasAlumno(Asignatura asig, Alumno al){
+	private EstadisticasAlumno(Asignatura asig, Alumno al){
 		this.notaMedia = 0;
 		this.respuestas = new ArrayList<RespuestaEjercicio>();
 		this.asig = asig;
 		asig.addEstadistica(this);
 		this.alumno = al;
 		al.addEstadistica(this);
+	}
+	
+	public static EstadisticasAlumno newEstadisticasAlumno(Asignatura asig, Alumno al){
+		if(asig == null || al == null){
+			return null;
+		}
+		if(al.getAsignaturas().contains(asig) == false){
+			return null;
+		}
+		return new EstadisticasAlumno(asig, al);
 	}
 	
 	/**
@@ -99,6 +109,9 @@ public class EstadisticasAlumno implements Serializable{
 	 * @param r
 	 */
 	public void addRespuestaEjercicio(RespuestaEjercicio r){
+		if(r == null){
+			return;
+		}
 		float nota = 0;
 		float pesototal = 0;
 		this.respuestas.add(r);

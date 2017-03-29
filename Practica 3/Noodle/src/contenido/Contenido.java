@@ -41,7 +41,7 @@ public abstract class Contenido implements Serializable {
 	protected Asignatura asignatura;
 	
 	
-	//Constructor
+	//Constructores
 	
 	/**
 	 * Constructor de Contenido en el directorio raiz
@@ -81,6 +81,9 @@ public abstract class Contenido implements Serializable {
 	 * @param tema
 	 */
 	public void setPadre(Tema tema){
+		if(tema == null){
+			return;
+		}
 		this.padre = tema;
 		return; 
 	}
@@ -106,6 +109,9 @@ public abstract class Contenido implements Serializable {
 	 * @param titulo
 	 */
 	public void setTitulo(String titulo) {
+		if(titulo == null || titulo == ""){
+			return;
+		}
 		this.titulo = titulo;
 	}
 
@@ -176,6 +182,11 @@ public abstract class Contenido implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * (Override) toString
+	 * Devolvería un string con los alumnos de la asignatura
+	 * @return String
+	 */
 	public String toString(){
 		if(Plataforma.loggedAs.getClass() == Alumno.class){
 			if(this.getVisibilidad() == true){

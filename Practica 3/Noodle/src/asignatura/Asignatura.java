@@ -10,7 +10,6 @@ import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
-import persona.Profesor;
 import plataforma.Plataforma;
 import solicitud.Solicitud;
 
@@ -128,20 +127,23 @@ public class Asignatura implements Serializable {
 	}
 	
 	
-	//Mï¿½todos
+	//Métodos
 	
 	/**
 	 * Método para añadir alumno a la asignatura
 	 * @param alumno
 	 */
 	public boolean addAlumno(Alumno alumno){
+		if(alumno == null){
+			return false;
+		}
 		if(this.isAlumnoIn(alumno) == true){
 			return false;
 		}
 		this.alumnos.add(alumno);
 		alumno.addAsignatura(this);
 		try {
-			EmailSystem.send(alumno.getEmail(), "Admisiï¿½n", "Has sido admitido a la asignatura " + this.getNombre());
+			EmailSystem.send(alumno.getEmail(), "Admisión", "Has sido admitido a la asignatura " + this.getNombre());
 		} catch (InvalidEmailAddressException e) {
 			e.printStackTrace();
 		} catch (FailedInternetConnectionException e) {
@@ -153,17 +155,20 @@ public class Asignatura implements Serializable {
 	}
 	
 	/**
-	 * Mïétodo para expulsar alumno de la asignatura
+	 * Método para expulsar alumno de la asignatura
 	 * Introduce el alumno en la lista de expulsados
 	 * @param alumno
 	 */
 	public boolean expulsarAlumno(Alumno alumno){
+		if(alumno == null){
+			return false;
+		}
 		if(isAlumnoIn(alumno) == true){
 			this.alumnos.remove(alumno);
 			this.expulsados.add(new Solicitud(alumno, this));
 			alumno.eraseAsignatura(this);
 			try {
-				EmailSystem.send(alumno.getEmail(), "Expulsiï¿½n", "Has sido expulsado de la asignatura " + this.getNombre());
+				EmailSystem.send(alumno.getEmail(), "Expulsión", "Has sido expulsado de la asignatura " + this.getNombre());
 			} catch (InvalidEmailAddressException e) {
 				e.printStackTrace();
 			} catch (FailedInternetConnectionException e) {
@@ -177,12 +182,15 @@ public class Asignatura implements Serializable {
 	}
 	
 	/**
-	 * Mï¿½todo para readmitir Alumno
-	 * Saca el alumno de la lista de expulsados y lo aï¿½ade a alumnos
+	 * Método para readmitir Alumno
+	 * Saca el alumno de la lista de expulsados y lo añade a alumnos
 	 * @param alumno
 	 * @return
 	 */
 	public boolean readmitirAlumno(Alumno alumno){
+		if(alumno == null){
+			return false;
+		}
 		Solicitud readmision = new Solicitud(alumno, this);
 		
 		for(Solicitud s : this.expulsados){
@@ -203,10 +211,13 @@ public class Asignatura implements Serializable {
 	}
 
 	/**
-	 * Mï¿½todo para denegar (y borrar) una solicitud de acceso
+	 * Método para denegar (y borrar) una solicitud de acceso
 	 * @param solicitud
 	 */
 	public void denegarSolicitud(Solicitud solicitud) {
+		if(solicitud == null){
+			return;
+		}
 		this.solicitudes.remove(solicitud);	
 		try {
 			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
@@ -218,10 +229,13 @@ public class Asignatura implements Serializable {
 	}
 	
 	/**
-	 * Aï¿½ade una solicitud al array de pendientes
+	 * Añade una solicitud al array de pendientes
 	 * @param sol
 	 */
 	public boolean addSolicitudPendiente(Solicitud sol){
+		if(sol == null){
+			return false;
+		}
 		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false && this.getSolicitudesExpulsados().contains(sol) == false){
 			if(this.solicitudes.add(sol) == true){
 				return true;
@@ -232,10 +246,13 @@ public class Asignatura implements Serializable {
 	}
 	
 	/**
-	 * Aï¿½ade una solicitud al array de pendientes
+	 * Añade una solicitud al array de pendientes
 	 * @param sol
 	 */
 	public boolean addSolicitudExpulsado(Solicitud sol){
+		if(sol == null){
+			return false;
+		}
 		if(this.expulsados.contains(sol) == false){
 			if(this.expulsados.add(sol) == true){
 				return true;
@@ -248,11 +265,14 @@ public class Asignatura implements Serializable {
 	
 	
 	/**
-	 * Mïétodo para saber si un alumno está inscrito en la asignatura
+	 * Método para saber si un alumno está inscrito en la asignatura
 	 * @param a
 	 * @return boolean
 	 */
 	public boolean isAlumnoIn(Alumno a){
+		if(a == null){
+			return false;
+		}
 		if(alumnos.contains(a) == true){
 			return true;
 		}
@@ -269,6 +289,9 @@ public class Asignatura implements Serializable {
 	 * @return boolean
 	 */
 	public boolean aceptarSolicitud(Solicitud sol) {
+		if(sol == null){
+			return false;
+		}
 		if(this.solicitudes.contains(sol) == true){
 			Alumno alumno = sol.getAlumno();
 			this.addAlumno(alumno);
@@ -280,21 +303,27 @@ public class Asignatura implements Serializable {
 	
 	
 	/**
-	 * Mïétodo para añadir un tema a la raiz
+	 * Método para añadir un tema a la raiz
 	 * @param tema
 	 * @return boolean
 	 */
 	public boolean addContenidoRaiz(Contenido con){
+		if(con == null){
+			return false;
+		}
 		return this.raiz.add(con);
 	}
 	
 	/**
-	 * Mï¿½todo para eliminar un tema de la raï¿½z
+	 * Método para eliminar un tema de la raiz
 	 * También oculta todos los subcontenidos, si se trata 
 	 * de un tema
 	 * @param tema
 	 */
 	public void eraseContenidoRaiz(Contenido con){
+		if(con == null){
+			return;
+		}
 		this.raiz.remove(con);
 		con.ocultarContenido();
 		return;
@@ -307,6 +336,9 @@ public class Asignatura implements Serializable {
 	 * @param con
 	 */
 	public boolean eraseContenido(Contenido con){
+		if(con == null){
+			return false;
+		}
 		if(con.esBorrable() == false){
 			return false;
 		}
@@ -328,6 +360,9 @@ public class Asignatura implements Serializable {
 	 * @return boolean
 	 */
 	public boolean addSubcontenido(Contenido sub, Tema padre){
+		if(sub == null){
+			return false;
+		}
 		if(padre == null){
 			return this.addContenidoRaiz(sub);
 		}
@@ -341,6 +376,9 @@ public class Asignatura implements Serializable {
 	 * @param estadisticasAlumno
 	 */
 	public boolean addEstadistica(EstadisticasAlumno estadisticasAlumno) {
+		if(estadisticasAlumno == null){
+			return false;
+		}
 		return this.estadisticas.add(estadisticasAlumno);
 	}
 	

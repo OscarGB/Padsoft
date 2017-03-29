@@ -16,7 +16,7 @@ import respuestas.RespuestaPregunta;
  * Clase Ejercicio
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
- * @date 07/03/2017
+ * @date 08/03/2017
  */
 public class Ejercicio extends Contenido implements Serializable{
 	//Variables
@@ -311,12 +311,13 @@ public class Ejercicio extends Contenido implements Serializable{
 	//Metodos
 	
 	/**
-	 * Mï¿½todo para aï¿½adir una pregunta al ejercicio
+	 * Método para añadir una pregunta al ejercicio
 	 * @param pregunta
 	 * @return boolean
 	 */
 	public boolean addPregunta(Pregunta preg){
 		if(preg == null) return false;
+		if(preg.bienFormada() == false) return false;
 		this.pesoPreguntas += preg.getValorPregunta();
 		return this.preguntas.add(preg);	
 	}
@@ -369,7 +370,7 @@ public class Ejercicio extends Contenido implements Serializable{
 			}
 		}
 		//Si el alumno no tiene estadísticas en esta asignatura, las crea
-		EstadisticasAlumno nuevo = new EstadisticasAlumno(this.asignatura, al);
+		EstadisticasAlumno nuevo = EstadisticasAlumno.newEstadisticasAlumno(this.asignatura, al);
 		nuevo.addRespuestaEjercicio(respuestas);
 		this.addNota(respuestas.calcularNota());
 		return true;		
