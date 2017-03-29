@@ -34,7 +34,7 @@ public class Solicitud implements Serializable{
 	public Solicitud (Alumno alumno, Asignatura asig){
 		this.alumno = alumno;
 		this.asignatura = asig;
-		asig.addSolicitudPendiente(this);
+		
 	}
 	
 	//Getters y Setters
