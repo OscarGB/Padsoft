@@ -124,7 +124,9 @@ public class Tester {
 		asig1.eraseContenido(aborrar);		
 		
 		//Crear un ejercicio
-		Ejercicio ej = new Ejercicio(2, false, LocalDate.now().minusDays(3), LocalDate.now().plusDays(4), t1, "Ejercicio", true, asig1);
+		Ejercicio ej = new Ejercicio(2, false, Plataforma.fechaActual.minusDays(0), Plataforma.fechaActual.plusDays(4), t1, "Ejercicio", true, asig1);
+		
+		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(1));
 		
 		System.out.println("\n" + asig1);
 
@@ -153,7 +155,7 @@ public class Tester {
 		opc.add(new Opciones("4", true));
 		opc.add(new Opciones("3", false));
 		
-		Pregunta preg1 = new PreguntaRespuestaSimple("Cuánto es 2 + 2", false, 6);
+		Pregunta preg1 = new PreguntaRespuestaUnica("Cuánto es 2 + 2", false, 6);
 		for(Opciones op : opc){
 			preg1.addOpcion(op);
 		}
@@ -174,7 +176,7 @@ public class Tester {
 		
 		ej.addPregunta(preg2);
 		
-		Pregunta preg3 = new PreguntaRespuestaUnica("¿Java es un lenguaje de programación orientado a objetos?", false, -4, 8, true);
+		Pregunta preg3 = new PreguntaRespuestaSimple("¿Java es un lenguaje de programación orientado a objetos?", false, -4, 8, true);
 		
 		ej.addPregunta(preg3);
 		
@@ -190,11 +192,11 @@ public class Tester {
 		ArrayList<RespuestaPregunta> res = new ArrayList<RespuestaPregunta>();
 		
 		//Correcta
-		res.add(new RespuestaSimple(preg1, new Opciones("4", true)));
+		res.add(new RespuestUnica(preg1, new Opciones("4", true)));
 		//Incorrecta
 		res.add(new RespuestaMultiple(preg2, opc));
 		//Correcta
-		res.add(new RespuestaUnica(preg3, true));
+		res.add(new RespuestaSimple(preg3, true));
 		//Incorrecta
 		res.add(new RespuestaAbierta(preg4, "Lorca"));
 		

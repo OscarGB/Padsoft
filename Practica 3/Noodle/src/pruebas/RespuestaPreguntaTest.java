@@ -26,19 +26,19 @@ public class RespuestaPreguntaTest {
 	 */
 	@Test
 	public void testRespuestaPreguntaSimple() {
-		pre = new PreguntaRespuestaSimple("Prueba", true, -1, 4);
+		pre = new PreguntaRespuestaUnica("Prueba", true, -1, 4);
 		Opciones correcta = new Opciones("Es", true);
 		pre.addOpcion(correcta);
-		if(pre.getClass() == PreguntaRespuestaSimple.class){
+		if(pre.getClass() == PreguntaRespuestaUnica.class){
 			assertTrue(true);
 		}
 		else{
 			assertTrue(false);
 		}
-		res = new RespuestaSimple(pre, correcta);
+		res = new RespuestUnica(pre, correcta);
 		assertTrue(res.esCorrecta());
 		assertTrue(res.CalcularNota() == 4);
-		res = new RespuestaSimple(pre, new Opciones("Pre", false));
+		res = new RespuestUnica(pre, new Opciones("Pre", false));
 		assertFalse(res.esCorrecta());
 		assertTrue(res.CalcularNota() == -1);		
 	}
@@ -48,11 +48,11 @@ public class RespuestaPreguntaTest {
 	 */
 	@Test
 	public void testRespuestaPreguntaUnica() {
-		pre = new PreguntaRespuestaUnica("Prueba", true, -1, 4, true);
-		res = new RespuestaUnica(pre, false);
+		pre = new PreguntaRespuestaSimple("Prueba", true, -1, 4, true);
+		res = new RespuestaSimple(pre, false);
 		assertFalse(res.esCorrecta());
 		assertTrue(res.CalcularNota() == -1);
-		res = new RespuestaUnica(pre, true);
+		res = new RespuestaSimple(pre, true);
 		assertTrue(res.esCorrecta());
 		assertTrue(res.CalcularNota() == 4);		
 	}

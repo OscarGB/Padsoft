@@ -7,8 +7,8 @@ import contenido.Ejercicio;
 import contenido.Opciones;
 import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaMultiple;
-import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
+import contenido.PreguntaRespuestaSimple;
 
 public class test_pregunta {
 	public static void main(String[] args) {
@@ -21,8 +21,8 @@ public class test_pregunta {
 		System.out.println(e1 + "\n");		
 		
 		PreguntaRespuestaMultiple p1 = new PreguntaRespuestaMultiple("2 + 2", true, 1f, 1);
-		PreguntaRespuestaSimple p2 = new PreguntaRespuestaSimple("2 + 2", true, 0.5f, 1);
-		PreguntaRespuestaUnica p3 = new PreguntaRespuestaUnica("Hola?", true, 1, true);
+		PreguntaRespuestaUnica p2 = new PreguntaRespuestaUnica("2 + 2", true, 0.5f, 1);
+		PreguntaRespuestaSimple p3 = new PreguntaRespuestaSimple("Hola?", true, 1, true);
 		PreguntaRespuestaAbierta p4 = new PreguntaRespuestaAbierta("Di hola", true, 1);
 		Opciones o1 = new Opciones("5", false);
 		Opciones o2 = new Opciones("6", false);

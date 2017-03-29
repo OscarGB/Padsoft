@@ -14,14 +14,14 @@ import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.EstadoEjercicio;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaUnica;
+import contenido.PreguntaRespuestaSimple;
 import contenido.Tema;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
 import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
-import respuestas.RespuestaUnica;
+import respuestas.RespuestaSimple;
 
 /**
  * Test Ejercicio
@@ -54,9 +54,9 @@ public class EjercicioTest {
 		tema1 = new Tema("Tema1", true, mates);
 		nacho = Alumno.CreaAlumno("2", "nacho", "Password", "nacho@gmail.com");
 		mates.addAlumno(nacho);
-		pre = new PreguntaRespuestaUnica("Prueba", true, 0, true);
-		res = new RespuestaUnica(pre, true);
-		falsa = new RespuestaUnica(pre, false);
+		pre = new PreguntaRespuestaSimple("Prueba", true, 0, true);
+		res = new RespuestaSimple(pre, true);
+		falsa = new RespuestaSimple(pre, false);
 		array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
 		arrayfalso = new ArrayList<RespuestaPregunta>();

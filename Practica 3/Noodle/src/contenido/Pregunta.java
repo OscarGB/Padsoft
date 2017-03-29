@@ -69,7 +69,7 @@ public abstract class Pregunta implements Serializable{
 	public Pregunta(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta){
 		this.enunciado = enunciado;
 		this.aleatorio = aleatorio;
-		this.penalizacion = penalizacion;
+		this.penalizacion = - Math.abs(penalizacion);
 		this.valorPregunta = valorPregunta;
 		this.numCorrectas = 0;
 		this.numRespuestas = 0;

@@ -1,8 +1,7 @@
 package respuestas;
 
-import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
+import contenido.PreguntaRespuestaSimple;
 
 /**
  * Clase RespuestaSimple
@@ -10,33 +9,30 @@ import contenido.PreguntaRespuestaAbierta;
  * @author Oscar Gomez
  * @date 07/03/2017
  */
-
 public class RespuestaSimple extends RespuestaPregunta{
 	/**
-	 * Respuesta escogida
+	 * Respuesta a la pregunta
 	 */
-	private Opciones respuesta;
-
+	private boolean respondido;
+	
 	/**
-	 * constructor de respuesta simple
+	 * Constructor de respuesta Unica.
 	 * @param p
-	 * @param respuesta
+	 * @param respondido
 	 */
-	public RespuestaSimple(Pregunta p, Opciones respuesta) {
+	public RespuestaSimple(Pregunta p, boolean respondido){
 		super(p);
-		this.respuesta=respuesta;
+		this.respondido = respondido;
 	}
 	
 	/**
-	 * Método para comprobar si la respuesta simple es correcta
+	 * Método para comprobar si la respuesta única es correcta
 	 * @return boolean
 	 */
 	@Override
 	public boolean esCorrecta(){
-		for( Opciones o : this.preguntaRespondida.getOpciones()){
-			if(o.getRespuesta() == this.respuesta.getRespuesta()){
-				return o.esCorrecta();
-			}
+		if(((PreguntaRespuestaSimple)this.preguntaRespondida).getRespuesta() == this.respondido){
+			return true;
 		}
 		return false;
 	}
@@ -47,6 +43,6 @@ public class RespuestaSimple extends RespuestaPregunta{
 	 */
 	@Override
 	public String toString(){
-		return "Pregunta Simple: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuesta;
+		return "Pregunta �nica: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respondido;
 	}
 }

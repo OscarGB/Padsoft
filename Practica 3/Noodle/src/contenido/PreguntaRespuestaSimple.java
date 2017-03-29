@@ -9,61 +9,77 @@ import java.io.Serializable;
  */
 
 public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
-	
+	//Variables
 	
 	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
-
-	//Constructores
+	
 	/**
-	 * Constructor de PreguntaRespuestaSimple con penalización
+	 * Respuesta única
+	 */
+	private boolean respuesta;
+	
+	
+	//Constructores
+	
+	/**
+	 * Constructor de PreguntaRespuestaSimple
+	 * Siempre se le pasa la respuesta (boolean)
 	 * @param enunciado
 	 * @param aleatorio
 	 * @param penalizacion
 	 * @param valorPregunta
+	 * @param respuesta
 	 */
-	public PreguntaRespuestaSimple(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta){
+	public PreguntaRespuestaSimple(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta, boolean respuesta){
 		super(enunciado, aleatorio, penalizacion, valorPregunta);
+		this.respuesta = respuesta;
 	}
 	
 	/**
 	 * Constructor de PreguntaRespuestaSimple sin penalización
+	 * Siempre se le pasa la respuesta (boolean)
 	 * @param enunciado
 	 * @param aleatorio
 	 * @param valorPregunta
+	 * @param respuesta
 	 */
-	public PreguntaRespuestaSimple(String enunciado, boolean aleatorio, float valorPregunta){
+	public PreguntaRespuestaSimple(String enunciado, boolean aleatorio, float valorPregunta, boolean respuesta){
 		super(enunciado, aleatorio, valorPregunta);
+		this.respuesta = respuesta;
 	}
+
 	
-	//Metodos
-	
-	/**
-	 * Método privado para saber el número de respuestas correctas que hay
-	 * @return
-	 */
-	private int numCorrectas(){
-		int num = 0;
-		for(Opciones op: this.opciones){
-			if(op.esCorrecta() == true){
-				num ++;
-			}
-		}
-		
-		return num;
-	}
+	//Getters y setters
 	
 	/**
-	 * Método que añade opciones al array de opciones
-	 * Si ya hay una correcta, no permite meter otra
+	 * Get de respuesta unica
+	 * @return respuesta
 	 */
-	public boolean addOpcion(Opciones op){
-		if((op.esCorrecta() == true) && (this.numCorrectas() >=1)){
-			return false;
-		}
-		
-		return this.opciones.add(op);
+	public boolean getRespuesta() {
+		return respuesta;
 	}
+
+	/**
+	 * Set respuesta unica
+	 * @param respuesta
+	 */
+	public void setRespuesta(boolean respuesta) {
+		this.respuesta = respuesta;
+	}
+	
+	//Override
+	
+		/**
+		 * (Override) toString para respuesta unica
+		 */
+		@Override
+		public String toString(){
+			return "Pregunta: " + this.enunciado + "\n" + "Respuesta correcta: " + this.respuesta + "\nValor: " + this.valorPregunta
+					+ "\nPenalización: " + this.penalizacion;
+		}
+	
+	
 }

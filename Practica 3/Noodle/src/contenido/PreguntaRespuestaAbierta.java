@@ -28,7 +28,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	//Constructores
 	
 	/**
-	 * Constructor de PreguntaRespuestaUnica
+	 * Constructor de PreguntaRespuestaSimple
 	 * Siempre se le pasa la respuesta (boolean)
 	 * @param enunciado
 	 * @param aleatorio
@@ -42,7 +42,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	}
 	
 	/**
-	 * Constructor de PreguntaRespuestaUnica sin penalización
+	 * Constructor de PreguntaRespuestaSimple sin penalización
 	 * Siempre se le pasa la respuesta (boolean)
 	 * @param enunciado
 	 * @param aleatorio

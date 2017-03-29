@@ -39,8 +39,8 @@ public class RespuestaEjercicioTest {
 		file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		pregunta = new PreguntaRespuestaUnica("Prueba", false, -4, 4, true);
-		pregunta2 = new PreguntaRespuestaUnica("Prueba2", false, -8, 6, false);
+		pregunta = new PreguntaRespuestaSimple("Prueba", false, -4, 4, true);
+		pregunta2 = new PreguntaRespuestaSimple("Prueba2", false, -8, 6, false);
 		asig = new Asignatura("Lengua");
 		ej = new Ejercicio(8, false, LocalDate.now(), LocalDate.now(), "titulo", true, asig);
 		ej.addPregunta(pregunta);
@@ -54,7 +54,7 @@ public class RespuestaEjercicioTest {
 	 */
 	@Test
 	public void testNotaVerdad() {
-		pre = new RespuestaUnica(pregunta, true);
+		pre = new RespuestaSimple(pregunta, true);
 		res.addRespuesta(pre);
 		assertTrue(res.calcularNota() == 4);		
 	}
@@ -64,9 +64,9 @@ public class RespuestaEjercicioTest {
 	 */
 	@Test
 	public void testNotaVerdad2() {
-		pre = new RespuestaUnica(pregunta, false);
+		pre = new RespuestaSimple(pregunta, false);
 		res.addRespuesta(pre);
-		pre2 = new RespuestaUnica(pregunta2, false);
+		pre2 = new RespuestaSimple(pregunta2, false);
 		res.addRespuesta(pre2);
 		assertTrue(res.calcularNota() == 2);		
 	}
@@ -76,9 +76,9 @@ public class RespuestaEjercicioTest {
 	 */
 	@Test
 	public void testNotaVerdad3() {
-		pre = new RespuestaUnica(pregunta, true);
+		pre = new RespuestaSimple(pregunta, true);
 		res.addRespuesta(pre);
-		pre2 = new RespuestaUnica(pregunta2, false);
+		pre2 = new RespuestaSimple(pregunta2, false);
 		res.addRespuesta(pre2);
 		assertTrue(res.calcularNota() == 10);		
 	}
@@ -88,9 +88,9 @@ public class RespuestaEjercicioTest {
 	 */
 	@Test
 	public void testNotaVerdad4() {
-		pre = new RespuestaUnica(pregunta, false);
+		pre = new RespuestaSimple(pregunta, false);
 		res.addRespuesta(pre);
-		pre2 = new RespuestaUnica(pregunta2, true);
+		pre2 = new RespuestaSimple(pregunta2, true);
 		res.addRespuesta(pre2);
 		assertTrue(res.calcularNota() == 0);		
 	}

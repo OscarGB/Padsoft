@@ -9,77 +9,61 @@ import java.io.Serializable;
  */
 
 public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
-	//Variables
+	
 	
 	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Respuesta única
-	 */
-	private boolean respuesta;
-	
-	
+
 	//Constructores
-	
 	/**
-	 * Constructor de PreguntaRespuestaUnica
-	 * Siempre se le pasa la respuesta (boolean)
+	 * Constructor de PreguntaRespuestaUnica con penalización
 	 * @param enunciado
 	 * @param aleatorio
 	 * @param penalizacion
 	 * @param valorPregunta
-	 * @param respuesta
 	 */
-	public PreguntaRespuestaUnica(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta, boolean respuesta){
+	public PreguntaRespuestaUnica(String enunciado, boolean aleatorio, float penalizacion, float valorPregunta){
 		super(enunciado, aleatorio, penalizacion, valorPregunta);
-		this.respuesta = respuesta;
 	}
 	
 	/**
-	 * Constructor de PreguntaRespuestaUnica sin penalización
-	 * Siempre se le pasa la respuesta (boolean)
+	 * Constructor de PreguntaRespuestaSimple sin penalización
 	 * @param enunciado
 	 * @param aleatorio
 	 * @param valorPregunta
-	 * @param respuesta
 	 */
-	public PreguntaRespuestaUnica(String enunciado, boolean aleatorio, float valorPregunta, boolean respuesta){
+	public PreguntaRespuestaUnica(String enunciado, boolean aleatorio, float valorPregunta){
 		super(enunciado, aleatorio, valorPregunta);
-		this.respuesta = respuesta;
 	}
-
 	
-	//Getters y setters
+	//Metodos
 	
 	/**
-	 * Get de respuesta unica
-	 * @return respuesta
+	 * Método privado para saber el número de respuestas correctas que hay
+	 * @return
 	 */
-	public boolean getRespuesta() {
-		return respuesta;
-	}
-
-	/**
-	 * Set respuesta unica
-	 * @param respuesta
-	 */
-	public void setRespuesta(boolean respuesta) {
-		this.respuesta = respuesta;
-	}
-	
-	//Override
-	
-		/**
-		 * (Override) toString para respuesta unica
-		 */
-		@Override
-		public String toString(){
-			return "Pregunta: " + this.enunciado + "\n" + "Respuesta correcta: " + this.respuesta + "\nValor: " + this.valorPregunta
-					+ "\nPenalización: " + this.penalizacion;
+	private int numCorrectas(){
+		int num = 0;
+		for(Opciones op: this.opciones){
+			if(op.esCorrecta() == true){
+				num ++;
+			}
 		}
+		
+		return num;
+	}
 	
-	
+	/**
+	 * Método que añade opciones al array de opciones
+	 * Si ya hay una correcta, no permite meter otra
+	 */
+	public boolean addOpcion(Opciones op){
+		if((op.esCorrecta() == true) && (this.numCorrectas() >=1)){
+			return false;
+		}
+		
+		return this.opciones.add(op);
+	}
 }

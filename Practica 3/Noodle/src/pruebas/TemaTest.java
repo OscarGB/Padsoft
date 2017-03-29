@@ -13,12 +13,12 @@ import org.junit.Test;
 import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaUnica;
+import contenido.PreguntaRespuestaSimple;
 import contenido.Tema;
 import persona.Alumno;
 import plataforma.Plataforma;
 import respuestas.RespuestaPregunta;
-import respuestas.RespuestaUnica;
+import respuestas.RespuestaSimple;
 
 /**
  * Test de Tema
@@ -125,11 +125,11 @@ public class TemaTest {
 		mates.addAlumno(nacho);
 		
 		//Creamos las preguntas y las respuestas
-		Pregunta pre = new PreguntaRespuestaUnica("Prueba", true, -1, true);
+		Pregunta pre = new PreguntaRespuestaSimple("Prueba", true, -1, true);
 		
 		ej1.addPregunta(pre);
 		
-		RespuestaPregunta res = new RespuestaUnica(pre, true);
+		RespuestaPregunta res = new RespuestaSimple(pre, true);
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
