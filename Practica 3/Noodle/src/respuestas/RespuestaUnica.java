@@ -5,13 +5,17 @@ import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
 
 /**
- * Clase RespuestUnica
+ * Clase RespuestaUnica
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 07/03/2017
  */
 
-public class RespuestUnica extends RespuestaPregunta{
+public class RespuestaUnica extends RespuestaPregunta{
+	/**
+	 * Para serializar
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Respuesta escogida
 	 */
@@ -22,7 +26,7 @@ public class RespuestUnica extends RespuestaPregunta{
 	 * @param p
 	 * @param respuesta
 	 */
-	public RespuestUnica(Pregunta p, Opciones respuesta) {
+	public RespuestaUnica(Pregunta p, Opciones respuesta) {
 		super(p);
 		this.respuesta=respuesta;
 	}
