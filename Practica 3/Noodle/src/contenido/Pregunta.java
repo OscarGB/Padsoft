@@ -18,6 +18,11 @@ public abstract class Pregunta implements Serializable{
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Penalizacion por defecto
+	 */
+	private static final float PENALIZACION_DEFECTO = 0.f;
 
 	/**
 	 * Enunciado de la pregunta
@@ -70,7 +75,7 @@ public abstract class Pregunta implements Serializable{
 		this.enunciado = enunciado;
 		this.aleatorio = aleatorio;
 		this.penalizacion = - Math.abs(penalizacion);
-		this.valorPregunta = valorPregunta;
+		this.valorPregunta = Math.abs(valorPregunta);
 		this.numCorrectas = 0;
 		this.numRespuestas = 0;
 		this.opciones = new ArrayList<Opciones>();
@@ -86,7 +91,7 @@ public abstract class Pregunta implements Serializable{
 	public Pregunta(String enunciado, boolean aleatorio, float valorPregunta){
 		this.enunciado = enunciado;
 		this.aleatorio = aleatorio;
-		this.penalizacion = 0f;
+		this.penalizacion = Pregunta.PENALIZACION_DEFECTO;
 		this.valorPregunta = valorPregunta;
 		this.opciones = new ArrayList<Opciones>();
 		this.numCorrectas = 0;
@@ -95,6 +100,14 @@ public abstract class Pregunta implements Serializable{
 	
 	
 	//Getters y setters
+	
+	/**
+	 * Getter de la penalización por defecto
+	 * @return float
+	 */
+	public float getPenalizacionDefecto(){
+		return this.PENALIZACION_DEFECTO;
+	}
 
 	/**
 	 * Getter enunciado
@@ -195,7 +208,7 @@ public abstract class Pregunta implements Serializable{
 	 * @return boolean
 	 */
 	public boolean addOpcion(Opciones opcion){
-		return this.opciones.add(opcion);
+		return false;
 	}
 	
 	/**
@@ -222,7 +235,6 @@ public abstract class Pregunta implements Serializable{
 	 * @param opcion
 	 */
 	public void removeOpcion(Opciones opcion){
-		this.opciones.remove(opcion);
 		return;
 	}
 	
@@ -237,6 +249,7 @@ public abstract class Pregunta implements Serializable{
 	 * Método para incrementar el número de preguntas respondidas correctamente
 	 */
 	public void addCorrecta(){
+		this.numRespuestas ++;
 		this.numCorrectas ++;
 	}
 	

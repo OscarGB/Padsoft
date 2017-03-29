@@ -74,6 +74,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * @return boolean
 	 */
 	public boolean addOpcion(String respuesta){
+		if(respuesta == null) return false;
 		return this.respuestas.add(respuesta);
 	}
 	
@@ -82,6 +83,7 @@ public class PreguntaRespuestaAbierta extends Pregunta implements Serializable {
 	 * @param respuesta
 	 */
 	public void removeOpcion(String respuesta){
+		if(respuesta == null) return;
 		this.respuestas.remove(respuesta);
 		return;
 	}
