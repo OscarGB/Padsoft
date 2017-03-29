@@ -51,7 +51,7 @@ public class Opciones implements Serializable {
 	public String getRespuesta() {
 		return respuesta;
 	}
-
+	
 	/**
 	 * Set respuesta
 	 * @param respuesta
@@ -75,6 +75,8 @@ public class Opciones implements Serializable {
 	public void setCorrecta(boolean correcta) {
 		this.correcta = correcta;
 	}
+	
+	//Override
 	
 	/**
 	 * toString, Override
