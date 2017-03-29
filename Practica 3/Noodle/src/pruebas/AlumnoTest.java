@@ -2,12 +2,16 @@ package pruebas;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import asignatura.Asignatura;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
+import plataforma.Plataforma;
 import solicitud.Solicitud;
 
 /**
@@ -23,9 +27,17 @@ public class AlumnoTest {
 	EstadisticasAlumno es;
 	@Before
 	public void setUp() throws Exception {
+		File file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		this.al = Alumno.CreaAlumno("1234", "Pepito", "pep1234", "pepito@gmail.com");
 		this.asig = new Asignatura("Lengua");
-		this.es = EstadisticasAlumno.newEstadisticasAlumno(asig, al);
+	}
+	
+	@After
+	public void close() throws Exception {
+		Plataforma.closePlataforma();
 	}
 
 	/**
@@ -56,6 +68,9 @@ public class AlumnoTest {
 	 */
 	@Test
 	public void testAddEstadistica() {
+		asig.addAlumno(al);
+		this.es = EstadisticasAlumno.newEstadisticasAlumno(asig, al);
+		al.addEstadistica(es);
 		assertTrue(al.getEstadisticas().contains(es));
 		assertEquals(1, al.getEstadisticas().size());
 		
@@ -66,7 +81,9 @@ public class AlumnoTest {
 	 */
 	@Test
 	public void testEraseEstadistica() {
-		al.eraseAsignatura(null);
+		asig.addAlumno(al);
+		this.es = EstadisticasAlumno.newEstadisticasAlumno(asig, al);
+		al.addEstadistica(es);
 		assertEquals(1, al.getEstadisticas().size());		
 		al.eraseEstadistica(es);
 		assertFalse(al.getEstadisticas().contains(es));
@@ -79,9 +96,8 @@ public class AlumnoTest {
 	public void testSolicitud() {
 		Solicitud sol = al.solicitarAcceso(asig);
 		assertTrue(sol != null);
-		al.addAsignatura(asig);
-		sol = al.solicitarAcceso(asig);
-		assertTrue(sol == null);
+		Solicitud sol2 = al.solicitarAcceso(asig);
+		assertTrue(sol2 == null);
 	}
 	
 	

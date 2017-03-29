@@ -41,10 +41,10 @@ public class AsignaturaTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		file = new File("./data/plataforma");
+		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		mates = new Asignatura("Mates");
 		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
@@ -305,7 +305,14 @@ public class AsignaturaTest {
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		
 		assertFalse(mates.eraseContenido(tema1));
 	}
 	
@@ -328,7 +335,12 @@ public class AsignaturaTest {
 
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
+		Plataforma.logout();
+		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
+		
+		Plataforma.logout();
+		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
 		
 		assertFalse(mates.eraseContenido(tema1));
 		
