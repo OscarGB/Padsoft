@@ -33,6 +33,7 @@ public class ProfesorTest {
 		al = Plataforma.alumnos.get(0);
 		asig1 = new Asignatura("mates");
 		sol = new Solicitud(al, asig1);
+		asig1.addSolicitudPendiente(sol);
 	}
 	
 	@After
@@ -54,6 +55,7 @@ public class ProfesorTest {
 	 */
 	@Test
 	public void testsolicitud1() {
+		
 		assertTrue(profe.aceptarSolicitud(sol));
 		assertTrue(asig1.getAlumnos().contains(al));
 		assertTrue(al.getAsignaturas().contains(asig1));

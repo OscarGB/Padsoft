@@ -66,6 +66,7 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testAddSolicitudPendiente1(){
+		mates.addSolicitudPendiente(sol1);
 		assertTrue(mates.getSolicitudes().contains(sol1));
 	}
 	
@@ -74,6 +75,7 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testAddSolicitudPendiente2(){
+		mates.addSolicitudPendiente(sol1);
 		Solicitud sol2 = new Solicitud(nacho, mates);
 		assertFalse(mates.addSolicitudPendiente(sol2));
 		assertEquals(mates.getSolicitudes().size(), 1);
@@ -140,8 +142,8 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testAceptarSolicitud1(){
+		mates.addSolicitudPendiente(sol1);
 		mates.aceptarSolicitud(sol1);
-		
 		assertTrue(mates.isAlumnoIn(sol1.getAlumno()));
 		assertFalse(mates.getSolicitudes().contains(sol1));
 	}

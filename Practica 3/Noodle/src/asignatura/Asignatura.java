@@ -128,7 +128,7 @@ public class Asignatura implements Serializable {
 	}
 	
 	
-	//Métodos
+	//Mï¿½todos
 	
 	/**
 	 * Método para añadir alumno a la asignatura
@@ -190,7 +190,7 @@ public class Asignatura implements Serializable {
 				this.expulsados.remove(s);
 				this.addAlumno(alumno);
 				try {
-					EmailSystem.send(alumno.getEmail(), "Readmisiï¿½n", "Has sido readmitido a la asignatura " + this.getNombre());
+					EmailSystem.send(alumno.getEmail(), "Readmisión", "Has sido readmitido a la asignatura " + this.getNombre());
 				} catch (InvalidEmailAddressException e) {
 					e.printStackTrace();
 				} catch (FailedInternetConnectionException e) {
@@ -209,7 +209,7 @@ public class Asignatura implements Serializable {
 	public void denegarSolicitud(Solicitud solicitud) {
 		this.solicitudes.remove(solicitud);	
 		try {
-			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegaciï¿½n", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
+			EmailSystem.send(solicitud.getAlumno().getEmail(), "Denegación", "Tu solicitud a la asignatura " + this.getNombre() + " ha sido denegada");
 		} catch (InvalidEmailAddressException e) {
 			e.printStackTrace();
 		} catch (FailedInternetConnectionException e) {
