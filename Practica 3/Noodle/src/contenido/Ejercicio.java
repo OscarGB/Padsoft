@@ -404,11 +404,11 @@ public class Ejercicio extends Contenido implements Serializable{
 			}
 			return true;
 		}
-		else if(this.estado == EstadoEjercicio.ESPERA){
+		else if(Plataforma.getFechaActual().isAfter(this.fechaFin)){
+			this.estado = EstadoEjercicio.TERMINADO;
 			return false;
 		}
 		else {
-			this.estado = EstadoEjercicio.TERMINADO;
 			return false;
 		}
 	}
