@@ -2,11 +2,14 @@ package pruebas;
 
 import respuestas.*;
 import contenido.*;
+import plataforma.Plataforma;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.time.LocalDate;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,15 +23,22 @@ import asignatura.Asignatura;
  */
 
 public class RespuestaEjercicioTest {
-	RespuestaEjercicio res;
-	RespuestaPregunta pre;
-	RespuestaPregunta pre2;
-	Pregunta pregunta2;
-	Pregunta pregunta;
-	Ejercicio ej;
-	Asignatura asig;
+	private RespuestaEjercicio res;
+	private RespuestaPregunta pre;
+	private RespuestaPregunta pre2;
+	private Pregunta pregunta2;
+	private Pregunta pregunta;
+	private Ejercicio ej;
+	private Asignatura asig;
+	private Plataforma plataforma;
+	private File file;
+	
 	@Before
 	public void setUp() throws Exception {
+		
+		file = new File("./data/plataforma");
+		file.delete();
+		Plataforma.openPlataforma();
 		pregunta = new PreguntaRespuestaUnica("Prueba", false, -4, 4, true);
 		pregunta2 = new PreguntaRespuestaUnica("Prueba2", false, -8, 6, false);
 		asig = new Asignatura("Lengua");
@@ -84,6 +94,12 @@ public class RespuestaEjercicioTest {
 		res.addRespuesta(pre2);
 		assertTrue(res.calcularNota() == 0);		
 	}
+	
+	@After
+	public void afterTest(){
+		Plataforma.closePlataforma();
+	}
+	
 
 
 }
