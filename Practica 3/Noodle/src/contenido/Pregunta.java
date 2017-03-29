@@ -106,12 +106,12 @@ public abstract class Pregunta implements Serializable{
 	 * @return float
 	 */
 	public float getPenalizacionDefecto(){
-		return this.PENALIZACION_DEFECTO;
+		return Pregunta.PENALIZACION_DEFECTO;
 	}
 
 	/**
 	 * Getter enunciado
-	 * @return enunciado
+	 * @return String
 	 */
 	public String getEnunciado() {
 		return enunciado;
@@ -122,6 +122,7 @@ public abstract class Pregunta implements Serializable{
 	 * @param enunciado
 	 */
 	public void setEnunciado(String enunciado) {
+		if(enunciado == null || enunciado == "") return;
 		this.enunciado = enunciado;
 	}
 
@@ -142,19 +143,19 @@ public abstract class Pregunta implements Serializable{
 	}
 
 	/**
-	 * Getter penalizacion
-	 * @return penalizacion
+	 * Getter penalización
+	 * @return penalización
 	 */
 	public float getPenalizacion() {
 		return penalizacion;
 	}
 
 	/**
-	 * Set penalizacion
-	 * @param penalizacion
+	 * Set penalización
+	 * @param penalización
 	 */
 	public void setPenalizacion(float penalizacion) {
-		this.penalizacion = penalizacion;
+		this.penalizacion = - Math.abs(penalizacion);
 	}
 
 	/**
@@ -170,7 +171,7 @@ public abstract class Pregunta implements Serializable{
 	 * @param valorPregunta
 	 */
 	public void setValorPregunta(float valorPregunta) {
-		this.valorPregunta = valorPregunta;
+		this.valorPregunta = Math.abs(valorPregunta);
 	}
 
 	/**
@@ -239,7 +240,7 @@ public abstract class Pregunta implements Serializable{
 	}
 	
 	/**
-	 * Método para incrementar el número de preguntas respondidas
+	 * Método para incrementar el número de preguntas respondidas erroneamente
 	 */
 	public void addRespondida(){
 		this.numRespuestas ++;
@@ -264,6 +265,10 @@ public abstract class Pregunta implements Serializable{
 	
 	//Override
 	
+	/**
+	 * toString, Override
+	 * @return String
+	 */
 	@Override
 	public String toString(){
 		String aux = "";

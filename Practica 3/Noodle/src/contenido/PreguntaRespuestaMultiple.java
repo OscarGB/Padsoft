@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Clase RespuestaMultiple
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
- * @date 07/03/2017
+ * @date 10/03/2017
  */
 
 public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
@@ -65,6 +65,7 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		 * Método que añade una opción e incrementa el número de respuestas
 		 * correctas
 		 */
+		@Override
 		public boolean addOpcion(Opciones opcion){
 			if(opcion == null) return false;
 			this.numCorrectas ++;
@@ -72,15 +73,9 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		}
 		
 		/**
-		 * AddOpcion(string) devuelve false en multiple
-		 */
-		public boolean addOpcion(String str){
-			return false;
-		}
-		
-		/**
 		 * Método para borrar una opción
 		 */
+		@Override
 		public void removeOpcion(Opciones opcion){
 			if(opcion == null) return;
 			this.opciones.remove(opcion);
@@ -90,6 +85,7 @@ public class PreguntaRespuestaMultiple extends Pregunta implements Serializable{
 		/**
 		 * Método para comprobar si una pregunta está bien formada
 		 */
+		@Override
 		public boolean bienFormada(){
 			if(this.getOpciones().isEmpty()){
 				return false;

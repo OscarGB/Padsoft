@@ -200,11 +200,15 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param peso
 	 */
 	public void setPeso(int peso) {
+		if(peso < 0){
+			this.peso = -peso;
+			return;
+		}
 		this.peso = peso;
 	}
 
 	/**
-	 * esAleatorio
+	 * Get aleatorio
 	 * @return boolean
 	 */
 	public boolean esAleatorio() {
@@ -238,12 +242,27 @@ public class Ejercicio extends Contenido implements Serializable{
 	/**
 	 * Set fecha inicio
 	 * @param fechaIni
+	 * @return boolean
 	 */
-	public void setFechaIni(LocalDate fechaIni) {
-		if(Plataforma.loggedAs.getClass() == Profesor.class){
-			this.fechaIni = fechaIni;
+	public boolean setFechaIni(LocalDate fechaIni) {
+		if(fechaIni == null){
+			return false;
 		}
-		return;
+		if(this.fechaIni.isBefore(fechaIni)){
+			if(this.estado == EstadoEjercicio.RESPONDIDO || this.estado == EstadoEjercicio.TERMINADO){
+				return false;
+			}
+		}
+		if(this.fechaIni.isBefore(Plataforma.fechaActual)){
+			return false;
+		}
+		if(Plataforma.loggedAs.getClass() == Profesor.class){
+			if(fechaIni.isAfter(Plataforma.fechaActual) && fechaIni.isBefore(this.fechaFin)){
+				this.fechaIni = fechaIni;
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -256,7 +275,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	
 	
 	/**
-	 * Métod para obtener la fecha de cierre por defecto
+	 * Método para obtener la fecha de cierre por defecto
 	 * @return localdate
 	 */
 	public LocalDate getFechaFinDefecto(){
@@ -266,12 +285,25 @@ public class Ejercicio extends Contenido implements Serializable{
 	/**
 	 * Set fecha fin ejercicio
 	 * @param fechaFin
+	 * @return boolean
 	 */
-	public void setFechaFin(LocalDate fechaFin) {
+	public boolean setFechaFin(LocalDate fechaFin) {
+		if(fechaFin == null){
+			return false;
+		}
+		if(this.fechaFin.isAfter(fechaFin)){
+			if(this.estado == EstadoEjercicio.RESPONDIDO || this.estado == EstadoEjercicio.TERMINADO){
+				return false;
+			}
+		}
+		if(this.fechaIni.isAfter(fechaFin)){
+			return false;
+		}
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
 			this.fechaFin = fechaFin;
+			return true;
 		}
-		return;
+		return false;
 	}
 
 	/**
@@ -291,7 +323,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 	
 	/**
-	 * Get del nï¿½mero de alumnos que han terminado
+	 * Get del número de alumnos que han terminado
 	 * el ejercicio
 	 * @return numterminados
 	 */
@@ -308,7 +340,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 	
 	
-	//Metodos
+	//Métodos
 	
 	/**
 	 * Método para añadir una pregunta al ejercicio
@@ -323,7 +355,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 	
 	/**
-	 * Mï¿½todo para eliminar una pregunta
+	 * Método para eliminar una pregunta
 	 * @param pregunta
 	 */
 	public void removePregunta(Pregunta preg){

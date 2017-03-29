@@ -92,6 +92,7 @@ public class Tema extends Contenido  implements Serializable{
 	 * Método que oculta todo el contenido recursivamente para cuando se borra
 	 * un tema
 	 */
+	@Override
 	public void ocultarContenido(){
 		for(Contenido c: this.subcontenido){
 			c.ocultarContenido();
@@ -104,7 +105,9 @@ public class Tema extends Contenido  implements Serializable{
 	/**
 	 * Método para comprobar si un tema es borrable
 	 * es decir, si sus contenidos son borrables
+	 * @return boolean
 	 */
+	@Override
 	public boolean esBorrable(){
 		for(Contenido c: this.subcontenido){
 			if(c.esBorrable() == false){
