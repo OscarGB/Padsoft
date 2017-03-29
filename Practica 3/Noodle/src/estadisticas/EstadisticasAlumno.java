@@ -25,6 +25,7 @@ import respuestas.RespuestaEjercicio;
 
 public class EstadisticasAlumno implements Serializable{
 	
+	//Variables
 	
 	/**
 	 * Para serializar
@@ -51,8 +52,10 @@ public class EstadisticasAlumno implements Serializable{
 	 */
 	private Alumno alumno;
 	
+	//Constructores
+	
 	/**
-	 * Constructor de estadisticas alumno
+	 * Constructor privado de estadisticas alumno
 	 */
 	private EstadisticasAlumno(Asignatura asig, Alumno al){
 		this.notaMedia = 0;
@@ -63,6 +66,12 @@ public class EstadisticasAlumno implements Serializable{
 		al.addEstadistica(this);
 	}
 	
+	/**
+	 * Constructor con comprobacioness
+	 * @param asig
+	 * @param al
+	 * @return EstadisticasAlumno
+	 */
 	public static EstadisticasAlumno newEstadisticasAlumno(Asignatura asig, Alumno al){
 		if(asig == null || al == null){
 			return null;
@@ -72,6 +81,8 @@ public class EstadisticasAlumno implements Serializable{
 		}
 		return new EstadisticasAlumno(asig, al);
 	}
+	
+	//Getters y Setters
 	
 	/**
 	 * Get nota media
@@ -104,6 +115,9 @@ public class EstadisticasAlumno implements Serializable{
 	public Asignatura getAsignatura(){
 		return asig;
 	}
+	
+	//Métodos
+	
 	/**
 	 * Añade una nueva respuesta a ejercicio y calcula la nota media.
 	 * @param r

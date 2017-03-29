@@ -10,6 +10,13 @@ import contenido.PreguntaRespuestaSimple;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
 
+/**
+ * Test RespuestaPregunta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
 public class RespuestaPreguntaTest {
 
 	Pregunta pre;

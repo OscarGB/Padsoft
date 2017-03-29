@@ -8,6 +8,13 @@ import org.junit.Test;
 import contenido.*;
 import respuestas.*;
 
+/**
+ * Test RespuestaAbierta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
 public class RespuestaAbiertaTest {
 	
 	Pregunta pre;

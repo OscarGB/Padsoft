@@ -29,13 +29,8 @@ import solicitud.Solicitud;
 
 public class Plataforma implements Serializable {
 	
-	/**
-	 * Para poder guardar el objeto
-	 */
-	private ArrayList<Asignatura> asigs;
-	private ArrayList<Alumno> alus;
-	private Profesor prof;
-	
+	//Variables
+		
 	/**
 	 * Para serializar
 	 */
@@ -80,6 +75,15 @@ public class Plataforma implements Serializable {
 	 * Singleton plataforma
 	 */
 	public static Plataforma plat;
+
+	/**
+	 * Para poder guardar el objeto
+	 */
+	private ArrayList<Asignatura> asigs;
+	private ArrayList<Alumno> alus;
+	private Profesor prof;
+	
+	// Constructores y destructores
 
 	/**
 	 * Constructor de Plataforma
@@ -168,6 +172,7 @@ public class Plataforma implements Serializable {
 		Plataforma.asignaturas = Plataforma.plat.asigs;
 		Plataforma.alumnos = Plataforma.plat.alus;
 		Plataforma.profesor = Plataforma.plat.prof;
+		Profesor.profesor = Plataforma.plat.prof;
 		return true;
 
 	}
@@ -215,6 +220,8 @@ public class Plataforma implements Serializable {
 		}
 	}
 	
+	//Getters y Setters
+	
 	/**
 	 * Devuelve el nombre de la plataforma
 	 * @return
@@ -232,25 +239,6 @@ public class Plataforma implements Serializable {
 	}
 
 	/**
-	 * Añade una asignatura
-	 * @param asignatura
-	 */
-	public static void addAsignatura(Asignatura asignatura) {
-		if(Plataforma.asignaturas.contains(asignatura)){
-			return;
-		}
-		Plataforma.asignaturas.add(asignatura);
-	}
-	
-	/**
-	 * Borra una asignatura
-	 * @param asignatura
-	 */
-	public static void eraseAsignatura(Asignatura asignatura) {
-		Plataforma.asignaturas.remove(asignatura);
-	}
-
-	/**
 	 * Devuelve la fecha actual
 	 * @return
 	 */
@@ -263,7 +251,31 @@ public class Plataforma implements Serializable {
 	 * @param fechaActual
 	 */
 	public static void setFechaActual(LocalDate fechaActual) {
+		if(fechaActual == null) return;
 		Plataforma.fechaActual = fechaActual;
+	}
+	
+	//Métodos
+	
+	/**
+	 * Añade una asignatura
+	 * @param asignatura
+	 */
+	public static void addAsignatura(Asignatura asignatura) {
+		if(asignatura == null) return;
+		if(Plataforma.asignaturas.contains(asignatura)){
+			return;
+		}
+		Plataforma.asignaturas.add(asignatura);
+	}
+	
+	/**
+	 * Borra una asignatura
+	 * @param asignatura
+	 */
+	public static void eraseAsignatura(Asignatura asignatura) {
+		if(asignatura == null) return;
+		Plataforma.asignaturas.remove(asignatura);
 	}
 	
 	/**
@@ -300,6 +312,8 @@ public class Plataforma implements Serializable {
 	public static void logout(){
 		Plataforma.loggedAs = null;
 	}
+	
+	//Overrides
 	
 	/**
 	 * toString, Override

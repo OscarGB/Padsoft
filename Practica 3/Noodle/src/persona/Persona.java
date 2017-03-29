@@ -86,6 +86,16 @@ public abstract class Persona implements Serializable{
 	public String getPassword() {
 		return password;
 	}
+	
+	/**
+	 * devuelve el email de un alumno
+	 * Se va a sobreescribir
+	 * @return String
+	 */
+	public String getEmail() {
+		return "";
+	}
+	
 	/**
 	 * Da valor a la contraseña de una persona
 	 * @param password

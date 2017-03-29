@@ -6,6 +6,13 @@ import org.junit.Test;
 
 import contenido.Opciones;
 
+/**
+ * Test Opciones
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
 public class OpcionesTest {
 	
 	/**

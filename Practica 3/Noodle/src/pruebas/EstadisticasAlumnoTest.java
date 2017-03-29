@@ -20,6 +20,12 @@ import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
 
+/**
+ * Test EstadisticasAlumno
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
+ */
 public class EstadisticasAlumnoTest {
 	Alumno al;
 	Asignatura asig;
