@@ -293,8 +293,11 @@ public class Ejercicio extends Contenido implements Serializable{
 			return false;
 		}
 		this.enPlazo();
+		if(this.estado == EstadoEjercicio.TERMINADO){
+			return false;
+		}
 		if(this.fechaFin.isAfter(fechaFin)){
-			if(this.estado == EstadoEjercicio.RESPONDIDO || this.estado == EstadoEjercicio.TERMINADO){
+			if(this.estado == EstadoEjercicio.RESPONDIDO){
 				return false;
 			}
 		}
