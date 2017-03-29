@@ -209,7 +209,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testResponderEjercicio5(){
-		EstadisticasAlumno nuevo = new EstadisticasAlumno(ej2.getAsignatura(), nacho);
+		EstadisticasAlumno nuevo = EstadisticasAlumno.newEstadisticasAlumno(ej2.getAsignatura(), nacho);
 		RespuestaEjercicio respuestas = new RespuestaEjercicio(ej2);
 		nuevo.addRespuestaEjercicio(respuestas);
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));

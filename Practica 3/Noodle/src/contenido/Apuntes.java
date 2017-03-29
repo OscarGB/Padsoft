@@ -10,10 +10,12 @@ import java.io.Serializable;
  * @date 07/03/2017
  */
 public class Apuntes extends Contenido implements Serializable{
+	
 	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	//Variables
 	
 	/**
@@ -22,7 +24,7 @@ public class Apuntes extends Contenido implements Serializable{
 	private String texto;
 	
 	
-	//Constructor
+	//Constructores
 	/**
 	 * Constructor para la clase Apuntes en directorio raiz
 	 * @param String texto

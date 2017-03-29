@@ -150,10 +150,10 @@ public class Plataforma implements Serializable {
 	 * @return boolean
 	 */
 	private boolean loadData(){
-		File archivo = new File("./data/plataforma");
 		FileInputStream out = null;
 		 try {
-	          out = new FileInputStream(archivo);
+			 File archivo = new File("./data/plataforma");
+	         out = new FileInputStream(archivo);
 		 } catch (Exception FileNotFoundException){
 			 return false;
 		 }

@@ -25,7 +25,7 @@ public class AlumnoTest {
 	public void setUp() throws Exception {
 		this.al = Alumno.CreaAlumno("1234", "Pepito", "pep1234", "pepito@gmail.com");
 		this.asig = new Asignatura("Lengua");
-		this.es = new EstadisticasAlumno(asig, al);
+		this.es = EstadisticasAlumno.newEstadisticasAlumno(asig, al);
 	}
 
 	/**
