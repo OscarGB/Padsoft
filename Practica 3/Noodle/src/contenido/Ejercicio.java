@@ -232,7 +232,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 	
 	/**
-	 * Métod para obtener la fecha de inicio por defecto
+	 * Método para obtener la fecha de inicio por defecto
 	 * @return localdate
 	 */
 	public LocalDate getFechaIniDefecto(){

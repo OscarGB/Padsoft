@@ -13,8 +13,11 @@ import contenido.Ejercicio;
  */
 
 public class RespuestaEjercicio implements Serializable {
+	
+	//Variables
+	
 	/**
-	 * 
+	 * Para Serializar
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +40,8 @@ public class RespuestaEjercicio implements Serializable {
 	 * nota máxima de un ejercicio
 	 */
 	public static final float NOTAMAX = 10;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de respuesta ejercicio

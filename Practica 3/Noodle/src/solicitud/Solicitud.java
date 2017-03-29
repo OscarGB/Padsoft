@@ -3,17 +3,24 @@ package solicitud;
 import java.io.Serializable;
 
 import asignatura.Asignatura;
-import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.Alumno;
 
+/**
+ * Clase Solicitud
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
 public class Solicitud implements Serializable{
+	
+	//Variables
 	
 	/**
 	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
-
-	//Variables
+	
 	/**
 	 * Alumno que solicita acceso
 	 */
