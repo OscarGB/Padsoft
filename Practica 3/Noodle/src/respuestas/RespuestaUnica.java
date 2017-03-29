@@ -51,6 +51,6 @@ public class RespuestaUnica extends RespuestaPregunta{
 	 */
 	@Override
 	public String toString(){
-		return "Pregunta Simple: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuesta;
+		return "Pregunta Unica: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuesta;
 	}
 }

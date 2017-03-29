@@ -15,6 +15,8 @@ import solicitud.Solicitud;
 
 public class Profesor extends Persona implements Serializable{
 	
+	//Variables
+	
 	/**
 	 * Para serializar
 	 */
@@ -34,6 +36,18 @@ public class Profesor extends Persona implements Serializable{
 		super("1", "Profesor", "contraseniaprofe");
 	}
 	
+	/**
+	 * Método para crear un nuevo profesor (singleton)
+	 * @return profesor
+	 */
+	public static Profesor newProfesor(){
+		if(Profesor.profesor == null){
+			Profesor.profesor = new Profesor();
+		}
+		
+		return Profesor.profesor;
+	}
+		
 	//Setters y getters
 	
 	/**
@@ -50,21 +64,8 @@ public class Profesor extends Persona implements Serializable{
 		return solicitudes;
 	}
 	
-	
 	//Métodos
-	
-	/**
-	 * Método para crear un nuevo profesor (singleton)
-	 * @return profesor
-	 */
-	public static Profesor newProfesor(){
-		if(Profesor.profesor == null){
-			Profesor.profesor = new Profesor();
-		}
 		
-		return Profesor.profesor;
-	}
-	
 	/**
 	 * Método que acepta solicitud
 	 * @param sol
@@ -74,11 +75,7 @@ public class Profesor extends Persona implements Serializable{
 		if(sol == null){
 			return false;
 		}
-		if(sol.getAsignatura().aceptarSolicitud(sol) == true){
-			return true;
-		}
-		
-		return false;
+		return sol.getAsignatura().aceptarSolicitud(sol);
 	}
 	
 	/**
@@ -98,6 +95,7 @@ public class Profesor extends Persona implements Serializable{
 	 * @param a1
 	 */
 	public void expulsarAlumno(Asignatura asig1, Alumno a1) {
+		if(asig1 == null || a1 == null) return;
 		asig1.expulsarAlumno(a1);
 	}
 

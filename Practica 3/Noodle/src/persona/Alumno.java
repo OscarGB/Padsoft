@@ -34,7 +34,7 @@ public class Alumno extends Persona implements Serializable{
 	private ArrayList<Asignatura> asignaturas;
 	
 	/**
-	 * Estadï¿½sticas del Alumno
+	 * Estadísticas del Alumno
 	 */
 	private ArrayList<EstadisticasAlumno> estadisticas;
 
@@ -54,12 +54,19 @@ public class Alumno extends Persona implements Serializable{
 		this.email = email;
 	}
 	
+	/**
+	 * Cosntructor con comprobaciones
+	 * @param nia
+	 * @param nombre
+	 * @param password
+	 * @param email
+	 * @return Alumno
+	 */
 	public static Alumno CreaAlumno(String nia, String nombre, String password, String email){
 		if(EmailSystem.isValidEmailAddr(email) == false){
 			return null;
 		}
 		return new Alumno(nia, nombre, password, email);
-		
 	}
 	
 	//Getters y Setters
@@ -69,6 +76,7 @@ public class Alumno extends Persona implements Serializable{
 	 * @param email
 	 */
 	public void setEmail(String email) {
+		if(email == null) return;
 		if(EmailSystem.isValidEmailAddr(email) == false){
 			System.out.println("El email introducido no es válido");
 			return;
@@ -78,7 +86,7 @@ public class Alumno extends Persona implements Serializable{
 	}
 	
 	/**
-	 * Devuelve las asignaturas en las que estï¿½ matriculado el Alumno
+	 * Devuelve las asignaturas en las que está matriculado el Alumno
 	 * @return ArrayList<Asignatura>
 	 */
 	public ArrayList<Asignatura> getAsignaturas() {
@@ -86,7 +94,7 @@ public class Alumno extends Persona implements Serializable{
 	}
 	
 	/**
-	 * Devuelve las estadï¿½sitcas de un Alumno
+	 * Devuelve las estadísitcas de un Alumno
 	 * @return ArrayList<EstadisticasIndividuales>
 	 */
 	@Override
@@ -98,10 +106,10 @@ public class Alumno extends Persona implements Serializable{
 	 * devuelve el email de un alumno
 	 * @return String
 	 */
+	@Override
 	public String getEmail() {
 		return email;
 	}
-	
 	
 	//Métodos
 
@@ -164,13 +172,16 @@ public class Alumno extends Persona implements Serializable{
 	}
 	
 	/**
-	 * Mï¿½todo para solicitar acceso a una asignatura
-	 * que crearï¿½ una solicitud y la aï¿½adirï¿½ a las
+	 * Método para solicitar acceso a una asignatura
+	 * que creará una solicitud y la añadirá a las
 	 * solicitudes pendientes de la asignatura
 	 * @param asig
 	 * @return solicitud
 	 */
 	public Solicitud solicitarAcceso(Asignatura asig) {
+		if(asig == null){
+			return null;
+		}
 		if(asig.isAlumnoIn(this) == true) {
 			System.out.println("Alumno in");
 			return null;

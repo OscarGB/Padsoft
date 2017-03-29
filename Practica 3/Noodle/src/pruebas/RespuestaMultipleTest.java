@@ -13,6 +13,14 @@ import contenido.PreguntaRespuestaMultiple;
 import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
 
+/**
+ * Test RespuestaMultiple
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
+
+
 public class RespuestaMultipleTest {
 
 	Pregunta pre;

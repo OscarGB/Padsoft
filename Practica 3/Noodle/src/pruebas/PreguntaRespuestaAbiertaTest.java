@@ -8,6 +8,12 @@ import org.junit.Test;
 import contenido.Opciones;
 import contenido.PreguntaRespuestaAbierta;
 
+/**
+ * Test PreguntaRespuestaAbierta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
+ */
 public class PreguntaRespuestaAbiertaTest {
 	private PreguntaRespuestaAbierta preg;
 	private String resp1;

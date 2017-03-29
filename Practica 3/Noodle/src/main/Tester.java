@@ -9,7 +9,6 @@ package main;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
@@ -20,20 +19,19 @@ import respuestas.*;
 import solicitud.Solicitud;
 
 /**
- * Tester de toda la aplicación
- * @author Óscar Gómez Borzdynski
- * @author Jose Ignacio Gómez García
- * @date 21/03/2017
+ * Tester de la aplicación completa
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 28/03/2017
  */
 public class Tester {
 
 	public static void main(String[] args) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		Asignatura asig1;
 		Asignatura asig2;
 		File file = new File("./data/plataforma");
 		file.delete();
-		Plataforma Noodle = Plataforma.openPlataforma();
+		Plataforma.openPlataforma();
 		
 		Profesor p1 = Plataforma.profesor;
 			

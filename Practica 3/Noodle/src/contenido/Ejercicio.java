@@ -248,6 +248,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(fechaIni == null){
 			return false;
 		}
+		this.enPlazo();
 		if(this.fechaIni.isBefore(fechaIni)){
 			if(this.estado == EstadoEjercicio.RESPONDIDO || this.estado == EstadoEjercicio.TERMINADO){
 				return false;
@@ -291,6 +292,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(fechaFin == null){
 			return false;
 		}
+		this.enPlazo();
 		if(this.fechaFin.isAfter(fechaFin)){
 			if(this.estado == EstadoEjercicio.RESPONDIDO || this.estado == EstadoEjercicio.TERMINADO){
 				return false;

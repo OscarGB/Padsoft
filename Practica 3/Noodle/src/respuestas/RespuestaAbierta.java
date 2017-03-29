@@ -7,18 +7,24 @@ import contenido.PreguntaRespuestaAbierta;
  * Clase RespuestaAbierta
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
- * @date 07/03/2017
+ * @date 21/03/2017
  */
 
 public class RespuestaAbierta extends RespuestaPregunta {
+	
+	//Variables
+	
 	/**
-	 * 
+	 * Para serializar
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
-	 * Strign respondido
+	 * String respondido
 	 */
 	private String respondido;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de respuesta abierta
@@ -29,6 +35,8 @@ public class RespuestaAbierta extends RespuestaPregunta {
 		super(p);
 		this.respondido = respondido;
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método para comprobar si la respuesta abierta es correcta
@@ -41,6 +49,8 @@ public class RespuestaAbierta extends RespuestaPregunta {
 		}
 		return false;
 	}
+	
+	//Override
 	
 	/**
 	 * toString, Override
