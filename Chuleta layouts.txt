@@ -1,0 +1,4 @@
+Grid -> matriz
+GridBagLayout -> matriz con parametros (GridBagConstraints)
+SpringLayout -> relativos (parecido a css)
+SetLayout -> superponer cosillas
