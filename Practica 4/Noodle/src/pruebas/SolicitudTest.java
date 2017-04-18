@@ -26,7 +26,7 @@ public class SolicitudTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		nacho = Alumno.CreaAlumno("2", "Nacho", "password", "nacho@email.com");
+		nacho = Alumno.creaAlumno("2", "Nacho", "password", "nacho@email.com");
 		
 		mates = new Asignatura("Mates");	
 		

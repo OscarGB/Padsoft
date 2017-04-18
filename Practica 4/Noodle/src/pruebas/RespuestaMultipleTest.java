@@ -37,7 +37,7 @@ public class RespuestaMultipleTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		o1 = new Opciones("Esta", true);
 		o2 = new Opciones("Esta tambien", true);
 		o3 = new Opciones("Esta no", false);

@@ -57,7 +57,7 @@ public class Profesor extends Persona implements Serializable{
 	public ArrayList<Solicitud> getSolicitudes() {
 		ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
 		
-		for(Asignatura asig : Plataforma.asignaturas){
+		for(Asignatura asig : Plataforma.getAsignaturas()){
 			solicitudes.addAll(asig.getSolicitudes());
 		}
 		

@@ -30,8 +30,8 @@ public class AlumnoTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
-		this.al = Alumno.CreaAlumno("1234", "Pepito", "pep1234", "pepito@gmail.com");
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
+		this.al = Alumno.creaAlumno("1234", "Pepito", "pep1234", "pepito@gmail.com");
 		this.asig = new Asignatura("Lengua");
 	}
 	

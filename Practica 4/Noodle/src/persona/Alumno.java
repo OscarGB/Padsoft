@@ -62,7 +62,7 @@ public class Alumno extends Persona implements Serializable{
 	 * @param email
 	 * @return Alumno
 	 */
-	public static Alumno CreaAlumno(String nia, String nombre, String password, String email){
+	public static Alumno creaAlumno(String nia, String nombre, String password, String email){
 		if(EmailSystem.isValidEmailAddr(email) == false){
 			return null;
 		}

@@ -29,9 +29,9 @@ public class ProfesorTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		profe = Profesor.newProfesor();
-		al = Plataforma.alumnos.get(0);
+		al = Plataforma.alumnos().get(0);
 		asig1 = new Asignatura("mates");
 		sol = new Solicitud(al, asig1);
 		asig1.addSolicitudPendiente(sol);

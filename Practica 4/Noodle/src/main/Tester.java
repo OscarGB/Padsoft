@@ -33,12 +33,12 @@ public class Tester {
 		file.delete();
 		Plataforma.openPlataforma();
 		
-		Profesor p1 = Plataforma.profesor;
+		Profesor p1 = Plataforma.profesor();
 			
-		Alumno a1 = Plataforma.alumnos.get(0);
+		Alumno a1 = Plataforma.alumnos().get(0);
 		
 		//Login como profesor
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		//Creación de Asignaturas
 		asig1 = new Asignatura("matematicas");
@@ -77,7 +77,7 @@ public class Tester {
 		// Solicita acceso de nuevo, pero no se le deja (imprime null)
 		s2 = a1.solicitarAcceso(asig1);
 		
-		System.out.println("Asignaturas existentes" + Plataforma.asignaturas);
+		System.out.println("Asignaturas existentes" + Plataforma.getAsignaturas());
 		System.out.println(s1);
 		System.out.println(s2);	
 		
@@ -123,9 +123,9 @@ public class Tester {
 		asig1.eraseContenido(aborrar);		
 		
 		//Crear un ejercicio
-		Ejercicio ej = new Ejercicio(2, false, Plataforma.fechaActual.minusDays(0), Plataforma.fechaActual.plusDays(4), t1, "Ejercicio", true, asig1);
+		Ejercicio ej = new Ejercicio(2, false, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), t1, "Ejercicio", true, asig1);
 		
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(1));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
 		
 		System.out.println("\n" + asig1);
 
@@ -143,7 +143,7 @@ public class Tester {
 		System.out.println("\n Asignaturas del alumno: \n" + Plataforma.loggedAs.getAsignaturas());
 		
 		Plataforma.logout();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		ej.setVisibilidad(true);
 		
@@ -214,7 +214,7 @@ public class Tester {
 		}
 		
 		Plataforma.logout();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 				
 		System.out.println("\n" + asig1);
 		
@@ -228,7 +228,7 @@ public class Tester {
 		
 		Plataforma.openPlataforma();
 		
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		System.out.println("\n" + Plataforma.plat);
 		

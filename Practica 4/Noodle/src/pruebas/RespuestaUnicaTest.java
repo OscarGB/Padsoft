@@ -29,7 +29,7 @@ public class RespuestaUnicaTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		pre = new PreguntaRespuestaUnica("Ej", false, 3, 6);
 		pre.addOpcion(new Opciones("1", true));
 		pre.addOpcion(new Opciones("2", false));

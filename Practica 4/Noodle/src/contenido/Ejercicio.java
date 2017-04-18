@@ -253,11 +253,11 @@ public class Ejercicio extends Contenido implements Serializable{
 				return false;
 			}
 		}
-		if(this.fechaIni.isBefore(Plataforma.fechaActual)){
+		if(this.fechaIni.isBefore(Plataforma.getFechaActual())){
 			return false;
 		}
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
-			if(fechaIni.isAfter(Plataforma.fechaActual) && fechaIni.isBefore(this.fechaFin)){
+			if(fechaIni.isAfter(Plataforma.getFechaActual()) && fechaIni.isBefore(this.fechaFin)){
 				this.fechaIni = fechaIni;
 				return true;
 			}

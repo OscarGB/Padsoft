@@ -51,11 +51,11 @@ public class EjercicioTest {
 		file.delete();
 		Plataforma.openPlataforma();
 		
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		mates = new Asignatura("Mates");
 		tema1 = new Tema("Tema1", true, mates);
-		nacho = Alumno.CreaAlumno("2", "nacho", "Password", "nacho@gmail.com");
+		nacho = Alumno.creaAlumno("2", "nacho", "Password", "nacho@gmail.com");
 		mates.addAlumno(nacho);
 		pre = new PreguntaRespuestaSimple("Prueba", true, 0, true);
 		res = new RespuestaSimple(pre, true);
@@ -187,7 +187,7 @@ public class EjercicioTest {
 	public void testResponderEjercicio1(){
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertFalse(nacho.getEstadisticas().isEmpty());
 	}
@@ -220,7 +220,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testResponderEjercicio4(){
-		Alumno oscar = Alumno.CreaAlumno("2", "Oscar", "Password", "nacho@email.com");
+		Alumno oscar = Alumno.creaAlumno("2", "Oscar", "Password", "nacho@email.com");
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
 		assertFalse(ej1.responderEjercicio(oscar, array));
 		assertTrue(oscar.getEstadisticas().isEmpty());
@@ -237,7 +237,7 @@ public class EjercicioTest {
 		nuevo.addRespuestaEjercicio(respuestas);
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertTrue(nuevo.getRespuestas().contains(respuestas));
 	}
@@ -250,7 +250,7 @@ public class EjercicioTest {
 	public void testResponderEjercicio6(){
 		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(1));
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		assertTrue(ej1.responderEjercicio(nacho, array));
 		assertFalse(ej1.responderEjercicio(nacho, array));
 	}
@@ -261,7 +261,7 @@ public class EjercicioTest {
 	@Test
 	public void testAddNota(){
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		ej1.addNota(6);
 		ej1.addNota(8);
 		assertTrue(ej1.getNotaMedia() == 7);
@@ -283,7 +283,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testEnPlazo1(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));
 		assertTrue(ej1.enPlazo());
 	}
 	
@@ -292,7 +292,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testEnPlazo2(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.minusDays(2));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().minusDays(2));
 		assertFalse(ej1.enPlazo());
 	}
 	
@@ -301,7 +301,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testEnPlazo3(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(20));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(20));
 		assertFalse(ej1.enPlazo());
 	}
 	
@@ -310,7 +310,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testRespondible1(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));
 		assertTrue(ej1.sePuedeResponder());
 	}
 	
@@ -319,7 +319,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testRespondible2(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.minusDays(2));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().minusDays(2));
 		assertFalse(ej1.sePuedeResponder());
 	}
 	
@@ -328,7 +328,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testRespondible3(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(20));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(20));
 		assertFalse(ej1.sePuedeResponder());
 	}
 	
@@ -337,7 +337,7 @@ public class EjercicioTest {
 	 */
 	@Test
 	public void testRespondible4(){
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(20));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(20));
 		assertFalse(ej1.sePuedeResponder());
 	}
 	
@@ -354,8 +354,8 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		LocalDate fin = Plataforma.fechaActual.plusDays(10);
-		LocalDate ini = Plataforma.fechaActual.plusDays(2);
+		LocalDate fin = Plataforma.getFechaActual().plusDays(10);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(2);
 		assertTrue(ej1.setFechaFin(fin));
 		assertTrue(ej1.setFechaIni(ini));
 		assertEquals(ej1.getFechaIni(), ini);
@@ -369,9 +369,9 @@ public class EjercicioTest {
 	@Test
 	public void testSetFecha2(){
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
-		LocalDate fin = Plataforma.fechaActual.plusDays(10);
-		LocalDate ini = Plataforma.fechaActual.plusDays(2);
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
+		LocalDate fin = Plataforma.getFechaActual().plusDays(10);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(2);
 		assertFalse(ej1.setFechaFin(fin));
 		assertFalse(ej1.setFechaIni(ini));
 	}
@@ -389,8 +389,8 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		LocalDate fin = Plataforma.fechaActual.plusDays(10);
-		LocalDate ini = Plataforma.fechaActual.plusDays(12);
+		LocalDate fin = Plataforma.getFechaActual().plusDays(10);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(12);
 		assertTrue(ej1.setFechaFin(fin));
 		assertFalse(ej1.setFechaIni(ini));
 	}
@@ -408,7 +408,7 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		LocalDate fin = Plataforma.fechaActual.minusDays(10);;
+		LocalDate fin = Plataforma.getFechaActual().minusDays(10);;
 		assertFalse(ej1.setFechaFin(fin));
 	}
 	
@@ -425,7 +425,7 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		LocalDate ini = Plataforma.fechaActual.minusDays(2);
+		LocalDate ini = Plataforma.getFechaActual().minusDays(2);
 		assertFalse(ej1.setFechaIni(ini));
 	}
 	
@@ -442,7 +442,7 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		LocalDate ini = Plataforma.fechaActual.plusDays(12);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(12);
 		assertFalse(ej1.setFechaIni(ini));
 	}
 	
@@ -460,11 +460,11 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));
 		ej1.responderEjercicio(nacho, array);
 				
-		LocalDate fin = Plataforma.fechaActual.plusDays(10);
-		LocalDate ini = Plataforma.fechaActual.plusDays(3);
+		LocalDate fin = Plataforma.getFechaActual().plusDays(10);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(3);
 		assertTrue(ej1.setFechaFin(fin));
 		assertFalse(ej1.setFechaIni(ini));
 	}
@@ -482,13 +482,13 @@ public class EjercicioTest {
 		Plataforma.openPlataforma();
 		Plataforma.login("1", "contraseniaprofe");
 		
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(5));
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(5));
 		ej1.enPlazo();
 		
 		assertEquals(ej1.getEstado(), EstadoEjercicio.TERMINADO);
 				
-		LocalDate fin = Plataforma.fechaActual.plusDays(6);
-		LocalDate ini = Plataforma.fechaActual.plusDays(10);
+		LocalDate fin = Plataforma.getFechaActual().plusDays(6);
+		LocalDate ini = Plataforma.getFechaActual().plusDays(10);
 		assertFalse(ej1.setFechaFin(fin));
 		assertFalse(ej1.setFechaIni(ini));
 	}

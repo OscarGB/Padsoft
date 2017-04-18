@@ -25,7 +25,7 @@ public class PlataformaTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 	}
 	
 	@After
@@ -39,10 +39,10 @@ public class PlataformaTest {
 	@Test
 	public void testOpen() {
 		assertTrue(Plataforma.plat != null);
-		assertTrue(Plataforma.alumnos != null);
-		assertTrue(Plataforma.alumnos.size() != 0);
-		assertTrue(Plataforma.asignaturas != null);
-		assertTrue(Plataforma.asignaturas.size() == 0);
+		assertTrue(Plataforma.alumnos() != null);
+		assertTrue(Plataforma.alumnos().size() != 0);
+		assertTrue(Plataforma.getAsignaturas() != null);
+		assertTrue(Plataforma.getAsignaturas().size() == 0);
 	}
 	
 	/**
@@ -56,10 +56,10 @@ public class PlataformaTest {
 		assertTrue(Plataforma.plat == null);
 		Plataforma.openPlataforma();
 		assertTrue(Plataforma.plat != null);
-		assertTrue(Plataforma.alumnos != null);
-		assertTrue(Plataforma.alumnos.size() != 0);
-		assertTrue(Plataforma.asignaturas != null);
-		assertTrue(Plataforma.asignaturas.size() == 1);
+		assertTrue(Plataforma.alumnos() != null);
+		assertTrue(Plataforma.alumnos().size() != 0);
+		assertTrue(Plataforma.getAsignaturas() != null);
+		assertTrue(Plataforma.getAsignaturas().size() == 1);
 		// Si salta excepción está mal, no pasa nada por intentar cerrarla dos veces
 		Plataforma.closePlataforma();
 		Plataforma.closePlataforma();
@@ -72,13 +72,13 @@ public class PlataformaTest {
 	public void testAsignaturas() {
 		Asignatura asig = new Asignatura("mates");
 		Plataforma.addAsignatura(asig);
-		assertTrue(Plataforma.asignaturas.size() == 1);
+		assertTrue(Plataforma.getAsignaturas().size() == 1);
 		Plataforma.addAsignatura(asig);
-		assertTrue(Plataforma.asignaturas.size() == 1);
+		assertTrue(Plataforma.getAsignaturas().size() == 1);
 		Plataforma.eraseAsignatura(asig);
-		assertTrue(Plataforma.asignaturas.size() == 0);
+		assertTrue(Plataforma.getAsignaturas().size() == 0);
 		Plataforma.eraseAsignatura(asig);
-		assertTrue(Plataforma.asignaturas.size() == 0);
+		assertTrue(Plataforma.getAsignaturas().size() == 0);
 	}
 	
 	/**
@@ -88,12 +88,12 @@ public class PlataformaTest {
 	public void testLogin(){
 		Plataforma.logout();
 		assertTrue(Plataforma.loggedAs == null);
-		assertTrue(Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword()));
+		assertTrue(Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword()));
 		assertTrue(Plataforma.loggedAs.getClass() == Profesor.class);
 		Plataforma.logout();
 		assertTrue(Plataforma.loggedAs == null);
-		assertTrue(Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword()));
-		assertFalse(Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword()));
+		assertTrue(Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword()));
+		assertFalse(Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword()));
 		assertTrue(Plataforma.loggedAs.getClass() == Alumno.class);
 		assertFalse(Plataforma.login("Hola", "Adios"));
 	}

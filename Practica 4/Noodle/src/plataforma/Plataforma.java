@@ -36,27 +36,27 @@ public class Plataforma implements Serializable {
 	/**
 	 * Nombre de la plataforma
 	 */
-	public static final String NAME = "NOODLE";
+	private static final String NAME = "NOODLE";
 	
 	/**
 	 * Asignaturas de la plataforma
 	 */
-	public static ArrayList<Asignatura> asignaturas;
+	private static ArrayList<Asignatura> asignaturas;
 	
 	/**
 	 * Alumnos de la plataforma
 	 */
-	public static ArrayList<Alumno> alumnos;
+	private static ArrayList<Alumno> alumnos;
 	
 	/**
 	 * Profesor de la plataforma
 	 */
-	public static Profesor profesor;
+	private static Profesor profesor;
 	
 	/**
 	 * Fecha de la paltaforma
 	 */
-	public static LocalDate fechaActual;
+	private static LocalDate fechaActual;
 	
 	/**
 	 * Persona que se ha logueado a la plataforma
@@ -196,7 +196,7 @@ public class Plataforma implements Serializable {
 				LocalDate.now();
 				String[] toks = cadena.split(";");
 				if(EmailSystem.isValidEmailAddr(toks[2]) == true){
-					a = Alumno.CreaAlumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
+					a = Alumno.creaAlumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
 					if(a == null){
 						System.out.println("Correo inválido");
 					}
@@ -234,7 +234,23 @@ public class Plataforma implements Serializable {
 	public static ArrayList<Asignatura> getAsignaturas() {
 		return asignaturas;
 	}
+	
+	/**
+	 * Devuelve los alumnos de la plataforma
+	 * @return
+	 */
+	public static ArrayList<Alumno> alumnos(){
+		return Plataforma.alumnos;
+	}
 
+	/**
+	 * Devuelve el profesor de la plataforma
+	 * @return
+	 */
+	public static Profesor profesor(){
+		return Plataforma.profesor;
+	}
+	
 	/**
 	 * Devuelve la fecha actual
 	 * @return

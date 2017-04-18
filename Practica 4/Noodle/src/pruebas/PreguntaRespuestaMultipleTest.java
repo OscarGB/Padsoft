@@ -27,7 +27,7 @@ public class PreguntaRespuestaMultipleTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		enunciado = "Elige una opcion";
 		preg = new PreguntaRespuestaMultiple(enunciado,
 				 true, 0.f, 1);

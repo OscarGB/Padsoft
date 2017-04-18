@@ -22,7 +22,7 @@ class BotonListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword()) == false){
+		if(Plataforma.login(PanelLogin.usrField.getSelectedText(), PanelLogin.pwdField.getSelectedText()) == false){
 			PanelLogin.failPasswordLabel.setVisible(true);
 		}
 	}

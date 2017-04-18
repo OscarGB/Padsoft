@@ -37,9 +37,9 @@ public class AsignaturaTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		mates = new Asignatura("Mates");
-		nacho = Alumno.CreaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
+		nacho = Alumno.creaAlumno("2", "Nacho", "Password", "nacho@gmail.com");
 		sol1 = new Solicitud(nacho, mates);
 		tema1 = new Tema("Tema 1", true, mates);
 	}
@@ -275,15 +275,15 @@ public class AsignaturaTest {
 	
 	@Test
 	public void testEraseContenidoRaiz4(){
-		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), "Ejercicio 1", true, mates);
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));		
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(4), "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));		
 		assertTrue(mates.eraseContenido(tema1));
 	}
 	
 	@Test
 	public void testEraseContenidoRaiz5(){
-		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));
 		
 		assertTrue(ej1.enPlazo());
 		
@@ -300,11 +300,11 @@ public class AsignaturaTest {
 		array.add(res);
 		
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
 		
 		Plataforma.logout();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		assertFalse(mates.eraseContenido(tema1));
 	}
@@ -314,8 +314,8 @@ public class AsignaturaTest {
 	 */
 	@Test
 	public void testEraseContenidoRaiz6(){
-		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.fechaActual.plusDays(0), Plataforma.fechaActual.plusDays(4), tema1, "Ejercicio 1", true, mates);
-		Plataforma.setFechaActual(Plataforma.fechaActual.plusDays(2));		
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(4), tema1, "Ejercicio 1", true, mates);
+		Plataforma.setFechaActual(Plataforma.getFechaActual().plusDays(2));		
 		
 		mates.addAlumno(nacho);
 		
@@ -329,11 +329,11 @@ public class AsignaturaTest {
 		ArrayList<RespuestaPregunta> array = new ArrayList<RespuestaPregunta>();
 		array.add(res);
 		Plataforma.logout();
-		Plataforma.login(Plataforma.alumnos.get(0).getNia(), Plataforma.alumnos.get(0).getPassword());
+		Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword());
 		ej1.responderEjercicio(nacho, array);
 		
 		Plataforma.logout();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
 		assertFalse(mates.eraseContenido(tema1));
 		

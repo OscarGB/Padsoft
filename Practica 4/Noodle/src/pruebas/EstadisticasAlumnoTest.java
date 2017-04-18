@@ -43,8 +43,8 @@ public class EstadisticasAlumnoTest {
 		File file = new File("./data/plataforma");
 		file.delete();
 		Plataforma.openPlataforma();
-		Plataforma.login(Plataforma.profesor.getNia(), Plataforma.profesor.getPassword());
-		al = Alumno.CreaAlumno("1234", "Pedro", "Pe12", "pedro@gmail.com");
+		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
+		al = Alumno.creaAlumno("1234", "Pedro", "Pe12", "pedro@gmail.com");
 		asig = new Asignatura("mates");
 	}
 	
