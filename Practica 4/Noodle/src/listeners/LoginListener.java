@@ -2,7 +2,8 @@ package listeners;
 
 import java.awt.event.*;
 
-import interfaz.PanelLogin;
+import interfaz.*;
+import persona.Profesor;
 import plataforma.Plataforma;
 
 /**
@@ -20,14 +21,20 @@ public class LoginListener implements ActionListener{
 	 */
 	private PanelLogin panel;
 	
+	/**
+	 * Cuerpo del programa
+	 */
+	private NoodleFrame frame;
+	
 	//Constructor
 	
 	/**
 	 * Constructor de LoginListener
 	 * @param panel
 	 */
-	public LoginListener(PanelLogin panel){
+	public LoginListener(PanelLogin panel, NoodleFrame frame){
 		this.panel = panel;
+		this.frame = frame;
 	}
 	
 	//Métodos
@@ -46,6 +53,12 @@ public class LoginListener implements ActionListener{
 		}
 		else{
 			panel.setFailPasswordVisibility(false);
+			if(Plataforma.loggedAs() instanceof Profesor){
+				//TODO abrir el inicio de profesor
+			}
+			else{
+				frame.showInicioAlumno();
+			}
 		}
 		
 	}
