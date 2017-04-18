@@ -34,8 +34,7 @@ public class NoodleFrame extends JFrame{
 		login.addListener(new LoginListener(login, this));
 		
 		this.getContentPane().add(login);
-		
-		
+				
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(d);

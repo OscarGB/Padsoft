@@ -52,12 +52,7 @@ public final class PanelLogin extends JPanel {
 	 * Botón para realizar el Login
 	 */
 	JButton boton = new JButton("Login");
-	
-	/**
-	 * Logo
-	 */
-	Imagen img = new Imagen();
-	
+	Imagen img = new Imagen(150,150);
 	/**
 	 * Etiqueta con "Usuario o contraseña incorrectos" para avisar que los datos son erróneos
 	 */
@@ -70,8 +65,8 @@ public final class PanelLogin extends JPanel {
 	 */
 	public PanelLogin() {
 		
-		this.setPreferredSize(new Dimension(500, 300));
-		this.setMinimumSize(new Dimension(500, 300));
+//		this.setPreferredSize(new Dimension(500, 300));
+//		this.setMinimumSize(new Dimension(500, 300));
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();

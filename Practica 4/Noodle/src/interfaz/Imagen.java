@@ -24,9 +24,11 @@ public class Imagen extends JPanel{
 	
 	/**
 	 * Constructor de Imagen
+	 * @param int height
+	 * @param int width
 	 */
-	public Imagen() {
-		this.setPreferredSize(new Dimension(150, 150));
+	public Imagen(int width, int height) {
+		this.setPreferredSize(new Dimension(width, height));
 	}
 	
 	//Métodos
