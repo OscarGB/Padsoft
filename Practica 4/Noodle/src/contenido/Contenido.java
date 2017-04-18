@@ -84,7 +84,7 @@ public abstract class Contenido implements Serializable {
 		if(tema == null){
 			return;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.padre = tema;
@@ -115,7 +115,7 @@ public abstract class Contenido implements Serializable {
 		if(titulo == null || titulo == ""){
 			return;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.titulo = titulo;
@@ -134,7 +134,7 @@ public abstract class Contenido implements Serializable {
 	 * @param visibilidad
 	 */
 	public void setVisibilidad(boolean visibilidad) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.visibilidad = visibilidad;
@@ -160,7 +160,7 @@ public abstract class Contenido implements Serializable {
 	 */
 	public void eraseContenido(){
 		
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		
@@ -181,7 +181,7 @@ public abstract class Contenido implements Serializable {
 	 * un tema
 	 */
 	public void ocultarContenido(){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.setVisibilidad(false);
@@ -203,13 +203,13 @@ public abstract class Contenido implements Serializable {
 	 * @return String
 	 */
 	public String toString(){
-		if(Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs().getClass() == Alumno.class){
 			if(this.getVisibilidad() == true){
 				return "Titulo: " + this.titulo + " \n";
 			}
 			return "";
 		}
-		else if(Plataforma.loggedAs.getClass() == Alumno.class){
+		else if(Plataforma.loggedAs().getClass() == Alumno.class){
 			return "Titulo: " + this.titulo + " \n";
 			
 		}

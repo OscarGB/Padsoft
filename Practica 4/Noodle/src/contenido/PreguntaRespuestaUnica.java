@@ -49,7 +49,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 */
 	@Override
 	public boolean addOpcion(Opciones op){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(op == null) return false;
@@ -62,7 +62,7 @@ public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
 	 */
 	@Override
 	public void removeOpcion(Opciones opcion){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		if(opcion == null) return;

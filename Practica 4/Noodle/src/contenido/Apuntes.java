@@ -68,7 +68,7 @@ public class Apuntes extends Contenido implements Serializable{
 	 * @param texto
 	 */
 	public void setTexto(String texto) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.texto = texto;

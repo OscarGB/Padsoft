@@ -1,16 +1,16 @@
-package Interfaz;
+package interfaz;
 
 import java.awt.Dimension;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
+import listeners.*;
 import plataforma.Plataforma;
 
 public class NoodleFrame extends JFrame{
 
 	/**
-	 * 
+	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -21,14 +21,11 @@ public class NoodleFrame extends JFrame{
 		
 		Plataforma.openPlataforma();		
 		
-		JPanel panel = new PanelLogin();
-		JPanel inicio = new InicioAlumno();
+		PanelLogin login = new PanelLogin();
+		login.addListener(new LoginListener(login));
 		
-		this.getContentPane().add(panel);
-		panel.setVisible(false);
-		this.getContentPane().add(inicio);
-		inicio.setVisible(true);
-		
+		this.getContentPane().add(login);
+				
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(d);

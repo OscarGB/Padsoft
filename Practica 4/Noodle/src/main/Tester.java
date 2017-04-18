@@ -140,7 +140,7 @@ public class Tester {
 		Plataforma.login(a1.getNia(), a1.getPassword());
 
 		//Como somos alumno no vemos los elementos invisibles
-		System.out.println("\n Asignaturas del alumno: \n" + Plataforma.loggedAs.getAsignaturas());
+		System.out.println("\n Asignaturas del alumno: \n" + Plataforma.loggedAs().getAsignaturas());
 		
 		Plataforma.logout();
 		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
@@ -230,7 +230,7 @@ public class Tester {
 		
 		Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword());
 		
-		System.out.println("\n" + Plataforma.plat);
+		System.out.println("\n" + Plataforma.plat());
 		
 		Plataforma.closePlataforma();
 		

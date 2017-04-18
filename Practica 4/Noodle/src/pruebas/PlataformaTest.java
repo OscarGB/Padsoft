@@ -38,7 +38,7 @@ public class PlataformaTest {
 	 */
 	@Test
 	public void testOpen() {
-		assertTrue(Plataforma.plat != null);
+		assertTrue(Plataforma.plat() != null);
 		assertTrue(Plataforma.alumnos() != null);
 		assertTrue(Plataforma.alumnos().size() != 0);
 		assertTrue(Plataforma.getAsignaturas() != null);
@@ -53,9 +53,9 @@ public class PlataformaTest {
 	public void testOpen1() {
 		Plataforma.addAsignatura(new Asignatura("mates"));
 		Plataforma.closePlataforma();
-		assertTrue(Plataforma.plat == null);
+		assertTrue(Plataforma.plat() == null);
 		Plataforma.openPlataforma();
-		assertTrue(Plataforma.plat != null);
+		assertTrue(Plataforma.plat() != null);
 		assertTrue(Plataforma.alumnos() != null);
 		assertTrue(Plataforma.alumnos().size() != 0);
 		assertTrue(Plataforma.getAsignaturas() != null);
@@ -87,14 +87,14 @@ public class PlataformaTest {
 	@Test
 	public void testLogin(){
 		Plataforma.logout();
-		assertTrue(Plataforma.loggedAs == null);
+		assertTrue(Plataforma.loggedAs() == null);
 		assertTrue(Plataforma.login(Plataforma.profesor().getNia(), Plataforma.profesor().getPassword()));
-		assertTrue(Plataforma.loggedAs.getClass() == Profesor.class);
+		assertTrue(Plataforma.loggedAs().getClass() == Profesor.class);
 		Plataforma.logout();
-		assertTrue(Plataforma.loggedAs == null);
+		assertTrue(Plataforma.loggedAs() == null);
 		assertTrue(Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword()));
 		assertFalse(Plataforma.login(Plataforma.alumnos().get(0).getNia(), Plataforma.alumnos().get(0).getPassword()));
-		assertTrue(Plataforma.loggedAs.getClass() == Alumno.class);
+		assertTrue(Plataforma.loggedAs().getClass() == Alumno.class);
 		assertFalse(Plataforma.login("Hola", "Adios"));
 	}
 }

@@ -193,7 +193,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param peso
 	 */
 	public void setPeso(int peso) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		if(peso < 0){
@@ -216,7 +216,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param aleatorio
 	 */
 	public void setAleatorio(boolean aleatorio) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.aleatorio = aleatorio;
@@ -244,7 +244,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean setFechaIni(LocalDate fechaIni) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(fechaIni == null){
@@ -259,7 +259,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(this.fechaIni.isBefore(Plataforma.getFechaActual())){
 			return false;
 		}
-		if(Plataforma.loggedAs.getClass() == Profesor.class){
+		if(Plataforma.loggedAs().getClass() == Profesor.class){
 			if(fechaIni.isAfter(Plataforma.getFechaActual()) && fechaIni.isBefore(this.fechaFin)){
 				this.fechaIni = fechaIni;
 				ArrayList<Alumno> alumnos = this.getAsignatura().getAlumnos();
@@ -301,7 +301,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean setFechaFin(LocalDate fechaFin) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(fechaFin == null){
@@ -319,7 +319,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(this.fechaIni.isAfter(fechaFin)){
 			return false;
 		}
-		if(Plataforma.loggedAs.getClass() == Profesor.class){
+		if(Plataforma.loggedAs().getClass() == Profesor.class){
 			this.fechaFin = fechaFin;
 			ArrayList<Alumno> alumnos = this.getAsignatura().getAlumnos();
 			for(Alumno al: alumnos){
@@ -378,7 +378,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean addPregunta(Pregunta preg){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(preg == null) return false;
@@ -392,7 +392,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param pregunta
 	 */
 	public void removePregunta(Pregunta preg){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		if(preg == null) return;
@@ -409,7 +409,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(res == null || al == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Profesor.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Profesor.class){
 			return false;
 		}
 		if(this.asignatura.getAlumnos().contains(al) == false){
@@ -453,7 +453,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @param nota
 	 */
 	public void addNota(float nota){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Profesor.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Profesor.class){
 			return;
 		}
 		if(nota < 0) return;
