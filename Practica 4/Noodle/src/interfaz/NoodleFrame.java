@@ -21,10 +21,10 @@ public class NoodleFrame extends JFrame{
 		
 		Plataforma.openPlataforma();		
 		
-		PanelLogin panel = new PanelLogin();
-		panel.addListener(new LoginListener());
+		PanelLogin login = new PanelLogin();
+		login.addListener(new LoginListener(login));
 		
-		this.getContentPane().add(panel);
+		this.getContentPane().add(login);
 		
 		
 		this.pack();
