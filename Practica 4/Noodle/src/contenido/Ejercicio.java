@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import estadisticas.EstadisticasAlumno;
 import persona.Alumno;
 import persona.Profesor;
@@ -259,6 +262,16 @@ public class Ejercicio extends Contenido implements Serializable{
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
 			if(fechaIni.isAfter(Plataforma.getFechaActual()) && fechaIni.isBefore(this.fechaFin)){
 				this.fechaIni = fechaIni;
+				ArrayList<Alumno> alumnos = this.getAsignatura().getAlumnos();
+				for(Alumno al: alumnos){
+					try {
+						EmailSystem.send(al.getEmail(), "Modificacion en ejercicio", "La fecha de inicio del ejercicio "+this.getTitulo()+" ha sido modificada");
+					} catch (InvalidEmailAddressException e) {
+						e.printStackTrace();
+					} catch (FailedInternetConnectionException e) {
+						e.printStackTrace();
+					}
+				}
 				return true;
 			}
 		}
@@ -308,6 +321,16 @@ public class Ejercicio extends Contenido implements Serializable{
 		}
 		if(Plataforma.loggedAs.getClass() == Profesor.class){
 			this.fechaFin = fechaFin;
+			ArrayList<Alumno> alumnos = this.getAsignatura().getAlumnos();
+			for(Alumno al: alumnos){
+				try {
+					EmailSystem.send(al.getEmail(), "Modificacion en ejercicio", "La fecha de fin del ejercicio "+this.getTitulo()+" ha sido modificada");
+				} catch (InvalidEmailAddressException e) {
+					e.printStackTrace();
+				} catch (FailedInternetConnectionException e) {
+					e.printStackTrace();
+				}
+			}
 			return true;
 		}
 		return false;

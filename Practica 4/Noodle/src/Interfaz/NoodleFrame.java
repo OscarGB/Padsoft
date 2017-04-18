@@ -1,5 +1,7 @@
 package Interfaz;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -14,6 +16,8 @@ public class NoodleFrame extends JFrame{
 
 	public NoodleFrame(){
 		super("Noodle");
+		Dimension d = new Dimension();
+		d.setSize(700, 500);
 		
 		Plataforma.openPlataforma();		
 		
@@ -23,6 +27,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(d);
 	}
 	
 }

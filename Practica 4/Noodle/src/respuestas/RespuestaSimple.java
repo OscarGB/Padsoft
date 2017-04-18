@@ -43,6 +43,7 @@ public class RespuestaSimple extends RespuestaPregunta{
 	 */
 	@Override
 	public boolean esCorrecta(){
+		if(!(this.preguntaRespondida instanceof PreguntaRespuestaSimple)) return false;
 		if(((PreguntaRespuestaSimple)this.preguntaRespondida).getRespuesta() == this.respondido){
 			return true;
 		}

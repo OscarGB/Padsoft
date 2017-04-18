@@ -2,6 +2,7 @@ package respuestas;
 
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
+import contenido.PreguntaRespuestaSimple;
 
 /**
  * Clase RespuestaAbierta
@@ -44,6 +45,7 @@ public class RespuestaAbierta extends RespuestaPregunta {
 	 */
 	@Override
 	public boolean esCorrecta(){
+		if(!(this.preguntaRespondida instanceof PreguntaRespuestaAbierta)) return false;
 		if(((PreguntaRespuestaAbierta)this.preguntaRespondida).getRespuestas().contains(respondido)){
 			return true;
 		}
