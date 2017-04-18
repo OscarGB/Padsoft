@@ -70,7 +70,7 @@ public class PreguntaRespuestaSimple extends Pregunta implements Serializable{
 	 * @param respuesta
 	 */
 	public void setRespuesta(boolean respuesta) {
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.respuesta = respuesta;

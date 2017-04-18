@@ -72,7 +72,7 @@ public class Tema extends Contenido  implements Serializable{
 	 * @return boolean
 	 */
 	public boolean addSubcontenido(Contenido con){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(con == null) return false;
@@ -85,7 +85,7 @@ public class Tema extends Contenido  implements Serializable{
 	 * @param contenido
 	 */
 	public void eraseSubcontenido(Contenido con){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		if(con == null) return;
@@ -100,7 +100,7 @@ public class Tema extends Contenido  implements Serializable{
 	 */
 	@Override
 	public void ocultarContenido(){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		for(Contenido c: this.subcontenido){
@@ -140,7 +140,7 @@ public class Tema extends Contenido  implements Serializable{
 		String aux;
 		aux = "";
 		
-		if(Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs().getClass() == Alumno.class){
 			for(Contenido s: subcontenido){
 				if(s.getVisibilidad() == true){
 					aux += s.toString();

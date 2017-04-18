@@ -123,7 +123,7 @@ public class Asignatura implements Serializable {
 	 * @return estadisticas (ArrayList)
 	 */
 	public ArrayList<EstadisticasAlumno> getEstadisticas(){
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return null;
 		}
 		return this.estadisticas;
@@ -140,7 +140,7 @@ public class Asignatura implements Serializable {
 		if(alumno == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(this.isAlumnoIn(alumno) == true){
@@ -169,7 +169,7 @@ public class Asignatura implements Serializable {
 		if(alumno == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(isAlumnoIn(alumno) == true){
@@ -200,7 +200,7 @@ public class Asignatura implements Serializable {
 		if(alumno == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		Solicitud readmision = new Solicitud(alumno, this);
@@ -230,7 +230,7 @@ public class Asignatura implements Serializable {
 		if(solicitud == null){
 			return;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.solicitudes.remove(solicitud);	
@@ -251,7 +251,7 @@ public class Asignatura implements Serializable {
 		if(sol == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null){
+		if(Plataforma.loggedAs() == null){
 			return false;
 		}
 		if(this.solicitudes.contains(sol) == false && this.isAlumnoIn(sol.getAlumno()) == false && this.getSolicitudesExpulsados().contains(sol) == false){
@@ -271,7 +271,7 @@ public class Asignatura implements Serializable {
 		if(sol == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(this.expulsados.contains(sol) == false){
@@ -313,7 +313,7 @@ public class Asignatura implements Serializable {
 		if(sol == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(this.solicitudes.contains(sol) == true){
@@ -335,7 +335,7 @@ public class Asignatura implements Serializable {
 		if(con == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		return this.raiz.add(con);
@@ -351,7 +351,7 @@ public class Asignatura implements Serializable {
 		if(con == null){
 			return;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return;
 		}
 		this.raiz.remove(con);
@@ -369,7 +369,7 @@ public class Asignatura implements Serializable {
 		if(con == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(con.esBorrable() == false){
@@ -396,7 +396,7 @@ public class Asignatura implements Serializable {
 		if(sub == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null || Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs() == null || Plataforma.loggedAs().getClass() == Alumno.class){
 			return false;
 		}
 		if(padre == null){
@@ -415,7 +415,7 @@ public class Asignatura implements Serializable {
 		if(estadisticasAlumno == null){
 			return false;
 		}
-		if(Plataforma.loggedAs == null){
+		if(Plataforma.loggedAs() == null){
 			return false;
 		}
 		return this.estadisticas.add(estadisticasAlumno);
@@ -431,7 +431,7 @@ public class Asignatura implements Serializable {
 	@Override
 	public String toString(){
 		String aux = "";
-		if(Plataforma.loggedAs.getClass() == Alumno.class){
+		if(Plataforma.loggedAs().getClass() == Alumno.class){
 			for(Contenido c: this.raiz){
 				if(c.getVisibilidad() == true){
 					aux += c.toString();

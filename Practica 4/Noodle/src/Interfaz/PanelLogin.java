@@ -14,19 +14,6 @@ import javax.swing.SpringLayout;
 
 import plataforma.Plataforma;
 
-class BotonListener implements ActionListener{
-
-	public BotonListener(){
-		
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		if(Plataforma.login(PanelLogin.usrField.getSelectedText(), PanelLogin.pwdField.getSelectedText()) == false){
-			PanelLogin.failPasswordLabel.setVisible(true);
-		}
-	}
-}
 
 public class PanelLogin extends JPanel {
 	
@@ -63,9 +50,7 @@ public class PanelLogin extends JPanel {
 		spr.putConstraint(SpringLayout.NORTH, pwdField, 5, SpringLayout.SOUTH, pwdLabel);
 		spr.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, pwdField);
 		spr.putConstraint(SpringLayout.NORTH, failPasswordLabel, 10, SpringLayout.SOUTH, boton);
-		
-		boton.addActionListener(new BotonListener());
-		
+	
 		failPasswordLabel.setForeground(Color.RED);
 		failPasswordLabel.setVisible(false);
 		
@@ -77,6 +62,10 @@ public class PanelLogin extends JPanel {
 		this.add(boton);
 		this.add(failPasswordLabel);
 		
+	}
+	
+	public void addListener(ActionListener listener){
+		boton.addActionListener(listener);
 	}
 	
 }

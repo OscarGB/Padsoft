@@ -61,17 +61,17 @@ public class Plataforma implements Serializable {
 	/**
 	 * Persona que se ha logueado a la plataforma
 	 */
-	public static Persona loggedAs;
+	private static Persona loggedAs;
 	
 	/**
 	 * Sistema de emails
 	 */
-	public static EmailSystem emailSystem;
+	private static EmailSystem emailSystem;
 	
 	/**
 	 * Singleton plataforma
 	 */
-	public static Plataforma plat;
+	private static Plataforma plat;
 
 	/**
 	 * Para poder guardar el objeto
@@ -181,7 +181,7 @@ public class Plataforma implements Serializable {
 		String cadena;
 		
 		/*Alumnos*/
-		File archivo = new File ("./data/datosalumnos.txt");
+		File archivo = new File ("./data/DatosAlumnos.txt");
 	    FileReader f = null;
 	    Alumno a = null;
 		try {
@@ -190,10 +190,13 @@ public class Plataforma implements Serializable {
 			e.printStackTrace();
 		}
 	    BufferedReader b = new BufferedReader(f);
+	    LocalDate.now();
 	    try {
 	    	
 			while((cadena = b.readLine())!=null) {
-				LocalDate.now();
+				if(cadena.isEmpty()){
+					continue;
+				}
 				String[] toks = cadena.split(";");
 				if(EmailSystem.isValidEmailAddr(toks[2]) == true){
 					a = Alumno.creaAlumno(toks[3], (toks[0] + " " + toks[1]), toks[4], toks[2]);
@@ -258,6 +261,14 @@ public class Plataforma implements Serializable {
 	public static LocalDate getFechaActual() {
 		return fechaActual;
 	}
+	
+	/**
+	 * Devuelve el Sistema de Email de la Plataforma
+	 * @return
+	 */
+	public static EmailSystem emailSystem(){
+		return Plataforma.emailSystem;
+	}
 
 	/**
 	 * Modifica la fecha de la plataforma
@@ -266,6 +277,23 @@ public class Plataforma implements Serializable {
 	public static void setFechaActual(LocalDate fechaActual) {
 		if(fechaActual == null) return;
 		Plataforma.fechaActual = fechaActual;
+	}
+	
+	/**
+	 * Devuelve la persona que está logueada en la Plataforma
+	 * @return
+	 */
+	public static Persona loggedAs(){
+		return Plataforma.loggedAs;
+	}
+	
+	
+	/**
+	 * Devuelve la instancia de la Plataforma
+	 * @return
+	 */
+	public static Plataforma plat(){
+		return Plataforma.plat;
 	}
 	
 	//Métodos
@@ -307,8 +335,8 @@ public class Plataforma implements Serializable {
 		if(Plataforma.loggedAs != null){
 			return false;
 		}
-		if(Plataforma.profesor.getNia() == Nia){
-			if(Plataforma.profesor.getPassword() == password){
+		if(Plataforma.profesor.getNia().equals(Nia)){
+			if(Plataforma.profesor.getPassword().equals(password)){
 				Plataforma.loggedAs = Plataforma.profesor;
 				return true;
 			}

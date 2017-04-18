@@ -17,7 +17,8 @@ public class NoodleFrame extends JFrame{
 		
 		Plataforma.openPlataforma();		
 		
-		JPanel panel = new PanelLogin();
+		PanelLogin panel = new PanelLogin();
+		panel.addListener(new LoginListener());
 		
 		this.getContentPane().add(panel);
 		
