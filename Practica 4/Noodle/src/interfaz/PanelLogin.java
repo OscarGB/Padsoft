@@ -1,4 +1,4 @@
-package Interfaz;
+package interfaz;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +15,7 @@ import javax.swing.SpringLayout;
 import plataforma.Plataforma;
 
 
-public class PanelLogin extends JPanel {
+public final class PanelLogin extends JPanel {
 	
 	JLabel usrLabel = new JLabel("Usuario");
 	public static JTextField usrField = new JTextField(20);
