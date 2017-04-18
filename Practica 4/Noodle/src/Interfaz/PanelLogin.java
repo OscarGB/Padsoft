@@ -35,14 +35,14 @@ public class PanelLogin extends JPanel {
 	JLabel pwdLabel = new JLabel("Password");
 	public static JPasswordField pwdField = new JPasswordField(20);
 	JButton boton = new JButton("Login");
-	Imagen img = new Imagen();
+	Imagen img = new Imagen(150,150);
 	public static JLabel failPasswordLabel = new JLabel("Usuario o contraseña incorrectos");
 	
 	
 	public PanelLogin() {
 		
-		this.setPreferredSize(new Dimension(500, 300));
-		this.setMinimumSize(new Dimension(500, 300));
+//		this.setPreferredSize(new Dimension(500, 300));
+//		this.setMinimumSize(new Dimension(500, 300));
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();

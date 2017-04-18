@@ -22,8 +22,12 @@ public class NoodleFrame extends JFrame{
 		Plataforma.openPlataforma();		
 		
 		JPanel panel = new PanelLogin();
+		JPanel inicio = new InicioAlumno();
 		
 		this.getContentPane().add(panel);
+		panel.setVisible(false);
+		this.getContentPane().add(inicio);
+		inicio.setVisible(true);
 		
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
