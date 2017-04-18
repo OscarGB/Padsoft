@@ -3,6 +3,8 @@ package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import plataforma.Plataforma;
+
 public class NoodleFrame extends JFrame{
 
 	/**
@@ -12,6 +14,8 @@ public class NoodleFrame extends JFrame{
 
 	public NoodleFrame(){
 		super("Noodle");
+		
+		Plataforma.openPlataforma();		
 		
 		JPanel panel = new PanelLogin();
 		
