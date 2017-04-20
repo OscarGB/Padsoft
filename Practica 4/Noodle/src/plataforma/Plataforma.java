@@ -342,12 +342,13 @@ public class Plataforma implements Serializable {
 			}
 		}
 		for(Alumno al : Plataforma.alumnos){
-			if(al.getNia() == Nia){
-				if(al.getPassword() == password){
+			if(al.getNia().equals(Nia)){
+				if(al.getPassword().equals(password)){
 					Plataforma.loggedAs = al;
 					return true;
 				}
 			}
+			
 		}
 		return false;
 	}

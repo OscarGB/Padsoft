@@ -40,7 +40,7 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void showPanelLogin(){
 		
-		NuestroPanel anterior = null; //this.ini();
+		NuestroPanel anterior = null;
 		
 		Dimension d = new Dimension();
 		d.setSize(700, 500);		

@@ -120,7 +120,7 @@ public final class PanelLogin extends NuestroPanel {
 	 * @return
 	 */
 	public String getUser() {
-		return this.usrField.getText().trim();
+		return new String(this.usrField.getText().trim());
 	}
 	
 	/**
