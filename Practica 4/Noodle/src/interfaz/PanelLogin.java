@@ -1,15 +1,9 @@
 package interfaz;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 
 
 
@@ -19,7 +13,7 @@ import javax.swing.SpringLayout;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public final class PanelLogin extends JPanel {
+public final class PanelLogin extends NuestroPanel {
 	
 	//Variables
 	
@@ -63,8 +57,8 @@ public final class PanelLogin extends JPanel {
 	/**
 	 * Constructor de PanelLogin
 	 */
-	public PanelLogin() {
-		
+	public PanelLogin(NuestroPanel anterior, NoodleFrame frame) {
+		super(anterior, frame);
 //		this.setPreferredSize(new Dimension(500, 300));
 //		this.setMinimumSize(new Dimension(500, 300));
 		this.setBackground(Color.WHITE);
@@ -135,6 +129,13 @@ public final class PanelLogin extends JPanel {
 	 */
 	public void setFailPasswordVisibility(boolean b){
 		this.failPasswordLabel.setVisible(b);
+	}
+	
+	/**
+	 * Hace que el frame muestre este panel
+	 */
+	public void muestraPanel(){
+		this.frame.showPanelLogin();
 	}
 	
 }

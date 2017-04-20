@@ -1,13 +1,16 @@
 package interfaz;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Insets;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class InicioAlumno extends JPanel {
+public class InicioAlumno extends NuestroPanel {
+	
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	JMenuBar menubar = new JMenuBar();
 	JMenu inicio = new JMenu("Inicio");
@@ -16,8 +19,8 @@ public class InicioAlumno extends JPanel {
 	Imagen logo = new Imagen(50, 50);
 	JButton exit = new JButton("LOG OUT");
 	
-	public InicioAlumno(){
-		
+	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
+		super(anterior, frame);
 		this.setPreferredSize(new Dimension(50, 50));
 		this.setMaximumSize(new Dimension(50, 50));
 		this.setBackground(Color.WHITE);
@@ -48,6 +51,22 @@ public class InicioAlumno extends JPanel {
 		this.menubar.add(solicitudes);
 		
 		this.add(menubar);
+	}
+	
+	/**
+	 * Añade un ActionListener al InicioAlumno
+	 * @param listener
+	 */
+	public void addListener(ActionListener listener){
+		//TODO añadir los listeners
+		return;
+	}
+	
+	/**
+	 * Hace que el frame muestre este panel
+	 */
+	public void muestraPanel(){
+		this.frame.showInicioAlumno();
 	}
 	
 }
