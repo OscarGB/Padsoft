@@ -41,7 +41,7 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void showPanelLogin(){
 		
-		NuestroPanel anterior = this.ini();
+		NuestroPanel anterior = null; //this.ini();
 		
 		Dimension d = new Dimension();
 		d.setSize(700, 500);		
@@ -65,7 +65,7 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void showInicioAlumno(){
 		
-		NuestroPanel anterior = this.ini();
+		NuestroPanel anterior = null; //this.ini();
 		
 		Dimension d = new Dimension();
 		d.setSize(700, 500);		
