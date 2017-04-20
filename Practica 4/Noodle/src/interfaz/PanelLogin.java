@@ -64,7 +64,7 @@ public final class PanelLogin extends NuestroPanel {
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();
-		setLayout(spr);
+		this.setLayout(spr);
 		
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, img, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, usrLabel, 0, SpringLayout.HORIZONTAL_CENTER, this);

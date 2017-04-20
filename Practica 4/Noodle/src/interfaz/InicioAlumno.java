@@ -12,45 +12,39 @@ public class InicioAlumno extends NuestroPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	JMenuBar menubar = new JMenuBar();
-	JMenu inicio = new JMenu("Inicio");
-	JMenu cursos = new JMenu("Mis cursos");
-	JMenu solicitudes = new JMenu("Solicitudes");
-	Imagen logo = new Imagen(50, 50);
-	JButton exit = new JButton("LOG OUT");
+	/**
+	 * Menu generico que se muestra en la parte superior
+	 */
+	private Menu menu1;
 	
+	private Menu menu2;
+	
+	/**
+	 * Constructor del inicio del alumno
+	 * @param panel anterior
+	 * @param frame
+	 */
 	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
-		this.setPreferredSize(new Dimension(50, 50));
-		this.setMaximumSize(new Dimension(50, 50));
+//		this.setPreferredSize(new Dimension(50, 50));
+//		this.setMaximumSize(new Dimension(50, 50));
 		this.setBackground(Color.WHITE);
 		
-		SpringLayout spr = new SpringLayout();
-		setLayout(spr);
+		BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
+		this.setLayout(box);
+		//TODO cambiar a spring layout
+		this.menu1 = new Menu();
+		this.menu2 = new Menu();
 		
-		exit.setBackground(Color.RED);
-		exit.setFont(new Font("Arial", Font.BOLD, 20));
-		inicio.setFont(new Font("Arial", Font.BOLD, 20));
-		inicio.setMargin(new Insets(20, 20, 3, 3));
-		cursos.setFont(new Font("Arial", Font.BOLD, 20));
-		solicitudes.setFont(new Font("Arial", Font.BOLD, 20));
+		//menu1.setAlignmentY(alignmentY);
+		menu2.setAlignmentY(TOP_ALIGNMENT);
 		
-		spr.putConstraint(SpringLayout.NORTH, logo, 5, SpringLayout.NORTH, this);
-		spr.putConstraint(SpringLayout.WEST, logo, 5, SpringLayout.WEST, this);
-		spr.putConstraint(SpringLayout.NORTH, menubar, 5, SpringLayout.NORTH, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, menubar, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.EAST, menubar, -5, SpringLayout.WEST, exit);
-		spr.putConstraint(SpringLayout.WEST, menubar, 5, SpringLayout.EAST, logo);
-		spr.putConstraint(SpringLayout.NORTH, exit, 5, SpringLayout.NORTH, this);
-		spr.putConstraint(SpringLayout.EAST, exit, -5, SpringLayout.EAST, this);
+		menu1.setPreferredSize(new Dimension(10,10));
 		
-		this.add(logo);
-		this.add(exit);
-		this.menubar.add(inicio);
-		this.menubar.add(cursos);
-		this.menubar.add(solicitudes);
-		
-		this.add(menubar);
+		this.add(this.menu1);
+		this.add(this.menu2);
+		//TODO Falta añadir el contenido del inicio
+
 	}
 	
 	/**
