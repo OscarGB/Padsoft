@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import listeners.*;
+import persona.Alumno;
 import plataforma.Plataforma;
 
 /**
@@ -25,6 +26,9 @@ public class NoodleFrame extends JFrame{
 	 */
 	private PanelLogin login = null;
 	private InicioAlumno inicioAlumno = null;
+	private InicioProfesor inicioProfesor = null;
+	private ListaAsignaturas listaAsignaturas = null;
+	private AsignaturaAlumno asignaturaAlumno = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -65,7 +69,7 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void showInicioAlumno(){
 		
-		NuestroPanel anterior = null; //this.ini();
+		NuestroPanel anterior = this.ini();
 		
 		Dimension d = new Dimension();
 		d.setSize(700, 500);		
@@ -84,13 +88,89 @@ public class NoodleFrame extends JFrame{
 	}
 	
 	/**
+	 * Muestra el Panel de Inicio del Profesor
+	 */
+	public void showInicioProfesor(){
+		
+		NuestroPanel anterior = this.ini();
+		
+		Dimension d = new Dimension();
+		d.setSize(700, 500);		
+		
+		if(this.inicioProfesor == null){
+			this.inicioProfesor = new InicioProfesor(anterior, this);
+			this.inicioProfesor.addListener(new InicioProfesorListener(this.inicioProfesor, this));
+		}
+		else{
+			this.inicioProfesor.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.inicioProfesor);
+		
+		this.fin(d);
+	}
+	
+	/**
+	 * Muestra el Panel Lista de Asignaturas
+	 */
+	public void showListaAsignaturas(){
+		
+		NuestroPanel anterior = this.ini();
+		
+		Dimension d = new Dimension();
+		d.setSize(700, 500);		
+		
+		if(this.listaAsignaturas == null){
+			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
+			if(Plataforma.loggedAs() instanceof Alumno){
+				this.listaAsignaturas.addListener(new ListaAsignaturasAlumnoListener(this.listaAsignaturas, this));
+			}
+			else{
+				this.listaAsignaturas.addListener(new ListaAsignaturasProfesorListener(this.listaAsignaturas, this));
+			}
+		}
+		else{
+			this.listaAsignaturas.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.listaAsignaturas);
+		
+		this.fin(d);
+	}
+	
+	/**
+	 * Muestra el Panel Asignatura Alumno
+	 */
+	public void showAsignaturaAlumno(){
+		
+		NuestroPanel anterior = this.ini();
+		
+		Dimension d = new Dimension();
+		d.setSize(700, 500);		
+		
+		if(this.asignaturaAlumno == null){
+			this.asignaturaAlumno = new AsignaturaAlumno(anterior, this);
+			this.asignaturaAlumno.addListener(new AsignaturaAlumnoListener(this.listaAsignaturas, this));
+			
+		}
+		else{
+			this.asignaturaAlumno.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.asignaturaAlumno);
+		
+		this.fin(d);
+	}
+	
+	/**
 	 * Método a llamar antes de cualquier show
 	 * @return
 	 */
 	private NuestroPanel ini(){
-		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
-		this.getContentPane().removeAll();
-		return anterior;
+		return null;
+//		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
+//		this.getContentPane().removeAll();
+//		return anterior;
 	}
 	
 	/**
