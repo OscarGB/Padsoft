@@ -28,21 +28,22 @@ public class InicioAlumno extends NuestroPanel {
 		super(anterior, frame);
 //		this.setPreferredSize(new Dimension(50, 50));
 //		this.setMaximumSize(new Dimension(50, 50));
+		this.setSize(700, 500);
 		this.setBackground(Color.WHITE);
 		
-		BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
-		this.setLayout(box);
-		//TODO cambiar a spring layout
+		BorderLayout border = new BorderLayout();
+		this.setLayout(border);
+		
 		this.menu1 = new Menu();
 		this.menu2 = new Menu();
 		
-		//menu1.setAlignmentY(alignmentY);
-		menu2.setAlignmentY(TOP_ALIGNMENT);
+		this.add(this.menu1, BorderLayout.NORTH);
 		
-		menu1.setPreferredSize(new Dimension(10,10));
+		int h = this.getHeight();
+		int w = this.getWidth();
 		
-		this.add(this.menu1);
-		this.add(this.menu2);
+		this.menu1.setPreferredSize(new Dimension(w,100));
+		//this.add(this.menu2);
 		//TODO Falta añadir el contenido del inicio
 
 	}

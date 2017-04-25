@@ -45,11 +45,17 @@ public class Menu extends JPanel {
 		spr.putConstraint(SpringLayout.NORTH, exit, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.EAST, exit, -5, SpringLayout.EAST, this);
 		
+		this.menubar.add(Box.createGlue());
+		//Los createGlue rellenan el espacio para poder centrar contenidos
 		this.add(logo);
 		this.add(exit);
 		this.menubar.add(inicio);
+		this.menubar.add(Box.createGlue());
 		this.menubar.add(cursos);
+		this.menubar.add(Box.createGlue());
 		this.menubar.add(solicitudes);
+		
+		this.menubar.add(Box.createGlue());
 		
 		this.add(menubar);
 		
