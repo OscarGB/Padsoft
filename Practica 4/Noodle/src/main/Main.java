@@ -1,4 +1,6 @@
-package interfaz;
+package main;
+
+import interfaz.NoodleFrame;
 
 public class Main {
 
