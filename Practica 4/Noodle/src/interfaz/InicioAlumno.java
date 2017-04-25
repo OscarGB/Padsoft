@@ -34,8 +34,8 @@ public class InicioAlumno extends NuestroPanel {
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		
-		this.menu1 = new Menu();
-		this.menu2 = new Menu();
+		this.menu1 = new Menu(frame);
+		this.menu2 = new Menu(frame);
 		
 		this.add(this.menu1, BorderLayout.NORTH);
 		

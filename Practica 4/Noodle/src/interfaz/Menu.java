@@ -16,6 +16,8 @@ public class Menu extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private NoodleFrame frame;
+	
 	JMenuBar menubar = new JMenuBar();
 	JMenu inicio = new JMenu("Inicio");
 	JMenu cursos = new JMenu("Mis cursos");
@@ -23,7 +25,8 @@ public class Menu extends JPanel {
 	Imagen logo = new Imagen(50, 50);
 	JButton exit = new JButton("LOG OUT");
 	
-	public Menu(){
+	public Menu(NoodleFrame frame){
+		this.frame = frame;
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();
@@ -54,6 +57,10 @@ public class Menu extends JPanel {
 		this.menubar.add(cursos);
 		this.menubar.add(Box.createGlue());
 		this.menubar.add(solicitudes);
+		
+		//MenuListener list = new MenuListener(this, frame);
+		
+		//this.inicio.addActionListener(list);
 		
 		this.menubar.add(Box.createGlue());
 		

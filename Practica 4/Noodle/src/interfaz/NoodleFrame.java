@@ -29,7 +29,6 @@ public class NoodleFrame extends JFrame{
 	private InicioProfesor inicioProfesor = null;
 	private ListaAsignaturas listaAsignaturas = null;
 	private AsignaturaAlumno asignaturaAlumno = null;
-	private Menu menu = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -37,8 +36,8 @@ public class NoodleFrame extends JFrame{
 	public NoodleFrame(){
 		super("Noodle");
 		Plataforma.openPlataforma();
-		this.showPanelLogin();
-		//this.showInicioAlumno();
+		//this.showPanelLogin();
+		this.showInicioAlumno();
 		//this.showListaAsignaturas();
 	}
 	
@@ -48,9 +47,6 @@ public class NoodleFrame extends JFrame{
 	public void showPanelLogin(){
 		
 		NuestroPanel anterior = null;
-		
-		Dimension d = new Dimension();
-		d.setSize(700, 500);		
 		
 		if(this.login == null){
 			this.login = new PanelLogin(anterior, this);
@@ -62,7 +58,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.login);
 
-		this.fin(d);
+		this.fin(700,500);
 		
 	}
 	
@@ -72,9 +68,6 @@ public class NoodleFrame extends JFrame{
 	public void showInicioAlumno(){
 		
 		NuestroPanel anterior = this.ini();
-		
-		Dimension d = new Dimension();
-		d.setSize(700, 500);		
 		
 		if(this.inicioAlumno == null){
 			this.inicioAlumno = new InicioAlumno(anterior, this);
@@ -86,7 +79,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.inicioAlumno);
 		
-		this.fin(d);
+		this.fin(700,500);
 	}
 	
 	/**
@@ -95,9 +88,6 @@ public class NoodleFrame extends JFrame{
 	public void showInicioProfesor(){
 		
 		NuestroPanel anterior = this.ini();
-		
-		Dimension d = new Dimension();
-		d.setSize(700, 500);		
 		
 		if(this.inicioProfesor == null){
 			this.inicioProfesor = new InicioProfesor(anterior, this);
@@ -109,7 +99,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.inicioProfesor);
 		
-		this.fin(d);
+		this.fin(700,500);
 	}
 	
 	/**
@@ -118,9 +108,6 @@ public class NoodleFrame extends JFrame{
 	public void showListaAsignaturas(){
 		
 		NuestroPanel anterior = this.ini();
-		
-		Dimension d = new Dimension();
-		d.setSize(700, 500);		
 		
 		if(this.listaAsignaturas == null){
 			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
@@ -137,7 +124,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.listaAsignaturas);
 		
-		this.fin(d);
+		this.fin(700,500);
 	}
 	
 	/**
@@ -146,9 +133,6 @@ public class NoodleFrame extends JFrame{
 	public void showAsignaturaAlumno(){
 		
 		NuestroPanel anterior = this.ini();
-		
-		Dimension d = new Dimension();
-		d.setSize(700, 500);		
 		
 		if(this.asignaturaAlumno == null){
 			this.asignaturaAlumno = new AsignaturaAlumno(anterior, this);
@@ -161,7 +145,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.asignaturaAlumno);
 		
-		this.fin(d);
+		this.fin(700,500);
 	}
 	
 	/**
@@ -172,21 +156,19 @@ public class NoodleFrame extends JFrame{
 		
 		return null;
 		
-		
-		
-		
 //		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
 //		this.getContentPane().removeAll();
-//		this.getContentPane().add(this.menu);ç
-		
 //		return anterior;
 	}
 	
 	/**
 	 * Método a llamar después de cualquier show
-	 * @param d
+	 * @param a
+	 * @param b
 	 */
-	private void fin(Dimension d){
+	private void fin(int a, int b){
+		Dimension d = new Dimension();
+		d.setSize(a,b);
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(d);
