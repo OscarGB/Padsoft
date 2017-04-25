@@ -17,7 +17,7 @@ public class ListaAsignaturas extends NuestroPanel {
 		this.setMinimumSize(new Dimension(500,700));
 		this.setBackground(Color.WHITE);
 		
-		this.menu = new Menu();
+		this.menu = new Menu(frame);
 		
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
