@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import listeners.MenuListener;
+
 /**
  * Clase para implementar el panel de menu generico
  * @author Jose Ignacio Gomez
@@ -76,10 +78,14 @@ public class Menu extends JPanel {
 		this.inicio.addActionListener(list);
 		this.cursos.addActionListener(list);
 		this.solicitudes.addActionListener(list);
+		this.logo.addActionListener(list);
+		this.exit.addActionListener(list);
 		
 		this.inicio.setActionCommand("Inicio");
 		this.cursos.setActionCommand("Asignaturas");
 		this.solicitudes.setActionCommand("Solicitudes");
+		this.logo.setActionCommand("Atras");
+		this.exit.setActionCommand("Logout");
 		
 		this.menubar.add(Box.createGlue());
 		

@@ -37,8 +37,8 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-//		this.showPanelLogin();
-		this.showInicioAlumno();
+		this.showPanelLogin();
+		//this.showInicioAlumno();
 		//this.showListaAsignaturas();
 	}
 	
@@ -148,6 +148,44 @@ public class NoodleFrame extends JFrame{
 		
 		this.fin(700,500);
 	}
+
+	/**
+	 * Método para realizar el logout
+	 */
+	public void logout() {
+		
+		ini();
+		Plataforma.logout();
+		Plataforma.closePlataforma();
+		
+		this.showPanelLogin();
+		
+		
+	}
+
+	/**
+	 * Método para mostrar las solicitudes de un alumno
+	 */
+	public void showSolicitudesAlumno() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Método para mostrar las solicitudes de un profesor
+	 */
+	public void showSolicitudesProfesor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Método para mostrar las asignaturas
+	 */
+	public void showAsignaturas() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	/**
 	 * Método a llamar antes de cualquier show
@@ -155,10 +193,11 @@ public class NoodleFrame extends JFrame{
 	 */
 	private NuestroPanel ini(){
 		
-		return null;
+		//return null;
 		
 //		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
-//		this.getContentPane().removeAll();
+		this.getContentPane().removeAll();
+		return null;
 //		return anterior;
 	}
 	
@@ -175,5 +214,6 @@ public class NoodleFrame extends JFrame{
 		this.setSize(d);
 		this.repaint();
 	}
+
 	
 }
