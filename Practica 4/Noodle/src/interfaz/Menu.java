@@ -58,9 +58,9 @@ public class Menu extends JPanel {
 		this.menubar.add(Box.createGlue());
 		this.menubar.add(solicitudes);
 		
-		//MenuListener list = new MenuListener(this, frame);
+		MenuListener list = new MenuListener(this, this.frame);
 		
-		//this.inicio.addActionListener(list);
+		this.inicio.addActionListener(list);
 		
 		this.menubar.add(Box.createGlue());
 		
