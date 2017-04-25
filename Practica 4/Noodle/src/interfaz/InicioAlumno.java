@@ -15,9 +15,9 @@ public class InicioAlumno extends NuestroPanel {
 	/**
 	 * Menu generico que se muestra en la parte superior
 	 */
-	private Menu menu1;
+	private Menu menu;
 	
-	private Menu menu2;
+	private MisAsignaturas cursos;
 	
 	/**
 	 * Constructor del inicio del alumno
@@ -26,24 +26,24 @@ public class InicioAlumno extends NuestroPanel {
 	 */
 	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
-//		this.setPreferredSize(new Dimension(50, 50));
-//		this.setMaximumSize(new Dimension(50, 50));
+		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
 		
-		BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
-		this.setLayout(box);
-		//TODO cambiar a spring layout
-		this.menu1 = new Menu(frame);
-		this.menu2 = new Menu(frame);
+		this.setLayout(new BorderLayout());
+
+		this.menu = new Menu(frame);
+		this.cursos = new MisAsignaturas(frame);
 		
-		//menu1.setAlignmentY(alignmentY);
-		menu2.setAlignmentY(TOP_ALIGNMENT);
+		menu.setPreferredSize(new Dimension(10,10));
 		
-		menu1.setPreferredSize(new Dimension(10,10));
+		this.add(this.menu, BorderLayout.NORTH);
+		this.add(this.cursos, BorderLayout.CENTER);
 		
-		this.add(this.menu1);
-		this.add(this.menu2);
-		//TODO Falta añadir el contenido del inicio
+		int h = this.getHeight();
+		int w = this.getWidth();
+		
+		this.menu.setPreferredSize(new Dimension(w, 80));
+		this.cursos.setPreferredSize(new Dimension(w, h));
 
 	}
 	
