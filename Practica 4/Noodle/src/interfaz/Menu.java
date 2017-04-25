@@ -2,6 +2,7 @@ package interfaz;
 
 import java.awt.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -20,10 +21,10 @@ public class Menu extends JPanel {
 	
 	JMenuBar menubar = new JMenuBar();
 	JMenu inicio = new JMenu("Inicio");
-	JMenu cursos = new JMenu("Mis cursos");
+	JMenu cursos = new JMenu("Asignaturas");
 	JMenu solicitudes = new JMenu("Solicitudes");
-	Imagen logo = new Imagen(50, 50);
-	JButton exit = new JButton("LOG OUT");
+	JButton logo = new JButton();
+	JButton exit = new JButton();
 	
 	public Menu(NoodleFrame frame){
 		this.frame = frame;
@@ -32,12 +33,24 @@ public class Menu extends JPanel {
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
 		
-		exit.setBackground(Color.RED);
-		exit.setFont(new Font("Arial", Font.BOLD, 20));
 		inicio.setFont(new Font("Arial", Font.BOLD, 20));
 		inicio.setMargin(new Insets(20, 20, 3, 3));
 		cursos.setFont(new Font("Arial", Font.BOLD, 20));
 		solicitudes.setFont(new Font("Arial", Font.BOLD, 20));
+		try {
+			Image img = ImageIO.read(getClass().getResource("/imagenes/atras.png"));
+			
+			logo.setIcon(new ImageIcon(img.getScaledInstance(25, 25, 20)));
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		try {
+			Image img2 = ImageIO.read(getClass().getResource("/imagenes/logout.png"));
+			exit.setIcon(new ImageIcon(img2.getScaledInstance(25, 25, 20)));
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		exit.setBackground(Color.RED);
 		
 		spr.putConstraint(SpringLayout.NORTH, logo, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.WEST, logo, 5, SpringLayout.WEST, this);
@@ -61,6 +74,12 @@ public class Menu extends JPanel {
 		MenuListener list = new MenuListener(this, this.frame);
 		
 		this.inicio.addActionListener(list);
+		this.cursos.addActionListener(list);
+		this.solicitudes.addActionListener(list);
+		
+		this.inicio.setActionCommand("Inicio");
+		this.cursos.setActionCommand("Asignaturas");
+		this.solicitudes.setActionCommand("Solicitudes");
 		
 		this.menubar.add(Box.createGlue());
 		
