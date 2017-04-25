@@ -29,6 +29,7 @@ public class NoodleFrame extends JFrame{
 	private InicioProfesor inicioProfesor = null;
 	private ListaAsignaturas listaAsignaturas = null;
 	private AsignaturaAlumno asignaturaAlumno = null;
+	private Menu menu = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -36,8 +37,9 @@ public class NoodleFrame extends JFrame{
 	public NoodleFrame(){
 		super("Noodle");
 		Plataforma.openPlataforma();
-		//this.showPanelLogin();
-		this.showInicioAlumno();
+		this.showPanelLogin();
+		//this.showInicioAlumno();
+		//this.showListaAsignaturas();
 	}
 	
 	/**
@@ -167,9 +169,16 @@ public class NoodleFrame extends JFrame{
 	 * @return
 	 */
 	private NuestroPanel ini(){
+		
 		return null;
+		
+		
+		
+		
 //		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
 //		this.getContentPane().removeAll();
+//		this.getContentPane().add(this.menu);ç
+		
 //		return anterior;
 	}
 	
