@@ -26,24 +26,25 @@ public class InicioAlumno extends NuestroPanel {
 	 */
 	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
-//		this.setPreferredSize(new Dimension(50, 50));
-//		this.setMaximumSize(new Dimension(50, 50));
+		
 		this.setSize(700, 500);
 		this.setBackground(Color.WHITE);
 		
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		
-		this.menu1 = new Menu();
-		this.menu2 = new Menu();
+		this.menu1 = new Menu(frame);
+		this.menu2 = new Menu(frame);
 		
 		this.add(this.menu1, BorderLayout.NORTH);
+		this.add(this.menu2, BorderLayout.CENTER);
 		
 		int h = this.getHeight();
 		int w = this.getWidth();
 		
-		this.menu1.setPreferredSize(new Dimension(w,100));
-		//this.add(this.menu2);
+		this.menu1.setPreferredSize(new Dimension(w,80));
+		this.menu2.setPreferredSize(new Dimension(w,h));
+		
 		//TODO Falta añadir el contenido del inicio
 
 	}
