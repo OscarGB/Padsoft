@@ -33,8 +33,8 @@ public class InicioAlumno extends NuestroPanel {
 		BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(box);
 		//TODO cambiar a spring layout
-		this.menu1 = new Menu();
-		this.menu2 = new Menu();
+		this.menu1 = new Menu(frame);
+		this.menu2 = new Menu(frame);
 		
 		//menu1.setAlignmentY(alignmentY);
 		menu2.setAlignmentY(TOP_ALIGNMENT);
