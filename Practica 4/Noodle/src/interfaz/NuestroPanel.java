@@ -2,7 +2,7 @@ package interfaz;
 
 import javax.swing.JPanel;
 
-public abstract class NuestroPanel extends JPanel{
+public class NuestroPanel extends JPanel{
 	
 	//Variables
 	
