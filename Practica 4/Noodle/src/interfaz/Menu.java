@@ -116,7 +116,6 @@ public class Menu extends JPanel {
 		this.inicio.addMouseListener(
 			new MouseAdapter(){
 				public void mouseClicked(MouseEvent e){
-					System.out.println("Ha pulsado inicio");
 					if(Plataforma.loggedAs() instanceof Alumno){
 						frame.showInicioAlumno(true);
 					}
@@ -130,7 +129,6 @@ public class Menu extends JPanel {
 		this.cursos.addMouseListener(
 			new MouseAdapter(){
 				public void mouseClicked(MouseEvent e){
-					System.out.println("Ha pulsado asignaturas");
 					if(Plataforma.loggedAs() instanceof Alumno){
 						frame.showListaAsignaturas(true);
 					}
@@ -144,7 +142,6 @@ public class Menu extends JPanel {
 		this.solicitudes.addMouseListener(
 			new MouseAdapter(){
 				public void mouseClicked(MouseEvent e){
-					System.out.println("Ha pulsado solicitudes");
 					if(Plataforma.loggedAs() instanceof Alumno){
 						frame.showSolicitudesAlumno(true);
 					}

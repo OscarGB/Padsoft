@@ -29,9 +29,9 @@ public class InicioProfesor extends NuestroPanel {
 	private Menu menu;
 	
 	/**
-	 * Texto de bienvenida
+	 * Panel de inicio
 	 */
-	private JLabel texto;
+	private CreaAsignatura centro = new CreaAsignatura();
 	
 	/**
 	 * Constructor del inicio del profesor
@@ -46,22 +46,18 @@ public class InicioProfesor extends NuestroPanel {
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		this.texto = new JLabel("Bienvenido a Noodle");
-		this.texto.setFont(new Font("Arial", Font.BOLD, 20));
-		this.texto.setHorizontalAlignment(JLabel.CENTER);
-		this.texto.setVerticalAlignment(JLabel.CENTER);
 		
 		menu.setPreferredSize(new Dimension(10,10));
 		
 		this.add(this.menu, BorderLayout.NORTH);
-		this.add(this.texto, BorderLayout.CENTER);
+		this.add(this.centro, BorderLayout.CENTER);
 		
 		int h = this.getHeight();
 		int w = this.getWidth();
 		
 		this.menu.setPreferredSize(new Dimension(w, 40));
 		//TODO cambiar
-		this.texto.setPreferredSize(new Dimension(w, h));
+		this.centro.setPreferredSize(new Dimension(w, h));
 
 	}
 	

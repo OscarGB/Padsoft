@@ -12,6 +12,7 @@ import plataforma.Plataforma;
  * Clase para implementar el listener del menu generico
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
+ * @date 18/04/2017
  */
 public class MenuListener implements ActionListener {
 
@@ -42,13 +43,11 @@ public class MenuListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Logout")){
-			System.out.println("Ha pulsado logout");
 			Plataforma.logout();
 			frame.logout();
 			return;
 		}
 		else if(arg0.getActionCommand().equals("Atras")){
-			System.out.println("Ha pulsado atras");
 			frame.atras();
 			return;
 		}

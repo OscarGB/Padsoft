@@ -30,7 +30,8 @@ public class NoodleFrame extends JFrame{
 	private ListaAsignaturas listaAsignaturas = null;
 	private SolicitudesAlumno solicitudesAlumno = null;
 	private NuestroPanel actual = null;
-	private SolicitudesProfesor solicitudesProfesor;
+	private SolicitudesProfesor solicitudesProfesor = null;
+	private AsignaturaGUI asignaturaGUI = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -39,8 +40,8 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-		//this.showPanelLogin();
-		this.showInicioAlumno(true);
+		this.showPanelLogin();
+		//this.showInicioAlumno(true);
 		//this.showListaAsignaturas();
 	}
 	
@@ -144,6 +145,15 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void logout() {
 		
+		login = null;
+		inicioAlumno = null;
+		inicioProfesor = null;
+		listaAsignaturas = null;
+		solicitudesAlumno = null;
+		actual = null;
+		solicitudesProfesor = null;
+		asignaturaGUI = null;
+		
 		ini();
 		Plataforma.logout();
 		
@@ -176,6 +186,31 @@ public class NoodleFrame extends JFrame{
 		this.fin(700,500, this.solicitudesAlumno);
 		
 	}
+	
+	/**
+	 * Método para mostrar una asignatura
+	 * @param back, false si se quiere guardar el panel anterior
+	 */
+	public void showAsignatura(boolean back) {
+		
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.asignaturaGUI == null){
+			this.asignaturaGUI = new SolicitudesAlumno(anterior, this);
+			//Añadir Listener??
+			
+		}
+		else{
+			this.asignaturaGUI.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.asignaturaGUI);
+		
+		this.fin(700,500, this.asignaturaGUI);
+		
+	}
 
 	/**
 	 * Método para mostrar las solicitudes de un profesor
@@ -202,18 +237,6 @@ public class NoodleFrame extends JFrame{
 		
 	}
 
-	/**
-	 * Método para mostrar las asignaturas
-	 * @param back, false si se quiere guardar el panel anterior
-	 */
-	public void showAsignaturas(boolean back) {
-		NuestroPanel anterior = this.ini();
-		if(back == false){
-			anterior = null;
-		}
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/**
 	 * Método a llamar antes de cualquier show
