@@ -77,7 +77,6 @@ public class NoodleFrame extends JFrame{
 		
 		if(this.inicioAlumno == null){
 			this.inicioAlumno = new InicioAlumno(anterior, this);
-			this.inicioAlumno.addListener(new InicioAlumnoListener(this.inicioAlumno, this));
 		}
 		else{
 			this.inicioAlumno.setAnterior(anterior);

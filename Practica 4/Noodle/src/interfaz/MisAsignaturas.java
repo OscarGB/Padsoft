@@ -38,7 +38,6 @@ public class MisAsignaturas extends JPanel{
 		this.setBackground(Color.WHITE);
 		ArrayList<Asignatura> cursos = this.getAsignaturas();
 		ArrayList<JLabel> asignaturas = new ArrayList<JLabel>();
-		//JScrollPane scroll = new JScrollPane();
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
@@ -93,20 +92,13 @@ public class MisAsignaturas extends JPanel{
 	private ArrayList<Asignatura> getAsignaturas(){
 		//ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
 		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
-//		array.add(new Asignatura("Mates"));
-//		array.add(new Asignatura("Lengua"));
-//		array.add(new Asignatura("Cono"));
+		array.add(new Asignatura("Mates"));
+		array.add(new Asignatura("Lengua"));
+		array.add(new Asignatura("Cono"));
 		
 		return array;
 	}
-	
-	/**
-	 * Añade un ActionListener a MisAsignaturas
-	 * @param listener
-	 */
-	public void addListener(ActionListener listener){
-		//TODO hacer
-	}
+
 	
 }
 

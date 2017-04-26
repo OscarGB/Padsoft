@@ -1,0 +1,58 @@
+package main;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import interfaz.Menu;
+import interfaz.NoodleFrame;
+import interfaz.NuestroPanel;
+
+public class AsignaturaGUI extends NuestroPanel{
+	
+	// Variables
+
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Menu generico que se muestra en la parte superior
+	 */
+	private Menu menu;
+	
+	//private TreeContent arbol;
+	
+	//private MenuAsignatura menuAsig;
+	
+	//Constructor
+
+	protected AsignaturaGUI(NuestroPanel anterior, NoodleFrame frame) {
+		super(anterior, frame);
+		this.setSize(400,350);
+		this.setBackground(Color.WHITE);
+		
+		this.setLayout(new BorderLayout());
+		
+		this.menu = new Menu(frame);
+		
+		this.add(this.menu, BorderLayout.NORTH);
+		
+		int w = this.getWidth();
+		this.menu.setPreferredSize(new Dimension(w, 80));
+		
+		
+	}
+	
+
+	// Métodos
+	
+	/**
+	 * Hace que el frame muestre este panel
+	 */
+	public void muestraPanel(){
+		this.frame.showAsignatura(true);
+	}
+
+}

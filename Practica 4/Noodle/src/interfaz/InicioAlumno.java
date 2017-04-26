@@ -29,6 +29,10 @@ public class InicioAlumno extends NuestroPanel {
 	 * Panel con los cursos matriculados
 	 */
 	private MisAsignaturas cursos;
+	
+	/**
+	 * Panel de scrolling
+	 */
 	private JScrollPane scroll;
 	
 	//Constructor
@@ -49,29 +53,16 @@ public class InicioAlumno extends NuestroPanel {
 		this.cursos = new MisAsignaturas(frame);
 		this.scroll = new JScrollPane(cursos);
 		
-		menu.setPreferredSize(new Dimension(10,10));
-		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
 		
-		int h = this.getHeight();
 		int w = this.getWidth();
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
-		//this.cursos.setPreferredSize(new Dimension(w, h*2));
 
 	}
 	
 	// Métodos
-	
-	/**
-	 * Añade un ActionListener al InicioAlumno
-	 * @param listener
-	 */
-	public void addListener(ActionListener listener){
-		this.cursos.addListener(listener);
-		return;
-	}
 	
 	/**
 	 * Hace que el frame muestre este panel
