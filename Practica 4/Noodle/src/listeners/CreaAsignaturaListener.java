@@ -1,9 +1,10 @@
-package interfaz;
+package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import asignatura.Asignatura;
+import interfaz.CreaAsignatura;
 import plataforma.Plataforma;
 
 /**
@@ -30,6 +31,8 @@ public class CreaAsignaturaListener implements ActionListener {
 	public CreaAsignaturaListener(CreaAsignatura panel){
 		this.panel = panel;
 	}
+	
+	// Métodos
 
 	/**
 	 * Método para realizar una acción cuando se pulsa algún botón
@@ -44,7 +47,7 @@ public class CreaAsignaturaListener implements ActionListener {
 			String name = panel.getNombre();
 			Plataforma.addAsignatura(new Asignatura(name));
 			panel.cambiarVisibilidad(false);
-			System.out.println(Plataforma.plat());
+			Plataforma.plat().saveData();
 		}
 
 	}
