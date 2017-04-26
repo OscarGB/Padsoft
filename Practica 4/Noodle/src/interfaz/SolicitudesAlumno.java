@@ -1,17 +1,35 @@
 package interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
+import javax.swing.JScrollPane;
+
+/**
+ * Clase SolicitudesAlumno
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class SolicitudesAlumno extends NuestroPanel {
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Menu generico que se muestra en la parte superior
 	 */
 	private Menu menu;
 	
-	private MisAsignaturas cursos;
+	/**
+	 * Panel con las solicitudes
+	 */
+	private MisSolicitudes solis;
+	
+	/**
+	 * Panel de scrolling
+	 */
+	private JScrollPane scroll;
 	
 	/**
 	 * Constructor del inicio del alumno
@@ -26,28 +44,18 @@ public class SolicitudesAlumno extends NuestroPanel {
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		this.cursos = new MisAsignaturas(frame);
+		this.solis = new MisSolicitudes();
+		this.scroll = new JScrollPane(this.solis);
 		
 		menu.setPreferredSize(new Dimension(10,10));
 		
 		this.add(this.menu, BorderLayout.NORTH);
-		this.add(this.cursos, BorderLayout.CENTER);
+		this.add(this.scroll, BorderLayout.CENTER);
 		
-		int h = this.getHeight();
 		int w = this.getWidth();
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
-		this.cursos.setPreferredSize(new Dimension(w, h));
 
-	}
-	
-	/**
-	 * Añade un ActionListener al InicioAlumno
-	 * @param listener
-	 */
-	public void addListener(ActionListener listener){
-		//TODO añadir los listeners
-		return;
 	}
 	
 	/**
@@ -55,5 +63,15 @@ public class SolicitudesAlumno extends NuestroPanel {
 	 */
 	public void muestraPanel(){
 		this.frame.showSolicitudesAlumno(false);
+	}
+	
+	/**
+	 * Método que actualiza el panel
+	 */
+	public void refreshPanel(){
+		this.remove(this.scroll);
+		this.solis = new MisSolicitudes();
+		this.scroll = new JScrollPane(this.solis);
+		this.add(this.scroll, BorderLayout.CENTER);
 	}
 }

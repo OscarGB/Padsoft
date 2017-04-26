@@ -5,12 +5,31 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase SolicitudesProfesor
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class SolicitudesProfesor extends NuestroPanel {
 	
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Menú genérico
+	 */
 	Menu menu;
 	
 	private MisAsignaturas cursos;
 
+	/**
+	 * Constructor de SolicitudesProfesor
+	 * @param anterior
+	 * @param frame
+	 */
 	public SolicitudesProfesor(NuestroPanel anterior, NoodleFrame frame) {
 		super(anterior, frame);
 		this.setSize(700,500);

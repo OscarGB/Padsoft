@@ -2,10 +2,7 @@ package listeners;
 
 import java.awt.event.*;
 
-import javax.swing.JPanel;
-
 import interfaz.*;
-import persona.*;
 import plataforma.Plataforma;
 
 /**

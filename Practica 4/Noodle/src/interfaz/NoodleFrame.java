@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import listeners.*;
-import persona.Alumno;
 import plataforma.Plataforma;
 
 /**
@@ -123,16 +122,11 @@ public class NoodleFrame extends JFrame{
 		}
 		if(this.listaAsignaturas == null){
 			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
-			if(Plataforma.loggedAs() instanceof Alumno){
-				this.listaAsignaturas.addListener(new ListaAsignaturasAlumnoListener(this.listaAsignaturas, this));
-			}
-			else{
-				this.listaAsignaturas.addListener(new ListaAsignaturasProfesorListener(this.listaAsignaturas, this));
-			}
 		}
 		else{
 			this.listaAsignaturas.setAnterior(anterior);
 		}
+		this.listaAsignaturas.refreshPanel();
 		
 		this.getContentPane().add(this.listaAsignaturas);
 		
@@ -172,13 +166,12 @@ public class NoodleFrame extends JFrame{
 			anterior = null;
 		}
 		if(this.solicitudesAlumno == null){
-			this.solicitudesAlumno = new SolicitudesAlumno(anterior, this);
-			this.solicitudesAlumno.addListener(new SolicitudesAlumnoListener(this.solicitudesAlumno, this));
-			
+			this.solicitudesAlumno = new SolicitudesAlumno(anterior, this);			
 		}
 		else{
 			this.solicitudesAlumno.setAnterior(anterior);
 		}
+		this.solicitudesAlumno.refreshPanel();
 		
 		this.getContentPane().add(this.solicitudesAlumno);
 		

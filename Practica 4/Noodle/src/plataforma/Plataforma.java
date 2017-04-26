@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.*;
+import solicitud.Solicitud;
 
 /**
  * Clase Plataforma
@@ -287,6 +288,13 @@ public class Plataforma implements Serializable {
 		return Plataforma.loggedAs;
 	}
 	
+	public ArrayList<Solicitud> getSolicitudes(){
+		ArrayList<Solicitud> solis = new ArrayList<Solicitud>();
+		for(Asignatura asig : Plataforma.getAsignaturas()){
+			solis.addAll(asig.getSolicitudes());
+		}
+		return solis;
+	}
 	
 	/**
 	 * Devuelve la instancia de la Plataforma

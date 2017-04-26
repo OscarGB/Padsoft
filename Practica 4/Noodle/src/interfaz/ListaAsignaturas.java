@@ -1,15 +1,8 @@
 package interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 import javax.swing.*;
-
-import listeners.ListaAsignaturasAlumnoListener;
-import listeners.ListaAsignaturasProfesorListener;
 
 /**
  * Clase ListaAsignaturas
@@ -29,8 +22,15 @@ public class ListaAsignaturas extends NuestroPanel {
 	 */
 	private Menu menu;
 
-	//TODO esto es temporal
-	private JLabel texto;
+	/**
+	 * Panel con todas las asignaturas
+	 */
+	private TodasAsignaturas cursos;
+	
+	/**
+	 * Panel de scrolling
+	 */
+	private JScrollPane scroll;
 	
 	/**
 	 * Constructor de la lista de asignaturas
@@ -45,24 +45,17 @@ public class ListaAsignaturas extends NuestroPanel {
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		//TODO cambiar
-		this.texto = new JLabel("Aquí va una lista de todas las asignaturas");
-		this.texto.setFont(new Font("Arial", Font.BOLD, 20));
-		this.texto.setHorizontalAlignment(JLabel.CENTER);
-		this.texto.setVerticalAlignment(JLabel.CENTER);
+		this.cursos = new TodasAsignaturas(frame);
+		this.scroll = new JScrollPane(cursos);
 		
 		menu.setPreferredSize(new Dimension(10,10));
 		
 		this.add(this.menu, BorderLayout.NORTH);
-		//TODO cambiar
-		this.add(this.texto, BorderLayout.CENTER);
+		this.add(this.scroll, BorderLayout.CENTER);
 		
-		int h = this.getHeight();
 		int w = this.getWidth();
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
-		//TODO cambiar
-		this.texto.setPreferredSize(new Dimension(w, h));
 
 	}
 	
@@ -73,23 +66,14 @@ public class ListaAsignaturas extends NuestroPanel {
 	public void muestraPanel(){
 		this.frame.showListaAsignaturas(false);
 	}
-
+	
 	/**
-	 * Añade el listener del alumno
-	 * @param listaAsignaturasAlumnoListener
+	 * Método que actualiza el panel
 	 */
-	public void addListener(ListaAsignaturasAlumnoListener listaAsignaturasAlumnoListener) {
-		// TODO Auto-generated method stub
-		
+	public void refreshPanel(){
+		this.remove(this.scroll);
+		this.cursos = new TodasAsignaturas(frame);
+		this.scroll = new JScrollPane(cursos);
+		this.add(this.scroll, BorderLayout.CENTER);
 	}
-
-	/**
-	 * Añade el listener del profesor
-	 * @param listaAsignaturasProfesorListener
-	 */
-	public void addListener(ListaAsignaturasProfesorListener listaAsignaturasProfesorListener) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

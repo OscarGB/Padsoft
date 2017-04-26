@@ -2,7 +2,6 @@ package respuestas;
 
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
-import contenido.PreguntaRespuestaSimple;
 
 /**
  * Clase RespuestaAbierta
