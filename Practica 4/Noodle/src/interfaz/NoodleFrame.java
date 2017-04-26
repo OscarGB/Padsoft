@@ -38,8 +38,8 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-		this.showPanelLogin();
-		//this.showInicioAlumno();
+		//this.showPanelLogin();
+		this.showInicioAlumno(true);
 		//this.showListaAsignaturas();
 	}
 	

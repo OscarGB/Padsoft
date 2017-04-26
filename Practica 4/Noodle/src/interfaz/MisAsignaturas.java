@@ -3,6 +3,8 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -34,36 +36,53 @@ public class MisAsignaturas extends JPanel{
 	public MisAsignaturas(NoodleFrame frame) {
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
-		DefaultListModel<String> asignaturas = new DefaultListModel<String>();
 		ArrayList<Asignatura> cursos = this.getAsignaturas();
+		ArrayList<JLabel> asignaturas = new ArrayList<JLabel>();
+		//JScrollPane scroll = new JScrollPane();
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
 		
-		for(Asignatura asig:cursos){
-			asignaturas.addElement(asig.getNombre());
+		int size = cursos.size();
+		
+		if(size == 0){
+			JLabel label = new JLabel("No hay asignaturas matriculadas");
+			asignaturas.add(label);
+			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
+			spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
+		}
+		if(size > 0){
+			JLabel label = new JLabel(cursos.get(0).getNombre());
+			asignaturas.add(label);
+			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
+			spr.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, this);
+			for(int i = 1; i < size; i++){
+				label = new JLabel(cursos.get(i).getNombre());
+				JLabel previous = asignaturas.get(i-1);
+				asignaturas.add(label);
+				spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
+				spr.putConstraint(SpringLayout.NORTH, label, 50, SpringLayout.NORTH, previous);
+			}
 		}
 			
-		
-		JList listaAsignaturas = new JList(asignaturas);
-		
-		listaAsignaturas.setFont(new Font("Arial", Font.BOLD, 20));
-		//TODO probar si funcionan los listeners, si no, usar labels
-		//TODO centrar letras, dar formato al list
-		
-		listaAsignaturas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-		JScrollPane scroll = new JScrollPane(listaAsignaturas);
-		scroll.setPreferredSize(new Dimension(300, 300));
-		scroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-		
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, scroll, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.VERTICAL_CENTER, scroll, 0, SpringLayout.VERTICAL_CENTER, this);
-//		spr.putConstraint(SpringLayout.WEST, listaAsignaturas, 0, SpringLayout.WEST, this);
-//		spr.putConstraint(SpringLayout.EAST, listaAsignaturas, 0, SpringLayout.EAST, this);
+		for(JLabel asig:asignaturas){
+			asig.setFont(new Font("Arial", Font.BOLD, 20));
+			this.add(asig);
+			
+			//Aniadimos un MouseListener para poder clicar en los labels de las
+			//asignaturas
+			asig.addMouseListener(new MouseAdapter()  
+			{  
+			    public void mouseClicked(MouseEvent e)  
+			    {  
+			       System.out.println("Has pulsado en "+asig.getText());
 
+			    }  
+			}); 
 
+		}
 		
-		this.add(scroll);
+		this.setPreferredSize(new Dimension(this.getWidth(), (asignaturas.get(0).getHeight() + 50)*size));
 		
 	}
 	
@@ -74,9 +93,9 @@ public class MisAsignaturas extends JPanel{
 	private ArrayList<Asignatura> getAsignaturas(){
 		//ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
 		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
-		array.add(new Asignatura("Mates"));
-		array.add(new Asignatura("Lengua"));
-		array.add(new Asignatura("Cono"));
+//		array.add(new Asignatura("Mates"));
+//		array.add(new Asignatura("Lengua"));
+//		array.add(new Asignatura("Cono"));
 		
 		return array;
 	}
