@@ -65,7 +65,7 @@ public class MenuListener implements ActionListener {
 			return;
 		}
 		else if(arg0.getActionCommand().equals("Atras")){
-			
+			frame.atras();
 			return;
 		}
 

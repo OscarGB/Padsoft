@@ -128,7 +128,7 @@ public class Plataforma implements Serializable {
 	/**
 	 * Guarda los datos de la plataforma completa.
 	 */
-	private void saveData(){
+	public void saveData(){
 		this.asigs = Plataforma.asignaturas;
 		this.alus  = Plataforma.alumnos;
 		this.prof = Plataforma.profesor;
@@ -359,6 +359,7 @@ public class Plataforma implements Serializable {
 	 */
 	public static void logout(){
 		Plataforma.loggedAs = null;
+		Plataforma.plat.saveData();
 	}
 	
 	//Overrides

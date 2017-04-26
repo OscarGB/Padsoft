@@ -47,8 +47,7 @@ public class NoodleFrame extends JFrame{
 	 * Muestra el Panel de login
 	 */
 	public void showPanelLogin(){
-		
-		NuestroPanel anterior = null;
+		NuestroPanel anterior = ini();
 		
 		if(this.login == null){
 			this.login = new PanelLogin(anterior, this);
@@ -71,6 +70,7 @@ public class NoodleFrame extends JFrame{
 	public void showInicioAlumno(boolean back){
 		
 		NuestroPanel anterior = this.ini();
+		System.out.println(anterior +"" + back);
 		if(back == false){
 			anterior = null;
 		}
@@ -171,8 +171,6 @@ public class NoodleFrame extends JFrame{
 		
 		ini();
 		Plataforma.logout();
-		Plataforma.closePlataforma();
-		Plataforma.openPlataforma();
 		
 		this.showPanelLogin();
 		
@@ -225,11 +223,13 @@ public class NoodleFrame extends JFrame{
 	private NuestroPanel ini(){
 		
 		//return null;
-		
-//		NuestroPanel anterior = (NuestroPanel) this.getContentPane().getComponent(0);
-		this.getContentPane().removeAll();
-		return null;
-//		return anterior;
+		NuestroPanel anterior = null;
+		if(this.getContentPane().getComponentCount() != 0){
+			anterior = (NuestroPanel) this.getContentPane().getComponent(0);
+			this.getContentPane().removeAll();
+		}
+//		return null;
+		return anterior;
 	}
 	
 	/**
