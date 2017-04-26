@@ -28,8 +28,9 @@ public class NoodleFrame extends JFrame{
 	private InicioAlumno inicioAlumno = null;
 	private InicioProfesor inicioProfesor = null;
 	private ListaAsignaturas listaAsignaturas = null;
-	private AsignaturaAlumno asignaturaAlumno = null;
+	private SolicitudesAlumno solicitudesAlumno = null;
 	private NuestroPanel actual = null;
+	private SolicitudesProfesor solicitudesProfesor;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -70,7 +71,6 @@ public class NoodleFrame extends JFrame{
 	public void showInicioAlumno(boolean back){
 		
 		NuestroPanel anterior = this.ini();
-		System.out.println(anterior +"" + back);
 		if(back == false){
 			anterior = null;
 		}
@@ -100,8 +100,7 @@ public class NoodleFrame extends JFrame{
 		}
 		
 		if(this.inicioProfesor == null){
-			this.inicioProfesor = new InicioProfesor(anterior, this);
-			this.inicioProfesor.addListener(new InicioProfesorListener(this.inicioProfesor, this));
+			this.inicioProfesor = new InicioProfesor(anterior, this); 
 		}
 		else{
 			this.inicioProfesor.setAnterior(anterior);
@@ -139,30 +138,6 @@ public class NoodleFrame extends JFrame{
 		
 		this.fin(700,500, this.listaAsignaturas);
 	}
-	
-	/**
-	 * Muestra el Panel Asignatura Alumno
-	 * @param back, false si se quiere guardar el panel anterior
-	 */
-	public void showAsignaturaAlumno(boolean back){
-		
-		NuestroPanel anterior = this.ini();
-		if(back == false){
-			anterior = null;
-		}
-		if(this.asignaturaAlumno == null){
-			this.asignaturaAlumno = new AsignaturaAlumno(anterior, this);
-			this.asignaturaAlumno.addListener(new AsignaturaAlumnoListener(this.listaAsignaturas, this));
-			
-		}
-		else{
-			this.asignaturaAlumno.setAnterior(anterior);
-		}
-		
-		this.getContentPane().add(this.asignaturaAlumno);
-		
-		this.fin(700,500, this.asignaturaAlumno);
-	}
 
 	/**
 	 * Método para realizar el logout
@@ -182,11 +157,23 @@ public class NoodleFrame extends JFrame{
 	 * @param back, false si se quiere guardar el panel anterior
 	 */
 	public void showSolicitudesAlumno(boolean back) {
+		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = null;
 		}
-		// TODO Auto-generated method stub
+		if(this.solicitudesAlumno == null){
+			this.solicitudesAlumno = new SolicitudesAlumno(anterior, this);
+			this.solicitudesAlumno.addListener(new SolicitudesAlumnoListener(this.solicitudesAlumno, this));
+			
+		}
+		else{
+			this.solicitudesAlumno.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.solicitudesAlumno);
+		
+		this.fin(700,500, this.solicitudesAlumno);
 		
 	}
 
@@ -195,11 +182,23 @@ public class NoodleFrame extends JFrame{
 	 * @param back, false si se quiere guardar el panel anterior
 	 */
 	public void showSolicitudesProfesor(boolean back) {
+
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = null;
 		}
-		// TODO Auto-generated method stub
+		if(this.solicitudesProfesor == null){
+			this.solicitudesProfesor = new SolicitudesProfesor(anterior, this);
+			this.solicitudesProfesor.addListener(new SolicitudesProfesorListener(this.solicitudesProfesor, this));
+			
+		}
+		else{
+			this.solicitudesProfesor.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.solicitudesProfesor);
+		
+		this.fin(700,500, this.solicitudesProfesor);
 		
 	}
 

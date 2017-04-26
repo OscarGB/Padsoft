@@ -1,43 +1,17 @@
 package interfaz;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-
-/**
- * Clase InicioAlumno
- * @author Jose Ignacio Gomez
- * @author Oscar Gomez
- * @date 20/04/2017
- */
-public class InicioAlumno extends NuestroPanel {
+public class SolicitudesProfesor extends NuestroPanel {
 	
-	// Variables
+	Menu menu;
 	
-	/**
-	 * Serial
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Menu generico que se muestra en la parte superior
-	 */
-	private Menu menu;
-	
-	/**
-	 * Panel con los cursos matriculados
-	 */
 	private MisAsignaturas cursos;
-	
-	//Constructor
-	
-	/**
-	 * Constructor del inicio del alumno
-	 * @param panel anterior
-	 * @param frame
-	 */
-	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
+
+	public SolicitudesProfesor(NuestroPanel anterior, NoodleFrame frame) {
 		super(anterior, frame);
 		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
@@ -60,14 +34,12 @@ public class InicioAlumno extends NuestroPanel {
 
 	}
 	
-	// Métodos
-	
 	/**
 	 * Añade un ActionListener al InicioAlumno
 	 * @param listener
 	 */
 	public void addListener(ActionListener listener){
-		this.cursos.addListener(listener);
+		//TODO añadir los listeners
 		return;
 	}
 	
@@ -75,7 +47,6 @@ public class InicioAlumno extends NuestroPanel {
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showInicioAlumno(false);
+		this.frame.showSolicitudesAlumno(false);
 	}
-	
 }

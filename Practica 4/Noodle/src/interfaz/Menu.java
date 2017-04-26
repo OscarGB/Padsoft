@@ -1,16 +1,22 @@
 package interfaz;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import listeners.MenuListener;
+import persona.Alumno;
+import persona.Profesor;
+import plataforma.Plataforma;
 
 /**
  * Clase para implementar el panel de menu generico
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
+ * @date 18/04/2017
  */
 public class Menu extends JPanel {
 
@@ -19,8 +25,14 @@ public class Menu extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Frame en el que se va a encontrar
+	 */
 	private NoodleFrame frame;
 	
+	/**
+	 * Elementos del panel
+	 */
 	JMenuBar menubar = new JMenuBar();
 	JMenu inicio = new JMenu("Inicio");
 	JMenu cursos = new JMenu("Asignaturas");
@@ -28,6 +40,10 @@ public class Menu extends JPanel {
 	JButton logo = new JButton();
 	JButton exit = new JButton();
 	
+	/**
+	 * Constructor del menu
+	 * @param frame
+	 */
 	public Menu(NoodleFrame frame){
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
@@ -39,6 +55,7 @@ public class Menu extends JPanel {
 		inicio.setMargin(new Insets(20, 20, 3, 3));
 		cursos.setFont(new Font("Arial", Font.BOLD, 20));
 		solicitudes.setFont(new Font("Arial", Font.BOLD, 20));
+		//Botón de atrás
 		try {
 			Image img = ImageIO.read(getClass().getResource("/imagenes/atras.png"));
 			
@@ -46,6 +63,7 @@ public class Menu extends JPanel {
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
+		//Botón de Logout
 		try {
 			Image img2 = ImageIO.read(getClass().getResource("/imagenes/logout.png"));
 			exit.setIcon(new ImageIcon(img2.getScaledInstance(25, 25, 20)));
@@ -73,13 +91,8 @@ public class Menu extends JPanel {
 		this.menubar.add(Box.createGlue());
 		this.menubar.add(solicitudes);
 		
-		MenuListener list = new MenuListener(this, this.frame);
-		
-		this.inicio.addActionListener(list);
-		this.cursos.addActionListener(list);
-		this.solicitudes.addActionListener(list);
-		this.logo.addActionListener(list);
-		this.exit.addActionListener(list);
+		//Añade el listener
+		this.addListener(new MenuListener(this, this.frame));
 		
 		this.inicio.setActionCommand("Inicio");
 		this.cursos.setActionCommand("Asignaturas");
@@ -91,6 +104,59 @@ public class Menu extends JPanel {
 		
 		this.add(menubar);
 		
+	}
+	
+	/**
+	 * Método que añade el listener al menú
+	 * Ademas crea los listeners propios a cada botón del menubar
+	 * @param list
+	 */
+	private void addListener(MenuListener list){
+		
+		this.inicio.addMouseListener(
+			new MouseAdapter(){
+				public void mouseClicked(MouseEvent e){
+					System.out.println("Ha pulsado inicio");
+					if(Plataforma.loggedAs() instanceof Alumno){
+						frame.showInicioAlumno(true);
+					}
+					else if(Plataforma.loggedAs() instanceof Profesor){
+						frame.showInicioProfesor(true);
+					}
+					return;
+				}
+			}
+		);
+		this.cursos.addMouseListener(
+			new MouseAdapter(){
+				public void mouseClicked(MouseEvent e){
+					System.out.println("Ha pulsado asignaturas");
+					if(Plataforma.loggedAs() instanceof Alumno){
+						frame.showListaAsignaturas(true);
+					}
+					else if(Plataforma.loggedAs() instanceof Profesor){
+						frame.showListaAsignaturas(true);
+					}
+					return;
+				}
+			}
+		);
+		this.solicitudes.addMouseListener(
+			new MouseAdapter(){
+				public void mouseClicked(MouseEvent e){
+					System.out.println("Ha pulsado solicitudes");
+					if(Plataforma.loggedAs() instanceof Alumno){
+						frame.showSolicitudesAlumno(true);
+					}
+					else if(Plataforma.loggedAs() instanceof Profesor){
+						frame.showSolicitudesProfesor(true);
+					}
+					return;
+				}
+			}
+		);
+		this.logo.addActionListener(list);
+		this.exit.addActionListener(list);
 	}
 	
 }
