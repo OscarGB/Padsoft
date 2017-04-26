@@ -3,8 +3,7 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -13,9 +12,10 @@ import asignatura.Asignatura;
 import plataforma.Plataforma;
 
 /**
- * Clase para implementar el panel de menu generico
+ * Clase MisAsignaturas
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
+ * @date 18/04/2017
  */
 public class MisAsignaturas extends JPanel{
 
@@ -98,6 +98,14 @@ public class MisAsignaturas extends JPanel{
 //		array.add(new Asignatura("Cono"));
 		
 		return array;
+	}
+	
+	/**
+	 * Añade un ActionListener a MisAsignaturas
+	 * @param listener
+	 */
+	public void addListener(ActionListener listener){
+		//TODO hacer
 	}
 	
 }

@@ -1,75 +1,52 @@
 package interfaz;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-
-/**
- * Clase InicioAlumno
- * @author Jose Ignacio Gomez
- * @author Oscar Gomez
- * @date 20/04/2017
- */
-public class InicioAlumno extends NuestroPanel {
-	
-	// Variables
-	
-	/**
-	 * Serial
-	 */
-	private static final long serialVersionUID = 1L;
-	
+public class SolicitudesAlumno extends NuestroPanel {
 	/**
 	 * Menu generico que se muestra en la parte superior
 	 */
 	private Menu menu;
 	
-	/**
-	 * Panel con los cursos matriculados
-	 */
 	private MisAsignaturas cursos;
-	private JScrollPane scroll;
-	
-	//Constructor
 	
 	/**
 	 * Constructor del inicio del alumno
 	 * @param panel anterior
 	 * @param frame
 	 */
-	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
+	public SolicitudesAlumno(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
-		this.setSize(400,350);
+		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
 		
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
 		this.cursos = new MisAsignaturas(frame);
-		this.scroll = new JScrollPane(cursos);
 		
 		menu.setPreferredSize(new Dimension(10,10));
 		
 		this.add(this.menu, BorderLayout.NORTH);
-		this.add(this.scroll, BorderLayout.CENTER);
+		this.add(this.cursos, BorderLayout.CENTER);
 		
 		int h = this.getHeight();
 		int w = this.getWidth();
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
-		//this.cursos.setPreferredSize(new Dimension(w, h*2));
+		this.cursos.setPreferredSize(new Dimension(w, h));
 
 	}
-	
-	// Métodos
 	
 	/**
 	 * Añade un ActionListener al InicioAlumno
 	 * @param listener
 	 */
 	public void addListener(ActionListener listener){
-		this.cursos.addListener(listener);
+		//TODO añadir los listeners
 		return;
 	}
 	
@@ -77,7 +54,6 @@ public class InicioAlumno extends NuestroPanel {
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showInicioAlumno(false);
+		this.frame.showSolicitudesAlumno(false);
 	}
-	
 }
