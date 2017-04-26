@@ -36,6 +36,8 @@ public class AsignaturaGUI extends NuestroPanel{
 		this.setLayout(new BorderLayout());
 		
 		this.menu = new Menu(frame);
+//		this.menuAsig = new MenuAsig(frame);
+//		this.arbol = new TreeContent(frame);
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		
