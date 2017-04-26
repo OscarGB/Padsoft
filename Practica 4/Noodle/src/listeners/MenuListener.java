@@ -39,28 +39,28 @@ public class MenuListener implements ActionListener {
 		}
 		else if(arg0.getActionCommand().equals("Inicio")){
 			if(Plataforma.loggedAs() instanceof Alumno){
-				frame.showInicioAlumno();
+				frame.showInicioAlumno(true);
 			}
 			else if(Plataforma.loggedAs() instanceof Profesor){
-				frame.showInicioProfesor();
+				frame.showInicioProfesor(true);
 			}
 			return;
 		}
 		else if(arg0.getActionCommand().equals("Asignaturas")){
 			if(Plataforma.loggedAs() instanceof Alumno){
-				frame.showAsignaturas();
+				frame.showAsignaturas(true);
 			}
 			else if(Plataforma.loggedAs() instanceof Profesor){
-				frame.showAsignaturas();
+				frame.showAsignaturas(true);
 			}
 			return;
 		}
 		else if(arg0.getActionCommand().equals("Solicitudes")){
 			if(Plataforma.loggedAs() instanceof Alumno){
-				frame.showSolicitudesAlumno();
+				frame.showSolicitudesAlumno(true);
 			}
 			else if(Plataforma.loggedAs() instanceof Profesor){
-				frame.showSolicitudesProfesor();
+				frame.showSolicitudesProfesor(true);
 			}
 			return;
 		}

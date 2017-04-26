@@ -60,7 +60,7 @@ public class InicioAlumno extends NuestroPanel {
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showInicioAlumno();
+		this.frame.showInicioAlumno(false);
 	}
 	
 }

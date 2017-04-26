@@ -66,6 +66,10 @@ public class NuestroPanel extends JPanel{
 	 * @param anterior
 	 */
 	public void setAnterior(NuestroPanel anterior){
+		
+		if(anterior == null){
+			return;
+		}
 		this.anterior = anterior;
 		NuestroPanel.nPaneles++;
 		this.limpiaPaneles();

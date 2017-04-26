@@ -54,10 +54,10 @@ public class LoginListener implements ActionListener{
 		else{
 			panel.setFailPasswordVisibility(false);
 			if(Plataforma.loggedAs() instanceof Profesor){
-				frame.showInicioProfesor();
+				frame.showInicioProfesor(false);
 			}
 			else{
-				frame.showInicioAlumno();
+				frame.showInicioAlumno(false);
 			}
 		}
 		

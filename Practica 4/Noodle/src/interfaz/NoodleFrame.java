@@ -29,6 +29,7 @@ public class NoodleFrame extends JFrame{
 	private InicioProfesor inicioProfesor = null;
 	private ListaAsignaturas listaAsignaturas = null;
 	private AsignaturaAlumno asignaturaAlumno = null;
+	private NuestroPanel actual = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -59,16 +60,20 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.login);
 
-		this.fin(700,500);
+		this.fin(700,500, this.login);
 		
 	}
 	
 	/**
 	 * Muestra el Panel de Inicio del Alumno
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showInicioAlumno(){
+	public void showInicioAlumno(boolean back){
 		
 		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
 		
 		if(this.inicioAlumno == null){
 			this.inicioAlumno = new InicioAlumno(anterior, this);
@@ -80,15 +85,19 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.inicioAlumno);
 		
-		this.fin(700,500);
+		this.fin(700,500, this.inicioAlumno);
 	}
 	
 	/**
 	 * Muestra el Panel de Inicio del Profesor
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showInicioProfesor(){
+	public void showInicioProfesor(boolean back){
 		
 		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
 		
 		if(this.inicioProfesor == null){
 			this.inicioProfesor = new InicioProfesor(anterior, this);
@@ -100,16 +109,19 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.inicioProfesor);
 		
-		this.fin(700,500);
+		this.fin(700,500, this.inicioProfesor);
 	}
 	
 	/**
 	 * Muestra el Panel Lista de Asignaturas
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showListaAsignaturas(){
+	public void showListaAsignaturas(boolean back){
 		
 		NuestroPanel anterior = this.ini();
-		
+		if(back == false){
+			anterior = null;
+		}
 		if(this.listaAsignaturas == null){
 			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
 			if(Plataforma.loggedAs() instanceof Alumno){
@@ -125,16 +137,19 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.listaAsignaturas);
 		
-		this.fin(700,500);
+		this.fin(700,500, this.listaAsignaturas);
 	}
 	
 	/**
 	 * Muestra el Panel Asignatura Alumno
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showAsignaturaAlumno(){
+	public void showAsignaturaAlumno(boolean back){
 		
 		NuestroPanel anterior = this.ini();
-		
+		if(back == false){
+			anterior = null;
+		}
 		if(this.asignaturaAlumno == null){
 			this.asignaturaAlumno = new AsignaturaAlumno(anterior, this);
 			this.asignaturaAlumno.addListener(new AsignaturaAlumnoListener(this.listaAsignaturas, this));
@@ -146,7 +161,7 @@ public class NoodleFrame extends JFrame{
 		
 		this.getContentPane().add(this.asignaturaAlumno);
 		
-		this.fin(700,500);
+		this.fin(700,500, this.asignaturaAlumno);
 	}
 
 	/**
@@ -157,6 +172,7 @@ public class NoodleFrame extends JFrame{
 		ini();
 		Plataforma.logout();
 		Plataforma.closePlataforma();
+		Plataforma.openPlataforma();
 		
 		this.showPanelLogin();
 		
@@ -165,24 +181,39 @@ public class NoodleFrame extends JFrame{
 
 	/**
 	 * Método para mostrar las solicitudes de un alumno
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showSolicitudesAlumno() {
+	public void showSolicitudesAlumno(boolean back) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
 		// TODO Auto-generated method stub
 		
 	}
 
 	/**
 	 * Método para mostrar las solicitudes de un profesor
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showSolicitudesProfesor() {
+	public void showSolicitudesProfesor(boolean back) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
 		// TODO Auto-generated method stub
 		
 	}
 
 	/**
 	 * Método para mostrar las asignaturas
+	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showAsignaturas() {
+	public void showAsignaturas(boolean back) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
 		// TODO Auto-generated method stub
 		
 	}
@@ -206,14 +237,27 @@ public class NoodleFrame extends JFrame{
 	 * @param a
 	 * @param b
 	 */
-	private void fin(int a, int b){
+	private void fin(int a, int b, NuestroPanel actual){
 		Dimension d = new Dimension();
 		d.setSize(a,b);
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(d);
 		this.repaint();
+		this.actual = actual;
 	}
 
+	/**
+	 * Función para volver atrás en la aplicación
+	 */
+	public void atras(){
+		if(this.actual == null){
+			return;
+		}
+		if(this.actual.getAnterior() == null){
+			return;
+		}
+		this.actual.getAnterior().muestraPanel();
+	}
 	
 }
