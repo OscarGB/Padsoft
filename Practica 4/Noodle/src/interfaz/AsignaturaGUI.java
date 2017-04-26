@@ -1,12 +1,8 @@
-package main;
+package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
-import interfaz.Menu;
-import interfaz.NoodleFrame;
-import interfaz.NuestroPanel;
 
 public class AsignaturaGUI extends NuestroPanel{
 	
@@ -28,7 +24,7 @@ public class AsignaturaGUI extends NuestroPanel{
 	
 	//Constructor
 
-	protected AsignaturaGUI(NuestroPanel anterior, NoodleFrame frame) {
+	public AsignaturaGUI(NuestroPanel anterior, NoodleFrame frame) {
 		super(anterior, frame);
 		this.setSize(400,350);
 		this.setBackground(Color.WHITE);

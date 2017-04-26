@@ -197,7 +197,7 @@ public class NoodleFrame extends JFrame{
 			anterior = null;
 		}
 		if(this.asignaturaGUI == null){
-			this.asignaturaGUI = new SolicitudesAlumno(anterior, this);
+			this.asignaturaGUI = new AsignaturaGUI(anterior, this);
 			//Añadir Listener??
 			
 		}
