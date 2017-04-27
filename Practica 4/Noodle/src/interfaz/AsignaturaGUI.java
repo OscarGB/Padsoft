@@ -5,10 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import asignatura.Asignatura;
-import contenido.Contenido;
-import contenido.Ejercicio;
-import contenido.Tema;
-import plataforma.Plataforma;
 
 public class AsignaturaGUI extends NuestroPanel{
 	
@@ -44,15 +40,6 @@ public class AsignaturaGUI extends NuestroPanel{
 		
 		this.setLayout(new BorderLayout());
 		
-		//Contenidos para probar el treecontent
-		
-		Tema tema1 = new Tema("Tema 1", true, asignatura);
-		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
-		Tema tema111 = new Tema("Tema 111", false, asignatura, tema11);
-		Tema tema2 = new Tema("Tema 2", true, asignatura);
-		Tema tema3 = new Tema("Tema 3", true, asignatura);
-		Ejercicio ej1 = new Ejercicio(1, false, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
-		
 		this.menu = new Menu(frame);
 //		this.menuAsig = new MenuAsig(frame);
 		this.arbol = new TreeContent(frame, asignatura);
@@ -74,6 +61,16 @@ public class AsignaturaGUI extends NuestroPanel{
 	 */
 	public void muestraPanel(Asignatura asignatura){
 		this.frame.showAsignatura(true, asignatura);
+	}
+	
+	/**
+	 * Método que actualiza el panel
+	 */
+	public void refreshPanel(Asignatura asignatura){
+		this.asignatura = asignatura;
+		this.remove(this.arbol);
+		this.arbol = new TreeContent(frame, asignatura);
+		this.add(this.arbol, BorderLayout.CENTER);
 	}
 
 }

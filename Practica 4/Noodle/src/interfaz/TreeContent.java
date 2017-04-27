@@ -2,9 +2,12 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import asignatura.Asignatura;
@@ -65,15 +68,13 @@ public class TreeContent extends JPanel{
 //		prueba.add(contenido);
 //		top.add(prueba);
 		
-		System.out.println(sub);
-		
 		if(Plataforma.loggedAs() instanceof Alumno){
 			for(Contenido cont:sub){
 				if(cont.getVisibilidad() == true){
 					contenido = new DefaultMutableTreeNode(cont);
 					if(cont instanceof Tema){
 						sub = ((Tema) cont).getSubcontenido();
-						if(sub.size() > 1){
+						if(sub.size() > 0){
 							createNodes(contenido, sub);
 						}
 					}
@@ -97,7 +98,8 @@ public class TreeContent extends JPanel{
 		}
 
 //TODO Listeners para abrir los contenidos (ejercicios y apuntes)
-//TODO al hacer login como alumno no muestra nada. Comprobar el visibility false		
 	}
+	
+	
 
 }

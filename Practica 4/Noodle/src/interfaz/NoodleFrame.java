@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import asignatura.Asignatura;
+import contenido.Ejercicio;
+import contenido.Tema;
 import listeners.*;
 import plataforma.Plataforma;
 
@@ -41,11 +43,29 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-		this.showPanelLogin();
+		//this.showPanelLogin();
 		//this.showInicioAlumno(true);
 		//this.showListaAsignaturas();
-//		Plataforma.login("1", "contraseniaprofe");
-//		this.showAsignatura(true, new Asignatura("Mates"));
+		
+		//-----------------
+		Plataforma.login("1", "contraseniaprofe");
+		
+		//Contenidos para probar el treecontent
+		
+		Asignatura asignatura = new Asignatura("Mates");
+		
+		Tema tema1 = new Tema("Tema 1", true, asignatura);
+		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
+		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
+		System.out.println(tema1.getSubcontenido());
+		Tema tema2 = new Tema("Tema 2", true, asignatura);
+		Tema tema3 = new Tema("Tema 3", true, asignatura);
+		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
+		
+		Plataforma.logout();
+		Plataforma.login("9113", "idPrieto");
+		//------------------
+		this.showAsignatura(true, asignatura);
 	}
 	
 	/**
@@ -187,6 +207,7 @@ public class NoodleFrame extends JFrame{
 	/**
 	 * Método para mostrar una asignatura
 	 * @param back, false si se quiere guardar el panel anterior
+	 * @param asignatura a mostrar
 	 */
 	public void showAsignatura(boolean back, Asignatura asignatura) {
 		
@@ -201,6 +222,7 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.asignaturaGUI.setAnterior(anterior);
+			this.asignaturaGUI.refreshPanel(asignatura);
 		}
 		
 		this.getContentPane().add(this.asignaturaGUI);
