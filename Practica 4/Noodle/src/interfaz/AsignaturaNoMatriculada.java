@@ -53,7 +53,7 @@ public class AsignaturaNoMatriculada extends NuestroPanel {
 		
 		int w = this.getWidth();
 		
-		this.menu.setPreferredSize(new Dimension(w, 80));
+		this.menu.setPreferredSize(new Dimension(w, 40));
 
 	}
 	

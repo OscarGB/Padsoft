@@ -59,7 +59,6 @@ public class ListaAsignaturas extends NuestroPanel {
 
 	}
 	
-	
 	/**
 	 * Hace que el frame muestre este panel
 	 */

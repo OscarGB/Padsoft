@@ -12,6 +12,12 @@ import javax.swing.SpringLayout;
 import plataforma.Plataforma;
 import solicitud.Solicitud;
 
+/**
+ * MisSolicitudes
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class MisSolicitudes extends JPanel {
 	/**
 	 * ID del panel de Panel

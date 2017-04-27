@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import asignatura.Asignatura;
-import persona.Alumno;
 import plataforma.*;
 
 /**
@@ -24,11 +23,17 @@ class SolicitudListener implements ActionListener{
 	Asignatura asig;
 	
 	/**
+	 * Panel que escucha
+	 */
+	PanelSolicitud panel;
+	
+	/**
 	 * Constructor de SolicitudListener
 	 * @param asig
 	 */
-	public SolicitudListener(Asignatura asig){
+	public SolicitudListener(Asignatura asig, PanelSolicitud panel){
 		this.asig = asig;
+		this.panel = panel;
 	}
 	
 	/**
@@ -39,6 +44,8 @@ class SolicitudListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("boton")){
 			Plataforma.loggedAs().solicitarAcceso(this.asig);
+			panel.setVisibilidad(true);
+			Plataforma.plat().saveData();
 		}
 	}
 	
@@ -73,6 +80,11 @@ public class PanelSolicitud extends JPanel {
 	JButton boton;
 	
 	/**
+	 * Label con el texto DE éxito
+	 */
+	JLabel exito;
+	
+	/**
 	 * Constructor de PanelSolicitud
 	 * @param frame
 	 * @param asig
@@ -84,23 +96,39 @@ public class PanelSolicitud extends JPanel {
 		
 		this.label = new JLabel("No estás matriculado en la asignatura " + asig.getNombre());
 		this.boton = new JButton("Solicitar acceso");
+		this.exito = new JLabel("Solicitud tramitada con éxito");
 		
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
-		spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
-		spr.putConstraint(SpringLayout.VERTICAL_CENTER, boton, 0, SpringLayout.VERTICAL_CENTER, this);
-		
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, label, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.NORTH, boton, 5, SpringLayout.SOUTH, label);
+		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, boton, 0, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, exito, 0, SpringLayout.HORIZONTAL_CENTER, this);
+		
+		spr.putConstraint(SpringLayout.VERTICAL_CENTER, boton, 0, SpringLayout.VERTICAL_CENTER, this);
+		spr.putConstraint(SpringLayout.SOUTH, label, -5, SpringLayout.NORTH, boton);
+		spr.putConstraint(SpringLayout.NORTH, exito, 5, SpringLayout.SOUTH, boton);
 		
 		this.label.setFont(new Font("Arial", Font.BOLD, 20));
+		this.exito.setFont(new Font("Arial", Font.BOLD, 20));
 		
-		this.add(label);
-		this.add(boton);
+		this.setVisibilidad(false);
 				
 		boton.setActionCommand("boton");
 		
-		boton.addActionListener(new SolicitudListener(this.asig));
+		boton.addActionListener(new SolicitudListener(this.asig, this));
+		
+		this.add(label);
+		this.add(boton);
+		this.add(exito);
 	}	
+	
+
+	/**
+	 * Cambia la visibilidad de la etiqueta exito
+	 * @param flag
+	 */
+	public void  setVisibilidad(boolean flag){
+		this.exito.setVisible(flag);
+	}
 }

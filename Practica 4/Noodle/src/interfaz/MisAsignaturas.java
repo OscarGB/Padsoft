@@ -101,16 +101,6 @@ public class MisAsignaturas extends Asignaturas{
 		array.add(new Asignatura("Cono"));
 		
 		return array;
-	}
-	
-	/**
-	 * Listener para cuando se clique en una asignatura
-	 * @param asig
-	 */
-	public void listenerListaAsignaturas(Asignatura asig){
-		System.out.println("Has pulsado en " + asig.getNombre());
-	}
-
-	
+	}	
 }
 

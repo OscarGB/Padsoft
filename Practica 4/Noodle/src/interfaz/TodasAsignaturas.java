@@ -88,14 +88,5 @@ public class TodasAsignaturas extends Asignaturas {
 	private ArrayList<Asignatura> getAsignaturas(){
 		return Plataforma.getAsignaturas();
 	}
-	
-	/**
-	 * Listener para cuando se clique en una asignatura
-	 * @param asig
-	 */
-	@Override
-	public void listenerListaAsignaturas(Asignatura asig){
-		System.out.println("HOLAAAAA " + asig.getNombre());
-	}
 
 }

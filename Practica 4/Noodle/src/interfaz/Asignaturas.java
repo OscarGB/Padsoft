@@ -74,11 +74,14 @@ public class Asignaturas extends JPanel{
 	public void listenerListaAsignaturas(Asignatura asig){
 		if(Plataforma.loggedAs() instanceof Alumno){
 			if(asig.getAlumnos().contains(Plataforma.loggedAs())){
-				
+				frame.showAsignatura(true, asig);
 			}
 			else{
-				frame.showAsignaturaNoMatriculada(false, asig);
+				frame.showAsignaturaNoMatriculada(true, asig);
 			}
+		}
+		else{
+			frame.showAsignatura(true, asig);
 		}
 	}
 }
