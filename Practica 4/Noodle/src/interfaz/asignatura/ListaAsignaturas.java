@@ -1,19 +1,21 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.*;
 
 import javax.swing.*;
 
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+
 /**
- * Clase InicioAlumno
+ * Clase ListaAsignaturas
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 20/04/2017
  */
-public class InicioAlumno extends NuestroPanel {
-	
-	// Variables
-	
+public class ListaAsignaturas extends NuestroPanel {
+
 	/**
 	 * Serial
 	 */
@@ -23,34 +25,34 @@ public class InicioAlumno extends NuestroPanel {
 	 * Menu generico que se muestra en la parte superior
 	 */
 	private Menu menu;
-	
+
 	/**
-	 * Panel con los cursos matriculados
+	 * Panel con todas las asignaturas
 	 */
-	private MisAsignaturas cursos;
+	private TodasAsignaturas cursos;
 	
 	/**
 	 * Panel de scrolling
 	 */
 	private JScrollPane scroll;
 	
-	//Constructor
-	
 	/**
-	 * Constructor del inicio del alumno
+	 * Constructor de la lista de asignaturas
 	 * @param panel anterior
 	 * @param frame
 	 */
-	public InicioAlumno(NuestroPanel anterior, NoodleFrame frame){
+	public ListaAsignaturas(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
-		this.setSize(400,350);
+		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
 		
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		this.cursos = new MisAsignaturas(frame);
+		this.cursos = new TodasAsignaturas(frame);
 		this.scroll = new JScrollPane(cursos);
+		
+		menu.setPreferredSize(new Dimension(10,10));
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
@@ -61,13 +63,20 @@ public class InicioAlumno extends NuestroPanel {
 
 	}
 	
-	// Métodos
-	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showInicioAlumno(false);
+		this.frame.showListaAsignaturas(false);
 	}
 	
+	/**
+	 * Método que actualiza el panel
+	 */
+	public void refreshPanel(){
+		this.remove(this.scroll);
+		this.cursos = new TodasAsignaturas(frame);
+		this.scroll = new JScrollPane(cursos);
+		this.add(this.scroll, BorderLayout.CENTER);
+	}
 }

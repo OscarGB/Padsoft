@@ -1,10 +1,9 @@
-package listeners;
+package interfaz.solicitudes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import interfaz.NoodleFrame;
-import interfaz.SolicitudesProfesor;
+import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 import solicitud.Solicitud;
 

@@ -1,31 +1,34 @@
-package interfaz;
+package interfaz.solicitudes;
 
 import java.awt.*;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
+
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
 
 /**
- * Clase ListaAsignaturas
+ * Clase SolicitudesAlumno
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
- * @date 20/04/2017
+ * @date 18/04/2017
  */
-public class ListaAsignaturas extends NuestroPanel {
-
+public class SolicitudesAlumno extends NuestroPanel {
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Menu generico que se muestra en la parte superior
 	 */
 	private Menu menu;
-
+	
 	/**
-	 * Panel con todas las asignaturas
+	 * Panel con las solicitudes
 	 */
-	private TodasAsignaturas cursos;
+	private MisSolicitudes solis;
 	
 	/**
 	 * Panel de scrolling
@@ -33,11 +36,11 @@ public class ListaAsignaturas extends NuestroPanel {
 	private JScrollPane scroll;
 	
 	/**
-	 * Constructor de la lista de asignaturas
+	 * Constructor del inicio del alumno
 	 * @param panel anterior
 	 * @param frame
 	 */
-	public ListaAsignaturas(NuestroPanel anterior, NoodleFrame frame){
+	public SolicitudesAlumno(NuestroPanel anterior, NoodleFrame frame){
 		super(anterior, frame);
 		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
@@ -45,8 +48,8 @@ public class ListaAsignaturas extends NuestroPanel {
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		this.cursos = new TodasAsignaturas(frame);
-		this.scroll = new JScrollPane(cursos);
+		this.solis = new MisSolicitudes();
+		this.scroll = new JScrollPane(this.solis);
 		
 		menu.setPreferredSize(new Dimension(10,10));
 		
@@ -63,7 +66,7 @@ public class ListaAsignaturas extends NuestroPanel {
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showListaAsignaturas(false);
+		this.frame.showSolicitudesAlumno(false);
 	}
 	
 	/**
@@ -71,8 +74,8 @@ public class ListaAsignaturas extends NuestroPanel {
 	 */
 	public void refreshPanel(){
 		this.remove(this.scroll);
-		this.cursos = new TodasAsignaturas(frame);
-		this.scroll = new JScrollPane(cursos);
+		this.solis = new MisSolicitudes();
+		this.scroll = new JScrollPane(this.solis);
 		this.add(this.scroll, BorderLayout.CENTER);
 	}
 }

@@ -1,6 +1,6 @@
 package main;
 
-import interfaz.NoodleFrame;
+import interfaz.genericos.NoodleFrame;
 
 /**
  * Clase Main, usada para iniciar la aplicación

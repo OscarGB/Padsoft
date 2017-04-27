@@ -1,8 +1,9 @@
-package listeners;
+package interfaz.login;
 
 import java.awt.event.*;
 
 import interfaz.*;
+import interfaz.genericos.NoodleFrame;
 import persona.Profesor;
 import plataforma.Plataforma;
 

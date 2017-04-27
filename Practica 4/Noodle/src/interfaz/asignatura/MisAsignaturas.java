@@ -1,26 +1,27 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 
 import asignatura.Asignatura;
-import plataforma.Plataforma;
+import interfaz.genericos.NoodleFrame;
+
 
 
 /**
- * Clase TodasAsignaturas
+ * Clase MisAsignaturas
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class TodasAsignaturas extends Asignaturas {
+public class MisAsignaturas extends Asignaturas{
+
 	/**
-	 * ID del panel del panel
+	 * ID del panel de menu
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -33,7 +34,7 @@ public class TodasAsignaturas extends Asignaturas {
 	 * Constructor de MisAsignaturas (subpanel)
 	 * @param frame
 	 */
-	public TodasAsignaturas(NoodleFrame frame) {
+	public MisAsignaturas(NoodleFrame frame) {
 		super(frame);
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
@@ -46,7 +47,7 @@ public class TodasAsignaturas extends Asignaturas {
 		int size = cursos.size();
 		
 		if(size == 0){
-			JLabel label = new JLabel("No hay asignaturas en la plataforma");
+			JLabel label = new JLabel("No hay asignaturas matriculadas");
 			asignaturas.add(label);
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
@@ -56,25 +57,33 @@ public class TodasAsignaturas extends Asignaturas {
 			asignaturas.add(label);
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, this);
-
-			//Añadimos un MouseListener para poder clicar en los labels de las
-			//asignaturas
-			asignaturas.get(0).addMouseListener(new RatonList(this, cursos.get(0)));
+			asignaturas.get(0).addMouseListener(new RatonList(this, cursos.get(0))); 
 			for(int i = 1; i < size; i++){
 				label = new JLabel(cursos.get(i).getNombre());
 				JLabel previous = asignaturas.get(i-1);
 				asignaturas.add(label);
 				spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 				spr.putConstraint(SpringLayout.NORTH, label, 50, SpringLayout.NORTH, previous);
-				//Añadimos un MouseListener para poder clicar en los labels de las
-				//asignaturas
 				asignaturas.get(i).addMouseListener(new RatonList(this, cursos.get(i))); 
+
 			}
 		}
 			
 		for(JLabel asig:asignaturas){
 			asig.setFont(new Font("Arial", Font.BOLD, 20));
 			this.add(asig);
+			
+			//Aniadimos un MouseListener para poder clicar en los labels de las
+			//asignaturas
+//			asig.addMouseListener(new MouseAdapter()  
+//			{  
+//			    public void mouseClicked(MouseEvent e)  
+//			    {  
+//			       System.out.println("Has pulsado en "+asig.getText());
+//
+//			    }  
+//			}); 
+
 		}
 		
 		this.setPreferredSize(new Dimension(this.getWidth(), (asignaturas.get(0).getHeight() + 50)*size));
@@ -82,11 +91,17 @@ public class TodasAsignaturas extends Asignaturas {
 	}
 	
 	/**
-	 * Metodo para obtener las asignaturas de la plataforma
+	 * Metodo para obtener las asignaturas del alumno
 	 * @return ArrayList
 	 */
 	private ArrayList<Asignatura> getAsignaturas(){
-		return Plataforma.getAsignaturas();
-	}
-
+		//ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
+		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
+		array.add(new Asignatura("Mates"));
+		array.add(new Asignatura("Lengua"));
+		array.add(new Asignatura("Cono"));
+		
+		return array;
+	}	
 }
+

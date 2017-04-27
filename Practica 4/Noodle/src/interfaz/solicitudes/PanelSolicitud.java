@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.solicitudes;
 
 import java.awt.Color;
 import java.awt.Font;

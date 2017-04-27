@@ -1,9 +1,13 @@
-package interfaz;
+package interfaz.login;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import interfaz.genericos.Imagen;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
 
 
 

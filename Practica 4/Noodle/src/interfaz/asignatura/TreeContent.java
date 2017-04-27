@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import asignatura.Asignatura;
 import contenido.Contenido;
 import contenido.Tema;
+import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import plataforma.Plataforma;
 

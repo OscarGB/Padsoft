@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.solicitudes;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import listeners.SolicitudesProfesorListener;
+import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 import solicitud.Solicitud;
 

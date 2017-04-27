@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import asignatura.Asignatura;
+import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import plataforma.Plataforma;
 

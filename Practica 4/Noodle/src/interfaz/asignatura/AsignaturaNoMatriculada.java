@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,6 +7,10 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 
 import asignatura.Asignatura;
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+import interfaz.solicitudes.PanelSolicitud;
 
 public class AsignaturaNoMatriculada extends NuestroPanel {
 	
@@ -36,7 +40,7 @@ public class AsignaturaNoMatriculada extends NuestroPanel {
 	 * @param frame
 	 * @param asig
 	 */
-	protected AsignaturaNoMatriculada(NuestroPanel anterior, NoodleFrame frame, Asignatura asig) {
+	public AsignaturaNoMatriculada(NuestroPanel anterior, NoodleFrame frame, Asignatura asig) {
 		super(anterior, frame);
 		this.setSize(700,500);
 		this.setBackground(Color.WHITE);

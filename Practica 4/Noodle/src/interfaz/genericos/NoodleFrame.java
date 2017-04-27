@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.genericos;
 
 import java.awt.Dimension;
 
@@ -7,7 +7,15 @@ import javax.swing.*;
 import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Tema;
-import listeners.*;
+import interfaz.asignatura.AsignaturaGUI;
+import interfaz.asignatura.AsignaturaNoMatriculada;
+import interfaz.asignatura.ListaAsignaturas;
+import interfaz.inicios.InicioAlumno;
+import interfaz.inicios.InicioProfesor;
+import interfaz.login.LoginListener;
+import interfaz.login.PanelLogin;
+import interfaz.solicitudes.SolicitudesAlumno;
+import interfaz.solicitudes.SolicitudesProfesor;
 import plataforma.Plataforma;
 
 /**

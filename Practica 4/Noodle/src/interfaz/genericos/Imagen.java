@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.genericos;
 
 import java.awt.*;
 

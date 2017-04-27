@@ -1,10 +1,14 @@
-package interfaz;
+package interfaz.solicitudes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
+
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
 
 /**
  * Clase SolicitudesProfesor

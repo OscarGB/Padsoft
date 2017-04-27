@@ -1,6 +1,10 @@
-package interfaz;
+package interfaz.inicios;
 
 import java.awt.*;
+
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
 
 /**
  * Clase InicioProfesor

@@ -1,10 +1,13 @@
-package interfaz;
+package interfaz.asignatura;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
 import asignatura.Asignatura;
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
 
 public class AsignaturaGUI extends NuestroPanel{
 	

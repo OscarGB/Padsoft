@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.genericos;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import listeners.MenuListener;
 import persona.Alumno;
 import persona.Profesor;
 import plataforma.Plataforma;
