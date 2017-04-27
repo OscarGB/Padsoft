@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import asignatura.Asignatura;
+import persona.Alumno;
+import plataforma.Plataforma;
 
 /**
  * Clase RatonList
@@ -42,14 +44,14 @@ class RatonList extends MouseAdapter{
 	
 	// Métodos
 	
-		 /**
-		  * Método por si se pulsa
-		  * @param e
-		  */
-		public void mouseClicked(MouseEvent e) {
-			 panel.listenerListaAsignaturas(asig);
-		 } 
-	}
+	 /**
+	  * Método por si se pulsa
+	  * @param e
+	  */
+	public void mouseClicked(MouseEvent e) {
+		 panel.listenerListaAsignaturas(asig);
+	 } 
+}
 
 public class Asignaturas extends JPanel{
 	
@@ -58,9 +60,10 @@ public class Asignaturas extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	public Asignaturas(){
-		
+	NoodleFrame frame;
+	
+	public Asignaturas(NoodleFrame frame){
+		this.frame = frame;
 	}
 	
 	
@@ -69,6 +72,13 @@ public class Asignaturas extends JPanel{
 	 * @param asig
 	 */
 	public void listenerListaAsignaturas(Asignatura asig){
-		System.out.println("Has pulsado en " + asig.getNombre());
+		if(Plataforma.loggedAs() instanceof Alumno){
+			if(asig.getAlumnos().contains(Plataforma.loggedAs())){
+				
+			}
+			else{
+				frame.showAsignaturaNoMatriculada(false, asig);
+			}
+		}
 	}
 }

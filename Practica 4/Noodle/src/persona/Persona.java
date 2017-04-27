@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import asignatura.Asignatura;
 import estadisticas.EstadisticasAlumno;
+import solicitud.Solicitud;
 
 
 /**
@@ -132,6 +133,16 @@ public abstract class Persona implements Serializable{
 	@Override
 	public String toString() {
 		return "NIA: " + this.nia + ". Nombre: "+ this.nombre + ". Password: " + this.password;
+	}
+
+	/**
+	 * Método que se sobreescribirá en alumno
+	 * @param asig
+	 * @return 
+	 */
+	public Solicitud solicitarAcceso(Asignatura asig) {
+		return null;
+		
 	}
 	
 	

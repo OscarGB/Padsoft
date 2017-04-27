@@ -34,6 +34,7 @@ public class TodasAsignaturas extends Asignaturas {
 	 * @param frame
 	 */
 	public TodasAsignaturas(NoodleFrame frame) {
+		super(frame);
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
 		ArrayList<Asignatura> cursos = this.getAsignaturas();

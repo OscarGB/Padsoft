@@ -32,6 +32,7 @@ public class NoodleFrame extends JFrame{
 	private NuestroPanel actual = null;
 	private SolicitudesProfesor solicitudesProfesor = null;
 	private AsignaturaGUI asignaturaGUI = null;
+	private AsignaturaNoMatriculada asignaturaNoMatriculada = null;
 	
 	/**
 	 * Constructor de NoodleFrame
@@ -149,6 +150,7 @@ public class NoodleFrame extends JFrame{
 		actual = null;
 		solicitudesProfesor = null;
 		asignaturaGUI = null;
+		asignaturaNoMatriculada = null;
 		
 		ini();
 		Plataforma.logout();
@@ -275,6 +277,29 @@ public class NoodleFrame extends JFrame{
 			return;
 		}
 		this.actual.getAnterior().muestraPanel();
+	}
+
+	/**
+	 * Método para mostrar el panel si no está matriculado en esa asignatura
+	 * @param back
+	 * @param asig
+	 */
+	public void showAsignaturaNoMatriculada(boolean back, Asignatura asig) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.asignaturaNoMatriculada == null){
+			this.asignaturaNoMatriculada = new AsignaturaNoMatriculada(anterior, this, asig);
+		}
+		else{
+			this.asignaturaNoMatriculada.setAnterior(anterior);
+			this.asignaturaNoMatriculada.refreshPanel(asig);
+		}
+		
+		this.getContentPane().add(this.asignaturaNoMatriculada);
+		
+		this.fin(700,500, this.asignaturaNoMatriculada);
 	}
 	
 }
