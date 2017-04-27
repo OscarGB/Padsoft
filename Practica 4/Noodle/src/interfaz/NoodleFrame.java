@@ -40,11 +40,11 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-		//this.showPanelLogin();
+		this.showPanelLogin();
 		//this.showInicioAlumno(true);
 		//this.showListaAsignaturas();
-		Plataforma.login("1", "contraseniaprofe");
-		this.showAsignatura(true, new Asignatura("Mates"));
+//		Plataforma.login("1", "contraseniaprofe");
+//		this.showAsignatura(true, new Asignatura("Mates"));
 	}
 	
 	/**

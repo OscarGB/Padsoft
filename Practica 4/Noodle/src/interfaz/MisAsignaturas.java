@@ -3,13 +3,13 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import asignatura.Asignatura;
-import plataforma.Plataforma;
+
+
 
 /**
  * Clase MisAsignaturas
@@ -17,7 +17,7 @@ import plataforma.Plataforma;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class MisAsignaturas extends JPanel{
+public class MisAsignaturas extends Asignaturas{
 
 	/**
 	 * ID del panel de menu
@@ -55,12 +55,15 @@ public class MisAsignaturas extends JPanel{
 			asignaturas.add(label);
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, this);
+			asignaturas.get(0).addMouseListener(new RatonList(this, cursos.get(0))); 
 			for(int i = 1; i < size; i++){
 				label = new JLabel(cursos.get(i).getNombre());
 				JLabel previous = asignaturas.get(i-1);
 				asignaturas.add(label);
 				spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 				spr.putConstraint(SpringLayout.NORTH, label, 50, SpringLayout.NORTH, previous);
+				asignaturas.get(i).addMouseListener(new RatonList(this, cursos.get(i))); 
+
 			}
 		}
 			
@@ -70,14 +73,14 @@ public class MisAsignaturas extends JPanel{
 			
 			//Aniadimos un MouseListener para poder clicar en los labels de las
 			//asignaturas
-			asig.addMouseListener(new MouseAdapter()  
-			{  
-			    public void mouseClicked(MouseEvent e)  
-			    {  
-			       System.out.println("Has pulsado en "+asig.getText());
-
-			    }  
-			}); 
+//			asig.addMouseListener(new MouseAdapter()  
+//			{  
+//			    public void mouseClicked(MouseEvent e)  
+//			    {  
+//			       System.out.println("Has pulsado en "+asig.getText());
+//
+//			    }  
+//			}); 
 
 		}
 		
@@ -97,6 +100,14 @@ public class MisAsignaturas extends JPanel{
 		array.add(new Asignatura("Cono"));
 		
 		return array;
+	}
+	
+	/**
+	 * Listener para cuando se clique en una asignatura
+	 * @param asig
+	 */
+	public void listenerListaAsignaturas(Asignatura asig){
+		System.out.println("Has pulsado en " + asig.getNombre());
 	}
 
 	
