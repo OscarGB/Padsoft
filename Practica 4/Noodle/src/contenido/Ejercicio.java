@@ -527,15 +527,20 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * toString, Override
 	 * @return String
 	 */
+//	@Override
+//	public String toString(){
+//		String aux = "";
+//		
+//		for(Pregunta p: this.preguntas){
+//			aux += "- " + p.enunciado + " [Peso: " + p.valorPregunta + "]\n";
+//		}
+//		
+//		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + " Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia + "\n";
+//	}
+	 //Override para la GUI
 	@Override
 	public String toString(){
-		String aux = "";
-		
-		for(Pregunta p: this.preguntas){
-			aux += "- " + p.enunciado + " [Peso: " + p.valorPregunta + "]\n";
-		}
-		
-		return "Título del ejercicio: " + this.titulo + "\n Preguntas: \n" + aux + " Peso ejercicio: " + this.peso + "\n Nota Media: " + this.notaMedia + "\n";
+		return this.getTitulo();
 	}
 	
 

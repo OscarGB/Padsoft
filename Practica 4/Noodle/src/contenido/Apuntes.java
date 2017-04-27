@@ -82,9 +82,14 @@ public class Apuntes extends Contenido implements Serializable{
 	 * Esribe en un string los datos de Apuntes
 	 * @return String
 	 */
+//	@Override
+//	public String toString() {
+//		return "Titulo de los apuntes: " + this.titulo + "\n Texto: " + this.texto + "\n";
+//	}
+	
 	@Override
-	public String toString() {
-		return "Titulo de los apuntes: " + this.titulo + "\n Texto: " + this.texto + "\n";
+	public String toString(){
+		return this.titulo;
 	}
 	
 }

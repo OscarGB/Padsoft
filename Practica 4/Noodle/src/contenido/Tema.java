@@ -141,17 +141,14 @@ public class Tema extends Contenido  implements Serializable{
 		aux = "";
 		
 		if(Plataforma.loggedAs().getClass() == Alumno.class){
-			for(Contenido s: subcontenido){
-				if(s.getVisibilidad() == true){
-					aux += s.toString();
-				}
+			if(this.getVisibilidad() == true){
+				return this.getTitulo();
 			}
 		}else{
-			for(Contenido s: subcontenido){
-				aux += s.toString();
-			}
+			return this.getTitulo();
 		}
-		return "Titulo del tema: " + this.titulo + "\nSubcontenidos: " + aux + "\n";
+		
+		return aux;
 	}
 	
 

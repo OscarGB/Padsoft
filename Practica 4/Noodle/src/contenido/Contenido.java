@@ -205,12 +205,12 @@ public abstract class Contenido implements Serializable {
 	public String toString(){
 		if(Plataforma.loggedAs().getClass() == Alumno.class){
 			if(this.getVisibilidad() == true){
-				return "Titulo: " + this.titulo + " \n";
+				return this.titulo;
 			}
 			return "";
 		}
 		else if(Plataforma.loggedAs().getClass() == Alumno.class){
-			return "Titulo: " + this.titulo + " \n";
+			return  this.titulo;
 			
 		}
 		else{

@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import asignatura.Asignatura;
 import listeners.*;
 import plataforma.Plataforma;
 
@@ -39,9 +40,11 @@ public class NoodleFrame extends JFrame{
 		super("Noodle");
 		Plataforma.openPlataforma();
 
-		this.showPanelLogin();
+		//this.showPanelLogin();
 		//this.showInicioAlumno(true);
 		//this.showListaAsignaturas();
+		Plataforma.login("1", "contraseniaprofe");
+		this.showAsignatura(true, new Asignatura("Mates"));
 	}
 	
 	/**
@@ -183,14 +186,14 @@ public class NoodleFrame extends JFrame{
 	 * Método para mostrar una asignatura
 	 * @param back, false si se quiere guardar el panel anterior
 	 */
-	public void showAsignatura(boolean back) {
+	public void showAsignatura(boolean back, Asignatura asignatura) {
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = null;
 		}
 		if(this.asignaturaGUI == null){
-			this.asignaturaGUI = new AsignaturaGUI(anterior, this);
+			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
 			//Añadir Listener??
 			
 		}
