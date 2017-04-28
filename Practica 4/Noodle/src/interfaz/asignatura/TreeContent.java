@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeSelectionModel;
 
 import asignatura.Asignatura;
 import contenido.Contenido;
@@ -16,6 +18,21 @@ import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import plataforma.Plataforma;
+
+class SelectionListener implements TreeSelectionListener {
+
+	  public void valueChanged(TreeSelectionEvent se) {
+	    JTree tree = (JTree) se.getSource();
+	    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
+	        .getLastSelectedPathComponent();
+	    String selectedNodeName = selectedNode.toString();
+	    if (selectedNode.isLeaf()) {
+
+	      System.out.println("Has pinchado en: "+selectedNode.getUserObject());
+
+	    }
+	  }
+	}
 
 public class TreeContent extends JPanel{
 
@@ -49,6 +66,9 @@ public class TreeContent extends JPanel{
 		createNodes(top, this.raiz);
 		arbol = new JTree(top);
 		
+		 arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		 arbol.addTreeSelectionListener(new SelectionListener());
+		
 		JScrollPane treeView = new JScrollPane(arbol);
 		
 		this.add(treeView);
@@ -60,14 +80,6 @@ public class TreeContent extends JPanel{
 	
 	private void createNodes(DefaultMutableTreeNode top, ArrayList<Contenido> sub){
 		DefaultMutableTreeNode contenido;
-//		DefaultMutableTreeNode prueba;
-//
-//		prueba = new DefaultMutableTreeNode(new Tema("Tema 1", true, new Asignatura("Mates")));
-//		
-//		
-//		contenido = new DefaultMutableTreeNode("Tema 2");
-//		prueba.add(contenido);
-//		top.add(prueba);
 		
 		if(Plataforma.loggedAs() instanceof Alumno){
 			for(Contenido cont:sub){

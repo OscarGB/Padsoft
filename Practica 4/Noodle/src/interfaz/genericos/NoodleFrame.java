@@ -52,6 +52,26 @@ public class NoodleFrame extends JFrame{
 		Plataforma.openPlataforma();
 		Plataforma.logout();
 		this.showPanelLogin();
+		
+//		//-----------------
+// 		Plataforma.login("1", "contraseniaprofe");
+// 		
+// 		//Contenidos para probar el treecontent
+// 		
+// 		Asignatura asignatura = new Asignatura("Mates");
+// 	
+// 		Tema tema1 = new Tema("Tema 1", true, asignatura);
+// 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
+// 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
+// 		System.out.println(tema1.getSubcontenido());
+// 		Tema tema2 = new Tema("Tema 2", true, asignatura);
+// 		Tema tema3 = new Tema("Tema 3", true, asignatura);
+// 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
+// 		
+// 		Plataforma.logout();
+// 		Plataforma.login("9113", "idPrieto");
+// 		//------------------
+// 		this.showAsignatura(true, asignatura);
 	}
 	
 	/**
