@@ -51,9 +51,7 @@ public class ListaAsignaturas extends NuestroPanel {
 		this.menu = new Menu(frame);
 		this.cursos = new TodasAsignaturas(frame);
 		this.scroll = new JScrollPane(cursos);
-		
-		menu.setPreferredSize(new Dimension(10,10));
-		
+				
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
 		

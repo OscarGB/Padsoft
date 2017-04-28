@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import asignatura.Asignatura;
+import contenido.Apuntes;
 import contenido.Contenido;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
@@ -25,11 +26,12 @@ class SelectionListener implements TreeSelectionListener {
 	    JTree tree = (JTree) se.getSource();
 	    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
 	        .getLastSelectedPathComponent();
-	    String selectedNodeName = selectedNode.toString();
 	    if (selectedNode.isLeaf()) {
-
-	      System.out.println("Has pinchado en: "+selectedNode.getUserObject());
-
+	    	Object obj = selectedNode.getUserObject();
+	    	if(obj instanceof Apuntes){
+	    		NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
+	    	}
+	    	
 	    }
 	  }
 	}

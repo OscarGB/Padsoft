@@ -1,0 +1,59 @@
+package interfaz.asignatura;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+import contenido.Apuntes;
+import interfaz.genericos.Menu;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+
+public class ApuntesGUI extends NuestroPanel{
+
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Apuntes a mostrar
+	 */
+	private Apuntes apuntes;
+	
+	/**
+	 * Menu generico que se muestra en la parte superior
+	 */
+	private Menu menu;
+	
+	/**
+	 * Panel con los apuntes
+	 */
+	private ApuntesPanel contenido;
+
+	public ApuntesGUI(NuestroPanel anterior, NoodleFrame frame, Apuntes apuntes) {
+		super(anterior, frame);
+		this.setSize(700,500);
+		this.setBackground(Color.WHITE);
+		
+		this.apuntes = apuntes;
+		
+		this.setLayout(new BorderLayout());
+		
+		this.menu = new Menu(frame);
+		this.contenido = new ApuntesPanel(frame, this.apuntes);
+		
+		this.add(this.menu, BorderLayout.NORTH);
+		this.add(this.contenido, BorderLayout.CENTER);
+
+		int w = this.getWidth();
+		this.menu.setPreferredSize(new Dimension(w, 80));
+		//this.contenido.setPreferredSize(new Dimension(w, 300));
+		
+		//TODO ver por qué no se muestra el panel
+
+	}
+
+}

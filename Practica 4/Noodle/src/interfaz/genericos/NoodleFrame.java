@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import asignatura.Asignatura;
+import contenido.Apuntes;
 import contenido.Ejercicio;
 import contenido.Tema;
+import interfaz.asignatura.ApuntesGUI;
 import interfaz.asignatura.AsignaturaGUI;
 import interfaz.asignatura.AsignaturaNoMatriculada;
 import interfaz.asignatura.ListaAsignaturas;
@@ -43,35 +45,40 @@ public class NoodleFrame extends JFrame{
 	private SolicitudesProfesor solicitudesProfesor = null;
 	private AsignaturaGUI asignaturaGUI = null;
 	private AsignaturaNoMatriculada asignaturaNoMatriculada = null;
+	private ApuntesGUI apuntesGUI = null;
+	
+	private static NoodleFrame frame;
 	
 	/**
 	 * Constructor de NoodleFrame
 	 */
 	public NoodleFrame(){
 		super("Noodle");
+		NoodleFrame.frame = this;
 		Plataforma.openPlataforma();
 		Plataforma.logout();
-		this.showPanelLogin();
+		//this.showPanelLogin();
 		
-//		//-----------------
-// 		Plataforma.login("1", "contraseniaprofe");
-// 		
-// 		//Contenidos para probar el treecontent
-// 		
-// 		Asignatura asignatura = new Asignatura("Mates");
-// 	
-// 		Tema tema1 = new Tema("Tema 1", true, asignatura);
-// 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
-// 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
-// 		System.out.println(tema1.getSubcontenido());
-// 		Tema tema2 = new Tema("Tema 2", true, asignatura);
-// 		Tema tema3 = new Tema("Tema 3", true, asignatura);
-// 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
-// 		
-// 		Plataforma.logout();
-// 		Plataforma.login("9113", "idPrieto");
-// 		//------------------
-// 		this.showAsignatura(true, asignatura);
+		//-----------------
+ 		Plataforma.login("1", "contraseniaprofe");
+ 		
+ 		//Contenidos para probar el treecontent
+ 		
+ 		Asignatura asignatura = new Asignatura("Mates");
+ 	
+ 		Tema tema1 = new Tema("Tema 1", true, asignatura);
+ 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
+ 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
+ 		System.out.println(tema1.getSubcontenido());
+ 		Tema tema2 = new Tema("Tema 2", true, asignatura);
+ 		Tema tema3 = new Tema("Tema 3", true, asignatura);
+ 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
+ 		Apuntes ap1 = new Apuntes("Apuntes 1", "Estos son los apuntes", true, asignatura, tema3);
+ 		
+ 		Plataforma.logout();
+ 		Plataforma.login("9113", "idPrieto");
+ 		//------------------
+ 		this.showAsignatura(true, asignatura);
 	}
 	
 	/**
@@ -328,6 +335,32 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.asignaturaNoMatriculada);
 		
 		this.fin(700,500, this.asignaturaNoMatriculada);
+	}
+	
+	/**
+	 * Método para mostrar el panel si no está matriculado en esa asignatura
+	 * @param back
+	 * @param asig
+	 */
+	public void showApuntes(boolean back, Apuntes apuntes) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.apuntesGUI == null){
+			this.apuntesGUI = new ApuntesGUI(anterior, this, apuntes);
+		}
+		else{
+			this.apuntesGUI.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.apuntesGUI);
+		
+		this.fin(700,500, this.apuntesGUI);
+	}
+	
+	public static NoodleFrame getInstance(){
+		return NoodleFrame.frame;
 	}
 	
 }
