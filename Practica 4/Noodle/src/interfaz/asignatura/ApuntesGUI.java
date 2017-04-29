@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import contenido.Apuntes;
@@ -43,17 +44,13 @@ public class ApuntesGUI extends NuestroPanel{
 		this.setLayout(new BorderLayout());
 		
 		this.menu = new Menu(frame);
-		this.contenido = new ApuntesPanel(frame, this.apuntes);
+		this.contenido = new ApuntesPanel(this.apuntes);
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.contenido, BorderLayout.CENTER);
 
 		int w = this.getWidth();
 		this.menu.setPreferredSize(new Dimension(w, 80));
-		//this.contenido.setPreferredSize(new Dimension(w, 300));
-		
-		//TODO ver por qué no se muestra el panel
-
 	}
 
 }

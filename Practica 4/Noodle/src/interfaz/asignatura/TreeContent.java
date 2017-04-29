@@ -58,6 +58,11 @@ public class TreeContent extends JPanel{
 	 */
 	private NoodleFrame frame;
 
+	/**
+	 * Constructor de TreeContent
+	 * @param frame
+	 * @param asignatura
+	 */
 	public TreeContent(NoodleFrame frame, Asignatura asignatura) {
 		this.frame = frame;
 		this.setBackground(Color.WHITE);

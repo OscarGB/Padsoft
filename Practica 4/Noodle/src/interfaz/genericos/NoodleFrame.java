@@ -9,9 +9,11 @@ import contenido.Apuntes;
 import contenido.Ejercicio;
 import contenido.Tema;
 import interfaz.asignatura.ApuntesGUI;
+import interfaz.asignatura.ApuntesListener;
 import interfaz.asignatura.AsignaturaGUI;
 import interfaz.asignatura.AsignaturaNoMatriculada;
 import interfaz.asignatura.ListaAsignaturas;
+import interfaz.asignatura.SubirApuntes;
 import interfaz.inicios.InicioAlumno;
 import interfaz.inicios.InicioProfesor;
 import interfaz.login.LoginListener;
@@ -46,6 +48,7 @@ public class NoodleFrame extends JFrame{
 	private AsignaturaGUI asignaturaGUI = null;
 	private AsignaturaNoMatriculada asignaturaNoMatriculada = null;
 	private ApuntesGUI apuntesGUI = null;
+	private SubirApuntes subirApuntes = null;
 	
 	private static NoodleFrame frame;
 	
@@ -58,27 +61,29 @@ public class NoodleFrame extends JFrame{
 		Plataforma.openPlataforma();
 		Plataforma.logout();
 		//this.showPanelLogin();
+		Asignatura asignatura = new Asignatura("Mates");
+		this.showSubirApuntes(true, asignatura, null);
 		
-		//-----------------
- 		Plataforma.login("1", "contraseniaprofe");
- 		
- 		//Contenidos para probar el treecontent
- 		
- 		Asignatura asignatura = new Asignatura("Mates");
- 	
- 		Tema tema1 = new Tema("Tema 1", true, asignatura);
- 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
- 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
- 		System.out.println(tema1.getSubcontenido());
- 		Tema tema2 = new Tema("Tema 2", true, asignatura);
- 		Tema tema3 = new Tema("Tema 3", true, asignatura);
- 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
- 		Apuntes ap1 = new Apuntes("Apuntes 1", "Estos son los apuntes", true, asignatura, tema3);
- 		
- 		Plataforma.logout();
- 		Plataforma.login("9113", "idPrieto");
- 		//------------------
- 		this.showAsignatura(true, asignatura);
+//		//-----------------
+// 		Plataforma.login("1", "contraseniaprofe");
+// 		
+// 		//Contenidos para probar el treecontent
+// 		
+// 		Asignatura asignatura = new Asignatura("Mates");
+// 	
+// 		Tema tema1 = new Tema("Tema 1", true, asignatura);
+// 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
+// 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
+// 		System.out.println(tema1.getSubcontenido());
+// 		Tema tema2 = new Tema("Tema 2", true, asignatura);
+// 		Tema tema3 = new Tema("Tema 3", true, asignatura);
+// 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
+// 		Apuntes ap1 = new Apuntes("Apuntes muy bonitos de prueba", "Apuntes 1", true, asignatura, tema3);
+// 		
+// 		Plataforma.logout();
+// 		Plataforma.login("9113", "idPrieto");
+// 		//------------------
+// 		this.showAsignatura(true, asignatura);
 	}
 	
 	/**
@@ -338,9 +343,9 @@ public class NoodleFrame extends JFrame{
 	}
 	
 	/**
-	 * Método para mostrar el panel si no está matriculado en esa asignatura
+	 * Método para mostrar el panel de Apuntes
 	 * @param back
-	 * @param asig
+	 * @param apuntes
 	 */
 	public void showApuntes(boolean back, Apuntes apuntes) {
 		NuestroPanel anterior = this.ini();
@@ -357,6 +362,30 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.apuntesGUI);
 		
 		this.fin(700,500, this.apuntesGUI);
+	}
+	
+	/**
+	 * Método para mostrar el panel de subir apuntes
+	 * @param back
+	 * @param asignatura
+	 * @param tema
+	 */
+	public void showSubirApuntes(boolean back, Asignatura asignatura, Tema tema) {
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.subirApuntes == null){
+			this.subirApuntes = new SubirApuntes(anterior, this, asignatura, tema);
+			this.subirApuntes.addListener(new ApuntesListener(this.subirApuntes.getForm(), this));
+		}
+		else{
+			this.subirApuntes.setAnterior(anterior);
+		}
+		
+		this.getContentPane().add(this.subirApuntes);
+		
+		this.fin(700,500, this.subirApuntes);
 	}
 	
 	public static NoodleFrame getInstance(){
