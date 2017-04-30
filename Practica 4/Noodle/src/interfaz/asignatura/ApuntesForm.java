@@ -11,6 +11,12 @@ import asignatura.Asignatura;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
+/**
+ * Clase ApuntesForm
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ApuntesForm extends JPanel{
 
 	/**
@@ -18,8 +24,14 @@ public class ApuntesForm extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Asignatura a la que hace referencia
+	 */
 	private Asignatura asignatura;
 	
+	/**
+	 * Tema a introducir
+	 */
 	private Tema tema;
 	
 	private JButton guardar;
@@ -92,22 +104,30 @@ public class ApuntesForm extends JPanel{
 	
 	//Métodos
 	
-		/**
-		 * Añade un ActionListener al ApuntesForm
-		 * @param listener
-		 */
-		public void addListener(ActionListener listener){
-			this.guardar.addActionListener(listener);
-			this.cancelar.addActionListener(listener);
-		}
-		
-		public String getTitulo(){
-			return new String(this.titulo.getText());
-		}
-		
-		public String getTexto(){
-			return new String(this.texto.getText());
-		}
+	/**
+	 * Añade un ActionListener al ApuntesForm
+	 * @param listener
+	 */
+	public void addListener(ActionListener listener){
+		this.guardar.addActionListener(listener);
+		this.cancelar.addActionListener(listener);
+	}
+	
+	/**
+	 * Devuelve el título de los apuntes
+	 * @return
+	 */
+	public String getTitulo(){
+		return new String(this.titulo.getText());
+	}
+	
+	/**
+	 * Devuelve el texto de los apuntes
+	 * @return
+	 */
+	public String getTexto(){
+		return new String(this.texto.getText());
+	}
 		
 	
 

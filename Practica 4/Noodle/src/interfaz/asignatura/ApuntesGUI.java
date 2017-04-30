@@ -11,6 +11,8 @@ import contenido.Apuntes;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
+import persona.Profesor;
+import plataforma.Plataforma;
 
 public class ApuntesGUI extends NuestroPanel{
 
@@ -29,6 +31,8 @@ public class ApuntesGUI extends NuestroPanel{
 	 */
 	private Menu menu;
 	
+	ContenidoMenuDer list;
+	
 	/**
 	 * Panel con los apuntes
 	 */
@@ -45,9 +49,15 @@ public class ApuntesGUI extends NuestroPanel{
 		
 		this.menu = new Menu(frame);
 		this.contenido = new ApuntesPanel(this.apuntes);
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.list = new ContenidoMenuDer(frame, apuntes);
+			this.add(this.list, BorderLayout.EAST);
+		}
+		
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.contenido, BorderLayout.CENTER);
+		
 
 		int w = this.getWidth();
 		this.menu.setPreferredSize(new Dimension(w, 80));
