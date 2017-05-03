@@ -112,7 +112,7 @@ public class NoodleFrame extends JFrame{
 	
 	/**
 	 * Muestra el Panel de Inicio del Alumno
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 */
 	public void showInicioAlumno(boolean back){
 		
@@ -135,7 +135,7 @@ public class NoodleFrame extends JFrame{
 	
 	/**
 	 * Muestra el Panel de Inicio del Profesor
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 */
 	public void showInicioProfesor(boolean back){
 		
@@ -158,7 +158,7 @@ public class NoodleFrame extends JFrame{
 	
 	/**
 	 * Muestra el Panel Lista de Asignaturas
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 */
 	public void showListaAsignaturas(boolean back){
 		
@@ -171,7 +171,6 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.listaAsignaturas.setAnterior(anterior);
-			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
 		}
 		this.listaAsignaturas.refreshPanel();
 		
@@ -205,7 +204,7 @@ public class NoodleFrame extends JFrame{
 
 	/**
 	 * Método para mostrar las solicitudes de un alumno
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 */
 	public void showSolicitudesAlumno(boolean back) {
 		
@@ -229,7 +228,7 @@ public class NoodleFrame extends JFrame{
 	
 	/**
 	 * Método para mostrar una asignatura
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 * @param asignatura a mostrar
 	 */
 	public void showAsignatura(boolean back, Asignatura asignatura) {
@@ -240,14 +239,10 @@ public class NoodleFrame extends JFrame{
 		}
 		if(this.asignaturaGUI == null){
 			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
-			//Añadir Listener??
-			
 		}
 		else{
-			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
 			this.asignaturaGUI.refreshPanel(asignatura);
 			this.asignaturaGUI.setAnterior(anterior);
-			this.asignaturaGUI.refreshPanel(asignatura);
 		}
 		
 		this.getContentPane().add(this.asignaturaGUI);
@@ -258,7 +253,7 @@ public class NoodleFrame extends JFrame{
 
 	/**
 	 * Método para mostrar las solicitudes de un profesor
-	 * @param back, false si se quiere guardar el panel anterior
+	 * @param back, true si se quiere guardar el panel anterior
 	 */
 	public void showSolicitudesProfesor(boolean back) {
 
@@ -302,6 +297,7 @@ public class NoodleFrame extends JFrame{
 	 * Método a llamar después de cualquier show
 	 * @param a
 	 * @param b
+	 * @param actual
 	 */
 	private void fin(int a, int b, NuestroPanel actual){
 		Dimension d = new Dimension();
@@ -317,6 +313,7 @@ public class NoodleFrame extends JFrame{
 	 * Función para volver atrás en la aplicación
 	 */
 	public void atras(){
+		System.out.println(this.actual.getAnterior());
 		if(this.actual == null){
 			return;
 		}

@@ -85,7 +85,7 @@ public class SubirApuntes extends NuestroPanel {
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(Apuntes apuntes){
-		this.frame.showSubirApuntes(true, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);
+		this.frame.showSubirApuntes(false, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);
 	}
 
 }

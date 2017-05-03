@@ -83,14 +83,16 @@ public class NuestroPanel extends JPanel{
 			return;
 		}
 		NuestroPanel aux = this;
+		int pan = 1;
 		for(int i = 1; i < minPaneles; i++){
 			if(aux.anterior != null){
+				pan ++;
 				aux = aux.anterior;
 			}
 		}
 		aux.anterior = null;
 		
-		NuestroPanel.nPaneles = NuestroPanel.minPaneles;		
+		NuestroPanel.nPaneles = pan;		
 	}
 	
 	/**
