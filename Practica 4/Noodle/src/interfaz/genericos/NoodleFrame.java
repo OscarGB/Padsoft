@@ -60,9 +60,9 @@ public class NoodleFrame extends JFrame{
 		NoodleFrame.frame = this;
 		Plataforma.openPlataforma();
 		Plataforma.logout();
-		//this.showPanelLogin();
-		Asignatura asignatura = new Asignatura("Mates");
-		this.showSubirApuntes(true, asignatura, null);
+		this.showPanelLogin();
+//		Asignatura asignatura = new Asignatura("Mates");
+//		this.showSubirApuntes(true, asignatura, null);
 		
 //		//-----------------
 // 		Plataforma.login("1", "contraseniaprofe");
@@ -79,11 +79,15 @@ public class NoodleFrame extends JFrame{
 // 		Tema tema3 = new Tema("Tema 3", true, asignatura);
 // 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
 // 		Apuntes ap1 = new Apuntes("Apuntes muy bonitos de prueba", "Apuntes 1", true, asignatura, tema3);
-// 		
-// 		Plataforma.logout();
-// 		Plataforma.login("9113", "idPrieto");
+// 		new Apuntes("Prueba", "Auntes 2", true, asignatura, tema2);
+//// 		Plataforma.logout();
+//// 		Plataforma.login("9113", "idPrieto");
 // 		//------------------
 // 		this.showAsignatura(true, asignatura);
+	}
+	
+	public AsignaturaGUI getAsignaturaGUI(){
+		return this.asignaturaGUI;
 	}
 	
 	/**
@@ -167,6 +171,7 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.listaAsignaturas.setAnterior(anterior);
+			this.listaAsignaturas = new ListaAsignaturas(anterior, this);
 		}
 		this.listaAsignaturas.refreshPanel();
 		
@@ -239,6 +244,8 @@ public class NoodleFrame extends JFrame{
 			
 		}
 		else{
+			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+			this.asignaturaGUI.refreshPanel(asignatura);
 			this.asignaturaGUI.setAnterior(anterior);
 			this.asignaturaGUI.refreshPanel(asignatura);
 		}
@@ -357,6 +364,7 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.apuntesGUI.setAnterior(anterior);
+			this.apuntesGUI = new ApuntesGUI(anterior, this, apuntes);
 		}
 		
 		this.getContentPane().add(this.apuntesGUI);
@@ -370,13 +378,13 @@ public class NoodleFrame extends JFrame{
 	 * @param asignatura
 	 * @param tema
 	 */
-	public void showSubirApuntes(boolean back, Asignatura asignatura, Tema tema) {
+	public void showSubirApuntes(boolean back, Asignatura asignatura, Tema tema, Apuntes apuntes) {
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = null;
 		}
 		if(this.subirApuntes == null){
-			this.subirApuntes = new SubirApuntes(anterior, this, asignatura, tema);
+			this.subirApuntes = new SubirApuntes(anterior, this, asignatura, tema, apuntes);
 			this.subirApuntes.addListener(new ApuntesListener(this.subirApuntes.getForm(), this));
 		}
 		else{

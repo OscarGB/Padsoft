@@ -2,6 +2,7 @@ package interfaz.asignatura;
 
 import java.awt.event.*;
 
+import contenido.Apuntes;
 import interfaz.*;
 import interfaz.genericos.NoodleFrame;
 import persona.Profesor;
@@ -47,14 +48,25 @@ public class ApuntesListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("guardar") == true){
+			String titulo = this.panel.getTitulo();
+			String texto = this.panel.getTexto();
 			System.out.println("Has pulsado guardar");
 			System.out.println(this.panel.getTexto());
 			System.out.println(this.panel.getTitulo());
-			//TODO llamar a crear apunte del noodle
+			System.out.println(this.panel.getAsignatura());
+			
+			if(this.panel.getApuntes() == null){
+				new Apuntes(texto, titulo, true, this.panel.getAsignatura(), this.panel.getTema());
+			} else{
+				this.panel.getApuntes().setTexto(texto);
+				this.panel.getApuntes().setTitulo(titulo);
+			}
+			
+			this.frame.showAsignatura(true, this.panel.getAsignatura());
 		}
 		if(arg0.getActionCommand().equals("cancelar") == true){
 			System.out.println("Has pulsado cancelar");
-			//volver atras sin guardar
+			this.frame.showAsignatura(true, this.panel.getAsignatura());
 		}
 		
 		return;

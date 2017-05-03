@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import asignatura.Asignatura;
+import contenido.Tema;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
+import persona.Profesor;
+import plataforma.Plataforma;
 
 public class AsignaturaGUI extends NuestroPanel{
 	
@@ -30,7 +33,15 @@ public class AsignaturaGUI extends NuestroPanel{
 	
 	private TreeContent arbol;
 	
-	//private MenuAsignatura menuAsig;
+	/**
+	 * Menu lateral
+	 */
+	private AsignaturaMenuDer list;
+	
+	/**
+	 * Menu lateral
+	 */
+	private AsignaturaMenuIzq izq;
 	
 	//Constructor
 
@@ -44,12 +55,22 @@ public class AsignaturaGUI extends NuestroPanel{
 		this.setLayout(new BorderLayout());
 		
 		this.menu = new Menu(frame);
-//		this.menuAsig = new MenuAsig(frame);
 		this.arbol = new TreeContent(frame, asignatura);
 		
+		
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.list = new AsignaturaMenuDer(frame, asignatura, null);
+			this.izq = new AsignaturaMenuIzq(frame, asignatura);
+			this.list.setVisible(false);
+			this.add(this.list, BorderLayout.EAST);
+			this.add(this.izq, BorderLayout.WEST);
+		}
+		
+		
+		
 		this.add(this.menu, BorderLayout.NORTH);
-//		this.add(this.menuAsig, BorderLayout.EAST);
 		this.add(this.arbol, BorderLayout.CENTER);
+		
 		
 		int w = this.getWidth();
 		this.menu.setPreferredSize(new Dimension(w, 80));		
@@ -74,6 +95,15 @@ public class AsignaturaGUI extends NuestroPanel{
 		this.remove(this.arbol);
 		this.arbol = new TreeContent(frame, asignatura);
 		this.add(this.arbol, BorderLayout.CENTER);
+	}
+	
+	/**
+	 * Metodo para mostrar el menu lateral
+	 * @param tema
+	 */
+	public void showLateral(Tema tema){
+		this.list.setTema(tema);
+		this.list.setVisible(true);
 	}
 
 }

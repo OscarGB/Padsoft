@@ -1,6 +1,7 @@
 package interfaz.asignatura;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,6 +19,7 @@ import contenido.Contenido;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
+import persona.Profesor;
 import plataforma.Plataforma;
 
 class SelectionListener implements TreeSelectionListener {
@@ -26,8 +28,14 @@ class SelectionListener implements TreeSelectionListener {
 	    JTree tree = (JTree) se.getSource();
 	    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
 	        .getLastSelectedPathComponent();
-	    if (selectedNode.isLeaf()) {
-	    	Object obj = selectedNode.getUserObject();
+	    Object obj = selectedNode.getUserObject();
+	    if(obj instanceof Tema){
+	    	if(Plataforma.loggedAs() instanceof Profesor){
+		    	AsignaturaGUI padre = NoodleFrame.getInstance().getAsignaturaGUI();
+		    	padre.showLateral((Tema) obj);
+	    	}
+	    }
+	    else if (selectedNode.isLeaf()) {
 	    	if(obj instanceof Apuntes){
 	    		NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
 	    	}
@@ -81,8 +89,6 @@ public class TreeContent extends JPanel{
 		this.add(treeView);
 		
 		treeView.setPreferredSize(new Dimension(200,300));
-		
-		
 	}
 	
 	private void createNodes(DefaultMutableTreeNode top, ArrayList<Contenido> sub){
@@ -117,7 +123,6 @@ public class TreeContent extends JPanel{
 			}
 		}
 
-//TODO Listeners para abrir los contenidos (ejercicios y apuntes)
 	}
 	
 	

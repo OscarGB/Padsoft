@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import asignatura.Asignatura;
 import contenido.Contenido;
+import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
@@ -17,7 +19,7 @@ import interfaz.genericos.NoodleFrame;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class ContenidoMenuDer extends JPanel {
+public class AsignaturaMenuIzq extends JPanel {
 
 	/**
 	 * Serial
@@ -27,12 +29,13 @@ public class ContenidoMenuDer extends JPanel {
 	/**
 	 * Botón de borrar
 	 */
-	private JButton borrar = new JButton("Borrar");
+	private JButton borrar = new JButton("Borrar asignatura");
 	
 	/**
 	 * Botón de editar
 	 */
-	private JButton editar = new JButton("Editar");
+	private JButton tema = new JButton("Añadir tema");
+	
 	
 	/**
 	 * Frame en el que se encuentra
@@ -40,17 +43,18 @@ public class ContenidoMenuDer extends JPanel {
 	private NoodleFrame frame;
 	
 	/**
-	 * Contenido al que ser refiere
+	 * Asignatura a la que ser refiere
 	 */
-	private Contenido con;
+	private Asignatura asignatura;
+
 	
 	/**
 	 * Creador de ContenidoMenuDer
 	 * @param frame
 	 * @param con
 	 */
-	public ContenidoMenuDer(NoodleFrame frame, Contenido con){
-		this.con = con;
+	public AsignaturaMenuIzq(NoodleFrame frame, Asignatura asignatura){
+		this.asignatura = asignatura;
 		this.frame = frame;
 		
 		this.setBackground(Color.WHITE);
@@ -58,28 +62,29 @@ public class ContenidoMenuDer extends JPanel {
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
-		this.editar.setPreferredSize(new Dimension(100, 30));
-		this.borrar.setPreferredSize(new Dimension(100, 30));
+		this.tema.setPreferredSize(new Dimension(150, 30));
+		this.borrar.setPreferredSize(new Dimension(150, 30));
 
-		spr.putConstraint(SpringLayout.WEST, this.editar, 0, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.WEST, this.tema, 0, SpringLayout.WEST, this);
 		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.WEST, this);
-		spr.putConstraint(SpringLayout.SOUTH, this.editar, -30, SpringLayout.VERTICAL_CENTER, this);
-		spr.putConstraint(SpringLayout.NORTH, this.borrar, 30, SpringLayout.VERTICAL_CENTER, this.editar);
+		spr.putConstraint(SpringLayout.NORTH, this.tema, -30, SpringLayout.VERTICAL_CENTER, this);
+		spr.putConstraint(SpringLayout.NORTH, this.borrar, 30, SpringLayout.VERTICAL_CENTER, this);
+
 		
 //		spr.putConstraint(SpringLayout.EAST, this.editar, -5, SpringLayout.EAST, this);
 //		spr.putConstraint(SpringLayout.EAST, this.borrar, -5, SpringLayout.EAST, this);
 		
-		this.add(this.editar);
+		this.add(this.tema);
 		this.add(this.borrar);
 		
 		this.borrar.setActionCommand("borrar");
-		this.editar.setActionCommand("editar");
+		this.tema.setActionCommand("tema");
 		
-		ActionListener list = new ContenidoMenuDerListener(frame, con);
+		ActionListener list = new AsignaturaMenuIzqListener(frame, asignatura);
 		
-		this.editar.addActionListener(list);
+		this.tema.addActionListener(list);
 		this.borrar.addActionListener(list);
 		
-		this.setPreferredSize(new Dimension(150, 200));
+		this.setPreferredSize(new Dimension(200, 250));
 	}
 }

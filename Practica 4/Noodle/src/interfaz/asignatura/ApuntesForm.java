@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import asignatura.Asignatura;
+import contenido.Apuntes;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
@@ -30,19 +31,33 @@ public class ApuntesForm extends JPanel{
 	private Asignatura asignatura;
 	
 	/**
+	 * Frame
+	 */
+	private NoodleFrame frame;
+	
+	/**
 	 * Tema a introducir
 	 */
 	private Tema tema;
+	
+	/**
+	 * Apuntes
+	 */
+	private Apuntes apuntes;
 	
 	private JButton guardar;
 	private JButton cancelar;
 	private JTextArea titulo;
 	private JTextArea texto;
 	
-	public ApuntesForm(NoodleFrame frame, Asignatura asignatura, Tema tema){
+	public ApuntesForm(NoodleFrame frame, Asignatura asignatura, Tema tema, Apuntes apuntes){
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		this.setBackground(Color.WHITE);
+		this.asignatura = asignatura;
+		this.tema = tema;
+		this.frame = frame;
+		this.apuntes = null;
 		
 		guardar = new JButton("Guardar");
 		cancelar = new JButton("Cancelar");
@@ -60,6 +75,12 @@ public class ApuntesForm extends JPanel{
 		
 		texto.setLineWrap(true);
 		texto.setWrapStyleWord(true);
+		
+		if(apuntes != null && apuntes instanceof Apuntes){
+			this.apuntes = apuntes;
+			titulo.setText(apuntes.getTitulo());
+			texto.setText(apuntes.getTexto());
+		}
 
 		scrolltext = new JScrollPane(texto);
 		scrolltitle = new JScrollPane(titulo);
@@ -127,6 +148,30 @@ public class ApuntesForm extends JPanel{
 	 */
 	public String getTexto(){
 		return new String(this.texto.getText());
+	}
+	
+	/**
+	 * Getter de asignatura
+	 * @return
+	 */
+	public Asignatura getAsignatura(){
+		return this.asignatura;
+	}
+	
+	/**
+	 * Getter de tema
+	 * @return
+	 */
+	public Tema getTema(){
+		return this.tema;
+	}
+	
+	/**
+	 * Getter de apuntes
+	 * @return
+	 */
+	public Apuntes getApuntes(){
+		return this.apuntes;
 	}
 		
 	

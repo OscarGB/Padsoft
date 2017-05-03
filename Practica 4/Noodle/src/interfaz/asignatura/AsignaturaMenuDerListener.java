@@ -3,8 +3,10 @@ package interfaz.asignatura;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import asignatura.Asignatura;
 import contenido.Apuntes;
 import contenido.Contenido;
+import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
@@ -13,7 +15,7 @@ import interfaz.genericos.NoodleFrame;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class ContenidoMenuDerListener implements ActionListener {
+public class AsignaturaMenuDerListener implements ActionListener {
 
 	/**
 	 * Frame en el que se encuentra
@@ -21,18 +23,26 @@ public class ContenidoMenuDerListener implements ActionListener {
 	NoodleFrame frame;
 	
 	/**
-	 * contenido al que refiere
+	 * tema al que refiere
 	 */
-	Contenido con;
+	Tema tema;
 	
 	/**
 	 * Constructor de ContenidoMenuDerListener
 	 * @param frame
 	 * @param con
 	 */
-	public ContenidoMenuDerListener(NoodleFrame frame, Contenido con) {
+	public AsignaturaMenuDerListener(NoodleFrame frame, Tema tema) {
 		this.frame = frame;
-		this.con = con;
+		this.tema = tema;
+	}
+	
+	/**
+	 * Setter de tema
+	 * @param tema
+	 */
+	public void listenerSetTema(Tema tema){
+		this.tema = tema;
 	}
 
 	/**
@@ -42,14 +52,15 @@ public class ContenidoMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
-			this.con.eraseContenido();
-			this.frame.showAsignatura(true, this.con.getAsignatura());
+			this.tema.eraseContenido();
+			this.frame.showAsignatura(true, this.tema.getAsignatura());
 		}
-		if(arg0.getActionCommand().equals("editar")){
-			if(con instanceof Apuntes){
-				Apuntes apuntes = (Apuntes) con;
-				frame.showSubirApuntes(true, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);
-			}
+		else if(arg0.getActionCommand().equals("apuntes")){
+			frame.showSubirApuntes(true, tema.getAsignatura(), this.tema, null);
+		}
+		else if(arg0.getActionCommand().equals("ejercicio")){
+			System.out.println("Crear ejercicio en el tema "+this.tema);
 		}
 	}
 }
+

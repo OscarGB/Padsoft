@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 import asignatura.Asignatura;
+import contenido.Apuntes;
 import contenido.Tema;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
@@ -43,7 +44,7 @@ public class SubirApuntes extends NuestroPanel {
 	 * @param asignatura
 	 * @param tema
 	 */
-	public SubirApuntes(NuestroPanel anterior, NoodleFrame frame, Asignatura asignatura, Tema tema) {
+	public SubirApuntes(NuestroPanel anterior, NoodleFrame frame, Asignatura asignatura, Tema tema, Apuntes apuntes) {
 		super(anterior, frame);
 		this.setSize(400,350);
 		this.setBackground(Color.WHITE);
@@ -54,7 +55,7 @@ public class SubirApuntes extends NuestroPanel {
 		this.asignatura = asignatura;
 		this.tema = tema;
 		
-		this.formulario = new ApuntesForm(this.frame, this.asignatura, this.tema);
+		this.formulario = new ApuntesForm(this.frame, this.asignatura, this.tema, apuntes);
 
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(formulario, BorderLayout.CENTER);
@@ -72,8 +73,19 @@ public class SubirApuntes extends NuestroPanel {
 		this.formulario.addListener(listener);
 	}
 	
+	/**
+	 * Getter del formulario
+	 * @return
+	 */
 	public ApuntesForm getForm(){
 		return this.formulario;
+	}
+	
+	/**
+	 * Hace que el frame muestre este panel
+	 */
+	public void muestraPanel(Apuntes apuntes){
+		this.frame.showSubirApuntes(true, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);
 	}
 
 }

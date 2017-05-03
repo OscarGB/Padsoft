@@ -3,9 +3,10 @@ package interfaz.asignatura;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import contenido.Apuntes;
-import contenido.Contenido;
+import asignatura.Asignatura;
+import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
+import plataforma.Plataforma;
 
 /**
  * Clase ContenidoMenuDerListener
@@ -13,7 +14,7 @@ import interfaz.genericos.NoodleFrame;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class ContenidoMenuDerListener implements ActionListener {
+public class AsignaturaMenuIzqListener implements ActionListener {
 
 	/**
 	 * Frame en el que se encuentra
@@ -21,18 +22,18 @@ public class ContenidoMenuDerListener implements ActionListener {
 	NoodleFrame frame;
 	
 	/**
-	 * contenido al que refiere
+	 * tema al que refiere
 	 */
-	Contenido con;
+	Asignatura asignatura;
 	
 	/**
 	 * Constructor de ContenidoMenuDerListener
 	 * @param frame
 	 * @param con
 	 */
-	public ContenidoMenuDerListener(NoodleFrame frame, Contenido con) {
+	public AsignaturaMenuIzqListener(NoodleFrame frame, Asignatura asignatura) {
 		this.frame = frame;
-		this.con = con;
+		this.asignatura = asignatura;
 	}
 
 	/**
@@ -42,14 +43,15 @@ public class ContenidoMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
-			this.con.eraseContenido();
-			this.frame.showAsignatura(true, this.con.getAsignatura());
+			Plataforma.eraseAsignatura(this.asignatura);
+			this.frame.showListaAsignaturas(false);
 		}
-		if(arg0.getActionCommand().equals("editar")){
-			if(con instanceof Apuntes){
-				Apuntes apuntes = (Apuntes) con;
-				frame.showSubirApuntes(true, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);
-			}
+		else if(arg0.getActionCommand().equals("tema")){
+			System.out.println("Nuevo tema");
+			new Tema("Tema1", true, this.asignatura);
+			this.frame.showAsignatura(true, this.asignatura);
 		}
 	}
 }
+
+
