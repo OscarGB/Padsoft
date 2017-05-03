@@ -61,6 +61,9 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 			new Tema(aux, true, this.asignatura);
 			this.frame.showAsignatura(true, this.asignatura);
 		}
+		else if(arg0.getActionCommand().equals("alumnos")){
+			this.frame.showAlumnosAsignatura(true, this.asignatura);
+		}
 	}
 }
 

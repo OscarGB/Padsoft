@@ -71,7 +71,7 @@ public class ApuntesGUI extends NuestroPanel{
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showApuntes(false, this.apuntes);
+		this.frame.showApuntes(true, this.apuntes);
 	}
 	
 	/**

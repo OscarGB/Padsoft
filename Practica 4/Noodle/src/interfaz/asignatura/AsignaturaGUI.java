@@ -31,6 +31,9 @@ public class AsignaturaGUI extends NuestroPanel{
 	 */
 	private Asignatura asignatura;
 	
+	/**
+	 * Arbol de contenidos
+	 */
 	private TreeContent arbol;
 	
 	/**
@@ -45,6 +48,12 @@ public class AsignaturaGUI extends NuestroPanel{
 	
 	//Constructor
 
+	/**
+	 * Constructor de AsignaturaGUI
+	 * @param anterior
+	 * @param frame
+	 * @param asignatura
+	 */
 	public AsignaturaGUI(NuestroPanel anterior, NoodleFrame frame, Asignatura asignatura) {
 		super(anterior, frame);
 		this.setSize(400,350);
@@ -84,7 +93,7 @@ public class AsignaturaGUI extends NuestroPanel{
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showAsignatura(false, this.asignatura);
+		this.frame.showAsignatura(true, this.asignatura);
 	}
 	
 	/**

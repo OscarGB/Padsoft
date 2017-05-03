@@ -455,6 +455,21 @@ public class Asignatura implements Serializable {
 			al.eraseAsignatura(this);
 		}
 	}
+	
+	/**
+	 * (Override) equals de Asignatura
+	 * @param obj
+	 * @return
+	 */
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null) return false;
+		else if(!(obj instanceof Asignatura)) return false;
+		
+		Asignatura asig = (Asignatura) obj;
+		
+		return this.getNombre().equals(asig.getNombre());
+	}
 
 	
 }

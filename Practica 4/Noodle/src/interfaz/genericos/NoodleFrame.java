@@ -9,6 +9,7 @@ import asignatura.Asignatura;
 import contenido.Apuntes;
 import contenido.Ejercicio;
 import contenido.Tema;
+import interfaz.asignatura.AlumnosAsignatura;
 import interfaz.asignatura.ApuntesGUI;
 import interfaz.asignatura.ApuntesListener;
 import interfaz.asignatura.AsignaturaGUI;
@@ -51,6 +52,7 @@ public class NoodleFrame extends JFrame{
 	private AsignaturaNoMatriculada asignaturaNoMatriculada = null;
 	private ApuntesGUI apuntesGUI = null;
 	private SubirApuntes subirApuntes = null;
+	private AlumnosAsignatura alumnosAsignatura = null;
 	
 	private static NoodleFrame frame;
 	
@@ -64,39 +66,6 @@ public class NoodleFrame extends JFrame{
 		Plataforma.logout();
 		this.showPanelLogin();
 		
-//		Plataforma.login("1", "contraseniaprofe");
-//		for(Asignatura asig: Plataforma.getAsignaturas()){
-//			System.out.println(asig);
-//			for (Iterator<Alumno> al = asig.getAlumnos().iterator(); al.hasNext(); ){
-//				al.next(); 
-//				al.previous().remove();
-//			}
-//		}
-//		Plataforma.logout();
-		
-//		Asignatura asignatura = new Asignatura("Mates");
-//		this.showSubirApuntes(true, asignatura, null);
-		
-//		//-----------------
-// 		Plataforma.login("1", "contraseniaprofe");
-// 		
-// 		//Contenidos para probar el treecontent
-// 		
-// 		Asignatura asignatura = new Asignatura("Mates");
-// 	
-// 		Tema tema1 = new Tema("Tema 1", true, asignatura);
-// 		Tema tema11 = new Tema("Tema 11", true, asignatura, tema1);
-// 		Tema tema111 = new Tema("Tema 111", true, asignatura, tema11);
-// 		System.out.println(tema1.getSubcontenido());
-// 		Tema tema2 = new Tema("Tema 2", true, asignatura);
-// 		Tema tema3 = new Tema("Tema 3", true, asignatura);
-// 		Ejercicio ej1 = new Ejercicio(1, true, Plataforma.getFechaActual().minusDays(0), Plataforma.getFechaActual().plusDays(4), tema2,"ej1", true, asignatura);
-// 		Apuntes ap1 = new Apuntes("Apuntes muy bonitos de prueba", "Apuntes 1", true, asignatura, tema3);
-// 		new Apuntes("Prueba", "Auntes 2", true, asignatura, tema2);
-//// 		Plataforma.logout();
-//// 		Plataforma.login("9113", "idPrieto");
-// 		//------------------
-// 		this.showAsignatura(true, asignatura);
 	}
 	
 	public AsignaturaGUI getAsignaturaGUI(){
@@ -298,13 +267,11 @@ public class NoodleFrame extends JFrame{
 	 */
 	private NuestroPanel ini(){
 		
-		//return null;
 		NuestroPanel anterior = null;
 		if(this.getContentPane().getComponentCount() != 0){
 			anterior = (NuestroPanel) this.getContentPane().getComponent(0);
 			this.getContentPane().removeAll();
 		}
-//		return null;
 		return anterior;
 	}
 	
@@ -407,8 +374,35 @@ public class NoodleFrame extends JFrame{
 		this.fin(700,500, this.subirApuntes);
 	}
 	
+	/**
+	 * Metodo para obtener la instancia del frame estatico
+	 * @return
+	 */
 	public static NoodleFrame getInstance(){
 		return NoodleFrame.frame;
+	}
+	
+	/**
+	 * Muestra el Panel Lista de Asignaturas
+	 * @param back, true si se quiere guardar el panel anterior
+	 */
+	public void showAlumnosAsignatura(boolean back, Asignatura asignatura){
+		
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.alumnosAsignatura == null){
+			this.alumnosAsignatura = new AlumnosAsignatura(anterior, this, asignatura);
+		}
+		else{
+			this.alumnosAsignatura.setAnterior(anterior);
+		}
+		this.alumnosAsignatura.refreshPanel();
+		
+		this.getContentPane().add(this.alumnosAsignatura);
+		
+		this.fin(700,500, this.alumnosAsignatura);
 	}
 	
 }

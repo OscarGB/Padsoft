@@ -82,10 +82,6 @@ public class AsignaturaMenuDer extends JPanel {
 		this.frame = frame;
 		this.tema = tema;
 		
-		if(tema == null){
-			System.out.println("NULLLL");
-		}
-		
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();

@@ -86,6 +86,21 @@ public class Alumno extends Persona implements Serializable{
 	}
 	
 	/**
+	 * Getter de media de la asignatura
+	 * @param asignatura
+	 * @return
+	 */
+	public float getMediaAsignatura(Asignatura asignatura){
+		float media = 0f;
+		for(EstadisticasAlumno est: this.getEstadisticas()){
+			if(est.getAsignatura().equals(asignatura)){
+				media += est.getNotaMedia();
+			}
+		}
+		return media;
+	}
+	
+	/**
 	 * Devuelve las asignaturas en las que está matriculado el Alumno
 	 * @return ArrayList<Asignatura>
 	 */
