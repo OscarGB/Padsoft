@@ -1,6 +1,7 @@
 package interfaz.asignatura;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -57,11 +58,12 @@ public class ContenidoMenuDer extends JPanel {
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
+		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.editar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.NORTH, this.editar, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 10, SpringLayout.SOUTH, this.editar);
 		
-		spr.putConstraint(SpringLayout.EAST, this.editar, 5, SpringLayout.EAST, this);
-		spr.putConstraint(SpringLayout.EAST, this.borrar, 5, SpringLayout.EAST, this);
+//		spr.putConstraint(SpringLayout.EAST, this.editar, -5, SpringLayout.EAST, this);
+//		spr.putConstraint(SpringLayout.EAST, this.borrar, -5, SpringLayout.EAST, this);
 		
 		this.add(this.editar);
 		this.add(this.borrar);
@@ -73,6 +75,8 @@ public class ContenidoMenuDer extends JPanel {
 		
 		this.editar.addActionListener(list);
 		this.borrar.addActionListener(list);
+		
+		this.setPreferredSize(new Dimension(this.getWidth(), 200));
 		
 	}
 }

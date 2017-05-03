@@ -31,7 +31,7 @@ public class ApuntesGUI extends NuestroPanel{
 	 */
 	private Menu menu;
 	
-	ContenidoMenuDer list;
+	private ContenidoMenuDer list;
 	
 	/**
 	 * Panel con los apuntes
@@ -44,6 +44,7 @@ public class ApuntesGUI extends NuestroPanel{
 		this.setBackground(Color.WHITE);
 		
 		this.apuntes = apuntes;
+		this.list = new ContenidoMenuDer(frame, apuntes);
 		
 		this.setLayout(new BorderLayout());
 		
@@ -57,10 +58,12 @@ public class ApuntesGUI extends NuestroPanel{
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.contenido, BorderLayout.CENTER);
+		this.add(this.list, BorderLayout.EAST);
 		
 
 		int w = this.getWidth();
 		this.menu.setPreferredSize(new Dimension(w, 80));
+//		this.list.setPreferredSize(new Dimension(50, this.getHeight()));;
 	}
 
 }
