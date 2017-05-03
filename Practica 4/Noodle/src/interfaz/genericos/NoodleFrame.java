@@ -361,7 +361,7 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.apuntesGUI.setAnterior(anterior);
-			this.apuntesGUI = new ApuntesGUI(anterior, this, apuntes);
+			this.apuntesGUI.refreshPanel(apuntes);
 		}
 		
 		this.getContentPane().add(this.apuntesGUI);

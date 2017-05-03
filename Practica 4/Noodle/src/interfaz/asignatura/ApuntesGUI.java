@@ -70,8 +70,18 @@ public class ApuntesGUI extends NuestroPanel{
 	/**
 	 * Hace que el frame muestre este panel
 	 */
-	public void muestraPanel(Apuntes apuntes){
-		this.frame.showApuntes(false, apuntes);
+	public void muestraPanel(){
+		this.frame.showApuntes(false, this.apuntes);
+	}
+	
+	/**
+	 * Método para refrescar el panel
+	 */
+	public void refreshPanel(Apuntes apuntes){
+		this.apuntes = apuntes;
+		this.remove(this.contenido);
+		this.contenido = new ApuntesPanel(this.apuntes);
+		this.add(this.contenido, BorderLayout.CENTER);
 	}
 
 }
