@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
@@ -36,6 +37,11 @@ public class AsignaturaMenuIzq extends JPanel {
 	 */
 	private JButton tema = new JButton("Añadir tema");
 	
+	/**
+	 * Nombre del tema
+	 */
+	private JTextField nombreTema = new JTextField(13);
+	
 	
 	/**
 	 * Frame en el que se encuentra
@@ -64,10 +70,14 @@ public class AsignaturaMenuIzq extends JPanel {
 		
 		this.tema.setPreferredSize(new Dimension(150, 30));
 		this.borrar.setPreferredSize(new Dimension(150, 30));
+		this.nombreTema.setPreferredSize(new Dimension(150, 30));
+		
 
-		spr.putConstraint(SpringLayout.WEST, this.tema, 0, SpringLayout.WEST, this);
-		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.WEST, this);
-		spr.putConstraint(SpringLayout.NORTH, this.tema, -30, SpringLayout.VERTICAL_CENTER, this);
+		spr.putConstraint(SpringLayout.WEST, this.tema, 10, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.WEST, this.nombreTema, 10, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.WEST, this.borrar, 10, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.NORTH, this.tema, -50, SpringLayout.VERTICAL_CENTER, this);
+		spr.putConstraint(SpringLayout.SOUTH, this.nombreTema, -30, SpringLayout.VERTICAL_CENTER, this.tema);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 30, SpringLayout.VERTICAL_CENTER, this);
 
 		
@@ -75,16 +85,25 @@ public class AsignaturaMenuIzq extends JPanel {
 //		spr.putConstraint(SpringLayout.EAST, this.borrar, -5, SpringLayout.EAST, this);
 		
 		this.add(this.tema);
+		this.add(this.nombreTema);
 		this.add(this.borrar);
 		
 		this.borrar.setActionCommand("borrar");
 		this.tema.setActionCommand("tema");
 		
-		ActionListener list = new AsignaturaMenuIzqListener(frame, asignatura);
+		ActionListener list = new AsignaturaMenuIzqListener(frame, asignatura, this);
 		
 		this.tema.addActionListener(list);
 		this.borrar.addActionListener(list);
 		
 		this.setPreferredSize(new Dimension(200, 250));
+	}
+	
+	/**
+	 * Método que devuelve el texto introducido en el campo del tema
+	 * @return
+	 */
+	public String getText(){
+		return this.nombreTema.getText();
 	}
 }

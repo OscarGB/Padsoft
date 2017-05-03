@@ -27,13 +27,20 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 	Asignatura asignatura;
 	
 	/**
+	 * Panel al que hace referencia
+	 */
+	AsignaturaMenuIzq panel;
+	
+	/**
 	 * Constructor de ContenidoMenuDerListener
 	 * @param frame
+	 * @param asignaturaMenuIzq 
 	 * @param con
 	 */
-	public AsignaturaMenuIzqListener(NoodleFrame frame, Asignatura asignatura) {
+	public AsignaturaMenuIzqListener(NoodleFrame frame, Asignatura asignatura, AsignaturaMenuIzq asignaturaMenuIzq) {
 		this.frame = frame;
 		this.asignatura = asignatura;
+		this.panel = asignaturaMenuIzq;
 	}
 
 	/**
@@ -47,8 +54,11 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 			this.frame.showListaAsignaturas(false);
 		}
 		else if(arg0.getActionCommand().equals("tema")){
-			System.out.println("Nuevo tema");
-			new Tema("Tema1", true, this.asignatura);
+			String aux = panel.getText();
+			if(aux.equals("")){
+				return;
+			}
+			new Tema(aux, true, this.asignatura);
 			this.frame.showAsignatura(true, this.asignatura);
 		}
 	}

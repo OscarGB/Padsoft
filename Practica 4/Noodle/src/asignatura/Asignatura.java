@@ -446,6 +446,15 @@ public class Asignatura implements Serializable {
 			return "Asignatura: "+ this.nombre + " Alumnos en la asignatura: " + this.alumnos + "\n" + aux;
 		}
 	}
+	
+	/**
+	 * Método a llamar al borrar una asignatura
+	 */
+	public void eraseAsignatura(){
+		for(Alumno al : this.alumnos){
+			al.eraseAsignatura(this);
+		}
+	}
 
 	
 }

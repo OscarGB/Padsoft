@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
@@ -40,6 +41,16 @@ public class AsignaturaMenuDer extends JPanel {
 	 * Botón de editar
 	 */
 	private JButton ejercicio = new JButton("Añadir ejercicio");
+	
+	/**
+	 * Botón para añadir un subtema
+	 */
+	private JButton subtema = new JButton("Añadir subtema");
+	
+	/**
+	 * Texto para el nombre del subtema
+	 */
+	private JTextField nombreSubtema = new JTextField(13);
 	
 	/**
 	 * Frame en el que se encuentra
@@ -80,14 +91,22 @@ public class AsignaturaMenuDer extends JPanel {
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
-		this.apuntes.setPreferredSize(new Dimension(150, 30));
-		this.borrar.setPreferredSize(new Dimension(150, 30));
-		this.ejercicio.setPreferredSize(new Dimension(150, 30));
+		Dimension d = new Dimension(150, 30);
+		
+		this.apuntes.setPreferredSize(d);
+		this.borrar.setPreferredSize(d);
+		this.nombreSubtema.setPreferredSize(d);
+		this.subtema.setPreferredSize(d);
+		this.ejercicio.setPreferredSize(d);
 
 		spr.putConstraint(SpringLayout.WEST, this.apuntes, 0, SpringLayout.WEST, this);
 		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.WEST, this.subtema, 0, SpringLayout.WEST, this);
+		spr.putConstraint(SpringLayout.WEST, this.nombreSubtema, 0, SpringLayout.WEST, this);
 		spr.putConstraint(SpringLayout.WEST, this.ejercicio, 0, SpringLayout.WEST, this);
 		spr.putConstraint(SpringLayout.SOUTH, this.apuntes, -30, SpringLayout.VERTICAL_CENTER, this);
+		spr.putConstraint(SpringLayout.SOUTH, this.subtema, -55, SpringLayout.NORTH, this.apuntes);
+		spr.putConstraint(SpringLayout.SOUTH, this.nombreSubtema, -30, SpringLayout.VERTICAL_CENTER, this.subtema);
 		spr.putConstraint(SpringLayout.NORTH, this.ejercicio, 30, SpringLayout.VERTICAL_CENTER, this.apuntes);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 60, SpringLayout.SOUTH, this.ejercicio);
 
@@ -98,16 +117,20 @@ public class AsignaturaMenuDer extends JPanel {
 		this.add(this.ejercicio);
 		this.add(this.apuntes);
 		this.add(this.borrar);
+		this.add(this.subtema);
+		this.add(this.nombreSubtema);
 		
 		this.borrar.setActionCommand("borrar");
 		this.ejercicio.setActionCommand("ejercicio");
 		this.apuntes.setActionCommand("apuntes");
+		this.subtema.setActionCommand("subtema");
 		
-		this.list = new AsignaturaMenuDerListener(frame, tema);
+		this.list = new AsignaturaMenuDerListener(frame, tema, this, this.asignatura);
 		
 		this.ejercicio.addActionListener(list);
 		this.apuntes.addActionListener(list);
 		this.borrar.addActionListener(list);
+		this.subtema.addActionListener(list);
 		
 		this.setPreferredSize(new Dimension(200, 250));
 	}
@@ -122,6 +145,14 @@ public class AsignaturaMenuDer extends JPanel {
 			System.out.println("ASDFASDF");
 		}
 		this.list.listenerSetTema(tema);
+	}
+	
+	/**
+	 * Método que devuelve el nombre del subtema
+	 * @return
+	 */
+	public String getText(){
+		return this.nombreSubtema.getText();
 	}
 }
 

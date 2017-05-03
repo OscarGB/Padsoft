@@ -28,14 +28,29 @@ public class AsignaturaMenuDerListener implements ActionListener {
 	Tema tema;
 	
 	/**
+	 * Panel al que escucha
+	 */
+	AsignaturaMenuDer panel;
+	
+	/**
+	 * Asignatura a la que hace referencia
+	 */
+	Asignatura asig;
+	
+	/**
 	 * Constructor de ContenidoMenuDerListener
 	 * @param frame
+	 * @param asignaturaMenuDer 
+	 * @param asignatura 
 	 * @param con
 	 */
-	public AsignaturaMenuDerListener(NoodleFrame frame, Tema tema) {
+	public AsignaturaMenuDerListener(NoodleFrame frame, Tema tema, AsignaturaMenuDer asignaturaMenuDer, Asignatura asignatura) {
 		this.frame = frame;
 		this.tema = tema;
+		this.panel = asignaturaMenuDer;
+		this.asig = asignatura;
 	}
+	
 	
 	/**
 	 * Setter de tema
@@ -60,6 +75,14 @@ public class AsignaturaMenuDerListener implements ActionListener {
 		}
 		else if(arg0.getActionCommand().equals("ejercicio")){
 			System.out.println("Crear ejercicio en el tema "+this.tema);
+		}
+		else if(arg0.getActionCommand().equals("subtema")){
+			String aux = panel.getText();
+			if(aux.equals("")){
+				return;
+			}
+			new Tema(aux, true, this.asig, this.tema);
+			this.frame.showAsignatura(true, this.asig);
 		}
 	}
 }
