@@ -1,6 +1,8 @@
 package main;
 
+
 import interfaz.genericos.NoodleFrame;
+
 
 /**
  * Clase Main, usada para iniciar la aplicación
@@ -17,8 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		NoodleFrame app = new NoodleFrame();
-		app.setVisible(true);
-		
+		app.setVisible(true);	
 	}
 
 }

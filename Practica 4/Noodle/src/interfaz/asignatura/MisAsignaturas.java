@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import asignatura.Asignatura;
 import interfaz.genericos.NoodleFrame;
+import plataforma.Plataforma;
 
 
 
@@ -72,17 +73,6 @@ public class MisAsignaturas extends Asignaturas{
 		for(JLabel asig:asignaturas){
 			asig.setFont(new Font("Arial", Font.BOLD, 20));
 			this.add(asig);
-			
-			//Aniadimos un MouseListener para poder clicar en los labels de las
-			//asignaturas
-//			asig.addMouseListener(new MouseAdapter()  
-//			{  
-//			    public void mouseClicked(MouseEvent e)  
-//			    {  
-//			       System.out.println("Has pulsado en "+asig.getText());
-//
-//			    }  
-//			}); 
 
 		}
 		
@@ -95,11 +85,11 @@ public class MisAsignaturas extends Asignaturas{
 	 * @return ArrayList
 	 */
 	private ArrayList<Asignatura> getAsignaturas(){
-		//ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
-		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
-		array.add(new Asignatura("Mates"));
-		array.add(new Asignatura("Lengua"));
-		array.add(new Asignatura("Cono"));
+		ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
+//		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
+//		array.add(new Asignatura("Mates"));
+//		array.add(new Asignatura("Lengua"));
+//		array.add(new Asignatura("Cono"));
 		
 		return array;
 	}	

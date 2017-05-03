@@ -330,6 +330,9 @@ public class Plataforma implements Serializable {
 			return;
 		}
 		if(asignatura == null) return;
+		for(Alumno al: asignatura.getAlumnos()){
+			asignatura.expulsarAlumno(al);
+		}
 		Plataforma.asignaturas.remove(asignatura);
 	}
 	

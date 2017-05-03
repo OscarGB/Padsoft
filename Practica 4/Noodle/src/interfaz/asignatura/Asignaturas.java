@@ -50,7 +50,7 @@ class RatonList extends MouseAdapter{
 	  * @param e
 	  */
 	public void mouseClicked(MouseEvent e) {
-		 panel.listenerListaAsignaturas(asig);
+		 this.panel.listenerListaAsignaturas(this.asig);
 	 } 
 }
 
@@ -75,6 +75,7 @@ public class Asignaturas extends JPanel{
 	public void listenerListaAsignaturas(Asignatura asig){
 		if(Plataforma.loggedAs() instanceof Alumno){
 			if(asig.getAlumnos().contains(Plataforma.loggedAs())){
+				System.out.println(asig.getAlumnos());
 				frame.showAsignatura(true, asig);
 			}
 			else{

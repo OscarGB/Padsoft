@@ -1,6 +1,7 @@
 package interfaz.genericos;
 
 import java.awt.Dimension;
+import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -20,6 +21,7 @@ import interfaz.login.LoginListener;
 import interfaz.login.PanelLogin;
 import interfaz.solicitudes.SolicitudesAlumno;
 import interfaz.solicitudes.SolicitudesProfesor;
+import persona.Alumno;
 import plataforma.Plataforma;
 
 /**
@@ -61,6 +63,17 @@ public class NoodleFrame extends JFrame{
 		Plataforma.openPlataforma();
 		Plataforma.logout();
 		this.showPanelLogin();
+		
+//		Plataforma.login("1", "contraseniaprofe");
+//		for(Asignatura asig: Plataforma.getAsignaturas()){
+//			System.out.println(asig);
+//			for (Iterator<Alumno> al = asig.getAlumnos().iterator(); al.hasNext(); ){
+//				al.next(); 
+//				al.previous().remove();
+//			}
+//		}
+//		Plataforma.logout();
+		
 //		Asignatura asignatura = new Asignatura("Mates");
 //		this.showSubirApuntes(true, asignatura, null);
 		
@@ -237,13 +250,15 @@ public class NoodleFrame extends JFrame{
 		if(back == false){
 			anterior = null;
 		}
-		if(this.asignaturaGUI == null){
-			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
-		}
-		else{
-			this.asignaturaGUI.refreshPanel(asignatura);
-			this.asignaturaGUI.setAnterior(anterior);
-		}
+//		if(this.asignaturaGUI == null){
+//			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+//		}
+//		else{
+//			this.asignaturaGUI.refreshPanel(asignatura);
+//			this.asignaturaGUI.setAnterior(anterior);
+//		}
+		
+		this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
 		
 		this.getContentPane().add(this.asignaturaGUI);
 		
@@ -313,7 +328,6 @@ public class NoodleFrame extends JFrame{
 	 * Función para volver atrás en la aplicación
 	 */
 	public void atras(){
-		System.out.println(this.actual.getAnterior());
 		if(this.actual == null){
 			return;
 		}
