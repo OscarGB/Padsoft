@@ -496,5 +496,13 @@ public class NoodleFrame extends JFrame{
 		
 		this.fin(700,500, this.estadisticas);
 	}
+
+	/**Muestra el panel con todos los alumnos expulsados
+	 * @param asig
+	 */
+	public void showExpulsados(boolean back, Asignatura asig) {
+		System.out.println("Se deberia mostrar el panel de expulsados");
+		
+	}
 	
 }

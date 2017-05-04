@@ -46,6 +46,11 @@ public class Estadisticas extends NuestroPanel {
 	private EstadisticasPanel panel;
 	
 	/**
+	 * Panel derecho
+	 */
+	private EstadisticasPanelDer panelDer;
+	
+	/**
 	 * Panel scrolleable
 	 */
 	private JScrollPane scroll;
@@ -66,6 +71,7 @@ public class Estadisticas extends NuestroPanel {
 		
 		this.menu = new Menu(frame);
 		this.panel = new EstadisticasPanel(frame, this.al, this.asig);
+		this.panelDer = new EstadisticasPanelDer(frame, this.al, this.asig);
 		this.scroll = new JScrollPane(this.panel);
 		
 		this.setBackground(Color.WHITE);
@@ -76,6 +82,7 @@ public class Estadisticas extends NuestroPanel {
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
+		this.add(this.panelDer, BorderLayout.EAST);
 	}
 
 }

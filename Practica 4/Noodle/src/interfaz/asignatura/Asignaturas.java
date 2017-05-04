@@ -3,6 +3,7 @@ package interfaz.asignatura;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import asignatura.Asignatura;
@@ -79,6 +80,10 @@ public class Asignaturas extends JPanel{
 				frame.showAsignatura(true, asig);
 			}
 			else{
+				if(((Alumno)Plataforma.loggedAs()).isExpulsado(asig) == true){
+					JOptionPane.showMessageDialog(frame, "Has sido expulsado de esta asignatura, solicita el acceso de nuevo a tu profesor");
+					return;
+				}
 				frame.showAsignaturaNoMatriculada(true, asig);
 			}
 		}

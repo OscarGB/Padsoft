@@ -214,6 +214,19 @@ public class Alumno extends Persona implements Serializable{
 		return null;
 	}
 	
+	/**
+	 * Método que comprueba si un alumno ha sido expulsado de una asignatura
+	 * @param asig
+	 * @return
+	 */
+	public boolean isExpulsado(Asignatura asig){
+		for(Solicitud s: asig.getSolicitudesExpulsados()){
+			if(s.getAlumno().equals(this)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	//Overrides
 
