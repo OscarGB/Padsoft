@@ -41,7 +41,7 @@ public class EjercicioGUI extends NuestroPanel{
 	/**
 	 * Menu de gestion de ejercicio
 	 */
-//	private EjercicioMenuDer derecha;
+	private EjercicioMenuDer derecha;
 
 	public EjercicioGUI(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio) {
 		super(anterior, frame);
@@ -54,9 +54,11 @@ public class EjercicioGUI extends NuestroPanel{
 		this.ejercicio = ejercicio;
 		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
 		this.scroll = new JScrollPane(this.panel);
+		this.derecha = new EjercicioMenuDer(frame, ejercicio);
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
+		this.add(this.derecha, BorderLayout.EAST);
 		
 		int w = this.getWidth();
 		

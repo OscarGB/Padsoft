@@ -118,10 +118,7 @@ public class PreguntasPanel extends JPanel{
 			label.setFont(new Font("Arial", Font.ITALIC, 15));
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, this);
-			
-			//Añadimos un MouseListener para poder clicar en los labels de las
-			//asignaturas
-			labels.get(0).addMouseListener(new PreguntaList(this, preguntas.get(0)));
+		
 			for(int i = 1, j = 0; j < size; i++, j++){
 				label = new JLabel(preguntas.get(j).getEnunciado());
 				JLabel previous = labels.get(i-1);
@@ -139,7 +136,7 @@ public class PreguntasPanel extends JPanel{
 			this.add(lab);
 		}
 		
-		this.setPreferredSize(new Dimension(500, (labels.get(0).getHeight() + 50)*(size + 1)));
+		this.setPreferredSize(new Dimension(300, (labels.get(0).getHeight() + 50)*(size + 1)));
 		
 	}
 	
