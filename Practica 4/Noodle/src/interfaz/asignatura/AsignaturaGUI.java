@@ -114,5 +114,7 @@ public class AsignaturaGUI extends NuestroPanel{
 		this.list.setTema(tema);
 		this.list.setVisible(true);
 	}
+	
+	
 
 }
