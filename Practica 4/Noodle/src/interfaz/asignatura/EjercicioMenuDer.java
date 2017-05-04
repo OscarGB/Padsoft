@@ -31,7 +31,7 @@ public class EjercicioMenuDer extends JPanel {
 	/**
 	 * Botón de borrar
 	 */
-	private JButton borrar = new JButton("Borrar tema");
+	private JButton borrar = new JButton("Borrar ejercicio");
 	
 	/**
 	 * Boton para añadir pregunta
@@ -109,21 +109,37 @@ public class EjercicioMenuDer extends JPanel {
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
+		if(this.ejercicio != null){
+			this.aleatorio.setEnabled(this.ejercicio.esAleatorio());
+		}
+		
 	    SpinnerNumberModel m_numberSpinnerModel;
-	    Double current = new Double(10.00);
-	    Double min = new Double(0.00);
-	    Double max = new Double(100.00);
-	    Double step = new Double(1.00);
+	    int current = (this.ejercicio == null) ? 10 : this.ejercicio.getPeso();
+	    int min = 0;
+	    int max = 100;
+	    int step = 1;
 	    m_numberSpinnerModel = new SpinnerNumberModel(current, min, max, step);
 	    pesoSpinner = new JSpinner(m_numberSpinnerModel);
 		
 		UtilDateModel model = new UtilDateModel();
 		JDatePanelImpl datePanel = new JDatePanelImpl(model);
 		this.fechaIni = new JDatePickerImpl(datePanel, null);
+		if (this.ejercicio != null){
+			model.setDate(this.ejercicio.getFechaIni().getYear(), this.ejercicio.getFechaIni().getMonth().getValue(), this.ejercicio.getFechaIni().getDayOfMonth());
+			System.out.println("Ini: "+this.ejercicio.getFechaIni() + " Fin: " + this.ejercicio.getFechaFin());
+		}
+		model.setSelected(true);
 		
 		model = new UtilDateModel();
 		datePanel = new JDatePanelImpl(model);
 		this.fechaFin = new JDatePickerImpl(datePanel, null);
+		if (this.ejercicio != null){
+			model.setDate(this.ejercicio.getFechaFin().getYear(), this.ejercicio.getFechaFin().getMonth().getValue(), this.ejercicio.getFechaFin().getDayOfMonth());
+			System.out.println("Ini: "+this.ejercicio.getFechaIni() + " Fin: " + this.ejercicio.getFechaFin() + "Enseñando: " + model.getDay());
+		} else{
+			model.setDate(model.getYear(), model.getMonth(), model.getDay() + 1);
+		}
+		model.setSelected(true);
 		
 		Dimension d = new Dimension(150, 30);
 		
@@ -193,8 +209,8 @@ public class EjercicioMenuDer extends JPanel {
 	 * Devuelve el peso del spinner
 	 * @return
 	 */
-	public double getPeso(){
-		return (double)this.pesoSpinner.getValue();
+	public int getPeso(){
+		return (int)this.pesoSpinner.getValue();
 	}
 	
 	/**
