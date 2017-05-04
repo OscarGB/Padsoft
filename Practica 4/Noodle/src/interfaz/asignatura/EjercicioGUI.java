@@ -86,10 +86,13 @@ public class EjercicioGUI extends NuestroPanel{
 	 * Método que actualiza el panel
 	 */
 	public void refreshPanel(){
+		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
+		System.out.println("Out: " + this.ejercicio.getFechaIni() + " Fin: " + this.ejercicio.getFechaFin());
+		this.derecha = new EjercicioMenuDer(this.frame, this.ejercicio);
 		this.remove(this.scroll);
-		this.panel = new PreguntasPanel(frame, this.ejercicio);
 		this.scroll = new JScrollPane(this.panel);
 		this.add(this.scroll, BorderLayout.CENTER);
+		this.add(this.derecha, BorderLayout.EAST);
 	}
 
 }

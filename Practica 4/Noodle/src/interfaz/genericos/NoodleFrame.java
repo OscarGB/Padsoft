@@ -441,6 +441,7 @@ public class NoodleFrame extends JFrame{
 			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio);
 		}
 		else{
+			this.ejercicioGUI.refreshPanel();
 			this.ejercicioGUI.setAnterior(anterior);
 		}
 		//this.ejercicioGUI.refreshPanel();

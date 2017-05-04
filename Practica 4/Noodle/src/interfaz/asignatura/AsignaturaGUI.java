@@ -118,6 +118,10 @@ public class AsignaturaGUI extends NuestroPanel{
 		this.remove(this.arbol);
 		this.arbol = new TreeContent(frame, asignatura);
 		this.add(this.arbol, BorderLayout.CENTER);
+		this.list = new AsignaturaMenuDer(frame, asignatura, null);
+		this.add(list, BorderLayout.EAST);
+		this.izq = new AsignaturaMenuIzq(frame, asignatura);
+		this.add(izq, BorderLayout.WEST);
 	}
 	
 	/**
