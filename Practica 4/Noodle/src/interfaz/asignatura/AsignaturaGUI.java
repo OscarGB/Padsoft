@@ -107,7 +107,7 @@ public class AsignaturaGUI extends NuestroPanel{
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showAsignatura(true, this.asignatura);
+		this.frame.showAsignatura(false, this.asignatura);
 	}
 	
 	/**

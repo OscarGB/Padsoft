@@ -68,7 +68,7 @@ public class EjercicioGUI extends NuestroPanel{
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showEjercicioGUI(true, this.ejercicio);
+		this.frame.showEjercicioGUI(false, this.ejercicio);
 	}
 	
 	/**

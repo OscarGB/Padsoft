@@ -16,6 +16,7 @@ import javax.swing.tree.TreeSelectionModel;
 import asignatura.Asignatura;
 import contenido.Apuntes;
 import contenido.Contenido;
+import contenido.Ejercicio;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
@@ -38,6 +39,9 @@ class SelectionListener implements TreeSelectionListener {
 	    else if (selectedNode.isLeaf()) {
 	    	if(obj instanceof Apuntes){
 	    		NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
+	    	}
+	    	if(obj instanceof Ejercicio){
+	    		NoodleFrame.getInstance().showEjercicioGUI(true, (Ejercicio)obj);
 	    	}
 	    	
 	    }
