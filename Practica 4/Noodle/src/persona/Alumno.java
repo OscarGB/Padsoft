@@ -47,7 +47,7 @@ public class Alumno extends Persona implements Serializable{
 	 * @param password
 	 * @param email
 	 */
-	private Alumno(String nia, String nombre, String password, String email){
+	public Alumno(String nia, String nombre, String password, String email){
 		super(nia, nombre, password);
 		this.asignaturas = new ArrayList<Asignatura>();
 		this.estadisticas = new ArrayList<EstadisticasAlumno>();

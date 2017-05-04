@@ -3,21 +3,18 @@ package interfaz.asignatura;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import asignatura.Asignatura;
+import contenido.Ejercicio;
+import contenido.Pregunta;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
-import plataforma.Plataforma;
 
 /**
  * Clase RatonList
@@ -25,19 +22,19 @@ import plataforma.Plataforma;
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-class AlumnoList extends MouseAdapter{
+class PreguntaList extends MouseAdapter{
 	
 	// Variables
 	
 	/**
 	 * Panel al que pertenece
 	 */
-	Alumnos panel;
+	PreguntasPanel panel;
 	
 	/**
-	 * Alumno al que hace referencia
+	 * Pregunta a la que hace referencia
 	 */
-	Alumno alumno;
+	Pregunta pregunta;
 	
 	// Creador
 	
@@ -47,9 +44,9 @@ class AlumnoList extends MouseAdapter{
 	 * @param panel
 	 * @param asig
 	 */
-	AlumnoList(Alumnos panel, Alumno alumno){
+	PreguntaList(PreguntasPanel panel, Pregunta pregunta){
 		this.panel = panel;
-		this.alumno = alumno;
+		this.pregunta = pregunta;
 	}
 	
 	// Métodos
@@ -59,13 +56,14 @@ class AlumnoList extends MouseAdapter{
 	  * @param e
 	  */
 	public void mouseClicked(MouseEvent e) {
-		 this.panel.listenerListaAlumnos(this.alumno);
+		 this.panel.listenerPreguntas(this.pregunta);
 	 } 
 }
 
-public class Alumnos extends JPanel{
+public class PreguntasPanel extends JPanel{
+
 	/**
-	 * ID del panel del panel
+	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -75,70 +73,64 @@ public class Alumnos extends JPanel{
 	private NoodleFrame frame;
 	
 	/**
-	 * Array de alumnos
+	 * Array de preguntas
 	 */
-	private ArrayList<Alumno> alumnos;
-	
-	/**
-	 * Asignatura
-	 */
-	private Asignatura asignatura;
+	private ArrayList<Pregunta> preguntas;
 	
 	/**
 	 * Array de labels
 	 */
 	private ArrayList<JLabel> labels;
-
-	/**
-	 * Constructor de Alumnos (subpanel)
-	 * @param frame
-	 */
 	
-	public Alumnos(NoodleFrame frame, Asignatura asignatura){
+	/**
+	 * Ejercicio
+	 */
+	private Ejercicio ejercicio;
+	
+	/**
+	 * Constructor de preugntas panel
+	 * @param frame
+	 * @param ejercicio
+	 */
+	public PreguntasPanel(NoodleFrame frame, Ejercicio ejercicio){
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
-		this.asignatura = asignatura;
-		this.alumnos = asignatura.getAlumnos();
+		this.ejercicio = ejercicio;
 		this.labels = new ArrayList<JLabel>();
+		this.preguntas = ejercicio.getPreguntas();
 		
-		Collections.sort(this.alumnos, new Comparator<Alumno>(){
-			
-			@Override
-			public int compare(Alumno a1, Alumno a2){
-				return a1.getNombre().compareTo(a2.getNombre());
-			}
-			
-		});
+		System.out.println(this.preguntas);
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
 		
-		int size = this.alumnos.size();
+		int size = this.preguntas.size();
+		
 		if(size == 0){
-			JLabel label = new JLabel("No hay alumnos en la asignatura");
+			JLabel label = new JLabel("No hay preguntas en el ejercicio");
 			this.labels.add(label);
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
 		}
 		if(size > 0){
-			JLabel label = new JLabel("Selecciona un alumno para acceder a estadísticas y gestión.");
+			JLabel label = new JLabel("Selecciona un ejercicio.");
 			labels.add(label);
 			label.setFont(new Font("Arial", Font.ITALIC, 15));
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, this);
-
+			
 			//Añadimos un MouseListener para poder clicar en los labels de las
 			//asignaturas
-			labels.get(0).addMouseListener(new AlumnoList(this, alumnos.get(0)));
+			labels.get(0).addMouseListener(new PreguntaList(this, preguntas.get(0)));
 			for(int i = 1, j = 0; j < size; i++, j++){
-				label = new JLabel(alumnos.get(j).getNombre() + "      Media: " + alumnos.get(j).getMediaAsignatura(this.asignatura));
+				label = new JLabel(preguntas.get(j).getEnunciado());
 				JLabel previous = labels.get(i-1);
 				labels.add(label);
 				spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 				spr.putConstraint(SpringLayout.NORTH, label, 50, SpringLayout.NORTH, previous);
 				//Añadimos un MouseListener para poder clicar en los labels de las
 				//asignaturas
-				labels.get(i).addMouseListener(new AlumnoList(this, alumnos.get(j)));
+				labels.get(i).addMouseListener(new PreguntaList(this, preguntas.get(j)));
 				label.setFont(new Font("Arial", Font.BOLD, 20));
 			}
 		}
@@ -147,17 +139,16 @@ public class Alumnos extends JPanel{
 			this.add(lab);
 		}
 		
-		this.setPreferredSize(new Dimension(300, (labels.get(0).getHeight() + 50)*(size + 1)));
-		
+		this.setPreferredSize(new Dimension(500, (labels.get(0).getHeight() + 50)*(size + 1)));
 		
 	}
 	
 	/**
-	 * Listener para cuando se clique en un alumno
-	 * @param asig
+	 * Listener para cuando se clique en una pregunta
+	 * @param pregunta
 	 */
-	public void listenerListaAlumnos(Alumno alumno){
-		System.out.println("Se ha seleccionado el alumno: "+alumno);
+	public void listenerPreguntas(Pregunta pregunta){
+		System.out.println("Se ha seleccionado la pregunta: "+pregunta);
 	}
-	
+
 }
