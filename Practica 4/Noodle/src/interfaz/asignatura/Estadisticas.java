@@ -11,6 +11,8 @@ import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import persona.Alumno;
+import persona.Profesor;
+import plataforma.Plataforma;
 
 /**
  * Clase Estadisticas
@@ -82,7 +84,9 @@ public class Estadisticas extends NuestroPanel {
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
-		this.add(this.panelDer, BorderLayout.EAST);
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.add(this.panelDer, BorderLayout.EAST);
+		}
 	}
 
 }

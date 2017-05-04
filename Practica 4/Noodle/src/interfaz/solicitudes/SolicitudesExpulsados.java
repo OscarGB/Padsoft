@@ -29,7 +29,7 @@ public class SolicitudesExpulsados extends NuestroPanel {
 	/**
 	 * Panel con las solicitudes
 	 */
-	private MisSolicitudes solis;
+	private SolicitudesExpulsadosPanel solis;
 	
 	/**
 	 * Panel de scrolling
@@ -48,13 +48,16 @@ public class SolicitudesExpulsados extends NuestroPanel {
 	 */
 	public SolicitudesExpulsados(NuestroPanel anterior, NoodleFrame frame, Asignatura asig){
 		super(anterior, frame);
+		
+		this.asig = asig;
+		
 		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
 		
 		this.setLayout(new BorderLayout());
 
 		this.menu = new Menu(frame);
-		this.solis = new MisSolicitudes();
+		this.solis = new SolicitudesExpulsadosPanel(this.asig, this);
 		this.scroll = new JScrollPane(this.solis);
 		
 		menu.setPreferredSize(new Dimension(10,10));
@@ -68,6 +71,10 @@ public class SolicitudesExpulsados extends NuestroPanel {
 
 	}
 	
+	public Asignatura getAsignatura(){
+		return this.asig;
+	}
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
@@ -78,9 +85,10 @@ public class SolicitudesExpulsados extends NuestroPanel {
 	/**
 	 * Método que actualiza el panel
 	 */
-	public void refreshPanel(){
+	public void refreshPanel(Asignatura asig){
+		this.asig = asig;
 		this.remove(this.scroll);
-		this.solis = new MisSolicitudes();
+		this.solis = new SolicitudesExpulsadosPanel(this.asig, this);
 		this.scroll = new JScrollPane(this.solis);
 		this.add(this.scroll, BorderLayout.CENTER);
 	}

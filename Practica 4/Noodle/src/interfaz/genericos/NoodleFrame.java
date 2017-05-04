@@ -46,6 +46,7 @@ public class NoodleFrame extends JFrame{
 	private EjercicioGUI ejercicioGUI = null;
 	private ElegirTipoPregunta elegirTipoPregunta;
 	private Estadisticas estadisticas;
+	private SolicitudesExpulsados solicitudesExpulsados;
 	
 	private static NoodleFrame frame;
 	
@@ -502,7 +503,23 @@ public class NoodleFrame extends JFrame{
 	 * @param asig
 	 */
 	public void showExpulsados(boolean back, Asignatura asig) {
-		System.out.println("Se deberia mostrar el panel de expulsados");
+
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.solicitudesExpulsados == null){
+			this.solicitudesExpulsados = new SolicitudesExpulsados(anterior, this, asig);			
+		}
+		else{
+			this.solicitudesExpulsados.setAnterior(anterior);
+		}
+		
+		this.solicitudesExpulsados.refreshPanel(asig);
+		
+		this.getContentPane().add(this.solicitudesExpulsados);
+		
+		this.fin(700,500, this.solicitudesExpulsados);
 		
 	}
 	
