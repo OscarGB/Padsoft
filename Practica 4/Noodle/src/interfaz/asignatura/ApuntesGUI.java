@@ -15,6 +15,12 @@ import interfaz.genericos.NuestroPanel;
 import persona.Profesor;
 import plataforma.Plataforma;
 
+/**
+ * Clase ApuntesGUI
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ApuntesGUI extends NuestroPanel{
 
 	/**
