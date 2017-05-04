@@ -12,6 +12,12 @@ import interfaz.genericos.NuestroPanel;
 import persona.Profesor;
 import plataforma.Plataforma;
 
+/**
+ * Clase AsignaturaGUI
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 public class AsignaturaGUI extends NuestroPanel{
 	
 	// Variables
@@ -46,6 +52,11 @@ public class AsignaturaGUI extends NuestroPanel{
 	 */
 	private AsignaturaMenuIzq izq;
 	
+	/**
+	 * Menu lateral para el alumno
+	 */
+	private AsigAlumnoMenuIzq izqAlu;
+	
 	//Constructor
 
 	/**
@@ -74,8 +85,11 @@ public class AsignaturaGUI extends NuestroPanel{
 			this.add(this.list, BorderLayout.EAST);
 			this.add(this.izq, BorderLayout.WEST);
 		}
-		
-		
+		else{
+			this.izqAlu = new AsigAlumnoMenuIzq(frame, asignatura);
+			this.add(this.izqAlu, BorderLayout.WEST);
+		}
+
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.arbol, BorderLayout.CENTER);

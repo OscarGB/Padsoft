@@ -15,7 +15,7 @@ import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
- * Clase ContenidoMenuDer
+ * Clase AsignaturaMenuIzq
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
@@ -60,9 +60,9 @@ public class AsignaturaMenuIzq extends JPanel {
 
 	
 	/**
-	 * Creador de ContenidoMenuDer
+	 * Creador de AsignaturaMenuIzq
 	 * @param frame
-	 * @param con
+	 * @param asignatura
 	 */
 	public AsignaturaMenuIzq(NoodleFrame frame, Asignatura asignatura){
 		this.asignatura = asignatura;

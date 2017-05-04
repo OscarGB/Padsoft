@@ -3,6 +3,9 @@ package contenido;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import asignatura.Asignatura;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
@@ -337,13 +340,21 @@ public class Ejercicio extends Contenido implements Serializable{
 	}
 
 	/**
-	 * Get preguntas
+	 * Get preguntas que te las desordena en caso de ser alumno y estar activada a aleatoriedad
 	 * @return preguntas
 	 */
 	public ArrayList<Pregunta> getPreguntas() {
-		return preguntas;
+		if(Plataforma.loggedAs() instanceof Alumno){
+			if(this.aleatorio == true){
+				long seed = System.nanoTime();
+				ArrayList<Pregunta> aux = (ArrayList<Pregunta>) this.preguntas.clone();
+				Collections.shuffle(aux, new Random(seed));
+				return (ArrayList<Pregunta>) aux;
+			}
+		}
+		return this.preguntas;
 	}
-
+	
 	/**
 	 * Get nota media
 	 * @return notaMedia
