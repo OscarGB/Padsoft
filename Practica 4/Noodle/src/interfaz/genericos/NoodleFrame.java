@@ -1,30 +1,17 @@
 package interfaz.genericos;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Iterator;
 
 import javax.swing.*;
 
 import asignatura.Asignatura;
-import contenido.Apuntes;
-import contenido.Ejercicio;
-import contenido.Pregunta;
-import contenido.PreguntaRespuestaSimple;
-import contenido.Tema;
-import interfaz.asignatura.AlumnosAsignatura;
-import interfaz.asignatura.ApuntesGUI;
-import interfaz.asignatura.ApuntesListener;
-import interfaz.asignatura.AsignaturaGUI;
-import interfaz.asignatura.AsignaturaNoMatriculada;
-import interfaz.asignatura.EjercicioGUI;
-import interfaz.asignatura.ListaAsignaturas;
-import interfaz.asignatura.SubirApuntes;
-import interfaz.inicios.InicioAlumno;
-import interfaz.inicios.InicioProfesor;
-import interfaz.login.LoginListener;
-import interfaz.login.PanelLogin;
-import interfaz.solicitudes.SolicitudesAlumno;
-import interfaz.solicitudes.SolicitudesProfesor;
+import contenido.*;
+import interfaz.asignatura.*;
+import interfaz.inicios.*;
+import interfaz.login.*;
+import interfaz.solicitudes.*;
 import persona.Alumno;
 import plataforma.Plataforma;
 
@@ -57,6 +44,8 @@ public class NoodleFrame extends JFrame{
 	private SubirApuntes subirApuntes = null;
 	private AlumnosAsignatura alumnosAsignatura = null;
 	private EjercicioGUI ejercicioGUI = null;
+	private ElegirTipoPregunta elegirTipoPregunta;
+	private Estadisticas estadisticas;
 	
 	private static NoodleFrame frame;
 	
@@ -440,6 +429,7 @@ public class NoodleFrame extends JFrame{
 	/**
 	 * Muestra el Panel de ejercicio
 	 * @param back, true si se quiere guardar el panel anterior
+	 * @param ejercicio
 	 */
 	public void showEjercicioGUI(boolean back, Ejercicio ejercicio){
 		
@@ -458,6 +448,53 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.ejercicioGUI);
 		
 		this.fin(700,500, this.ejercicioGUI);
+	}
+	
+	/**
+	 * Muestra el Panel para elegir el tipo de preguntas
+	 * @param back
+	 * @param ejercicio
+	 */
+	public void showElegirTipoPregunta(boolean back, Ejercicio ejercicio){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.elegirTipoPregunta == null){
+			this.elegirTipoPregunta = new ElegirTipoPregunta(anterior, this, ejercicio);
+		}
+		else{
+			this.elegirTipoPregunta.setAnterior(anterior);
+		}
+		//this.ejercicioGUI.refreshPanel();
+		
+		this.getContentPane().add(this.elegirTipoPregunta);
+		
+		this.fin(700,500, this.elegirTipoPregunta);
+	}
+	
+	/**
+	 * Muestra el panel de las estadisticas de un alumno
+	 * @param back
+	 * @param al
+	 * @param asig
+	 */
+	public void showEstadisticas(boolean back, Alumno al, Asignatura asig){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.estadisticas == null){
+			this.estadisticas = new Estadisticas(anterior, this, al, asig);
+		}
+		else{
+			this.estadisticas.setAnterior(anterior);
+		}
+		//this.ejercicioGUI.refreshPanel();
+		
+		this.getContentPane().add(this.estadisticas);
+		
+		this.fin(700,500, this.estadisticas);
 	}
 	
 }

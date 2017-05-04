@@ -3,14 +3,23 @@ package interfaz.asignatura;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
+import contenido.Pregunta;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
+/**
+ * Clase EjercicioGUI
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class EjercicioGUI extends NuestroPanel{
 	
 	/**

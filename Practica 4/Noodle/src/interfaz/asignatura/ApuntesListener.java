@@ -9,7 +9,7 @@ import persona.Profesor;
 import plataforma.Plataforma;
 
 /**
- * Clase LoginListener
+ * Clase ApuntesListener
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
@@ -31,7 +31,7 @@ public class ApuntesListener implements ActionListener{
 	//Constructor
 	
 	/**
-	 * Constructor de LoginListener
+	 * Constructor de ApuntesListener
 	 * @param panel
 	 */
 	public ApuntesListener(ApuntesForm panel, NoodleFrame frame){
