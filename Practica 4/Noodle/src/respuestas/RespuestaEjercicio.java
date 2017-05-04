@@ -90,6 +90,6 @@ public class RespuestaEjercicio implements Serializable {
 	 */
 	@Override
 	public String toString(){
-		return "Respuestas al ejercicio " + this.ej.getTitulo() + "\n\tRespuestas: " + this.respuestas + "\nNota: " + this.nota;
+		return "Respuestas al ejercicio " + this.ej.getTitulo() + /*"\n\tRespuestas: " + this.respuestas + "\n*/" Nota: " + this.nota;
 	}
 }

@@ -91,10 +91,13 @@ public class Alumno extends Persona implements Serializable{
 	 * @return
 	 */
 	public float getMediaAsignatura(Asignatura asignatura){
-		float media = 0f;
+		float media = -1f;
 		for(EstadisticasAlumno est: this.getEstadisticas()){
 			if(est.getAsignatura().equals(asignatura)){
-				media += est.getNotaMedia();
+				if(est.getRespuestas().size() == 0){
+					return media;
+				}
+				media = est.getNotaMedia();
 			}
 		}
 		return media;

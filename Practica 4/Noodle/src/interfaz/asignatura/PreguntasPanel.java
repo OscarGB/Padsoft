@@ -17,7 +17,7 @@ import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 
 /**
- * Clase RatonList
+ * Clase PreguntaList
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
@@ -40,9 +40,8 @@ class PreguntaList extends MouseAdapter{
 	
 	/**
 	 * Constructor de RatonList
-	 * @param a
 	 * @param panel
-	 * @param asig
+	 * @param pregunta
 	 */
 	PreguntaList(PreguntasPanel panel, Pregunta pregunta){
 		this.panel = panel;
@@ -98,8 +97,6 @@ public class PreguntasPanel extends JPanel{
 		this.ejercicio = ejercicio;
 		this.labels = new ArrayList<JLabel>();
 		this.preguntas = ejercicio.getPreguntas();
-		
-		System.out.println(this.preguntas);
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);

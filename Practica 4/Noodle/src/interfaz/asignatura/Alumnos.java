@@ -3,7 +3,6 @@ package interfaz.asignatura;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -131,7 +130,8 @@ public class Alumnos extends JPanel{
 			//asignaturas
 			labels.get(0).addMouseListener(new AlumnoList(this, alumnos.get(0)));
 			for(int i = 1, j = 0; j < size; i++, j++){
-				label = new JLabel(alumnos.get(j).getNombre() + "      Media: " + alumnos.get(j).getMediaAsignatura(this.asignatura));
+				float aux = alumnos.get(j).getMediaAsignatura(this.asignatura);
+				label = new JLabel(alumnos.get(j).getNombre() + "      Media: " + ((aux >= 0)?aux:"No evaluado"));
 				JLabel previous = labels.get(i-1);
 				labels.add(label);
 				spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
@@ -157,7 +157,7 @@ public class Alumnos extends JPanel{
 	 * @param asig
 	 */
 	public void listenerListaAlumnos(Alumno alumno){
-		System.out.println("Se ha seleccionado el alumno: "+alumno);
+		this.frame.showEstadisticas(true, alumno, this.asignatura);
 	}
 	
 }
