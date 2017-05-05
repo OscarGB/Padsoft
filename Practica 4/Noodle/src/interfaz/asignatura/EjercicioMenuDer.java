@@ -138,7 +138,7 @@ public class EjercicioMenuDer extends JPanel {
 		
 		UtilDateModel model = new UtilDateModel();
 		if (this.ejercicio != null){
-			model.setDate(this.ejercicio.getFechaIni().getYear(), this.ejercicio.getFechaIni().getMonth().getValue(), this.ejercicio.getFechaIni().getDayOfMonth());
+			model.setDate(this.ejercicio.getFechaIni().getYear(), this.ejercicio.getFechaIni().getMonthValue()-1, this.ejercicio.getFechaIni().getDayOfMonth());
 		}
 		JDatePanelImpl datePanel = new JDatePanelImpl(model);
 		this.fechaIni = new JDatePickerImpl(datePanel, null);
@@ -147,7 +147,8 @@ public class EjercicioMenuDer extends JPanel {
 		
 		model = new UtilDateModel();
 		if (this.ejercicio != null){
-			model.setDate(this.ejercicio.getFechaFin().getYear(), this.ejercicio.getFechaFin().getMonth().getValue(), this.ejercicio.getFechaFin().getDayOfMonth());
+			model = new UtilDateModel();
+			model.setDate(this.ejercicio.getFechaFin().getYear(), this.ejercicio.getFechaFin().getMonthValue()-1, this.ejercicio.getFechaFin().getDayOfMonth());
 		} else{
 			model.setDate(model.getYear(), model.getMonth(), model.getDay() + 1);
 		}
@@ -217,6 +218,8 @@ public class EjercicioMenuDer extends JPanel {
 		
 		this.borrar.addActionListener(list);
 		this.guardar.addActionListener(list);
+		this.pregunta.addActionListener(list);
+		this.cancelar.addActionListener(list);
 		
 		this.setPreferredSize(new Dimension(250, 400));
 		this.repaint();

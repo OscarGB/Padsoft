@@ -11,6 +11,7 @@ import contenido.Ejercicio;
 import contenido.EstadoEjercicio;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
+import plataforma.Plataforma;
 
 public class EjercicioMenuDerListener implements ActionListener {
 
@@ -76,13 +77,11 @@ public class EjercicioMenuDerListener implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Fechas inválidas"+nl+"Se emplearán fechas por defecto", "Error de fechas",JOptionPane.ERROR_MESSAGE);
 					ini = ejercicio.getFechaIniDefecto();
 					fin = ejercicio.getFechaFinDefecto();
-				}
-				else {
 					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
 					this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				}
 			}
-			else if (ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
+			else if (ejercicio.getEstado() == EstadoEjercicio.ABIERTO || ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
 				JOptionPane.showMessageDialog(null, "El ejercicio no puede ser modificado", "Ejercicio no modificable",JOptionPane.ERROR_MESSAGE);
 			}
 			else{
@@ -100,13 +99,17 @@ public class EjercicioMenuDerListener implements ActionListener {
 				
 				this.ejercicio.setAleatorio(aleatorio);
 				this.ejercicio.setPeso(peso);
-				this.ejercicio.setFechaIni(ini);
 				this.ejercicio.setFechaFin(fin);
+				this.ejercicio.setFechaIni(ini);
+
 				
 				
 				this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				
 			}
+		}
+		else if(arg0.getActionCommand().equals("pregunta")){
+			this.frame.showElegirTipoPregunta(true, this.ejercicio);
 		}
 		
 	}
