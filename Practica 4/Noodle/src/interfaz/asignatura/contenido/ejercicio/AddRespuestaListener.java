@@ -20,6 +20,11 @@ public class AddRespuestaListener implements ActionListener {
 	AddRespuesta panel;
 	
 	/**
+	 * Panel generico
+	 */
+	PreguntaGenerico gen;
+	
+	/**
 	 * Pregunta
 	 */
 	Pregunta pregunta;
@@ -28,14 +33,17 @@ public class AddRespuestaListener implements ActionListener {
 	 * Constructor de AddRespuestaListener
 	 * @param pregunta
 	 */
-	public AddRespuestaListener(Pregunta pregunta){
+	public AddRespuestaListener(Pregunta pregunta, PreguntaGenerico gen,AddRespuesta panel){
 		this.pregunta = pregunta;
+		this.panel = panel;
+		this.gen = gen;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("guardar")){
-			System.out.println(this.panel.getRespuesta());
+			gen.addOpcion(this.panel.getRespuesta());
+			this.panel.cleanRespuesta();
 		}
 	}
 

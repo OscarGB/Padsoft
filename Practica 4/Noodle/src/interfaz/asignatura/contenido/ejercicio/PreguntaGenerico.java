@@ -29,7 +29,7 @@ public class PreguntaGenerico extends NuestroPanel{
 	/**
 	 * Menu de la derecha
 	 */
-//	protected PreguntaMenuDer derecha;
+	protected PreguntaMenuDer derecha;
 	
 	/**
 	 * Menu sur
@@ -66,26 +66,27 @@ public class PreguntaGenerico extends NuestroPanel{
 		
 		this.setLayout(new BorderLayout());
 		
-//		this.derecha = new PreguntaMenuDer();
+		this.derecha = new PreguntaMenuDer(frame, ejercicio, pregunta);
 		
-		this.sur = new AddRespuesta(this.pregunta);
+		this.sur = new AddRespuesta(this.pregunta, this);
 		
-//		this.add(this.derecha, BorderLayout.EAST);
+		this.add(this.derecha, BorderLayout.EAST);
 		this.add(this.sur, BorderLayout.SOUTH);
 		
 	}
 	
 	// Métodos
 	
-	public void refreshPanel(Pregunta pregunta){
+	public void refreshPanel(Pregunta pregunta, Ejercicio ejer){
 		this.pregunta = pregunta;
+		this.ejercicio = ejer;
 		
-//		this.remove(this.derecha);
-//		this.derecha = new PreguntaMenuDer());
-//		this.add(this.derecha, BorderLayout.EAST);
+		this.remove(this.derecha);
+		this.derecha = new PreguntaMenuDer(this.frame, this.ejercicio, this.pregunta);
+		this.add(this.derecha, BorderLayout.EAST);
 		
 		this.remove(this.sur);
-		this.sur = new AddRespuesta(this.pregunta);
+		this.sur = new AddRespuesta(this.pregunta, this);
 		this.add(this.sur, BorderLayout.EAST);
 	}
 	
@@ -101,8 +102,17 @@ public class PreguntaGenerico extends NuestroPanel{
 	 * Metodo para mostrar el menu sur
 	 * @param tema
 	 */
-	public void showLateral(){
+	public void showSur(){
 		this.sur.setVisible(true);
 	}
+	
+	/**
+	 * Método para ser sobreescrito
+	 * @param s
+	 */
+	public void addOpcion(String s){
+		return;
+	}
+	
 
 }

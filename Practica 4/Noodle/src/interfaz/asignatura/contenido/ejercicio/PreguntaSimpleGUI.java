@@ -5,7 +5,7 @@ import contenido.Pregunta;
 public class PreguntaSimpleGUI extends AddRespuesta {
 
 	public PreguntaSimpleGUI(Pregunta pregunta) {
-		super(pregunta);
+		super(pregunta, null);
 		// TODO Auto-generated constructor stub
 	}
 

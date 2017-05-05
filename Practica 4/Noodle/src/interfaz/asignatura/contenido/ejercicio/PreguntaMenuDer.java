@@ -27,16 +27,6 @@ public class PreguntaMenuDer extends JPanel {
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1619308189668563054L;
-
-	/**
-	 * Label "enunciado"
-	 */
-	private JLabel enunciado = new JLabel("Enunciado");
-	
-	/**
-	 * Lugar para introducir el enunciado
-	 */
-	private JTextField enunciadoNombre = new JTextField(20);
 	
 	/**
 	 * Label "peso"
@@ -110,7 +100,6 @@ public class PreguntaMenuDer extends JPanel {
 		if(p != null){
 			actualPeso = (int)p.getValorPregunta();
 			actualPesoFallo = (int)p.getPenalizacion();
-			this.enunciadoNombre.setText(p.getEnunciado());
 		}
 	
 		this.pesoSpinner = new JSpinner(new SpinnerNumberModel(actualPeso,0,10,1));
@@ -119,25 +108,19 @@ public class PreguntaMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.cancelar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.guardar, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.enunciado, -10, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.peso, -10, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.pesoFallo, -10, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.enunciadoNombre, 10, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.pesoSpinner, 10, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.pesoFalloSpinner, 10, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.EAST, this.peso, -10, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.EAST, this.pesoFallo, -10, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.WEST, this.pesoSpinner, 10, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.WEST, this.pesoFalloSpinner, 10, SpringLayout.HORIZONTAL_CENTER, this);
 		
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 15, SpringLayout.VERTICAL_CENTER, this);
 		spr.putConstraint(SpringLayout.SOUTH, this.pesoFallo, -15, SpringLayout.VERTICAL_CENTER, this);
 		spr.putConstraint(SpringLayout.SOUTH, this.pesoFalloSpinner, -15, SpringLayout.VERTICAL_CENTER, this);
 		spr.putConstraint(SpringLayout.SOUTH, this.peso, -30, SpringLayout.NORTH, this.pesoFallo);
 		spr.putConstraint(SpringLayout.SOUTH, this.pesoSpinner, -30, SpringLayout.NORTH, this.pesoFalloSpinner);
-		spr.putConstraint(SpringLayout.SOUTH, this.enunciado, -30, SpringLayout.NORTH, this.peso);
-		spr.putConstraint(SpringLayout.SOUTH, this.enunciadoNombre, -30, SpringLayout.NORTH, this.pesoSpinner);
 		spr.putConstraint(SpringLayout.NORTH, this.guardar, 30, SpringLayout.SOUTH, this.borrar);
 		spr.putConstraint(SpringLayout.NORTH, this.cancelar, 30, SpringLayout.SOUTH, this.guardar);
 		
-		this.add(this.enunciado);
-		this.add(this.enunciadoNombre);
 		this.add(this.peso);
 		this.add(this.pesoSpinner);
 		this.add(this.pesoFallo);

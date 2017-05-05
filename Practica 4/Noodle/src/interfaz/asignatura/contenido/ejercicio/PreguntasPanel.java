@@ -59,6 +59,12 @@ class PreguntaList extends MouseAdapter{
 	 } 
 }
 
+/**
+ * Clase PreguntasPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class PreguntasPanel extends JPanel{
 
 	/**

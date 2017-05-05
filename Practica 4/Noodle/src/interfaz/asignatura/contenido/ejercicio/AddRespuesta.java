@@ -34,6 +34,11 @@ public class AddRespuesta extends JPanel{
 	private Pregunta pregunta;
 	
 	/**
+	 * Panel padre
+	 */
+	private PreguntaGenerico panel;
+	
+	/**
 	 * Listener
 	 */
 	private AddRespuestaListener list;
@@ -42,8 +47,9 @@ public class AddRespuesta extends JPanel{
 	 * Constructor de AddRespuesta
 	 * @param ejercicio
 	 */
-	public AddRespuesta(Pregunta pregunta){
+	public AddRespuesta(Pregunta pregunta, PreguntaGenerico panel){
 		this.pregunta = pregunta;
+		this.panel = panel;
 		
 		this.setBackground(Color.WHITE);
 		
@@ -63,7 +69,7 @@ public class AddRespuesta extends JPanel{
 		
 		this.guardar.setActionCommand("guardar");
 
-		this.list= new AddRespuestaListener(this.pregunta);
+		this.list= new AddRespuestaListener(this.pregunta, this.panel, this);
 		
 		this.guardar.addActionListener(list);
 		
@@ -77,6 +83,13 @@ public class AddRespuesta extends JPanel{
 	 */
 	public String getRespuesta(){
 		return this.respuesta.getText();
+	}
+	
+	/**
+	 * Método para limpiar el Texto
+	 */
+	public void cleanRespuesta(){
+		this.respuesta.setText("");
 	}
 	
 }
