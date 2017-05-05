@@ -241,15 +241,15 @@ public class NoodleFrame extends JFrame{
 		if(back == false){
 			anterior = null;
 		}
-//		if(this.asignaturaGUI == null){
-//			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
-//		}
-//		else{
-//			this.asignaturaGUI.refreshPanel(asignatura);
-//			this.asignaturaGUI.setAnterior(anterior);
-//		}
+		if(this.asignaturaGUI == null){
+			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+		}
+		else{
+			this.asignaturaGUI.refreshPanel(asignatura);
+			this.asignaturaGUI.setAnterior(anterior);
+		}
 		
-		this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+//		this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
 		
 		this.getContentPane().add(this.asignaturaGUI);
 		
