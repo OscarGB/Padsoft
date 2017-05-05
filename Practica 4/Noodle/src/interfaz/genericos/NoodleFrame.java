@@ -55,6 +55,7 @@ public class NoodleFrame extends JFrame{
 	private ElegirTipoPregunta elegirTipoPregunta;
 	private Estadisticas estadisticas;
 	private SolicitudesExpulsados solicitudesExpulsados;
+//	private PreguntaSimpleGUI preguntaSimpleGUI;
 	
 	private static NoodleFrame frame;
 	
