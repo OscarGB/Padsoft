@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.contenido;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

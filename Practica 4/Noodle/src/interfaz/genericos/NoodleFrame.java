@@ -9,6 +9,14 @@ import javax.swing.*;
 import asignatura.Asignatura;
 import contenido.*;
 import interfaz.asignatura.*;
+import interfaz.asignatura.asignaturaGUI.AsignaturaGUI;
+import interfaz.asignatura.asignaturaGUI.AsignaturaNoMatriculada;
+import interfaz.asignatura.asignaturaGUI.estadisticas.Estadisticas;
+import interfaz.asignatura.contenido.apuntes.ApuntesGUI;
+import interfaz.asignatura.contenido.apuntes.ApuntesListener;
+import interfaz.asignatura.contenido.apuntes.SubirApuntes;
+import interfaz.asignatura.contenido.ejercicio.EjercicioGUI;
+import interfaz.asignatura.contenido.ejercicio.ElegirTipoPregunta;
 import interfaz.inicios.*;
 import interfaz.login.*;
 import interfaz.solicitudes.*;
@@ -58,29 +66,29 @@ public class NoodleFrame extends JFrame{
 		NoodleFrame.frame = this;
 		Plataforma.openPlataforma();
 		Plataforma.logout();
-//		this.showPanelLogin();
-		
-		//--------------------
-		Plataforma.login("1", "contraseniaprofe");
-		Asignatura nacho = new Asignatura("Nacho");
-		Plataforma.addAsignatura(nacho);
-		Tema tema1 = new Tema("Tema 1", true, nacho);
-		Ejercicio ej = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(1), tema1,"Ejercicio1", true, nacho);
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 10", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 5", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 6", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 7", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 1", true, 1, true));
-		
-		Plataforma.logout();
-		
-//		this.showPanelLogin();
-		this.showEjercicioGUI(false, ej, tema1);
-		//--------------------
+		this.showPanelLogin();
+//		
+//		//--------------------
+//		Plataforma.login("1", "contraseniaprofe");
+//		Asignatura nacho = new Asignatura("Nacho");
+//		Plataforma.addAsignatura(nacho);
+//		Tema tema1 = new Tema("Tema 1", true, nacho);
+//		Ejercicio ej = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(1), tema1,"Ejercicio1", true, nacho);
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 10", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 5", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 6", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 7", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
+//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 1", true, 1, true));
+//		
+//		Plataforma.logout();
+//		
+////		this.showPanelLogin();
+//		this.showEjercicioGUI(false, ej, tema1);
+//		//--------------------
 	
 	}
 	

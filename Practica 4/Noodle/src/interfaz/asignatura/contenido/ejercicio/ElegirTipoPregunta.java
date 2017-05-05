@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.contenido.ejercicio;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -66,7 +66,7 @@ public class ElegirTipoPregunta extends NuestroPanel {
 			boton.setActionCommand(boton.getText());
 		}
 		
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.botones[2], 0, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.VERTICAL_CENTER, this.botones[2], 0, SpringLayout.VERTICAL_CENTER, this);
 		spr.putConstraint(SpringLayout.SOUTH, this.botones[1], -20, SpringLayout.NORTH, this.botones[2]);
 		spr.putConstraint(SpringLayout.SOUTH, this.botones[0], -20, SpringLayout.NORTH, this.botones[1]);
 		spr.putConstraint(SpringLayout.NORTH, this.botones[3], 20, SpringLayout.SOUTH, this.botones[2]);

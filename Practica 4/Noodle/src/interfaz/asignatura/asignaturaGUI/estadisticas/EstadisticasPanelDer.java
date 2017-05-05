@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.asignaturaGUI.estadisticas;
 
 import java.awt.Color;
 import java.awt.Dimension;

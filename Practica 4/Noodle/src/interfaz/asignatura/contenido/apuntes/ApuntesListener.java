@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.contenido.apuntes;
 
 import java.awt.event.*;
 

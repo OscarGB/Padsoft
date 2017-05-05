@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.asignaturaGUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

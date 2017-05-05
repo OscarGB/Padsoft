@@ -1,4 +1,4 @@
-package interfaz.asignatura;
+package interfaz.asignatura.contenido.apuntes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import asignatura.Asignatura;
 import contenido.Apuntes;
+import interfaz.asignatura.contenido.ContenidoMenuDer;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
