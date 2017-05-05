@@ -122,6 +122,7 @@ public class AsignaturaGUI extends NuestroPanel{
 			this.add(list, BorderLayout.EAST);
 			this.izq = new AsignaturaMenuIzq(frame, asignatura);
 			this.add(izq, BorderLayout.WEST);
+			this.escondeLateral();
 		}else{
 			this.remove(this.izqAlu);
 			this.izqAlu = new AsigAlumnoMenuIzq(frame, asignatura);

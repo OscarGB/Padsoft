@@ -389,6 +389,8 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.subirApuntes.setAnterior(anterior);
+			this.subirApuntes.refreshPanel(asignatura, tema, apuntes);
+			this.subirApuntes.addListener(new ApuntesListener(this.subirApuntes.getForm(), this));
 		}
 		
 		this.getContentPane().add(this.subirApuntes);

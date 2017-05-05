@@ -37,6 +37,7 @@ class SelectionListener implements TreeSelectionListener {
 	    if(obj instanceof Tema){
 	    	if(Plataforma.loggedAs() instanceof Profesor){
 		    	AsignaturaGUI padre = NoodleFrame.getInstance().getAsignaturaGUI();
+		    	System.out.println(obj);
 		    	padre.showLateral((Tema) obj);
 	    	}
 	    }
