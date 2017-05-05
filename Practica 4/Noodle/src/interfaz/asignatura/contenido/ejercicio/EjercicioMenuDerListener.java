@@ -79,6 +79,8 @@ public class EjercicioMenuDerListener implements ActionListener {
 					fin = ejercicio.getFechaFinDefecto();
 					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
 					this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
+				} else{
+					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
 				}
 			}
 			else if (ejercicio.getEstado() == EstadoEjercicio.ABIERTO || ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
