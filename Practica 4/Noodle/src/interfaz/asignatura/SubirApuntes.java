@@ -81,6 +81,15 @@ public class SubirApuntes extends NuestroPanel {
 		return this.formulario;
 	}
 	
+	public void refreshPanel(Asignatura asig, Tema tema, Apuntes apuntes){
+		this.asignatura = asig;
+		this.tema = tema;
+		
+		this.remove(this.formulario);
+		this.formulario = new ApuntesForm(this.frame, this.asignatura, this.tema, apuntes);
+		this.add(this.formulario, BorderLayout.CENTER);
+	}
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */

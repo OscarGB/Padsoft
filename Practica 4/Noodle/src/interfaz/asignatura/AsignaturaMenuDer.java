@@ -135,6 +135,7 @@ public class AsignaturaMenuDer extends JPanel {
 		this.tema = tema;
 		if(tema == null){
 			System.out.println("ASDFASDF");
+			return;
 		}
 		this.list.listenerSetTema(tema);
 	}

@@ -115,15 +115,40 @@ public class AsignaturaGUI extends NuestroPanel{
 	 */
 	public void refreshPanel(Asignatura asignatura){
 		this.asignatura = asignatura;
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.remove(this.list);
+			this.remove(this.izq);
+			this.list = new AsignaturaMenuDer(frame, asignatura, null);
+			this.add(list, BorderLayout.EAST);
+			this.izq = new AsignaturaMenuIzq(frame, asignatura);
+			this.add(izq, BorderLayout.WEST);
+			this.escondeLateral();
+		}else{
+			this.remove(this.izqAlu);
+			this.izqAlu = new AsigAlumnoMenuIzq(frame, asignatura);
+			this.add(this.izqAlu, BorderLayout.WEST);
+		}
 		this.remove(this.arbol);
 		this.arbol = new TreeContent(frame, asignatura);
 		this.add(this.arbol, BorderLayout.CENTER);
+<<<<<<< HEAD
 		this.remove(this.list);
 		this.list = new AsignaturaMenuDer(frame, asignatura, null);
 		this.add(list, BorderLayout.EAST);
 		this.remove(this.izq);
 		this.izq = new AsignaturaMenuIzq(frame, asignatura);
 		this.add(izq, BorderLayout.WEST);
+=======
+		
+	}
+	
+	/**
+	 * Esconde el panel lateral
+	 */
+	public void escondeLateral(){
+		this.list.setVisible(false);
+		
+>>>>>>> 6a82d965a80d860cf9dc0550240f9b1a4677bdbb
 	}
 	
 	/**

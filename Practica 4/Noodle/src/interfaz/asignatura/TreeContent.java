@@ -30,9 +30,14 @@ class SelectionListener implements TreeSelectionListener {
 	    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
 	        .getLastSelectedPathComponent();
 	    Object obj = selectedNode.getUserObject();
+	    if(selectedNode.isRoot() == true){
+	    	AsignaturaGUI padre = NoodleFrame.getInstance().getAsignaturaGUI();
+	    	padre.escondeLateral();
+	    }
 	    if(obj instanceof Tema){
 	    	if(Plataforma.loggedAs() instanceof Profesor){
 		    	AsignaturaGUI padre = NoodleFrame.getInstance().getAsignaturaGUI();
+		    	System.out.println(obj);
 		    	padre.showLateral((Tema) obj);
 	    	}
 	    }

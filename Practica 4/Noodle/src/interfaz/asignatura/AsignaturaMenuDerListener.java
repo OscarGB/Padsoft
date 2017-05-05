@@ -71,7 +71,8 @@ public class AsignaturaMenuDerListener implements ActionListener {
 			this.frame.showAsignatura(true, this.tema.getAsignatura());
 		}
 		else if(arg0.getActionCommand().equals("apuntes")){
-			frame.showSubirApuntes(true, tema.getAsignatura(), this.tema, null);
+			//TODO Null pointer exception si el tema es la raiz
+			frame.showSubirApuntes(true, this.tema.getAsignatura(), this.tema, null);
 		}
 		else if(arg0.getActionCommand().equals("ejercicio")){
 			frame.showEjercicioGUI(true, null, this.tema);

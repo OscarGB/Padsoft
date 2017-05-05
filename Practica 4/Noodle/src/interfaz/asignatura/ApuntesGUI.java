@@ -88,6 +88,11 @@ public class ApuntesGUI extends NuestroPanel{
 		this.remove(this.contenido);
 		this.contenido = new ApuntesPanel(this.apuntes);
 		this.add(this.contenido, BorderLayout.CENTER);
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.remove(this.list);
+			this.list = new ContenidoMenuDer(frame, apuntes);
+			this.add(this.list, BorderLayout.EAST);
+		}
 	}
 
 }

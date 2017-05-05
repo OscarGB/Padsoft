@@ -46,6 +46,7 @@ public class NoodleFrame extends JFrame{
 	private EjercicioGUI ejercicioGUI = null;
 	private ElegirTipoPregunta elegirTipoPregunta;
 	private Estadisticas estadisticas;
+	private SolicitudesExpulsados solicitudesExpulsados;
 	
 	private static NoodleFrame frame;
 	
@@ -235,15 +236,15 @@ public class NoodleFrame extends JFrame{
 		if(back == false){
 			anterior = null;
 		}
-//		if(this.asignaturaGUI == null){
-//			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
-//		}
-//		else{
-//			this.asignaturaGUI.refreshPanel(asignatura);
-//			this.asignaturaGUI.setAnterior(anterior);
-//		}
+		if(this.asignaturaGUI == null){
+			this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+		}
+		else{
+			this.asignaturaGUI.refreshPanel(asignatura);
+			this.asignaturaGUI.setAnterior(anterior);
+		}
 		
-		this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
+//		this.asignaturaGUI = new AsignaturaGUI(anterior, this, asignatura);
 		
 		this.getContentPane().add(this.asignaturaGUI);
 		
@@ -383,6 +384,8 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.subirApuntes.setAnterior(anterior);
+			this.subirApuntes.refreshPanel(asignatura, tema, apuntes);
+			this.subirApuntes.addListener(new ApuntesListener(this.subirApuntes.getForm(), this));
 		}
 		
 		this.getContentPane().add(this.subirApuntes);
@@ -494,6 +497,30 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.estadisticas);
 		
 		this.fin(700,500, this.estadisticas);
+	}
+
+	/**Muestra el panel con todos los alumnos expulsados
+	 * @param asig
+	 */
+	public void showExpulsados(boolean back, Asignatura asig) {
+
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.solicitudesExpulsados == null){
+			this.solicitudesExpulsados = new SolicitudesExpulsados(anterior, this, asig);			
+		}
+		else{
+			this.solicitudesExpulsados.setAnterior(anterior);
+		}
+		
+		this.solicitudesExpulsados.refreshPanel(asig);
+		
+		this.getContentPane().add(this.solicitudesExpulsados);
+		
+		this.fin(700,500, this.solicitudesExpulsados);
+		
 	}
 	
 }

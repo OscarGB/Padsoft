@@ -9,7 +9,7 @@ import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 
 /**
- * Clase ContenidoMenuDerListener
+ * Clase AsignaturaMenuIzqListener
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
@@ -32,10 +32,10 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 	AsignaturaMenuIzq panel;
 	
 	/**
-	 * Constructor de ContenidoMenuDerListener
+	 * Constructor de AsignaturaMenuIzqListener
 	 * @param frame
+	 * @param asignatura
 	 * @param asignaturaMenuIzq 
-	 * @param con
 	 */
 	public AsignaturaMenuIzqListener(NoodleFrame frame, Asignatura asignatura, AsignaturaMenuIzq asignaturaMenuIzq) {
 		this.frame = frame;

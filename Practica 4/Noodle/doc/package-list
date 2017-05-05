@@ -1,6 +1,11 @@
 asignatura
 contenido
 estadisticas
+interfaz.asignatura
+interfaz.genericos
+interfaz.inicios
+interfaz.login
+interfaz.solicitudes
 main
 persona
 plataforma
