@@ -12,11 +12,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
-
+import asignatura.Asignatura;
 import contenido.Ejercicio;
+import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
@@ -79,6 +81,11 @@ public class EjercicioMenuDer extends JPanel {
 	private JDatePickerImpl  fechaFin;
 	
 	/**
+	 * Nombre
+	 */
+	private JTextField nombre = new JTextField();
+	
+	/**
 	 * Boton de guardar
 	 */
 	private JButton guardar = new JButton("Guardar");
@@ -94,23 +101,31 @@ public class EjercicioMenuDer extends JPanel {
 	private Ejercicio ejercicio;
 	
 	/**
+	 * Tema
+	 */
+	private Tema tema;
+	
+	/**
 	 * Frame
 	 */
 	private NoodleFrame frame;
 	
 	private EjercicioMenuDerListener list;
 	
-	public EjercicioMenuDer(NoodleFrame frame, Ejercicio ejercicio){
+	public EjercicioMenuDer(NoodleFrame frame, Ejercicio ejercicio, Tema tema){
 		this.ejercicio = ejercicio;
 		this.frame = frame;
-		
+		this.tema = tema;
+				
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
 		if(this.ejercicio != null){
-			this.aleatorio.setEnabled(this.ejercicio.esAleatorio());
+			this.aleatorio.setSelected(this.ejercicio.esAleatorio());
+			this.nombre.setText(this.ejercicio.getTitulo());
+			this.nombre.setEditable(false);
 		}
 		
 	    SpinnerNumberModel m_numberSpinnerModel;
@@ -122,39 +137,38 @@ public class EjercicioMenuDer extends JPanel {
 	    pesoSpinner = new JSpinner(m_numberSpinnerModel);
 		
 		UtilDateModel model = new UtilDateModel();
-		JDatePanelImpl datePanel = new JDatePanelImpl(model);
-		this.fechaIni = new JDatePickerImpl(datePanel, null);
 		if (this.ejercicio != null){
 			model.setDate(this.ejercicio.getFechaIni().getYear(), this.ejercicio.getFechaIni().getMonth().getValue(), this.ejercicio.getFechaIni().getDayOfMonth());
-			System.out.println("Ini: "+this.ejercicio.getFechaIni() + " Fin: " + this.ejercicio.getFechaFin());
 		}
+		JDatePanelImpl datePanel = new JDatePanelImpl(model);
+		this.fechaIni = new JDatePickerImpl(datePanel, null);
+		
 		model.setSelected(true);
 		
 		model = new UtilDateModel();
-		datePanel = new JDatePanelImpl(model);
-		this.fechaFin = new JDatePickerImpl(datePanel, null);
 		if (this.ejercicio != null){
 			model.setDate(this.ejercicio.getFechaFin().getYear(), this.ejercicio.getFechaFin().getMonth().getValue(), this.ejercicio.getFechaFin().getDayOfMonth());
-			System.out.println("Ini: "+this.ejercicio.getFechaIni() + " Fin: " + this.ejercicio.getFechaFin() + "Enseñando: " + model.getDay());
 		} else{
 			model.setDate(model.getYear(), model.getMonth(), model.getDay() + 1);
 		}
-		model.setSelected(true);
+		datePanel = new JDatePanelImpl(model);
+		this.fechaFin = new JDatePickerImpl(datePanel, null);
 		
-		Dimension d = new Dimension(150, 30);
+		model.setSelected(true);		
 		
-		
-		this.borrar.setPreferredSize(d);
-		this.pregunta.setPreferredSize(d);
+		this.borrar.setPreferredSize(new Dimension(130, 30));
+		this.pregunta.setPreferredSize(new Dimension(130, 30));
 		this.guardar.setPreferredSize(new Dimension(100, 30));
 		this.cancelar.setPreferredSize(new Dimension(100, 30));
 		this.peso.setPreferredSize(new Dimension(100, 15));
 		this.aleatLabel.setPreferredSize(new Dimension(100, 15));
+		this.nombre.setPreferredSize(new Dimension(100, 20));
 		this.inicio.setPreferredSize(new Dimension(100, 15));
 		this.fin.setPreferredSize(new Dimension(100, 15));
 		
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.pregunta, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.EAST, this.nombre, 20, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.EAST, this.pregunta, 0, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.peso, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.aleatLabel,0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.WEST, this.inicio, 5, SpringLayout.WEST, this);
@@ -166,8 +180,9 @@ public class EjercicioMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.EAST, this.guardar, -10, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.WEST, this.cancelar, 10, SpringLayout.HORIZONTAL_CENTER, this);
 		
-		spr.putConstraint(SpringLayout.NORTH, this.pregunta, 0, SpringLayout.NORTH, this);
-		spr.putConstraint(SpringLayout.NORTH, this.borrar, 20, SpringLayout.SOUTH, this.pregunta);
+		spr.putConstraint(SpringLayout.NORTH, this.nombre, 0, SpringLayout.NORTH, this);
+		spr.putConstraint(SpringLayout.NORTH, this.pregunta, 20, SpringLayout.SOUTH, this.nombre);
+		spr.putConstraint(SpringLayout.NORTH, this.borrar, 20, SpringLayout.SOUTH, this.nombre);
 		spr.putConstraint(SpringLayout.NORTH, this.peso, 20, SpringLayout.SOUTH, this.borrar);
 		spr.putConstraint(SpringLayout.NORTH, this.aleatLabel, 20, SpringLayout.SOUTH, this.peso);
 		spr.putConstraint(SpringLayout.NORTH, this.inicio, 20, SpringLayout.SOUTH, this.aleatLabel);
@@ -176,8 +191,8 @@ public class EjercicioMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.NORTH, this.fechaFin, 5, SpringLayout.SOUTH, this.fin);
 		spr.putConstraint(SpringLayout.NORTH, this.aleatorio, 20, SpringLayout.SOUTH, this.peso);
 		spr.putConstraint(SpringLayout.NORTH, this.pesoSpinner, 20, SpringLayout.SOUTH, this.borrar);
-		spr.putConstraint(SpringLayout.NORTH, this.guardar, 40, SpringLayout.SOUTH, this.fechaFin);
-		spr.putConstraint(SpringLayout.NORTH, this.cancelar, 40, SpringLayout.SOUTH, this.fechaFin);
+		spr.putConstraint(SpringLayout.NORTH, this.guardar, 30, SpringLayout.SOUTH, this.fechaFin);
+		spr.putConstraint(SpringLayout.NORTH, this.cancelar, 30, SpringLayout.SOUTH, this.fechaFin);
 
 		this.add(this.pregunta);
 		this.add(this.borrar);
@@ -191,18 +206,28 @@ public class EjercicioMenuDer extends JPanel {
 		this.add(this.inicio);
 		this.add(this.fin);
 		this.add(this.cancelar);
+		this.add(this.nombre);
 		
 		this.borrar.setActionCommand("borrar");
 		this.pregunta.setActionCommand("pregunta");
 		this.guardar.setActionCommand("guardar");
 		this.cancelar.setActionCommand("cancelar");
 		
-		this.list = new EjercicioMenuDerListener(frame, ejercicio, this);
+		this.list = new EjercicioMenuDerListener(frame, ejercicio, this, tema);
 		
 		this.borrar.addActionListener(list);
 		this.guardar.addActionListener(list);
 		
 		this.setPreferredSize(new Dimension(250, 400));
+		this.repaint();
+	}
+	
+	/**
+	 * Devuelve el nombre del ejercicio
+	 * @return
+	 */
+	public String getNombre(){
+		return this.nombre.getText();
 	}
 	
 	/**

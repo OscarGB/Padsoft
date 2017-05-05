@@ -41,7 +41,7 @@ class SelectionListener implements TreeSelectionListener {
 	    		NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
 	    	}
 	    	if(obj instanceof Ejercicio){
-	    		NoodleFrame.getInstance().showEjercicioGUI(true, (Ejercicio)obj);
+	    		NoodleFrame.getInstance().showEjercicioGUI(true, (Ejercicio)obj, ((Ejercicio) obj).getPadre());
 	    	}
 	    	
 	    }
@@ -89,6 +89,7 @@ public class TreeContent extends JPanel{
 		 arbol.addTreeSelectionListener(new SelectionListener());
 		
 		JScrollPane treeView = new JScrollPane(arbol);
+		
 		
 		this.add(treeView);
 		

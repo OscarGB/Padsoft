@@ -65,25 +65,20 @@ public class NoodleFrame extends JFrame{
 		Plataforma.addAsignatura(nacho);
 		Tema tema1 = new Tema("Tema 1", true, nacho);
 		Ejercicio ej = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(1), tema1,"Ejercicio1", true, nacho);
+		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 10", true, 1, true));
+		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 5", true, 1, true));
+		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 6", true, 1, true));
+		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 7", true, 1, true));
 		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
 		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
 		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
 		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-
-		
-		for(Integer i = 2; i < 20; i++){
-			nacho.addAlumno(new Alumno(i.toString(), "nacho", i.toString(), "nacho@email.com"));
-
-		}
+		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 1", true, 1, true));
 		
 		Plataforma.logout();
 		
-		this.showEjercicioGUI(true, ej);
+//		this.showPanelLogin();
+		this.showEjercicioGUI(false, ej, tema1);
 		//--------------------
 	
 	}
@@ -431,16 +426,19 @@ public class NoodleFrame extends JFrame{
 	 * @param back, true si se quiere guardar el panel anterior
 	 * @param ejercicio
 	 */
-	public void showEjercicioGUI(boolean back, Ejercicio ejercicio){
+	public void showEjercicioGUI(boolean back, Ejercicio ejercicio, Tema tema){
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = null;
 		}
+		
 		if(this.ejercicioGUI == null){
-			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio);
+			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
 		}
 		else{
+			this.ejercicioGUI.setTema(tema);
+			this.ejercicioGUI.setEjercicio(ejercicio);
 			this.ejercicioGUI.refreshPanel();
 			this.ejercicioGUI.setAnterior(anterior);
 		}

@@ -105,10 +105,6 @@ public class AsignaturaMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.SOUTH, this.nombreSubtema, -30, SpringLayout.VERTICAL_CENTER, this.subtema);
 		spr.putConstraint(SpringLayout.NORTH, this.ejercicio, 30, SpringLayout.VERTICAL_CENTER, this.apuntes);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 60, SpringLayout.SOUTH, this.ejercicio);
-
-		
-//		spr.putConstraint(SpringLayout.EAST, this.editar, -5, SpringLayout.EAST, this);
-//		spr.putConstraint(SpringLayout.EAST, this.borrar, -5, SpringLayout.EAST, this);
 		
 		this.add(this.ejercicio);
 		this.add(this.apuntes);
