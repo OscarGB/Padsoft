@@ -11,7 +11,7 @@ import plataforma.Plataforma;
  * @date 07/03/2017
  */
 
-public class PreguntaRespuestaUnica extends Pregunta implements Serializable{
+public class PreguntaRespuestaUnica extends Pregunta{
 	
 	
 	/**

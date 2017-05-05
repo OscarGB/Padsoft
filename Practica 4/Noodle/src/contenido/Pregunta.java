@@ -14,8 +14,13 @@ import java.io.Serializable;
  * @date 07/03/2017
  */
 
-public abstract class Pregunta{
+public abstract class Pregunta implements Serializable{
 	
+	/**
+	 * Serial
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Variables
 		
 	/**

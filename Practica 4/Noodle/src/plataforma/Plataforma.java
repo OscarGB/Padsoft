@@ -14,6 +14,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import contenido.Contenido;
+import contenido.Ejercicio;
+import contenido.Tema;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import persona.*;
 import solicitud.Solicitud;
@@ -131,6 +134,7 @@ public class Plataforma implements Serializable {
 	 */
 	public void saveData(){
 		this.asigs = Plataforma.asignaturas;
+		
 		this.alus  = Plataforma.alumnos;
 		this.prof = Plataforma.profesor;
 		 try {

@@ -96,21 +96,27 @@ public class PreguntasPanel extends JPanel{
 		this.setBackground(Color.WHITE);
 		this.ejercicio = ejercicio;
 		this.labels = new ArrayList<JLabel>();
-		this.preguntas = ejercicio.getPreguntas();
+		
+		if(ejercicio != null){
+			this.preguntas = ejercicio.getPreguntas();
+		}
+		else{
+			this.preguntas = new ArrayList<Pregunta>();
+		}
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
 		
 		int size = this.preguntas.size();
-		
+				
 		if(size == 0){
 			JLabel label = new JLabel("No hay preguntas en el ejercicio");
 			this.labels.add(label);
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
 		}
-		if(size > 0){
-			JLabel label = new JLabel("Selecciona un ejercicio.");
+		else if(size > 0){
+			JLabel label = new JLabel("Selecciona una pregunta.");
 			labels.add(label);
 			label.setFont(new Font("Arial", Font.ITALIC, 15));
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);

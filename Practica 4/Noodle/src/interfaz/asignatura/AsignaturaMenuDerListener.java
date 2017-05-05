@@ -75,7 +75,7 @@ public class AsignaturaMenuDerListener implements ActionListener {
 			frame.showSubirApuntes(true, this.tema.getAsignatura(), this.tema, null);
 		}
 		else if(arg0.getActionCommand().equals("ejercicio")){
-			frame.showEjercicioGUI(true, null);
+			frame.showEjercicioGUI(true, null, this.tema);
 		}
 		else if(arg0.getActionCommand().equals("subtema")){
 			String aux = panel.getText();
