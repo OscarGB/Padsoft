@@ -3,6 +3,8 @@ package interfaz.asignatura.contenido.ejercicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import interfaz.genericos.NoodleFrame;
@@ -31,6 +33,11 @@ public class PreguntaMenuDerListener implements ActionListener {
 	private PreguntaGenerico panel;
 	
 	/**
+	 * Frame
+	 */
+	private NoodleFrame frame;
+	
+	/**
 	 * Constructor
 	 * @param frame
 	 * @param ej
@@ -40,6 +47,7 @@ public class PreguntaMenuDerListener implements ActionListener {
 		this.ej = ej;
 		this.p = p;
 		this.panel = panel;
+		this.frame = frame;
 	}
 
 	/**
@@ -50,7 +58,15 @@ public class PreguntaMenuDerListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("guardar")){
 			System.out.println("guardar");
-			System.out.println(this.panel.getPregunta());
+			if(this.panel.getPregunta() == null){
+				JOptionPane.showMessageDialog(null, "Seleccione la opción correcta", "Opcion",JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				this.ej.addPregunta(this.panel.getPregunta());
+				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
+			}
+//			System.out.println(this.panel.getPregunta());
+			
 		}
 		else if(arg0.getActionCommand().equals("borrar")){
 			System.out.println("borrar");

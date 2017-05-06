@@ -131,6 +131,7 @@ public class EjercicioGUI extends NuestroPanel{
 		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
 		this.remove(this.derecha);
 		this.derecha = new EjercicioMenuDer(this.frame, this.ejercicio, this.tema);
+		
 		this.remove(this.scroll);
 		this.scroll = new JScrollPane(this.panel);
 		this.add(this.scroll, BorderLayout.CENTER);

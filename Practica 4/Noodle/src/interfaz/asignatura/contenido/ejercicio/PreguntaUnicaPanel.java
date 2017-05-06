@@ -3,6 +3,7 @@ package interfaz.asignatura.contenido.ejercicio;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
@@ -10,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
+import asignatura.Asignatura;
 import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaUnica;
@@ -120,14 +122,28 @@ public class PreguntaUnicaPanel extends JPanel {
 	 */
 	public PreguntaRespuestaUnica getPregunta(){
 		int aux = radios.indexOf(grupo.getSelection());
-		for(Opciones op : this.p.getOpciones()){
-			this.p.removeOpcion(op);
+		
+		for(JRadioButton but: radios){
+			if(but.isSelected()){
+				aux = radios.indexOf(but);
+			}
 		}
+		
+		if(aux < 0){
+			return null;
+		}
+		
+		for(Iterator<Opciones> iter = this.p.getOpciones().iterator(); iter.hasNext();){
+			iter.next();
+			iter.remove();
+		}
+		
 		for(Opciones op : this.opciones){
 			this.p.addOpcion(op);
 			op.setCorrecta(false);
 		}
-//		this.p.getOpciones().get(aux).setCorrecta(true);
+		this.p.getOpciones().get(aux).setCorrecta(true);
+		this.p.setEnunciado(this.getEnunciado());
 		return this.p;
 	}
 	
