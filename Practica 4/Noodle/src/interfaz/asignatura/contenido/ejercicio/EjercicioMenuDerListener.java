@@ -75,9 +75,11 @@ public class EjercicioMenuDerListener implements ActionListener {
 				else if(ini.isAfter(fin) || ini.isBefore(LocalDate.now())){
 					String nl = System.getProperty("line.separator");
 					JOptionPane.showMessageDialog(null, "Fechas inválidas"+nl+"Se emplearán fechas por defecto", "Error de fechas",JOptionPane.ERROR_MESSAGE);
+					this.ejercicio = new Ejercicio(peso, aleatorio, null, null, tema, nombre, aleatorio, this.asignatura);
 					ini = ejercicio.getFechaIniDefecto();
 					fin = ejercicio.getFechaFinDefecto();
-					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
+					this.ejercicio.setFechaFin(fin);
+					this.ejercicio.setFechaIni(ini);
 					this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				} else{
 					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
@@ -109,9 +111,17 @@ public class EjercicioMenuDerListener implements ActionListener {
 				this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				
 			}
+			Plataforma.plat().saveData();
 		}
 		else if(arg0.getActionCommand().equals("pregunta")){
+			if(this.ejercicio == null){
+				JOptionPane.showMessageDialog(null, "Guarde el ejercicio antes de continuar", "Error",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			this.frame.showElegirTipoPregunta(true, this.ejercicio);
+		}
+		else if(arg0.getActionCommand().equals("cancelar")){
+			this.frame.atras();
 		}
 		
 	}

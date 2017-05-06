@@ -51,7 +51,7 @@ public class ElegirTipoPreguntaListener implements ActionListener {
 			this.frame.showPreguntaUnica(true, ej, null);
 		}
 		else if(arg0.getActionCommand().equals("Pregunta Multiple")){
-			System.out.println("Has pichado en Pregunta Multiple");
+			this.frame.showPreguntaMultiple(true, ej, null);
 		}
 		else if(arg0.getActionCommand().equals("Pregunta Abierta")){
 			System.out.println("Has pichado en Pregunta Abierta");

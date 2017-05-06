@@ -13,6 +13,8 @@ import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
+import contenido.PreguntaRespuestaMultiple;
+import contenido.PreguntaRespuestaUnica;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 
@@ -154,7 +156,12 @@ public class PreguntasPanel extends JPanel{
 	 * @param pregunta
 	 */
 	public void listenerPreguntas(Pregunta pregunta){
-		System.out.println("Se ha seleccionado la pregunta: "+pregunta);
+		if(pregunta instanceof PreguntaRespuestaUnica){
+			frame.showPreguntaUnica(true, this.ejercicio, pregunta);
+		}
+		else if(pregunta instanceof PreguntaRespuestaMultiple){
+			frame.showPreguntaMultiple(true, this.ejercicio, pregunta);
+		}
 	}
 
 }

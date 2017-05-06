@@ -38,16 +38,22 @@ public class PreguntaMenuDerListener implements ActionListener {
 	private NoodleFrame frame;
 	
 	/**
+	 * Menu de las preguntas
+	 */
+	private PreguntaMenuDer menu;
+	
+	/**
 	 * Constructor
 	 * @param frame
 	 * @param ej
 	 * @param p, null si se quiere crear una nueva
 	 */
-	public PreguntaMenuDerListener(PreguntaGenerico panel, NoodleFrame frame, Ejercicio ej, Pregunta p) {
+	public PreguntaMenuDerListener(PreguntaGenerico panel, NoodleFrame frame, Ejercicio ej, Pregunta p, PreguntaMenuDer menu) {
 		this.ej = ej;
 		this.p = p;
 		this.panel = panel;
 		this.frame = frame;
+		this.menu = menu;
 	}
 
 	/**
@@ -57,22 +63,22 @@ public class PreguntaMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("guardar")){
-			System.out.println("guardar");
-			if(this.panel.getPregunta() == null){
+			if((this.p = this.panel.getPregunta()) == null){
 				JOptionPane.showMessageDialog(null, "Seleccione la opción correcta", "Opcion",JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				this.ej.addPregunta(this.panel.getPregunta());
+				this.p.setValorPregunta(menu.getValuePesoSpinner());
+				this.p.setPenalizacion(menu.getValuePesoFalloSpinner());
+				this.ej.addPregunta(this.p);
 				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
-			}
-//			System.out.println(this.panel.getPregunta());
-			
+			}			
 		}
 		else if(arg0.getActionCommand().equals("borrar")){
-			System.out.println("borrar");
+			this.ej.removePregunta(this.p);
+			this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
 		}
 		else if(arg0.getActionCommand().equals("cancelar")){
-			System.out.println("cancelar");
+			frame.atras();
 		}
 	}
 

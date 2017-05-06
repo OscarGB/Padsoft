@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -14,15 +15,16 @@ import javax.swing.SpringLayout;
 import asignatura.Asignatura;
 import contenido.Opciones;
 import contenido.Pregunta;
+import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
 
 /**
- * Clase PreguntaUniaPanel
+ * Clase PreguntaMultiplePanel
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class PreguntaUnicaPanel extends JPanel {
+public class PreguntaMultiplePanel extends JPanel {
 
 	/**
 	 * 
@@ -37,12 +39,7 @@ public class PreguntaUnicaPanel extends JPanel {
 	/**
 	 * Array de radiobuttons
 	 */
-	private ArrayList<JRadioButton> radios;
-	
-	/**
-	 * Grupo de Radiobuttons
-	 */
-	private ButtonGroup grupo;
+	private ArrayList<JCheckBox> radios;
 	
 	/**
 	 * Area para el enunciado
@@ -57,38 +54,36 @@ public class PreguntaUnicaPanel extends JPanel {
 	/**
 	 * Pregunta
 	 */
-	private PreguntaRespuestaUnica p;
+	private PreguntaRespuestaMultiple p;
 
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
 	 */
-	public PreguntaUnicaPanel(PreguntaRespuestaUnica p){
+	public PreguntaMultiplePanel(PreguntaRespuestaMultiple p){
 		
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
 		this.area.setSize(300, 50);
 		
-		grupo = new ButtonGroup();
 		spr = new SpringLayout();
 		setLayout(spr);
 		
 		if(p == null){
-			this.p = new PreguntaRespuestaUnica("", false, 0, 0);
+			this.p = new PreguntaRespuestaMultiple("", false, 0, 0);
 			this.opciones = new ArrayList<Opciones>();
-			this.radios = new ArrayList<JRadioButton>();
+			this.radios = new ArrayList<JCheckBox>();
 			this.area.setText("prueba");
 		}
 		else{
 			this.p = p;
 			this.area.setText(p.getEnunciado());
-			this.radios = new ArrayList<JRadioButton>();
+			this.radios = new ArrayList<JCheckBox>();
 			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
 			for(Opciones op : this.opciones){
-				JRadioButton aux = new JRadioButton(op.getRespuesta());
+				JCheckBox aux = new JCheckBox(op.getRespuesta());
 				radios.add(aux);
-				grupo.add(aux);
 				this.add(aux);
 				
 				spr.putConstraint(SpringLayout.WEST, aux, 10, SpringLayout.WEST, this);
@@ -122,16 +117,18 @@ public class PreguntaUnicaPanel extends JPanel {
 	 * Método que devuelve la Pregunta
 	 * @return
 	 */
-	public PreguntaRespuestaUnica getPregunta(){
-		int aux = radios.indexOf(grupo.getSelection());
-		
-		for(JRadioButton but: radios){
-			if(but.isSelected()){
-				aux = radios.indexOf(but);
+	public PreguntaRespuestaMultiple getPregunta(){
+		boolean flag = false;
+		for(int i = 0; i < radios.size(); i++){
+			if(radios.get(i).isSelected()){
+				this.opciones.get(i).setCorrecta(true);
+				flag = true;
 			}
-		}
-		
-		if(aux < 0){
+			else{
+				this.opciones.get(i).setCorrecta(false);
+			}
+		}		
+		if(flag == false){
 			return null;
 		}
 		
@@ -142,9 +139,7 @@ public class PreguntaUnicaPanel extends JPanel {
 		
 		for(Opciones op : this.opciones){
 			this.p.addOpcion(op);
-			op.setCorrecta(false);
 		}
-		this.p.getOpciones().get(aux).setCorrecta(true);
 		this.p.setEnunciado(this.getEnunciado());
 		return this.p;
 	}
@@ -155,9 +150,8 @@ public class PreguntaUnicaPanel extends JPanel {
 	 */
 	public void addOpcion(String s){
 		opciones.add(new Opciones(s,false));
-		JRadioButton aux = new JRadioButton(s);
+		JCheckBox aux = new JCheckBox(s);
 		radios.add(aux);
-		grupo.add(aux);
 		this.add(aux);
 		
 		spr.putConstraint(SpringLayout.WEST, aux, 10, SpringLayout.WEST, this);

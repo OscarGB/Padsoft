@@ -116,6 +116,9 @@ public class EjercicioMenuDer extends JPanel {
 	 */
 	private NoodleFrame frame;
 	
+	/**
+	 * Listener
+	 */
 	private EjercicioMenuDerListener list;
 	
 	public EjercicioMenuDer(NoodleFrame frame, Ejercicio ejercicio, Tema tema){

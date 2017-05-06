@@ -109,7 +109,7 @@ public class PreguntaMenuDer extends JPanel {
 		}
 	
 		this.pesoSpinner = new JSpinner(new SpinnerNumberModel(actualPeso,0,10,1));
-		this.pesoFalloSpinner = new JSpinner(new SpinnerNumberModel(actualPesoFallo,0,10,1));
+		this.pesoFalloSpinner = new JSpinner(new SpinnerNumberModel(Math.abs(actualPesoFallo),0,10,1));
 		
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.cancelar, 0, SpringLayout.HORIZONTAL_CENTER, this);
@@ -135,7 +135,7 @@ public class PreguntaMenuDer extends JPanel {
 		this.add(this.guardar);
 		this.add(this.cancelar);
 		
-		PreguntaMenuDerListener list = new PreguntaMenuDerListener(this.panel, this.frame, this.ej, this.p);
+		PreguntaMenuDerListener list = new PreguntaMenuDerListener(this.panel, this.frame, this.ej, this.p, this);
 		
 		this.borrar.addActionListener(list);
 		this.guardar.addActionListener(list);
@@ -149,6 +149,22 @@ public class PreguntaMenuDer extends JPanel {
 		this.repaint();
 		
 		
+	}
+	
+	/**
+	 * Devuelve el valor del spinner del peso
+	 * @return
+	 */
+	public Integer getValuePesoSpinner(){
+		return (Integer) this.pesoSpinner.getValue();
+	}
+	
+	/**
+	 * Devuelve el valor del spinner de fallo
+	 * @return
+	 */
+	public Integer getValuePesoFalloSpinner(){
+		return (Integer) this.pesoFalloSpinner.getValue();
 	}
 	
 }

@@ -7,17 +7,18 @@ import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
+import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
 /**
- * Clase PreguntaUnica
+ * Clase PreguntaMultiple
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class PreguntaUnica extends PreguntaGenerico {
+public class PreguntaMultiple extends PreguntaGenerico {
 
 	/**
 	 * Serial
@@ -27,7 +28,7 @@ public class PreguntaUnica extends PreguntaGenerico {
 	/**
 	 * Panel padre
 	 */
-	private PreguntaUnicaPanel panel;
+	private PreguntaMultiplePanel panel;
 	
 	/**
 	 * Panel para hacer scroll
@@ -41,10 +42,10 @@ public class PreguntaUnica extends PreguntaGenerico {
 	 * @param ejercicio
 	 * @param pregunta
 	 */
-	public PreguntaUnica(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta) {
+	public PreguntaMultiple(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta) {
 		super(anterior, frame, ejercicio, pregunta);
 		
-		this.panel = new PreguntaUnicaPanel((PreguntaRespuestaUnica) this.pregunta);
+		this.panel = new PreguntaMultiplePanel((PreguntaRespuestaMultiple) this.pregunta);
 		scroll = new JScrollPane(panel);
 		this.add(this.scroll, BorderLayout.CENTER);
 		
@@ -78,7 +79,7 @@ public class PreguntaUnica extends PreguntaGenerico {
 		this.add(this.sur, BorderLayout.SOUTH);
 		
 		this.remove(this.scroll);
-		this.panel = new PreguntaUnicaPanel((PreguntaRespuestaUnica) this.pregunta);
+		this.panel = new PreguntaMultiplePanel((PreguntaRespuestaMultiple) this.pregunta);
 		scroll = new JScrollPane(panel);
 		this.add(this.scroll, BorderLayout.CENTER);
 		

@@ -110,7 +110,7 @@ public class Ejercicio extends Contenido implements Serializable{
 		
 		this.aleatorio = aleatorio;
 		
-		if(fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
+		if(fechaIni == null || fechaFin == null || fechaIni.isAfter(fechaFin) || fechaIni.isBefore(LocalDate.now())){
 			this.fechaIni = Plataforma.getFechaActual().plusDays(0);
 			this.fechaFin = Plataforma.getFechaActual().plusDays(10);
 		}

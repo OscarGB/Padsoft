@@ -87,7 +87,10 @@ public class PreguntaGenerico extends NuestroPanel{
 		
 		this.remove(this.sur);
 		this.sur = new AddRespuesta(this.pregunta, this);
-		this.add(this.sur, BorderLayout.EAST);
+		this.add(this.sur, BorderLayout.SOUTH);
+		
+		this.revalidate();
+		this.repaint();
 	}
 	
 	/**
@@ -114,6 +117,10 @@ public class PreguntaGenerico extends NuestroPanel{
 		return;
 	}
 	
+	/**
+	 * Método para hacer override
+	 * @return
+	 */
 	public Pregunta getPregunta(){
 		return null;
 	}

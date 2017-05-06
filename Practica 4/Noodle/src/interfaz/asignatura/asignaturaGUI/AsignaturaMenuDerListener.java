@@ -8,6 +8,7 @@ import contenido.Apuntes;
 import contenido.Contenido;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
+import plataforma.Plataforma;
 
 /**
  * Clase ContenidoMenuDerListener
@@ -84,6 +85,7 @@ public class AsignaturaMenuDerListener implements ActionListener {
 			}
 			new Tema(aux, true, this.asig, this.tema);
 			this.frame.showAsignatura(true, this.asig);
+			Plataforma.plat().saveData();
 		}
 	}
 }
