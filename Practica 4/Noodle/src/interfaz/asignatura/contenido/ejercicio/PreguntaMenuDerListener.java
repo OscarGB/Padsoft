@@ -18,12 +18,17 @@ public class PreguntaMenuDerListener implements ActionListener {
 	/**
 	 * Ejercicio
 	 */
-	Ejercicio ej;
+	private Ejercicio ej;
 	
 	/**
 	 * Pregunta 
 	 */
-	Pregunta p;
+	private Pregunta p;
+	
+	/**
+	 * Panel
+	 */
+	private PreguntaGenerico panel;
 	
 	/**
 	 * Constructor
@@ -31,9 +36,10 @@ public class PreguntaMenuDerListener implements ActionListener {
 	 * @param ej
 	 * @param p, null si se quiere crear una nueva
 	 */
-	public PreguntaMenuDerListener(NoodleFrame frame, Ejercicio ej, Pregunta p) {
+	public PreguntaMenuDerListener(PreguntaGenerico panel, NoodleFrame frame, Ejercicio ej, Pregunta p) {
 		this.ej = ej;
 		this.p = p;
+		this.panel = panel;
 	}
 
 	/**
@@ -42,8 +48,16 @@ public class PreguntaMenuDerListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("Se ha pulsado en " + arg0.getActionCommand());
-
+		if(arg0.getActionCommand().equals("guardar")){
+			System.out.println("guardar");
+			System.out.println(this.panel.getPregunta());
+		}
+		else if(arg0.getActionCommand().equals("borrar")){
+			System.out.println("borrar");
+		}
+		else if(arg0.getActionCommand().equals("cancelar")){
+			System.out.println("cancelar");
+		}
 	}
 
 }

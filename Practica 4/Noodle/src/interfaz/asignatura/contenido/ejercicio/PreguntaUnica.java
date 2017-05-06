@@ -50,7 +50,8 @@ public class PreguntaUnica extends PreguntaGenerico {
 		
 	}
 	
-	public PreguntaRespuestaUnica getPregunta(){
+	@Override
+	public Pregunta getPregunta(){
 		return panel.getPregunta();
 	}
 	

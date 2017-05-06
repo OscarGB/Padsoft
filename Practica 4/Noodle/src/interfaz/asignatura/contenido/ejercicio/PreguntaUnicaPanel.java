@@ -127,7 +127,7 @@ public class PreguntaUnicaPanel extends JPanel {
 			this.p.addOpcion(op);
 			op.setCorrecta(false);
 		}
-		this.p.getOpciones().get(aux).setCorrecta(true);
+//		this.p.getOpciones().get(aux).setCorrecta(true);
 		return this.p;
 	}
 	

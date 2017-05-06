@@ -66,7 +66,7 @@ public class PreguntaGenerico extends NuestroPanel{
 		
 		this.setLayout(new BorderLayout());
 		
-		this.derecha = new PreguntaMenuDer(frame, ejercicio, pregunta);
+		this.derecha = new PreguntaMenuDer(this, this.frame, this.ejercicio, this.pregunta);
 		
 		this.sur = new AddRespuesta(this.pregunta, this);
 		
@@ -82,7 +82,7 @@ public class PreguntaGenerico extends NuestroPanel{
 		this.ejercicio = ejer;
 		
 		this.remove(this.derecha);
-		this.derecha = new PreguntaMenuDer(this.frame, this.ejercicio, this.pregunta);
+		this.derecha = new PreguntaMenuDer(this, this.frame, this.ejercicio, this.pregunta);
 		this.add(this.derecha, BorderLayout.EAST);
 		
 		this.remove(this.sur);
@@ -112,6 +112,10 @@ public class PreguntaGenerico extends NuestroPanel{
 	 */
 	public void addOpcion(String s){
 		return;
+	}
+	
+	public Pregunta getPregunta(){
+		return null;
 	}
 	
 

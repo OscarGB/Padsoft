@@ -79,15 +79,21 @@ public class PreguntaMenuDer extends JPanel {
 	private Pregunta p;
 	
 	/**
+	 * Panel
+	 */
+	private PreguntaGenerico panel;
+	
+	/**
 	 * Constructor
 	 * @param frame
 	 * @param ej
 	 * @param p, null si se quiere crear una nueva
 	 */
-	public PreguntaMenuDer(NoodleFrame frame, Ejercicio ej, Pregunta p){
+	public PreguntaMenuDer(PreguntaGenerico panel, NoodleFrame frame, Ejercicio ej, Pregunta p){
 		this.ej = ej;
 		this.p = p;
 		this.frame = frame;
+		this.panel = panel;
 		
 		this.setBackground(Color.WHITE);
 		
@@ -129,7 +135,7 @@ public class PreguntaMenuDer extends JPanel {
 		this.add(this.guardar);
 		this.add(this.cancelar);
 		
-		PreguntaMenuDerListener list = new PreguntaMenuDerListener(this.frame, this.ej, this.p);
+		PreguntaMenuDerListener list = new PreguntaMenuDerListener(this.panel, this.frame, this.ej, this.p);
 		
 		this.borrar.addActionListener(list);
 		this.guardar.addActionListener(list);
