@@ -17,6 +17,7 @@ import interfaz.asignatura.contenido.apuntes.ApuntesListener;
 import interfaz.asignatura.contenido.apuntes.SubirApuntes;
 import interfaz.asignatura.contenido.ejercicio.EjercicioGUI;
 import interfaz.asignatura.contenido.ejercicio.ElegirTipoPregunta;
+import interfaz.asignatura.contenido.ejercicio.PreguntaAbierta;
 import interfaz.asignatura.contenido.ejercicio.PreguntaMultiple;
 import interfaz.asignatura.contenido.ejercicio.PreguntaUnica;
 import interfaz.inicios.*;
@@ -59,7 +60,7 @@ public class NoodleFrame extends JFrame{
 	private SolicitudesExpulsados solicitudesExpulsados;
 	private PreguntaUnica preguntaUnica;
 	private PreguntaMultiple preguntaMultiple;
-//	private PreguntaSimpleGUI preguntaSimpleGUI;
+	private PreguntaAbierta preguntaAbierta;
 
 	private static NoodleFrame frame;
 	
@@ -562,7 +563,7 @@ public class NoodleFrame extends JFrame{
 	}
 	
 	/**
-	 * Método que muestra PreguntaUnica
+	 * Método que muestra PreguntaMultiple
 	 * @param back
 	 * @param ejercicio
 	 * @param pregunta
@@ -584,6 +585,31 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.preguntaMultiple);
 		
 		this.fin(700,500, this.preguntaMultiple);
+	}
+	
+	/**
+	 * Método que muestra PreguntaAbierta
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showPreguntaAbierta(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.preguntaAbierta == null){
+			this.preguntaAbierta = new PreguntaAbierta(anterior, this, ejercicio, pregunta);			
+		}
+		else{
+			this.preguntaAbierta.setAnterior(anterior);
+			this.preguntaAbierta.refreshPanel(pregunta, ejercicio);
+		}
+		
+		
+		this.getContentPane().add(this.preguntaAbierta);
+		
+		this.fin(700,500, this.preguntaAbierta);
 	}
 	
 }

@@ -70,6 +70,7 @@ public class PreguntaMenuDerListener implements ActionListener {
 				this.p.setValorPregunta(menu.getValuePesoSpinner());
 				this.p.setPenalizacion(menu.getValuePesoFalloSpinner());
 				this.ej.addPregunta(this.p);
+				System.out.println(this.p);
 				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
 			}			
 		}

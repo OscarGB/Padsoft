@@ -13,6 +13,7 @@ import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
+import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
 import interfaz.genericos.NoodleFrame;
@@ -161,6 +162,9 @@ public class PreguntasPanel extends JPanel{
 		}
 		else if(pregunta instanceof PreguntaRespuestaMultiple){
 			frame.showPreguntaMultiple(true, this.ejercicio, pregunta);
+		}
+		else if(pregunta instanceof PreguntaRespuestaAbierta){
+			frame.showPreguntaAbierta(true, this.ejercicio, pregunta);
 		}
 	}
 

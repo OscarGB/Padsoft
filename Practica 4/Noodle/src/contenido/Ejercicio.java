@@ -394,6 +394,9 @@ public class Ejercicio extends Contenido implements Serializable{
 		}
 		if(preg == null) return false;
 		if(preg.bienFormada() == false) return false;
+		if(this.preguntas.contains(preg)){
+			this.removePregunta(preg);
+		}
 		this.pesoPreguntas += preg.getValorPregunta();
 		return this.preguntas.add(preg);	
 	}
