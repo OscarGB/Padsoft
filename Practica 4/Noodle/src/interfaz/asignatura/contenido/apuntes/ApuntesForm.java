@@ -40,6 +40,8 @@ public class ApuntesForm extends JPanel{
 	 */
 	private Tema tema;
 	
+	private JCheckBox visible = new JCheckBox("Visible");
+	
 	/**
 	 * Apuntes
 	 */
@@ -80,6 +82,9 @@ public class ApuntesForm extends JPanel{
 			this.apuntes = apuntes;
 			titulo.setText(apuntes.getTitulo());
 			texto.setText(apuntes.getTexto());
+			visible.setSelected(this.apuntes.getVisibilidad());
+		}else{
+			visible.setSelected(true);
 		}
 
 		scrolltext = new JScrollPane(texto);
@@ -89,6 +94,9 @@ public class ApuntesForm extends JPanel{
 		//labeltitulo
 		spr.putConstraint(SpringLayout.WEST, labeltitulo, -200, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.NORTH, labeltitulo, 10, SpringLayout.NORTH, this);
+		
+		spr.putConstraint(SpringLayout.NORTH, visible, 20, SpringLayout.SOUTH, labeltitulo);
+		spr.putConstraint(SpringLayout.WEST, visible, 50, SpringLayout.EAST, labeltexto);
 		
 		//titulo
 		spr.putConstraint(SpringLayout.VERTICAL_CENTER, scrolltitle, 0, SpringLayout.VERTICAL_CENTER, labeltitulo);
@@ -115,6 +123,7 @@ public class ApuntesForm extends JPanel{
 		this.add(labeltexto);
 		this.add(scrolltitle);
 		this.add(scrolltext);
+		this.add(visible);
 		this.add(guardar);
 		this.add(cancelar);
 		
@@ -148,6 +157,14 @@ public class ApuntesForm extends JPanel{
 	 */
 	public String getTexto(){
 		return new String(this.texto.getText());
+	}
+	
+	/**
+	 * Retorna el valor del checkbox visible
+	 * @return
+	 */
+	public boolean getVisible(){
+		return visible.isSelected();
 	}
 	
 	/**

@@ -50,18 +50,18 @@ public class ApuntesListener implements ActionListener{
 		if(arg0.getActionCommand().equals("guardar") == true){
 			String titulo = this.panel.getTitulo();
 			String texto = this.panel.getTexto();
-			System.out.println(this.panel.getTexto());
-			System.out.println(this.panel.getTitulo());
-			System.out.println(this.panel.getAsignatura());
+			boolean visible = panel.getVisible();
 			
 			if(this.panel.getApuntes() == null){
-				new Apuntes(texto, titulo, true, this.panel.getAsignatura(), this.panel.getTema());
+				new Apuntes(texto, titulo, visible, this.panel.getAsignatura(), this.panel.getTema());
 			} else{
 				this.panel.getApuntes().setTexto(texto);
 				this.panel.getApuntes().setTitulo(titulo);
+				this.panel.getApuntes().setVisibilidad(visible);
 			}
 			
 			this.frame.showAsignatura(true, this.panel.getAsignatura());
+			Plataforma.plat().saveData();
 		}
 		if(arg0.getActionCommand().equals("cancelar") == true){
 			this.frame.showAsignatura(true, this.panel.getAsignatura());

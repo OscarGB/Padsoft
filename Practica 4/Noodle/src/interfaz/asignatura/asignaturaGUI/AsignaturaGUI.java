@@ -137,8 +137,9 @@ public class AsignaturaGUI extends NuestroPanel{
 	 * Esconde el panel lateral
 	 */
 	public void escondeLateral(){
-		this.list.setVisible(false);
-		
+		if(Plataforma.loggedAs() instanceof Profesor){
+			this.list.setVisible(false);
+		}			
 	}
 	
 	/**
