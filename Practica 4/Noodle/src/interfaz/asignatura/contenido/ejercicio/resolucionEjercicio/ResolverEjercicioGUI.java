@@ -30,11 +30,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Menu generico
-	 */
-	private Menu menu;
-	
-	/**
 	 * Ejercicio
 	 */
 	private Ejercicio ejercicio;
@@ -97,12 +92,10 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	
 		this.der = new ResolverEjercicioMenuDer(frame, ejercicio, tema);
 		
-		this.menu = new Menu(frame);
 		this.ejercicio = ejercicio;
 		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
 		this.scroll = new JScrollPane(this.panel);
 		
-		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
 		this.add(this.der, BorderLayout.EAST);
 		
@@ -110,7 +103,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		
 		ResolverEjercicioGUI.instance = this;
 		
-		this.menu.setPreferredSize(new Dimension(w, 80));
 		
 	}
 	

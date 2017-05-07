@@ -50,7 +50,6 @@ public class ApuntesListener implements ActionListener{
 		if(arg0.getActionCommand().equals("guardar") == true){
 			String titulo = this.panel.getTitulo();
 			String texto = this.panel.getTexto();
-			System.out.println("Has pulsado guardar");
 			System.out.println(this.panel.getTexto());
 			System.out.println(this.panel.getTitulo());
 			System.out.println(this.panel.getAsignatura());
@@ -65,7 +64,6 @@ public class ApuntesListener implements ActionListener{
 			this.frame.showAsignatura(true, this.panel.getAsignatura());
 		}
 		if(arg0.getActionCommand().equals("cancelar") == true){
-			System.out.println("Has pulsado cancelar");
 			this.frame.showAsignatura(true, this.panel.getAsignatura());
 		}
 		
