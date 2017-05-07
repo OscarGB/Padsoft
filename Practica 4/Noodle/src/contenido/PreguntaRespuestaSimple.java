@@ -1,5 +1,4 @@
 package contenido;
-import java.io.Serializable;
 
 import persona.Alumno;
 import plataforma.Plataforma;

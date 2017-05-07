@@ -11,7 +11,16 @@ import contenido.Ejercicio;
 import contenido.Pregunta;
 import interfaz.genericos.NoodleFrame;
 
+/**
+ * Clase ResponderPreguntaMenuDer
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaMenuDer extends JPanel {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -52,11 +61,14 @@ public class ResponderPreguntaMenuDer extends JPanel {
 	 */
 	private ResponderPregunta panel;
 	
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param frame
 	 * @param ejercicio
-	 * @param tema
+	 * @param pregunta
+	 * @param panel
 	 */
 	public ResponderPreguntaMenuDer(NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta, ResponderPregunta panel){
 		this.ejercicio = ejercicio;
@@ -84,7 +96,7 @@ public class ResponderPreguntaMenuDer extends JPanel {
 		this.guardar.setActionCommand("guardar");
 		this.cancelar.setActionCommand("cancelar");
 		
-		this.list = new ResponderPreguntaMenuDerListener(this.frame, this.ejercicio, this, this.pregunta, panel);
+		this.list = new ResponderPreguntaMenuDerListener(this.frame, this.ejercicio, this, this.pregunta, this.panel);
 		;
 		this.guardar.addActionListener(list);
 		this.cancelar.addActionListener(list);

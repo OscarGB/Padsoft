@@ -10,7 +10,15 @@ import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
+/**
+ * Clase SubirApuntes
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class SubirApuntes extends NuestroPanel {
+	
+	//Variables
 	
 	/**
 	 * Serial
@@ -37,12 +45,14 @@ public class SubirApuntes extends NuestroPanel {
 	 */
 	private ApuntesForm formulario;
 
+	//Constructor
+	
 	/**
 	 * Constructor de SubirApuntes. Si tema es null, lo sube a la raiz
 	 * @param anterior
 	 * @param frame
 	 * @param asignatura
-	 * @param tema
+	 * @param apuntes
 	 */
 	public SubirApuntes(NuestroPanel anterior, NoodleFrame frame, Asignatura asignatura, Tema tema, Apuntes apuntes) {
 		super(anterior, frame);
@@ -65,6 +75,8 @@ public class SubirApuntes extends NuestroPanel {
 		
 	}
 	
+	//Métodos
+	
 	/**
 	 * Metodo para añadir listener al formulario
 	 * @param listener
@@ -81,6 +93,12 @@ public class SubirApuntes extends NuestroPanel {
 		return this.formulario;
 	}
 	
+	/**
+	 * Método que refresca el panel
+	 * @param asig
+	 * @param tema
+	 * @param apuntes
+	 */
 	public void refreshPanel(Asignatura asig, Tema tema, Apuntes apuntes){
 		this.asignatura = asig;
 		this.tema = tema;
@@ -92,6 +110,7 @@ public class SubirApuntes extends NuestroPanel {
 	
 	/**
 	 * Hace que el frame muestre este panel
+	 * @param apuntes
 	 */
 	public void muestraPanel(Apuntes apuntes){
 		this.frame.showSubirApuntes(false, apuntes.getAsignatura(), apuntes.getPadre(), apuntes);

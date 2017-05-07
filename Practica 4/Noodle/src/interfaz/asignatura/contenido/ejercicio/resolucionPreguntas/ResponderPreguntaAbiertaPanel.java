@@ -1,22 +1,26 @@
 package interfaz.asignatura.contenido.ejercicio.resolucionPreguntas;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.util.ArrayList;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import contenido.PreguntaRespuestaAbierta;
 import respuestas.RespuestaAbierta;
-import respuestas.RespuestaSimple;
 
+/**
+ * Clase ResponderPreguntaAbiertaPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaAbiertaPanel extends JPanel {
 
+	//Variables
+	
 	/**
-	 * 
+	 * Serial
 	 */
 	private static final long serialVersionUID = 5070456134384061574L;
 	
@@ -40,6 +44,8 @@ public class ResponderPreguntaAbiertaPanel extends JPanel {
 	 */
 	private PreguntaRespuestaAbierta p;
 
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
@@ -72,6 +78,8 @@ public class ResponderPreguntaAbiertaPanel extends JPanel {
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, respuesta, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Devuelve la respuesta del alumno

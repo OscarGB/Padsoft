@@ -5,15 +5,20 @@ import java.awt.Color;
 
 import contenido.Ejercicio;
 import contenido.PreguntaRespuestaAbierta;
-import contenido.PreguntaRespuestaMultiple;
-import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaMultiplePanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
-import respuestas.RespuestaAbierta;
-import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
 
+/**
+ * Clase ResponderPreguntaAbierta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaAbierta extends ResponderPregunta {
+	
+	//Variable
+	
 	/**
 	 * Serial
 	 */
@@ -39,6 +44,8 @@ public class ResponderPreguntaAbierta extends ResponderPregunta {
 	 */
 	private Ejercicio ej;
 	
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param anterior
@@ -63,6 +70,8 @@ public class ResponderPreguntaAbierta extends ResponderPregunta {
 		this.add(this.derecha, BorderLayout.EAST);
 		this.add(this.panel, BorderLayout.CENTER);
 	}
+	
+	//Métodos
 	
 	/**
 	 * Devuelve las respuestas del panel

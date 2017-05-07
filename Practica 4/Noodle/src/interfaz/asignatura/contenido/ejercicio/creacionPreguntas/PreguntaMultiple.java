@@ -1,14 +1,12 @@
 package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaMultiple;
-import contenido.PreguntaRespuestaUnica;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaMultiplePanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
@@ -21,6 +19,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class PreguntaMultiple extends PreguntaGenerico {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -36,8 +36,10 @@ public class PreguntaMultiple extends PreguntaGenerico {
 	 */
 	private JScrollPane scroll;
 
+	//Constructor
+	
 	/**
-	 * constructor
+	 * Constructor
 	 * @param anterior
 	 * @param frame
 	 * @param ejercicio
@@ -51,6 +53,8 @@ public class PreguntaMultiple extends PreguntaGenerico {
 		this.add(this.scroll, BorderLayout.CENTER);
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve la pregunta creada en el panel
@@ -89,7 +93,7 @@ public class PreguntaMultiple extends PreguntaGenerico {
 	}
 	
 	/**
-	 * Método para añadir una opcion
+	 * Método para añadir una opción
 	 * @param s
 	 */
 	@Override

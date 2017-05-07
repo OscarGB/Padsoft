@@ -11,24 +11,41 @@ import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import contenido.Apuntes;
-import interfaz.genericos.NoodleFrame;
 
+/**
+ * Clase ApuntesPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ApuntesPanel extends JPanel{
+	
+	//Variables
 
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Etiqueta con el titulo
+	 */
 	private JLabel titulo;
 	
+	/**
+	 * Área para el texto
+	 */
 	private JTextArea texto;
 	
+	/**
+	 * Scroll
+	 */
 	private JScrollPane scrolltext;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de ApuntesPanel
-	 * @param frame
 	 * @param apuntes
 	 */
 	public ApuntesPanel(Apuntes apuntes){

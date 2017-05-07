@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import contenido.Ejercicio;
 import interfaz.genericos.NoodleFrame;
-import interfaz.genericos.NuestroPanel;
 
 /**
  * Clase ElegirTipoPreguntaListener
@@ -15,6 +14,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class ElegirTipoPreguntaListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Ejercicio que afecta
 	 */
@@ -24,6 +25,8 @@ public class ElegirTipoPreguntaListener implements ActionListener {
 	 * Frame global
 	 */
 	NoodleFrame frame;
+	
+	//Constructor
 	
 	/**
 	 * Creador
@@ -35,6 +38,8 @@ public class ElegirTipoPreguntaListener implements ActionListener {
 		this.frame = frame;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método si se pincha en algún botón
 	 * @param arg0
@@ -58,9 +63,11 @@ public class ElegirTipoPreguntaListener implements ActionListener {
 		}
 	}
 
+	/**
+	 * Método que refresca el panel
+	 * @param ej
+	 */
 	public void refresh(Ejercicio ej) {
 		this.ej = ej;
-		
 	}
-
 }

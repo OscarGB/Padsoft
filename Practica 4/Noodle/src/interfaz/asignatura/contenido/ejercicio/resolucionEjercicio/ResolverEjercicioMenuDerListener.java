@@ -12,8 +12,16 @@ import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import plataforma.Plataforma;
 
+/**
+ * Clase ResolverEjercicioMenuDerListener
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResolverEjercicioMenuDerListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -39,11 +47,14 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 	 */
 	Asignatura asignatura;
 	
+	//Constructor
+	
 	/**
 	 * Constructor del listener del menu derecho de ejercicio
 	 * @param frame
 	 * @param ejercicio
 	 * @param ejercicioMenuDer
+	 * @param tema
 	 */
 	public ResolverEjercicioMenuDerListener(NoodleFrame frame, Ejercicio ejercicio, ResolverEjercicioMenuDer ejercicioMenuDer, Tema tema){
 		this.frame = frame;
@@ -52,6 +63,8 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 		this.tema = tema;
 		this.asignatura = tema.getAsignatura();
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método por si se pulsa algún botón

@@ -4,16 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
-import javax.swing.event.EventListenerList;
 
 import contenido.Pregunta;
 
+/**
+ * Clase AddRespuestaListener
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class AddRespuestaListener implements ActionListener {
 
-	/**
-	 * Serial
-	 */
-	private static final long serialVersionUID = 1L;
+	//Variables
 	
 	/**
 	 * Panel
@@ -30,6 +32,8 @@ public class AddRespuestaListener implements ActionListener {
 	 */
 	Pregunta pregunta;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de AddRespuestaListener
 	 * @param pregunta
@@ -40,6 +44,12 @@ public class AddRespuestaListener implements ActionListener {
 		this.gen = gen;
 	}
 	
+	//Métodos
+	
+	/**
+	 * Método por si se pulsa
+	 * @param arg0
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("guardar")){

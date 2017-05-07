@@ -8,11 +8,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import contenido.Ejercicio;
 import contenido.Pregunta;
 
+/**
+ * Clase AddRespuesta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class AddRespuesta extends JPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -43,9 +50,12 @@ public class AddRespuesta extends JPanel{
 	 */
 	private AddRespuestaListener list;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de AddRespuesta
-	 * @param ejercicio
+	 * @param pregunta
+	 * @param panel
 	 */
 	public AddRespuesta(Pregunta pregunta, PreguntaGenerico panel){
 		this.pregunta = pregunta;
@@ -76,6 +86,8 @@ public class AddRespuesta extends JPanel{
 		this.setPreferredSize(new Dimension(this.getWidth(), 100));
 		this.repaint();
 	}
+	
+	//Métodos
 	
 	/**
 	 * Devuelve la respuesta escrita

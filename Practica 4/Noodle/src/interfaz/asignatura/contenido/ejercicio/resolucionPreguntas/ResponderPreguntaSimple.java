@@ -9,10 +9,17 @@ import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaSimple
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import respuestas.RespuestaPregunta;
-import respuestas.RespuestaSimple;
 
+/**
+ * Clase ResponderPreguntaSimple
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaSimple extends ResponderPregunta {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -38,6 +45,8 @@ public class ResponderPreguntaSimple extends ResponderPregunta {
 	 */
 	private Ejercicio ej;
 	
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param anterior
@@ -62,6 +71,9 @@ public class ResponderPreguntaSimple extends ResponderPregunta {
 		this.add(this.derecha, BorderLayout.EAST);
 		this.add(this.panel, BorderLayout.CENTER);
 	}
+	
+	//Métodos
+	
 	/**
 	 * Devuelve las respuestas del panel
 	 * @return

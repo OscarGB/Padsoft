@@ -1,6 +1,5 @@
 package respuestas;
 
-import java.awt.Component;
 import java.util.ArrayList;
 
 import contenido.Opciones;

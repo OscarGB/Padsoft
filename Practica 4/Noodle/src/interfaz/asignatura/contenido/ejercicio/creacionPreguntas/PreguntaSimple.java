@@ -19,6 +19,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class PreguntaSimple extends PreguntaGenerico {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -34,8 +36,10 @@ public class PreguntaSimple extends PreguntaGenerico {
 	 */
 	private JScrollPane scroll;
 
+	//Constructor
+	
 	/**
-	 * constructor
+	 * Constructor
 	 * @param anterior
 	 * @param frame
 	 * @param ejercicio
@@ -51,6 +55,8 @@ public class PreguntaSimple extends PreguntaGenerico {
 		this.remove(this.sur);
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve la pregunta creada en el panel

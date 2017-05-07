@@ -8,10 +8,18 @@ import contenido.PreguntaRespuestaMultiple;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaMultiplePanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
-import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
 
+/**
+ * Clase ResponderPreguntaMultiple
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaMultiple extends ResponderPregunta {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -36,6 +44,8 @@ public class ResponderPreguntaMultiple extends ResponderPregunta {
 	 * Ejercicio
 	 */
 	private Ejercicio ej;
+	
+	//Constructor
 	
 	/**
 	 * Constructor

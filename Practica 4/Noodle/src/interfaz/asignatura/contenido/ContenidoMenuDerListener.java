@@ -17,6 +17,8 @@ import interfaz.genericos.NoodleFrame;
  */
 public class ContenidoMenuDerListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -26,6 +28,8 @@ public class ContenidoMenuDerListener implements ActionListener {
 	 * contenido al que refiere
 	 */
 	Contenido con;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de ContenidoMenuDerListener
@@ -37,6 +41,8 @@ public class ContenidoMenuDerListener implements ActionListener {
 		this.con = con;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método que se llama en caso de que se pulse alguno de los botones del menu
 	 * @param arg0
