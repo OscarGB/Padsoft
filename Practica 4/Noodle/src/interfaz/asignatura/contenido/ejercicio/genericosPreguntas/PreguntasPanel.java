@@ -180,16 +180,16 @@ public class PreguntasPanel extends JPanel{
 		}
 		else{
 			if(pregunta instanceof PreguntaRespuestaUnica){
-				System.out.println("Pregunta unica alumno");
+				frame.showResponderPreguntaUnica(true, this.ejercicio, pregunta);
 			}
 			else if(pregunta instanceof PreguntaRespuestaMultiple){
-				System.out.println("Pregunta multiple alumno");
+				frame.showResponderPreguntaMultiple(true, this.ejercicio, pregunta);
 			}
 			else if(pregunta instanceof PreguntaRespuestaAbierta){
-				System.out.println("Pregunta abierta alumno");
+				frame.showResponderPreguntaAbierta(true, this.ejercicio, pregunta);
 			}
 			else if(pregunta instanceof PreguntaRespuestaSimple){
-				System.out.println("Pregunta simple alumno");
+				frame.showResponderPreguntaSimple(true, this.ejercicio, pregunta);
 			}
 		}
 	}

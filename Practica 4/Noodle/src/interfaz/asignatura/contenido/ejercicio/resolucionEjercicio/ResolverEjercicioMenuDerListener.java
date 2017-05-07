@@ -7,6 +7,7 @@ import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
+import persona.Alumno;
 import plataforma.Plataforma;
 
 public class ResolverEjercicioMenuDerListener implements ActionListener {
@@ -60,9 +61,7 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 			this.frame.atras();
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
-			//TODO resolver el ejercicio y coger TODAS las respuestas
-			System.out.println("Has clicado en guardar");
-			Plataforma.plat().saveData();
+			this.ejercicio.responderEjercicio((Alumno)Plataforma.loggedAs(), ResolverEjercicioGUI.getInstance().getRespuestas());			
 		}
 	}
 }
