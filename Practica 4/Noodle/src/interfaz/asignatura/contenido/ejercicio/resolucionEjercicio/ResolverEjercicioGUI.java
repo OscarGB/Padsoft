@@ -139,26 +139,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	}
 	
 	/**
-	 * Método que actualiza el panel
-	 * @param ejercicio
-	 * @param tema
-	 */
-	public void refreshPanel(Ejercicio ejercicio, Tema tema){
-		this.ejercicio = ejercicio;
-		this.tema = tema;
-		this.remove(this.panel);
-		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
-		
-		this.remove(this.scroll);
-		this.scroll = new JScrollPane(this.panel);
-		this.add(this.scroll, BorderLayout.CENTER);
-		
-		this.remove(this.der);
-		this.der = new ResolverEjercicioMenuDer(frame, ejercicio, tema);
-		this.add(this.der, BorderLayout.EAST);
-	}
-	
-	/**
 	 * Añade una pregunta al array
 	 * @param res
 	 */
@@ -169,6 +149,7 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		for (RespuestaPregunta respuesta : this.respuestas){
 			if(respuesta.getPregunta() == res.getPregunta()){
 				this.respuestas.remove(respuesta);
+				break;
 			}
 		}
 		this.respuestas.add(res);

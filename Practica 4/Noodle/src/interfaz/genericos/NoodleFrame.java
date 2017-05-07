@@ -643,9 +643,6 @@ public class NoodleFrame extends JFrame{
 		if(this.resolverEjercicioGUI == null){
 			this.resolverEjercicioGUI = new ResolverEjercicioGUI(anterior, this, ejercicio, tema);
 		}
-		else{
-			this.resolverEjercicioGUI.refreshPanel(ejercicio, tema);
-		}
 		
 		this.getContentPane().add(this.resolverEjercicioGUI);
 		

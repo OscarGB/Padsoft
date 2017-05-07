@@ -68,7 +68,7 @@ public class ResponderPreguntaAbiertaPanel extends JPanel {
 		
 		spr.putConstraint(SpringLayout.NORTH, area, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, area, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		spr.putConstraint(SpringLayout.NORTH, respuesta, 20, SpringLayout.SOUTH, this);
+		spr.putConstraint(SpringLayout.NORTH, respuesta, 20, SpringLayout.SOUTH, area);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, respuesta, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
 	}

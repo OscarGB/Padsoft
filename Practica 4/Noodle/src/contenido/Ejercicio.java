@@ -377,6 +377,7 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return estado
 	 */
 	public EstadoEjercicio getEstado(){
+		this.enPlazo();
 		return this.estado;
 	}
 	
@@ -481,21 +482,21 @@ public class Ejercicio extends Contenido implements Serializable{
 	 * @return boolean
 	 */
 	public boolean enPlazo(){
-		if(this.estado == EstadoEjercicio.ABIERTO){
-			return true;
-		}
-		else if(this.estado == EstadoEjercicio.TERMINADO){
+		if(this.estado == EstadoEjercicio.TERMINADO){
 			return false;
-		}
-		else if(Plataforma.getFechaActual().isBefore(this.fechaFin) && Plataforma.getFechaActual().isAfter(this.fechaIni)){
-			if(this.estado != EstadoEjercicio.RESPONDIDO){
-				this.estado = EstadoEjercicio.ABIERTO;
-			}
-			return true;
 		}
 		else if(Plataforma.getFechaActual().isAfter(this.fechaFin)){
 			this.estado = EstadoEjercicio.TERMINADO;
 			return false;
+		}
+		else if(this.estado == EstadoEjercicio.ABIERTO){
+			return true;
+		}
+		else if(Plataforma.getFechaActual().isBefore(this.fechaFin) && (Plataforma.getFechaActual().isAfter(this.fechaIni) || Plataforma.getFechaActual().equals(this.fechaIni))){
+			if(this.estado != EstadoEjercicio.RESPONDIDO){
+				this.estado = EstadoEjercicio.ABIERTO;
+			}
+			return true;
 		}
 		else {
 			return false;

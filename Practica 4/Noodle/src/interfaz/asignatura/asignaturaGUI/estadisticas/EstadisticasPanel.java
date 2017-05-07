@@ -122,6 +122,8 @@ public class EstadisticasPanel extends JPanel {
 			this.top = new JLabel("Estadisticas del alumno: " + al.getNombre() + " en " + asig.getNombre() + ". Nota media: " + al.getMediaAsignatura(asig));
 		}
 		
+		this.respuestas = aux.getRespuestas();
+		
 		this.add(top);
 		
 		this.top.setFont(f);

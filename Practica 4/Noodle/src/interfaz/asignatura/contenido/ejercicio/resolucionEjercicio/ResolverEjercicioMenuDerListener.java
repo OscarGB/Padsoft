@@ -58,10 +58,14 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("cancelar")){
+			this.frame.responderOCancelarEjercicio();
 			this.frame.atras();
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
-			this.ejercicio.responderEjercicio((Alumno)Plataforma.loggedAs(), ResolverEjercicioGUI.getInstance().getRespuestas());			
+			this.ejercicio.responderEjercicio((Alumno)Plataforma.loggedAs(), ResolverEjercicioGUI.getInstance().getRespuestas());
+			this.frame.responderOCancelarEjercicio();
+			Plataforma.plat().saveData();
+			this.frame.atras();
 		}
 	}
 }

@@ -68,6 +68,7 @@ public class ResponderPreguntaMenuDerListener implements ActionListener{
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
 			ResolverEjercicioGUI.getInstance().addRespuesta(gen.getRespuesta());
+			this.frame.atras();
 		}
 	}
 }

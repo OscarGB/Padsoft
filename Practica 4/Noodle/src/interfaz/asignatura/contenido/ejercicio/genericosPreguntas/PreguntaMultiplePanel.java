@@ -86,8 +86,10 @@ public class PreguntaMultiplePanel extends JPanel {
 			}
 			for(Opciones op : this.opciones){
 				JCheckBox aux = new JCheckBox(op.getRespuesta());
-				if(op.esCorrecta() == true){
-					aux.setSelected(true);
+				if(flag == false){
+					if(op.esCorrecta() == true){
+						aux.setSelected(true);
+					}
 				}
 				radios.add(aux);
 				this.add(aux);

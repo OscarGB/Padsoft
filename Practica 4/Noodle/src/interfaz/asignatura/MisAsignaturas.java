@@ -85,12 +85,7 @@ public class MisAsignaturas extends Asignaturas{
 	 * @return ArrayList
 	 */
 	private ArrayList<Asignatura> getAsignaturas(){
-		ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();
-//		ArrayList<Asignatura> array = new ArrayList<Asignatura>();
-//		array.add(new Asignatura("Mates"));
-//		array.add(new Asignatura("Lengua"));
-//		array.add(new Asignatura("Cono"));
-		
+		ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();		
 		return array;
 	}	
 	
