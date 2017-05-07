@@ -3,6 +3,8 @@ package interfaz.asignatura.contenido;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import contenido.Apuntes;
 import contenido.Contenido;
 import interfaz.genericos.NoodleFrame;
@@ -42,8 +44,11 @@ public class ContenidoMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
-			this.con.eraseContenido();
-			this.frame.showAsignatura(true, this.con.getAsignatura());
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea borrar este contenido?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.con.eraseContenido();
+				this.frame.showAsignatura(true, this.con.getAsignatura());
+			}
 		}
 		if(arg0.getActionCommand().equals("editar")){
 			if(con instanceof Apuntes){

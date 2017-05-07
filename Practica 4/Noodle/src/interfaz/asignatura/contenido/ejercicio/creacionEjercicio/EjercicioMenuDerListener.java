@@ -86,14 +86,14 @@ public class EjercicioMenuDerListener implements ActionListener {
 				else if(ini.isAfter(fin) || ini.isBefore(LocalDate.now())){
 					String nl = System.getProperty("line.separator");
 					JOptionPane.showMessageDialog(null, "Fechas inválidas"+nl+"Se emplearán fechas por defecto", "Error de fechas",JOptionPane.ERROR_MESSAGE);
-					this.ejercicio = new Ejercicio(peso, aleatorio, null, null, tema, nombre, aleatorio, this.asignatura);
+					this.ejercicio = new Ejercicio(peso, aleatorio, null, null, tema, nombre, true, this.asignatura);
 					ini = ejercicio.getFechaIniDefecto();
 					fin = ejercicio.getFechaFinDefecto();
 					this.ejercicio.setFechaFin(fin);
 					this.ejercicio.setFechaIni(ini);
 					this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				} else{
-					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, aleatorio, this.asignatura);
+					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, true, this.asignatura);
 				}
 			}
 			else if (ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
