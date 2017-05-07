@@ -7,8 +7,6 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
-import contenido.Pregunta;
-import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaUnicaPanel;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
@@ -18,8 +16,16 @@ import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
 import respuestas.RespuestaUnica;
 
+/**
+ * Clase EstPregunta
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class EstPregunta extends NuestroPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -29,16 +35,6 @@ public class EstPregunta extends NuestroPanel{
 	 * Respuesta
 	 */
 	private RespuestaPregunta respuesta;
-	
-	/**
-	 * Pregunta
-	 */
-	private Pregunta pregunta;
-	
-	/**
-	 * Ejercicio
-	 */
-	private Ejercicio ejercicio;
 	
 	/**
 	 * Panel
@@ -55,6 +51,8 @@ public class EstPregunta extends NuestroPanel{
 	 */
 	private Menu menu;
 
+	//Constructor
+	
 	/**
 	 * Constructor de EstPreguntaUnica
 	 * @param anterior
@@ -64,7 +62,6 @@ public class EstPregunta extends NuestroPanel{
 	 */
 	public EstPregunta(NuestroPanel anterior, NoodleFrame frame, RespuestaPregunta respuesta, Ejercicio ejercicio) {
 		super(anterior, frame);
-		this.ejercicio = ejercicio;
 		this.respuesta = respuesta;
 		this.menu = new Menu(frame);
 		

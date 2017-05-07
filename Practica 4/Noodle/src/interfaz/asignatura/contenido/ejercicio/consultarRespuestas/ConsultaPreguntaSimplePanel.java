@@ -10,23 +10,23 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
-import contenido.Opciones;
 import contenido.PreguntaRespuestaSimple;
-import contenido.PreguntaRespuestaUnica;
 import respuestas.RespuestaSimple;
-import respuestas.RespuestaUnica;
 
+/**
+ * Clase ConsultaPreguntaSimplePanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ConsultaPreguntaSimplePanel extends ConsultaPregunta {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Array de opciones
-	 */
-	private ArrayList<Opciones> opciones;
 	
 	/**
 	 * Array de radiobuttons
@@ -57,6 +57,8 @@ public class ConsultaPreguntaSimplePanel extends ConsultaPregunta {
 	 * Pregunta
 	 */
 	private PreguntaRespuestaSimple pregunta;
+	
+	//Constructor
 	
 	/**
 	 * Constructor
