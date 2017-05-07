@@ -41,11 +41,22 @@ class SelectionListener implements TreeSelectionListener {
 	    	}
 	    }
 	    else if (selectedNode.isLeaf()) {
+	    	boolean flag = (Plataforma.loggedAs() instanceof Alumno);
 	    	if(obj instanceof Apuntes){
-	    		NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
+	    		if(flag == true){
+	    			
+	    		}
+	    		else{
+	    			NoodleFrame.getInstance().showApuntes(true, (Apuntes)obj);
+	    		}
 	    	}
-	    	if(obj instanceof Ejercicio){
-	    		NoodleFrame.getInstance().showEjercicioGUI(true, (Ejercicio)obj, ((Ejercicio) obj).getPadre());
+	    	else if(obj instanceof Ejercicio){
+	    		if(flag == true){
+	    			NoodleFrame.getInstance().showResolverEjercicioGUI(true, (Ejercicio)obj, ((Ejercicio) obj).getPadre());
+	    		}
+	    		else{
+	    			NoodleFrame.getInstance().showEjercicioGUI(true, (Ejercicio)obj, ((Ejercicio) obj).getPadre());
+	    		}
 	    	}
 	    	
 	    }

@@ -54,6 +54,10 @@ public class EjercicioMenuDerListener implements ActionListener {
 		this.asignatura = tema.getAsignatura();
 	}
 	
+	/**
+	 * Método en caso de que se pulse algún botón
+	 * @param arg0
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){

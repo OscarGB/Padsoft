@@ -86,6 +86,9 @@ public class EjercicioMenuDer extends JPanel {
 	 */
 	private JDatePickerImpl  fechaFin;
 	
+	/**
+	 * Label con "Nombre:
+	 */
 	private JLabel nombreLabel = new JLabel("Nombre: ");
 	
 	/**

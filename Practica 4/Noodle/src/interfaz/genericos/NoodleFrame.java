@@ -21,6 +21,7 @@ import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaAbierta
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaMultiple;
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaSimple;
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaUnica;
+import interfaz.asignatura.contenido.ejercicio.resolucionEjercicio.ResolverEjercicioGUI;
 import interfaz.inicios.*;
 import interfaz.login.*;
 import interfaz.solicitudes.*;
@@ -56,13 +57,14 @@ public class NoodleFrame extends JFrame{
 	private SubirApuntes subirApuntes = null;
 	private AlumnosAsignatura alumnosAsignatura = null;
 	private EjercicioGUI ejercicioGUI = null;
-	private ElegirTipoPregunta elegirTipoPregunta;
-	private Estadisticas estadisticas;
-	private SolicitudesExpulsados solicitudesExpulsados;
-	private PreguntaUnica preguntaUnica;
-	private PreguntaMultiple preguntaMultiple;
-	private PreguntaAbierta preguntaAbierta;
-	private PreguntaSimple preguntaSimple;
+	private ElegirTipoPregunta elegirTipoPregunta = null;
+	private Estadisticas estadisticas = null;
+	private SolicitudesExpulsados solicitudesExpulsados = null;
+	private PreguntaUnica preguntaUnica = null;
+	private PreguntaMultiple preguntaMultiple = null;
+	private PreguntaAbierta preguntaAbierta = null;
+	private PreguntaSimple preguntaSimple = null;
+	private ResolverEjercicioGUI resolverEjercicioGUI = null;
 
 	private static NoodleFrame frame;
 	
@@ -451,14 +453,6 @@ public class NoodleFrame extends JFrame{
 		if(back == false){
 			anterior = this.ejercicioGUI.getAnterior();
 		}
-		
-//		if(this.ejercicioGUI == null){
-//			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
-//		}
-//		else{
-//			this.ejercicioGUI.refreshPanel(ejercicio,tema);
-//			this.ejercicioGUI.setAnterior(anterior);
-//		}
 		this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
 		
 		this.getContentPane().add(this.ejercicioGUI);
@@ -634,6 +628,37 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.preguntaSimple);
 		
 		this.fin(700,500, this.preguntaSimple);
+	}
+
+	/**
+	 * Enseña el panel para resolver el ejercicio
+	 * @param back
+	 * @param ejercicio
+	 * @param tema
+	 */
+	public void showResolverEjercicioGUI(boolean back, Ejercicio ejercicio, Tema tema) {
+		
+		if(ejercicio.getEstado().equals(EstadoEjercicio.ESPERA)){
+			//TODO poner aviso de que aun no ha abierto
+			System.out.println("Aun no ha abierto");
+			return;
+		}
+		else if(ejercicio.getEstado().equals(EstadoEjercicio.TERMINADO)){
+			//TODO ir a las respuestas
+			System.out.println("Respuestas");
+			return;
+		}
+		
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = this.resolverEjercicioGUI.getAnterior();
+		}
+		this.resolverEjercicioGUI = new ResolverEjercicioGUI(anterior, this, ejercicio, tema);
+		
+		this.getContentPane().add(this.resolverEjercicioGUI);
+		
+		this.fin(700,500, this.resolverEjercicioGUI);
+		
 	}
 	
 }

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -110,7 +111,10 @@ public class PreguntasPanel extends JPanel{
 		this.labels = new ArrayList<JLabel>();
 		
 		if(ejercicio != null){
-			this.preguntas = ejercicio.getPreguntas();
+			this.preguntas = (ArrayList<Pregunta>) ejercicio.getPreguntas().clone();
+			if(Plataforma.loggedAs() instanceof Alumno && this.ejercicio.esAleatorio() == true){
+				Collections.shuffle(this.preguntas);
+			}
 		}
 		else{
 			this.preguntas = new ArrayList<Pregunta>();
