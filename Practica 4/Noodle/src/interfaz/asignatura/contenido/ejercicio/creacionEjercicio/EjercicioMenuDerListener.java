@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionEjercicio;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

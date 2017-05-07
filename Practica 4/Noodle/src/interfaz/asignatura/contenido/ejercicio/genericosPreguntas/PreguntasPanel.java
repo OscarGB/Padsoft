@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.genericosPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;

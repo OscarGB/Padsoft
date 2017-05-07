@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionEjercicio;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +12,7 @@ import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import contenido.Tema;
+import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
