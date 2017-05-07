@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

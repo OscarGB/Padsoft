@@ -1,23 +1,22 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
+import contenido.PreguntaRespuestaSimple;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
 /**
- * Clase PreguntaAbierta
+ * Clase PreguntaSimple
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class PreguntaAbierta extends PreguntaGenerico {
+public class PreguntaSimple extends PreguntaGenerico {
 
 	/**
 	 * Serial
@@ -27,7 +26,7 @@ public class PreguntaAbierta extends PreguntaGenerico {
 	/**
 	 * Panel padre
 	 */
-	private PreguntaAbiertaPanel panel;
+	private PreguntaSimplePanel panel;
 	
 	/**
 	 * Panel para hacer scroll
@@ -41,12 +40,14 @@ public class PreguntaAbierta extends PreguntaGenerico {
 	 * @param ejercicio
 	 * @param pregunta
 	 */
-	public PreguntaAbierta(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta) {
+	public PreguntaSimple(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta) {
 		super(anterior, frame, ejercicio, pregunta);
 		
-		this.panel = new PreguntaAbiertaPanel((PreguntaRespuestaAbierta) this.pregunta);
+		this.panel = new PreguntaSimplePanel((PreguntaRespuestaSimple) this.pregunta);
 		scroll = new JScrollPane(panel);
 		this.add(this.scroll, BorderLayout.CENTER);
+		
+		this.remove(this.sur);
 		
 	}
 	
@@ -73,12 +74,8 @@ public class PreguntaAbierta extends PreguntaGenerico {
 		this.derecha = new PreguntaMenuDer(this, this.frame, this.ejercicio, this.pregunta);
 		this.add(this.derecha, BorderLayout.EAST);
 		
-		this.remove(this.sur);
-		this.sur = new AddRespuesta(this.pregunta, this);
-		this.add(this.sur, BorderLayout.SOUTH);
-		
 		this.remove(this.scroll);
-		this.panel = new PreguntaAbiertaPanel((PreguntaRespuestaAbierta) this.pregunta);
+		this.panel = new PreguntaSimplePanel((PreguntaRespuestaSimple) this.pregunta);
 		scroll = new JScrollPane(panel);
 		this.add(this.scroll, BorderLayout.CENTER);
 		
@@ -92,7 +89,7 @@ public class PreguntaAbierta extends PreguntaGenerico {
 	 */
 	@Override
 	public void addOpcion(String s){
-		panel.addOpcion(s);
+		System.out.println("No deberias haber llegado aqui");
 	}
 
 }

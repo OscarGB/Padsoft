@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,6 +71,7 @@ public class PreguntaMenuDerListener implements ActionListener {
 				this.p.setPenalizacion(menu.getValuePesoFalloSpinner());
 				this.ej.addPregunta(this.p);
 				System.out.println(this.p);
+				System.out.println(this.ej.getPreguntas());
 				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
 			}			
 		}

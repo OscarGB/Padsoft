@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -15,16 +15,16 @@ import javax.swing.SpringLayout;
 import asignatura.Asignatura;
 import contenido.Opciones;
 import contenido.Pregunta;
-import contenido.PreguntaRespuestaAbierta;
+import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
 
 /**
- * Clase PreguntaUniaPanel
+ * Clase PreguntaMultiplePanel
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
-public class PreguntaAbiertaPanel extends JPanel {
+public class PreguntaMultiplePanel extends JPanel {
 
 	/**
 	 * 
@@ -34,12 +34,12 @@ public class PreguntaAbiertaPanel extends JPanel {
 	/**
 	 * Array de opciones
 	 */
-	private ArrayList<String> opciones;
+	private ArrayList<Opciones> opciones;
 	
 	/**
 	 * Array de radiobuttons
 	 */
-	private ArrayList<JLabel> radios;
+	private ArrayList<JCheckBox> radios;
 	
 	/**
 	 * Area para el enunciado
@@ -54,13 +54,13 @@ public class PreguntaAbiertaPanel extends JPanel {
 	/**
 	 * Pregunta
 	 */
-	private PreguntaRespuestaAbierta p;
+	private PreguntaRespuestaMultiple p;
 
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
 	 */
-	public PreguntaAbiertaPanel(PreguntaRespuestaAbierta p){
+	public PreguntaMultiplePanel(PreguntaRespuestaMultiple p){
 		
 		this.setBackground(Color.WHITE);
 		
@@ -71,18 +71,21 @@ public class PreguntaAbiertaPanel extends JPanel {
 		setLayout(spr);
 		
 		if(p == null){
-			this.p = new PreguntaRespuestaAbierta("", false, 0, 0);
-			this.opciones = new ArrayList<String>();
-			this.radios = new ArrayList<JLabel>();
+			this.p = new PreguntaRespuestaMultiple("", false, 0, 0);
+			this.opciones = new ArrayList<Opciones>();
+			this.radios = new ArrayList<JCheckBox>();
 			this.area.setText("prueba");
 		}
 		else{
 			this.p = p;
 			this.area.setText(p.getEnunciado());
-			this.radios = new ArrayList<JLabel>();
-			this.opciones = (ArrayList<String>) this.p.getRespuestas().clone();
-			for(String op : this.opciones){
-				JLabel aux = new JLabel(op);
+			this.radios = new ArrayList<JCheckBox>();
+			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
+			for(Opciones op : this.opciones){
+				JCheckBox aux = new JCheckBox(op.getRespuesta());
+				if(op.esCorrecta() == true){
+					aux.setSelected(true);
+				}
 				radios.add(aux);
 				this.add(aux);
 				
@@ -117,17 +120,27 @@ public class PreguntaAbiertaPanel extends JPanel {
 	 * Método que devuelve la Pregunta
 	 * @return
 	 */
-	public PreguntaRespuestaAbierta getPregunta(){
-		if(radios.size() == 0){
+	public PreguntaRespuestaMultiple getPregunta(){
+		boolean flag = false;
+		for(int i = 0; i < radios.size(); i++){
+			if(radios.get(i).isSelected()){
+				this.opciones.get(i).setCorrecta(true);
+				flag = true;
+			}
+			else{
+				this.opciones.get(i).setCorrecta(false);
+			}
+		}		
+		if(flag == false){
 			return null;
 		}
 		
-		for(Iterator<String> iter = this.p.getRespuestas().iterator(); iter.hasNext();){
+		for(Iterator<Opciones> iter = this.p.getOpciones().iterator(); iter.hasNext();){
 			iter.next();
 			iter.remove();
 		}
 		
-		for(String op : this.opciones){
+		for(Opciones op : this.opciones){
 			this.p.addOpcion(op);
 		}
 		this.p.setEnunciado(this.getEnunciado());
@@ -139,8 +152,8 @@ public class PreguntaAbiertaPanel extends JPanel {
 	 * @param s
 	 */
 	public void addOpcion(String s){
-		opciones.add(s);
-		JLabel aux = new JLabel(s);
+		opciones.add(new Opciones(s,false));
+		JCheckBox aux = new JCheckBox(s);
 		radios.add(aux);
 		this.add(aux);
 		

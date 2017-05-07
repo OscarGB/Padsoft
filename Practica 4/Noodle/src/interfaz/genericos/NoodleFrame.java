@@ -17,9 +17,10 @@ import interfaz.asignatura.contenido.apuntes.ApuntesListener;
 import interfaz.asignatura.contenido.apuntes.SubirApuntes;
 import interfaz.asignatura.contenido.ejercicio.EjercicioGUI;
 import interfaz.asignatura.contenido.ejercicio.ElegirTipoPregunta;
-import interfaz.asignatura.contenido.ejercicio.PreguntaAbierta;
-import interfaz.asignatura.contenido.ejercicio.PreguntaMultiple;
-import interfaz.asignatura.contenido.ejercicio.PreguntaUnica;
+import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaAbierta;
+import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaMultiple;
+import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaSimple;
+import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaUnica;
 import interfaz.inicios.*;
 import interfaz.login.*;
 import interfaz.solicitudes.*;
@@ -61,6 +62,7 @@ public class NoodleFrame extends JFrame{
 	private PreguntaUnica preguntaUnica;
 	private PreguntaMultiple preguntaMultiple;
 	private PreguntaAbierta preguntaAbierta;
+	private PreguntaSimple preguntaSimple;
 
 	private static NoodleFrame frame;
 	
@@ -610,6 +612,31 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.preguntaAbierta);
 		
 		this.fin(700,500, this.preguntaAbierta);
+	}
+	
+	/**
+	 * Método que muestra PreguntaSimple
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showPreguntaSimple(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		if(this.preguntaSimple == null){
+			this.preguntaSimple = new PreguntaSimple(anterior, this, ejercicio, pregunta);			
+		}
+		else{
+			this.preguntaSimple.setAnterior(anterior);
+			this.preguntaSimple.refreshPanel(pregunta, ejercicio);
+		}
+		
+		
+		this.getContentPane().add(this.preguntaSimple);
+		
+		this.fin(700,500, this.preguntaSimple);
 	}
 	
 }

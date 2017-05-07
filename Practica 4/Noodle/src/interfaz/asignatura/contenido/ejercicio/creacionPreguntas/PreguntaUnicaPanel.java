@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio;
+package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -87,6 +87,9 @@ public class PreguntaUnicaPanel extends JPanel {
 			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
 			for(Opciones op : this.opciones){
 				JRadioButton aux = new JRadioButton(op.getRespuesta());
+				if(op.esCorrecta() == true){
+					aux.setSelected(true);
+				}
 				radios.add(aux);
 				grupo.add(aux);
 				this.add(aux);
@@ -122,9 +125,8 @@ public class PreguntaUnicaPanel extends JPanel {
 	 * Método que devuelve la Pregunta
 	 * @return
 	 */
-	public PreguntaRespuestaUnica getPregunta(){
-		int aux = radios.indexOf(grupo.getSelection());
-		
+	public PreguntaRespuestaUnica getPregunta(){	
+		int aux = -1;
 		for(JRadioButton but: radios){
 			if(but.isSelected()){
 				aux = radios.indexOf(but);
