@@ -19,14 +19,18 @@ import solicitud.Solicitud;
  * @date 18/04/2017
  */
 public class MisSolicitudes extends JPanel {
+	
+	//Variables
+	
 	/**
 	 * ID del panel de Panel
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	//Constructor
 
 	/**
 	 * Constructor de MisAsignaturas (subpanel)
-	 * @param frame
 	 */
 	public MisSolicitudes() {
 		this.setBackground(Color.WHITE);
@@ -70,7 +74,7 @@ public class MisSolicitudes extends JPanel {
 	
 	/**
 	 * Metodo para obtener las asignaturas de la plataforma
-	 * @return ArrayList
+	 * @return
 	 */
 	private ArrayList<Solicitud> getSolicitudes(){
 		ArrayList<Solicitud> total = Plataforma.plat().getSolicitudes();

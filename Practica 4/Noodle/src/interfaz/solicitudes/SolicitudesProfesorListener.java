@@ -15,6 +15,8 @@ import solicitud.Solicitud;
  */
 public class SolicitudesProfesorListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -24,6 +26,8 @@ public class SolicitudesProfesorListener implements ActionListener {
 	 * Solicitud que afecta 
 	 */
 	Solicitud sol;
+	
+	//Constructor
 	
 	/**
 	 * Creador de SolicitudesProfesorListener
@@ -36,6 +40,8 @@ public class SolicitudesProfesorListener implements ActionListener {
 		this.sol = sol;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método para cuando se pulsa en el botón
 	 * @param e

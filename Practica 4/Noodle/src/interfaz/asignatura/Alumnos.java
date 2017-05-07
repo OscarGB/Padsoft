@@ -16,10 +16,9 @@ import javax.swing.SpringLayout;
 import asignatura.Asignatura;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
-import plataforma.Plataforma;
 
 /**
- * Clase RatonList
+ * Clase AlumnoList
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
@@ -42,9 +41,8 @@ class AlumnoList extends MouseAdapter{
 	
 	/**
 	 * Constructor de RatonList
-	 * @param a
 	 * @param panel
-	 * @param asig
+	 * @param alumno
 	 */
 	AlumnoList(Alumnos panel, Alumno alumno){
 		this.panel = panel;
@@ -57,14 +55,23 @@ class AlumnoList extends MouseAdapter{
 	  * Método por si se pulsa
 	  * @param e
 	  */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		 this.panel.listenerListaAlumnos(this.alumno);
 	 } 
 }
 
+/**
+ * Clase Alumnos
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class Alumnos extends JPanel{
+	//Variables
+	
 	/**
-	 * ID del panel del panel
+	 * ID del panel
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -88,11 +95,13 @@ public class Alumnos extends JPanel{
 	 */
 	private ArrayList<JLabel> labels;
 
+	//Constructor
+	
 	/**
 	 * Constructor de Alumnos (subpanel)
 	 * @param frame
+	 * @param asignatura
 	 */
-	
 	public Alumnos(NoodleFrame frame, Asignatura asignatura){
 		this.frame = frame;
 		this.setBackground(Color.WHITE);
@@ -151,6 +160,8 @@ public class Alumnos extends JPanel{
 		
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Listener para cuando se clique en un alumno

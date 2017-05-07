@@ -35,7 +35,6 @@ class RatonList extends MouseAdapter{
 	
 	/**
 	 * Constructor de RatonList
-	 * @param a
 	 * @param panel
 	 * @param asig
 	 */
@@ -50,6 +49,7 @@ class RatonList extends MouseAdapter{
 	  * Método por si se pulsa
 	  * @param e
 	  */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		 this.panel.listenerListaAsignaturas(this.asig);
 	 } 
@@ -62,12 +62,22 @@ public class Asignaturas extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * frame genérico
+	 */
 	NoodleFrame frame;
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param frame
+	 */
 	public Asignaturas(NoodleFrame frame){
 		this.frame = frame;
 	}
 	
+	//Métodos
 	
 	/**
 	 * Listener para cuando se clique en una asignatura

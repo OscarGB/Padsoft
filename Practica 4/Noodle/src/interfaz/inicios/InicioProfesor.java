@@ -14,6 +14,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class InicioProfesor extends NuestroPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -28,6 +30,8 @@ public class InicioProfesor extends NuestroPanel {
 	 * Panel de inicio
 	 */
 	private CreaAsignatura centro = new CreaAsignatura();
+	
+	//constructor
 	
 	/**
 	 * Constructor del inicio del profesor
@@ -57,9 +61,12 @@ public class InicioProfesor extends NuestroPanel {
 
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showInicioProfesor(false);
 	}

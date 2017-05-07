@@ -16,6 +16,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class ListaAsignaturas extends NuestroPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -36,9 +38,11 @@ public class ListaAsignaturas extends NuestroPanel {
 	 */
 	private JScrollPane scroll;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de la lista de asignaturas
-	 * @param panel anterior
+	 * @param anterior
 	 * @param frame
 	 */
 	public ListaAsignaturas(NuestroPanel anterior, NoodleFrame frame){
@@ -61,9 +65,12 @@ public class ListaAsignaturas extends NuestroPanel {
 
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showListaAsignaturas(false);
 	}

@@ -15,6 +15,9 @@ import interfaz.genericos.NuestroPanel;
  * @date 18/04/2017
  */
 public class SolicitudesAlumno extends NuestroPanel {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -34,6 +37,8 @@ public class SolicitudesAlumno extends NuestroPanel {
 	 * Panel de scrolling
 	 */
 	private JScrollPane scroll;
+	
+	//Constructor
 	
 	/**
 	 * Constructor del inicio del alumno
@@ -62,9 +67,12 @@ public class SolicitudesAlumno extends NuestroPanel {
 
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showSolicitudesAlumno(false);
 	}

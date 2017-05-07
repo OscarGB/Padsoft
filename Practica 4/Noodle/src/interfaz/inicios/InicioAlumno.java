@@ -71,6 +71,7 @@ public class InicioAlumno extends NuestroPanel {
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showInicioAlumno(false);
 	}

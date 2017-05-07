@@ -6,20 +6,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import asignatura.Asignatura;
-import contenido.Apuntes;
-import contenido.Contenido;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 
 /**
- * Clase ContenidoMenuDerListener
+ * Clase AsignaturaMenuDerListener
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class AsignaturaMenuDerListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -40,12 +40,14 @@ public class AsignaturaMenuDerListener implements ActionListener {
 	 */
 	Asignatura asig;
 	
+	//Constructor
+	
 	/**
-	 * Constructor de ContenidoMenuDerListener
+	 * Constructor de AsignaturaMenuDerListener
 	 * @param frame
+	 * @param tema
 	 * @param asignaturaMenuDer 
 	 * @param asignatura 
-	 * @param con
 	 */
 	public AsignaturaMenuDerListener(NoodleFrame frame, Tema tema, AsignaturaMenuDer asignaturaMenuDer, Asignatura asignatura) {
 		this.frame = frame;
@@ -54,6 +56,7 @@ public class AsignaturaMenuDerListener implements ActionListener {
 		this.asig = asignatura;
 	}
 	
+	//Getters y setters
 	
 	/**
 	 * Setter de tema
@@ -63,6 +66,8 @@ public class AsignaturaMenuDerListener implements ActionListener {
 		this.tema = tema;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método que se llama en caso de que se pulse alguno de los botones del menu
 	 * @param arg0

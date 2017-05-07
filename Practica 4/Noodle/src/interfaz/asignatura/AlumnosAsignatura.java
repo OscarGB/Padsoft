@@ -3,8 +3,6 @@ package interfaz.asignatura;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -21,6 +19,9 @@ import interfaz.genericos.NuestroPanel;
  * @date 18/04/2017
  */
 public class AlumnosAsignatura extends NuestroPanel{
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -84,9 +85,12 @@ public class AlumnosAsignatura extends NuestroPanel{
 		this.menu.setPreferredSize(new Dimension(w, 80));
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showAlumnosAsignatura(false, this.asignatura);
 	}

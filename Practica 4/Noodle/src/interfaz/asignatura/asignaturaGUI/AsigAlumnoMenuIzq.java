@@ -10,6 +10,7 @@ import javax.swing.SpringLayout;
 import asignatura.Asignatura;
 import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
+
 /**
  * Clase AsigAlumnoMenuIzq
  * @author Jose Ignacio Gomez
@@ -18,6 +19,8 @@ import plataforma.Plataforma;
  */
 public class AsigAlumnoMenuIzq extends JPanel {
 
+	//Varibles
+	
 	/**
 	 * Serial
 	 */
@@ -38,6 +41,8 @@ public class AsigAlumnoMenuIzq extends JPanel {
 	 */
 	private JButton notas = new JButton("Notas");
 
+	//Constructor
+	
 	/**
 	 * Creador
 	 * @param frame
@@ -60,7 +65,7 @@ public class AsigAlumnoMenuIzq extends JPanel {
 		
 		this.notas.setActionCommand("notas");
 		
-		this.notas.addActionListener(new AsigAlumnoMenuIzqListener(this.frame, Plataforma.loggedAs(), asignatura));
+		this.notas.addActionListener(new AsigAlumnoMenuIzqListener(this.frame, Plataforma.loggedAs(), this.asignatura));
 		this.setPreferredSize(new Dimension(200, 250));
 	}
 }

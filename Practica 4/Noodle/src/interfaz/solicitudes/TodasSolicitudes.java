@@ -22,6 +22,8 @@ import solicitud.Solicitud;
  */
 public class TodasSolicitudes extends JPanel {
 	
+	//Variables
+	
 	/**
 	 * ID del panel de Panel
 	 */
@@ -32,9 +34,11 @@ public class TodasSolicitudes extends JPanel {
 	 */
 	NoodleFrame frame;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de MisAsignaturas (subpanel)
-	 * @param soli
+	 * @param frame
 	 */
 	public TodasSolicitudes(NoodleFrame frame) {
 		this.frame = frame;
@@ -102,9 +106,11 @@ public class TodasSolicitudes extends JPanel {
 		
 	}
 	
+	//Métodos
+	
 	/**
 	 * Metodo para obtener las asignaturas de la plataforma
-	 * @return ArrayList
+	 * @return
 	 */
 	private ArrayList<Solicitud> getSolicitudes(){
 		return Plataforma.plat().getSolicitudes();

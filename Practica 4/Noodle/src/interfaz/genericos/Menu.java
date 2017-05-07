@@ -19,6 +19,8 @@ import plataforma.Plataforma;
  */
 public class Menu extends JPanel {
 
+	//Variables
+	
 	/**
 	 * ID del panel de menu
 	 */
@@ -38,6 +40,8 @@ public class Menu extends JPanel {
 	JMenu solicitudes = new JMenu("Solicitudes");
 	JButton logo = new JButton();
 	JButton exit = new JButton();
+	
+	//Constructor
 	
 	/**
 	 * Constructor del menu
@@ -104,6 +108,8 @@ public class Menu extends JPanel {
 		this.add(menubar);
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que añade el listener al menú

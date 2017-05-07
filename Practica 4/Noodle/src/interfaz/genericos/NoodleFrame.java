@@ -91,6 +91,10 @@ public class NoodleFrame extends JFrame{
 		this.showPanelLogin();	
 	}
 	
+	/**
+	 * Getter de asignaturaGUI
+	 * @return
+	 */
 	public AsignaturaGUI getAsignaturaGUI(){
 		return this.asignaturaGUI;
 	}
@@ -204,8 +208,6 @@ public class NoodleFrame extends JFrame{
 		Plataforma.logout();
 		
 		this.showPanelLogin();
-		
-		
 	}
 
 	/**
@@ -379,6 +381,7 @@ public class NoodleFrame extends JFrame{
 	 * @param back
 	 * @param asignatura
 	 * @param tema
+	 * @param apuntes
 	 */
 	public void showSubirApuntes(boolean back, Asignatura asignatura, Tema tema, Apuntes apuntes) {
 		NuestroPanel anterior = this.ini();
@@ -411,6 +414,7 @@ public class NoodleFrame extends JFrame{
 	/**
 	 * Muestra el Panel Lista de Asignaturas
 	 * @param back, true si se quiere guardar el panel anterior
+	 * @param asignatura
 	 */
 	public void showAlumnosAsignatura(boolean back, Asignatura asignatura){
 		
@@ -435,6 +439,7 @@ public class NoodleFrame extends JFrame{
 	 * Muestra el Panel de ejercicio
 	 * @param back, true si se quiere guardar el panel anterior
 	 * @param ejercicio
+	 * @param tema
 	 */
 	public void showEjercicioGUI(boolean back, Ejercicio ejercicio, Tema tema){
 		
@@ -496,6 +501,7 @@ public class NoodleFrame extends JFrame{
 	}
 
 	/**Muestra el panel con todos los alumnos expulsados
+	 * @param back
 	 * @param asig
 	 */
 	public void showExpulsados(boolean back, Asignatura asig) {
@@ -740,7 +746,8 @@ public class NoodleFrame extends JFrame{
 	/**
 	 * Muestra el Panel del ejercicio con las respuestas
 	 * @param back, true si se quiere guardar el panel anterior
-	 * @param ejercicio
+	 * @param respuesta
+	 * @param alumno
 	 */
 	public void showConsultarRespuestas(boolean back, RespuestaEjercicio respuesta, Alumno alumno){
 		

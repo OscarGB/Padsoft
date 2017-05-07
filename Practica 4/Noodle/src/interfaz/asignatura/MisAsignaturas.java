@@ -21,23 +21,21 @@ import plataforma.Plataforma;
  */
 public class MisAsignaturas extends Asignaturas{
 
+	//Variables
+	
 	/**
 	 * ID del panel de menu
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Frame
-	 */
-	private NoodleFrame frame;
 
+	//constructor
+	
 	/**
 	 * Constructor de MisAsignaturas (subpanel)
 	 * @param frame
 	 */
 	public MisAsignaturas(NoodleFrame frame) {
 		super(frame);
-		this.frame = frame;
 		this.setBackground(Color.WHITE);
 		ArrayList<Asignatura> cursos = this.getAsignaturas();
 		ArrayList<JLabel> asignaturas = new ArrayList<JLabel>();
@@ -80,9 +78,11 @@ public class MisAsignaturas extends Asignaturas{
 		
 	}
 	
+	//Métodos
+	
 	/**
-	 * Metodo para obtener las asignaturas del alumno
-	 * @return ArrayList
+	 * Método para obtener las asignaturas del alumno
+	 * @return
 	 */
 	private ArrayList<Asignatura> getAsignaturas(){
 		ArrayList<Asignatura> array = Plataforma.loggedAs().getAsignaturas();		

@@ -2,6 +2,12 @@ package interfaz.genericos;
 
 import javax.swing.JPanel;
 
+/**
+ * Clase NuestroPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class NuestroPanel extends JPanel{
 	
 	//Variables

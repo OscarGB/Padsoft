@@ -18,6 +18,8 @@ import plataforma.Plataforma;
  */
 public class AsignaturaMenuIzqListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -33,6 +35,8 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 	 */
 	AsignaturaMenuIzq panel;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de AsignaturaMenuIzqListener
 	 * @param frame
@@ -45,6 +49,8 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 		this.panel = asignaturaMenuIzq;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método que se llama en caso de que se pulse alguno de los botones del menu
 	 * @param arg0

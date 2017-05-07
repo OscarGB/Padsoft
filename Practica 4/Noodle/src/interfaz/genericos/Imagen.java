@@ -37,6 +37,7 @@ public class Imagen extends JPanel{
 	 * (Override) Método para pintar la imagen
 	 * @param Graphics
 	 */
+	@Override
 	public void paint(Graphics grafico) {
 		Dimension height = getSize();
 		

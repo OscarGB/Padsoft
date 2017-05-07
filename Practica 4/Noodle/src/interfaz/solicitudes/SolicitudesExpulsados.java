@@ -10,19 +10,22 @@ import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
 /**
- * Clase SolicitudesAlumno
+ * Clase SolicitudesExpulsados
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class SolicitudesExpulsados extends NuestroPanel {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Menu generico que se muestra en la parte superior
+	 * Menu genérico que se muestra en la parte superior
 	 */
 	private Menu menu;
 	
@@ -41,10 +44,13 @@ public class SolicitudesExpulsados extends NuestroPanel {
 	 */
 	private Asignatura asig;
 	
+	//Constructor
+	
 	/**
 	 * Constructor del inicio del alumno
 	 * @param panel anterior
 	 * @param frame
+	 * @param asig
 	 */
 	public SolicitudesExpulsados(NuestroPanel anterior, NoodleFrame frame, Asignatura asig){
 		super(anterior, frame);
@@ -71,6 +77,12 @@ public class SolicitudesExpulsados extends NuestroPanel {
 
 	}
 	
+	//Métodos
+	
+	/**
+	 * Devuelve la asignatura
+	 * @return
+	 */
 	public Asignatura getAsignatura(){
 		return this.asig;
 	}
@@ -78,12 +90,14 @@ public class SolicitudesExpulsados extends NuestroPanel {
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showSolicitudesAlumno(false);
 	}
 	
 	/**
 	 * Método que actualiza el panel
+	 * @param asig
 	 */
 	public void refreshPanel(Asignatura asig){
 		this.asig = asig;

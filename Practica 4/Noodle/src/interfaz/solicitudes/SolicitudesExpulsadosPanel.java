@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
-import interfaz.genericos.NoodleFrame;
-import plataforma.Plataforma;
 import solicitud.Solicitud;
 
 /**
@@ -22,6 +20,9 @@ import solicitud.Solicitud;
  * @date 18/04/2017
  */
 public class SolicitudesExpulsadosPanel extends JPanel {
+	
+	//Variables
+	
 	/**
 	 * ID del panel de Panel
 	 */
@@ -32,9 +33,12 @@ public class SolicitudesExpulsadosPanel extends JPanel {
 	 */
 	Asignatura asig;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de SolicitudesExpulsadosPanel
-	 * @param soli
+	 * @param asig
+	 * @param panel
 	 */
 	public SolicitudesExpulsadosPanel(Asignatura asig, SolicitudesExpulsados panel) {
 		
@@ -95,10 +99,12 @@ public class SolicitudesExpulsadosPanel extends JPanel {
 		this.setPreferredSize(new Dimension(this.getWidth(), (labels.get(0).getHeight() + 50)*size));
 		
 	}
+	
+	//Métodos
 		
 	/**
 	 * Metodo para obtener las asignaturas de la plataforma
-	 * @return ArrayList
+	 * @return
 	 */
 	private ArrayList<Solicitud> getSolicitudes(){
 		return this.asig.getSolicitudesExpulsados();

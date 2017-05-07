@@ -14,15 +14,27 @@ import interfaz.genericos.NoodleFrame;
  */
 public class AlumnosAsignaturaListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Asignatura
 	 */
 	Asignatura asig;
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param asignatura
+	 */
 	public AlumnosAsignaturaListener(Asignatura asignatura) {
 		this.asig = asignatura;
 	}
 
+	/**
+	 * Método por si se pulsa el botón
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		NoodleFrame.getInstance().showExpulsados(true, this.asig);

@@ -2,7 +2,6 @@ package interfaz.genericos;
 
 import java.awt.event.*;
 
-import interfaz.*;
 import plataforma.Plataforma;
 
 /**
@@ -13,6 +12,8 @@ import plataforma.Plataforma;
  */
 public class MenuListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Panel menu
 	 */
@@ -23,6 +24,8 @@ public class MenuListener implements ActionListener {
 	 */
 	NoodleFrame frame;
 	
+	//Constructor
+	
 	/**
 	 * constructor de MenuListener
 	 * @param menu
@@ -32,6 +35,8 @@ public class MenuListener implements ActionListener {
 		this.frame = frame;
 		this.menu = menu;
 	}
+	
+	//Métodos
 
 	/**
 	 * Método para realizar una acción en caso de que los botones del menú sean pulsados

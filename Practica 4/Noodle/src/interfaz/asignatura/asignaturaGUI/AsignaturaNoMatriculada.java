@@ -4,15 +4,21 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JScrollPane;
-
 import asignatura.Asignatura;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import interfaz.solicitudes.PanelSolicitud;
 
+/**
+ * Clase AsignaturaNoMatriculada
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 public class AsignaturaNoMatriculada extends NuestroPanel {
+	
+	//Variables
 	
 	/**
 	 * Serial
@@ -34,6 +40,8 @@ public class AsignaturaNoMatriculada extends NuestroPanel {
 	 */
 	PanelSolicitud sol;
 
+	//Constructor
+	
 	/**
 	 * Constructor de AsignaturaNoMatriculada
 	 * @param anterior
@@ -61,9 +69,12 @@ public class AsignaturaNoMatriculada extends NuestroPanel {
 
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showAsignaturaNoMatriculada(false, this.asig);
 	}

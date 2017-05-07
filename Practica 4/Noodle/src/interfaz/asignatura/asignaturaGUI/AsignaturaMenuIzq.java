@@ -10,8 +10,6 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
-import contenido.Contenido;
-import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
@@ -22,6 +20,8 @@ import interfaz.genericos.NoodleFrame;
  */
 public class AsignaturaMenuIzq extends JPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -58,6 +58,7 @@ public class AsignaturaMenuIzq extends JPanel {
 	 */
 	private Asignatura asignatura;
 
+	//Constructor
 	
 	/**
 	 * Creador de AsignaturaMenuIzq
@@ -98,7 +99,7 @@ public class AsignaturaMenuIzq extends JPanel {
 		this.tema.setActionCommand("tema");
 		this.alumnos.setActionCommand("alumnos");
 		
-		ActionListener list = new AsignaturaMenuIzqListener(frame, asignatura, this);
+		ActionListener list = new AsignaturaMenuIzqListener(this.frame, this.asignatura, this);
 		
 		this.tema.addActionListener(list);
 		this.borrar.addActionListener(list);
@@ -106,6 +107,8 @@ public class AsignaturaMenuIzq extends JPanel {
 		
 		this.setPreferredSize(new Dimension(200, 250));
 	}
+	
+	//Getter
 	
 	/**
 	 * Método que devuelve el texto introducido en el campo del tema

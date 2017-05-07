@@ -14,6 +14,8 @@ import solicitud.Solicitud;
  */
 public class SolicitudesExpulsadosListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Solicitud
 	 */
@@ -24,8 +26,10 @@ public class SolicitudesExpulsadosListener implements ActionListener {
 	 */
 	SolicitudesExpulsados panel;
 		
+	//Constructor
+	
 	/**
-	 * constructor
+	 * Constructor
 	 * @param solicitud
 	 * @param panel
 	 */
@@ -34,6 +38,7 @@ public class SolicitudesExpulsadosListener implements ActionListener {
 		this.panel = panel;
 	}
 
+	//Métodos
 
 	/**
 	 * Método cuando se pulsa el botón

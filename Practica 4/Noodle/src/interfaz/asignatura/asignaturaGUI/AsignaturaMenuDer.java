@@ -2,7 +2,6 @@ package interfaz.asignatura.asignaturaGUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -10,18 +9,19 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
-import contenido.Contenido;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
- * Clase ContenidoMenuDer
+ * Clase AsignaturaMenuDer
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class AsignaturaMenuDer extends JPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -72,10 +72,13 @@ public class AsignaturaMenuDer extends JPanel {
 	 */
 	private AsignaturaMenuDerListener list;
 	
+	//Constructor
+	
 	/**
-	 * Creador de ContenidoMenuDer
+	 * Creador de AsignaturaMenuDer
 	 * @param frame
-	 * @param con
+	 * @param asignatura
+	 * @param tema
 	 */
 	public AsignaturaMenuDer(NoodleFrame frame, Asignatura asignatura, Tema tema){
 		this.asignatura = asignatura;
@@ -117,7 +120,7 @@ public class AsignaturaMenuDer extends JPanel {
 		this.apuntes.setActionCommand("apuntes");
 		this.subtema.setActionCommand("subtema");
 		
-		this.list = new AsignaturaMenuDerListener(frame, tema, this, this.asignatura);
+		this.list = new AsignaturaMenuDerListener(this.frame, this.tema, this, this.asignatura);
 		
 		this.ejercicio.addActionListener(list);
 		this.apuntes.addActionListener(list);
@@ -126,6 +129,8 @@ public class AsignaturaMenuDer extends JPanel {
 		
 		this.setPreferredSize(new Dimension(200, 250));
 	}
+	
+	//Getters y setters
 	
 	/**
 	 * Setter de tema

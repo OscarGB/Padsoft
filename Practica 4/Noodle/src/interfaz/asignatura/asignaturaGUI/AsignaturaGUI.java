@@ -112,6 +112,7 @@ public class AsignaturaGUI extends NuestroPanel{
 	
 	/**
 	 * Método que actualiza el panel
+	 * @param asignatura
 	 */
 	public void refreshPanel(Asignatura asignatura){
 		this.asignatura = asignatura;

@@ -1,10 +1,7 @@
 package interfaz.asignatura.asignaturaGUI;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -23,9 +20,19 @@ import persona.Alumno;
 import persona.Profesor;
 import plataforma.Plataforma;
 
+/**
+ * Clase TreeSelectionListener
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 class SelectionListener implements TreeSelectionListener {
 
-	  public void valueChanged(TreeSelectionEvent se) {
+  /**
+   * Método si se selecciona un elemetno del tree
+   * @param se
+   */
+	public void valueChanged(TreeSelectionEvent se) {
 	    JTree tree = (JTree) se.getSource();
 	    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
 	        .getLastSelectedPathComponent();
@@ -60,11 +67,19 @@ class SelectionListener implements TreeSelectionListener {
 	    	}
 	    	
 	    }
-	  }
 	}
+}
 
+/**
+ * Clase TreeContent
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 07/03/2017
+ */
 public class TreeContent extends JPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -79,19 +94,15 @@ public class TreeContent extends JPanel{
 	 * Contenido almacenado en la raiz de la asignatura
 	 */
 	private ArrayList<Contenido> raiz;
-	
-	/**
-	 * Frame
-	 */
-	private NoodleFrame frame;
 
+	//Constructor
+	
 	/**
 	 * Constructor de TreeContent
 	 * @param frame
 	 * @param asignatura
 	 */
 	public TreeContent(NoodleFrame frame, Asignatura asignatura) {
-		this.frame = frame;
 		this.setBackground(Color.WHITE);
 		
 		this.raiz = asignatura.getRaiz();
@@ -111,6 +122,13 @@ public class TreeContent extends JPanel{
 		treeView.setPreferredSize(new Dimension(200,300));
 	}
 	
+	//Métodos
+	
+	/**
+	 * Método que crea los nodos de forma recursiva
+	 * @param top
+	 * @param sub
+	 */
 	private void createNodes(DefaultMutableTreeNode top, ArrayList<Contenido> sub){
 		DefaultMutableTreeNode contenido;
 		
@@ -144,7 +162,4 @@ public class TreeContent extends JPanel{
 		}
 
 	}
-	
-	
-
 }

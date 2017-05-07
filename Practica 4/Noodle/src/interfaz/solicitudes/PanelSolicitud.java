@@ -10,13 +10,15 @@ import asignatura.Asignatura;
 import plataforma.*;
 
 /**
- * Clase ActionListener
+ * Clase SolicitudListener
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 class SolicitudListener implements ActionListener{
 
+	//Variables
+	
 	/**
 	 * Asignatura al que hace referencia
 	 */
@@ -27,6 +29,8 @@ class SolicitudListener implements ActionListener{
 	 */
 	PanelSolicitud panel;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de SolicitudListener
 	 * @param asig
@@ -35,6 +39,8 @@ class SolicitudListener implements ActionListener{
 		this.asig = asig;
 		this.panel = panel;
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método para cuando se pulse sobre el botón
@@ -59,6 +65,8 @@ class SolicitudListener implements ActionListener{
  */
 public class PanelSolicitud extends JPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -80,13 +88,14 @@ public class PanelSolicitud extends JPanel {
 	JButton boton;
 	
 	/**
-	 * Label con el texto DE éxito
+	 * Label con el texto de éxito
 	 */
 	JLabel exito;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de PanelSolicitud
-	 * @param frame
 	 * @param asig
 	 */
 	public PanelSolicitud(Asignatura asig){
@@ -123,6 +132,7 @@ public class PanelSolicitud extends JPanel {
 		this.add(exito);
 	}	
 	
+	//Métodos
 
 	/**
 	 * Cambia la visibilidad de la etiqueta exito

@@ -9,8 +9,6 @@ import interfaz.genericos.Imagen;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
-
-
 /**
  * Clase PanelLogin
  * @author Jose Ignacio Gomez
@@ -63,8 +61,6 @@ public final class PanelLogin extends NuestroPanel {
 	 */
 	public PanelLogin(NuestroPanel anterior, NoodleFrame frame) {
 		super(anterior, frame);
-//		this.setPreferredSize(new Dimension(500, 300));
-//		this.setMinimumSize(new Dimension(500, 300));
 		this.setBackground(Color.WHITE);
 		
 		SpringLayout spr = new SpringLayout();

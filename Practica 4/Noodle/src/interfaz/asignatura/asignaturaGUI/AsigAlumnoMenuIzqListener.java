@@ -16,6 +16,8 @@ import persona.Persona;
  */
 public class AsigAlumnoMenuIzqListener implements ActionListener {
 
+	//Variable
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -31,6 +33,7 @@ public class AsigAlumnoMenuIzqListener implements ActionListener {
 	 */
 	Asignatura asig;
 	
+	//Constructor
 	
 	/**
 	 * Constructor del listener
@@ -44,6 +47,8 @@ public class AsigAlumnoMenuIzqListener implements ActionListener {
 		this.asig = asig;
 	}
 
+	//Métodos
+	
 	/**
 	 * Método cuando se pulse el botón
 	 * @param arg0
