@@ -263,6 +263,25 @@ public class Alumno extends Persona implements Serializable{
 		return false;
 	}
 	
+	/**
+	 * Metodo para obtener la respuesta a un ejercicio dada por un alumno
+	 * @param ej
+	 * @return
+	 */
+	public RespuestaEjercicio getRespuestaEjercicio(Ejercicio ej){
+		Asignatura asig = ej.getAsignatura();
+		for(EstadisticasAlumno est : this.getEstadisticas()){
+			if(est.getAsignatura() == asig){
+				for(RespuestaEjercicio res : est.getRespuestas()){
+					if(res.getEjercicio() == ej){
+						return res;
+					}
+				}
+			}
+		}
+		
+		return null;
+	}
 	
 	
 	
