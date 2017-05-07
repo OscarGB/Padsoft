@@ -54,7 +54,10 @@ public class ConsultarRespuestas extends NuestroPanel{
 	 */
 	private Alumno alumno;
 	
-	private JLabel nota = new JLabel();
+	/**
+	 * Panel de la nota media
+	 */
+	private NotaPanel nota;
 	
 	public ConsultarRespuestas(NuestroPanel anterior, NoodleFrame frame, RespuestaEjercicio respuesta, Alumno alumno) {
 		super(anterior, frame);
@@ -66,8 +69,7 @@ public class ConsultarRespuestas extends NuestroPanel{
 		this.respuesta = respuesta;
 		this.ejercicio = this.respuesta.getEjercicio();
 		this.alumno = alumno;
-		this.nota.setText("Nota del ejercicio: " + this.ejercicio.getNotaMedia());
-		this.nota.setPreferredSize(new Dimension(200, 30));
+		this.nota = new NotaPanel(this.respuesta.getEjercicio());
 		
 		this.menu = new Menu(frame);
 		this.respuestas = new RespuestasPanel(this.frame, this.respuesta, this.ejercicio, this.alumno);

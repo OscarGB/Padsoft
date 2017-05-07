@@ -74,7 +74,7 @@ public class PreguntaMenuDerListener implements ActionListener {
 			if((this.p = this.panel.getPregunta()) == null){
 				JOptionPane.showMessageDialog(null, "Seleccione la opción correcta", "Opcion",JOptionPane.ERROR_MESSAGE);
 			}
-			if (this.ej.getEstado() == EstadoEjercicio.RESPONDIDO || this.ej.getEstado() == EstadoEjercicio.TERMINADO){
+			else if (this.ej.getEstado() == EstadoEjercicio.RESPONDIDO || this.ej.getEstado() == EstadoEjercicio.TERMINADO){
 				JOptionPane.showMessageDialog(null, "El ejercicio no puede ser modificado", "Ejercicio no modificable",JOptionPane.ERROR_MESSAGE);
 				return;
 			}
