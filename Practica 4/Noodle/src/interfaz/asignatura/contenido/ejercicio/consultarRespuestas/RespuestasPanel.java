@@ -1,6 +1,7 @@
 package interfaz.asignatura.contenido.ejercicio.consultarRespuestas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,8 @@ import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import persona.Profesor;
 import plataforma.Plataforma;
+import respuestas.RespuestaEjercicio;
+import respuestas.RespuestaPregunta;
 
 /**
  * Clase RespuestaList
@@ -98,13 +101,19 @@ public class RespuestasPanel extends JPanel{
 	private Alumno alumno;
 	
 	/**
+	 * Respuesta respondida
+	 */
+	private RespuestaEjercicio respuesta;
+	
+	/**
 	 * Constructor de RespuestasPanel
 	 * @param frame
 	 * @param ejercicio
 	 * @param alumno
 	 */
-	public RespuestasPanel(NoodleFrame frame, Ejercicio ejercicio, Alumno alumno){
+	public RespuestasPanel(NoodleFrame frame, RespuestaEjercicio respuesta, Ejercicio ejercicio, Alumno alumno){
 		this.frame = frame;
+		this.respuesta = respuesta;
 		this.ejercicio = ejercicio;
 		this.alumno = alumno;
 		this.preguntas = ejercicio.getPreguntas();
@@ -113,7 +122,7 @@ public class RespuestasPanel extends JPanel{
 		
 		SpringLayout spr = new SpringLayout();
 		setLayout(spr);
-		
+				
 		int size = this.preguntas.size();
 
 		if(size == 0){
@@ -123,7 +132,7 @@ public class RespuestasPanel extends JPanel{
 			spr.putConstraint(SpringLayout.VERTICAL_CENTER, label, 0, SpringLayout.VERTICAL_CENTER, this);
 		}
 		else if(size > 0){
-			JLabel label = new JLabel("Selecciona una pregunta.");
+			JLabel label = new JLabel("Pulse sobre una respuesta para visualizarla.");
 			labels.add(label);
 			label.setFont(new Font("Arial", Font.ITALIC, 15));
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER,  label, 0, SpringLayout.HORIZONTAL_CENTER, this);
@@ -141,6 +150,12 @@ public class RespuestasPanel extends JPanel{
 				label.setFont(new Font("Arial", Font.BOLD, 20));
 			}
 		}
+		
+		for(JLabel lab:labels){
+			this.add(lab);
+		}
+		
+		this.setPreferredSize(new Dimension(300, (labels.get(0).getHeight() + 50)*(size + 1)));
 	}
 	
 	/**
@@ -148,22 +163,28 @@ public class RespuestasPanel extends JPanel{
 	 * @param pregunta
 	 */
 	public void listenerRespuestas(Pregunta pregunta){
+		RespuestaPregunta respuestaPregunta = null;
+		for(RespuestaPregunta res: this.respuesta.getRespuestas()){
+			if(res.getPregunta().equals(pregunta)){
+				respuestaPregunta = res;
+			}
+		}
 		if(pregunta instanceof PreguntaRespuestaUnica){
-//			frame.showRespuestaPreguntaUnica(true, this.ejercicio, pregunta);
+			frame.showEstPreguntaUnica(true, respuestaPregunta, this.ejercicio);
 			System.out.println("Repuesta unica");
 		}
 		else if(pregunta instanceof PreguntaRespuestaMultiple){
-//			frame.showRespuestaPreguntaMultiple(true, this.ejercicio, pregunta);
+//			frame.showEstPreguntaMultiple(true, respuesta, this.ejercicio);
 			System.out.println("Repuesta multiple");
 
 		}
 		else if(pregunta instanceof PreguntaRespuestaAbierta){
-//			frame.showRespuestaPreguntaAbierta(true, this.ejercicio, pregunta);
+//			frame.showEstPreguntaAbierta(true, respuesta, this.ejercicio);
 			System.out.println("Repuesta abierta");
 
 		}
 		else if(pregunta instanceof PreguntaRespuestaSimple){
-//			frame.showRespuestaPreguntaSimple(true, this.ejercicio, pregunta);
+//			frame.showEstPreguntaSimple(true, respuesta, this.ejercicio);
 			System.out.println("Repuesta simple");
 
 		}

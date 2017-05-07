@@ -14,6 +14,7 @@ import interfaz.asignatura.contenido.apuntes.ApuntesGUI;
 import interfaz.asignatura.contenido.apuntes.ApuntesListener;
 import interfaz.asignatura.contenido.apuntes.SubirApuntes;
 import interfaz.asignatura.contenido.ejercicio.consultarRespuestas.ConsultarRespuestas;
+import interfaz.asignatura.contenido.ejercicio.consultarRespuestas.EstPregunta;
 import interfaz.asignatura.contenido.ejercicio.creacionEjercicio.EjercicioGUI;
 import interfaz.asignatura.contenido.ejercicio.creacionEjercicio.ElegirTipoPregunta;
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaAbierta;
@@ -31,6 +32,7 @@ import interfaz.solicitudes.*;
 import persona.Alumno;
 import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
+import respuestas.RespuestaPregunta;
 
 /**
  * Clase NoodleFrame
@@ -74,6 +76,7 @@ public class NoodleFrame extends JFrame{
 	private ResponderPreguntaUnica responderPreguntaUnica = null;
 	private ResponderPreguntaMultiple responderPreguntaMultiple = null;
 	private ConsultarRespuestas consultarRespuestas = null;
+	private EstPregunta estPreguntaUnica = null;
 
 	private static NoodleFrame frame;
 	
@@ -743,13 +746,27 @@ public class NoodleFrame extends JFrame{
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
-			anterior = this.ejercicioGUI.getAnterior();
+			anterior = this.consultarRespuestas.getAnterior();
 		}
 		this.consultarRespuestas = new ConsultarRespuestas(anterior, this, respuesta, alumno);
 		
 		this.getContentPane().add(this.consultarRespuestas);
 		
 		this.fin(700,500, this.consultarRespuestas);
+	}
+
+	public void showEstPreguntaUnica(boolean back, RespuestaPregunta respuesta, Ejercicio ejercicio) {
+		
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = this.estPreguntaUnica.getAnterior();
+		}
+		this.estPreguntaUnica = new EstPregunta(anterior, this, respuesta, ejercicio);
+		
+		this.getContentPane().add(this.estPreguntaUnica);
+		
+		this.fin(700,500, this.estPreguntaUnica);
+		
 	}
 	
 }

@@ -125,9 +125,7 @@ public class EstadisticasPanel extends JPanel {
 				break;
 			}
 		}
-		
-		System.out.println(al.getEstadisticas());
-		
+				
 		if(aux == null){
 			this.top = new JLabel("Estadisticas del alumno: " + al.getNombre() + " en " + asig.getNombre() + ". No evaluado");
 

@@ -67,9 +67,10 @@ public class ConsultarRespuestas extends NuestroPanel{
 		this.ejercicio = this.respuesta.getEjercicio();
 		this.alumno = alumno;
 		this.nota.setText("Nota del ejercicio: " + this.ejercicio.getNotaMedia());
+		this.nota.setPreferredSize(new Dimension(200, 30));
 		
 		this.menu = new Menu(frame);
-		this.respuestas = new RespuestasPanel(this.frame, this.ejercicio, this.alumno);
+		this.respuestas = new RespuestasPanel(this.frame, this.respuesta, this.ejercicio, this.alumno);
 		this.scroll = new JScrollPane(this.respuestas);
 		
 		this.add(this.menu, BorderLayout.NORTH);
@@ -96,7 +97,7 @@ public class ConsultarRespuestas extends NuestroPanel{
 	public void refreshPanel(Ejercicio ejercicio){
 		this.ejercicio = ejercicio;
 		this.remove(this.respuestas);
-		this.respuestas = new RespuestasPanel(this.frame, this.ejercicio, this.alumno);
+		this.respuestas = new RespuestasPanel(this.frame, this.respuesta, this.ejercicio, this.alumno);
 		
 		this.remove(this.scroll);
 		this.scroll = new JScrollPane(this.respuestas);

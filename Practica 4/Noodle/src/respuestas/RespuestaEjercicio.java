@@ -85,6 +85,14 @@ public class RespuestaEjercicio implements Serializable {
 	}	
 	
 	/**
+	 * Get del array de RespuestasPreguntas
+	 * @return
+	 */
+	public ArrayList<RespuestaPregunta> getRespuestas(){
+		return this.respuestas;
+	}
+	
+	/**
 	 * toString, Override
 	 * @return String
 	 */
