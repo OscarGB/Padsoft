@@ -115,15 +115,15 @@ public class EstadisticasPanel extends JPanel {
 			}
 		}
 		
+		System.out.println(al.getEstadisticas());
+		
 		if(aux == null){
 			this.top = new JLabel("Estadisticas del alumno: " + al.getNombre() + " en " + asig.getNombre() + ". No evaluado");
 
 		}else{
 			this.top = new JLabel("Estadisticas del alumno: " + al.getNombre() + " en " + asig.getNombre() + ". Nota media: " + al.getMediaAsignatura(asig));
 		}
-		
-		this.respuestas = aux.getRespuestas();
-		
+				
 		this.add(top);
 		
 		this.top.setFont(f);
@@ -137,6 +137,7 @@ public class EstadisticasPanel extends JPanel {
 		int size = 0;
 		
 		if(aux != null){
+			this.respuestas = aux.getRespuestas();
 			size = this.respuestas.size();
 			if(size == 0){
 				JLabel label = new JLabel("No hay estadisticas");
