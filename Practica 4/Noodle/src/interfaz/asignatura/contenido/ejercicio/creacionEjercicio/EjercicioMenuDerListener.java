@@ -65,8 +65,11 @@ public class EjercicioMenuDerListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "El ejercicio aun no ha sido guardado", "Error",JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			this.ejercicio.eraseContenido();
-			this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea borrar este ejercicio?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.ejercicio.eraseContenido();
+				this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
+			}
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
 			
@@ -129,7 +132,10 @@ public class EjercicioMenuDerListener implements ActionListener {
 			this.frame.showElegirTipoPregunta(true, this.ejercicio);
 		}
 		else if(arg0.getActionCommand().equals("cancelar")){
-			this.frame.atras();
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir sin confirmar los cambios?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.frame.atras();
+			}
 		}
 		
 	}

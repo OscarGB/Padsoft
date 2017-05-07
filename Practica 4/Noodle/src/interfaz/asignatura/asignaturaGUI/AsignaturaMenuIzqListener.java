@@ -3,6 +3,8 @@ package interfaz.asignatura.asignaturaGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import asignatura.Asignatura;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
@@ -50,8 +52,11 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
-			Plataforma.eraseAsignatura(this.asignatura);
-			this.frame.showListaAsignaturas(false);
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea borrar esta asignatura?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				Plataforma.eraseAsignatura(this.asignatura);
+				this.frame.showListaAsignaturas(false);
+			}
 		}
 		else if(arg0.getActionCommand().equals("tema")){
 			String aux = panel.getText();
@@ -65,6 +70,7 @@ public class AsignaturaMenuIzqListener implements ActionListener {
 		else if(arg0.getActionCommand().equals("alumnos")){
 			this.frame.showAlumnosAsignatura(true, this.asignatura);
 		}
+		Plataforma.plat().saveData();
 	}
 }
 

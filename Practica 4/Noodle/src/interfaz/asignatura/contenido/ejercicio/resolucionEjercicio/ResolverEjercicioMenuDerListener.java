@@ -3,6 +3,8 @@ package interfaz.asignatura.contenido.ejercicio.resolucionEjercicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Tema;
@@ -62,10 +64,13 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 			this.frame.atras();
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
-			this.ejercicio.responderEjercicio((Alumno)Plataforma.loggedAs(), ResolverEjercicioGUI.getInstance().getRespuestas());
-			this.frame.responderOCancelarEjercicio();
-			Plataforma.plat().saveData();
-			this.frame.atras();
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea entregar este ejercicio?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.ejercicio.responderEjercicio((Alumno)Plataforma.loggedAs(), ResolverEjercicioGUI.getInstance().getRespuestas());
+				this.frame.responderOCancelarEjercicio();
+				Plataforma.plat().saveData();
+				this.frame.atras();
+			}
 		}
 	}
 }

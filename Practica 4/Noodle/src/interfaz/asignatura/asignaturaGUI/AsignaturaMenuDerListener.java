@@ -3,6 +3,8 @@ package interfaz.asignatura.asignaturaGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import asignatura.Asignatura;
 import contenido.Apuntes;
 import contenido.Contenido;
@@ -68,8 +70,11 @@ public class AsignaturaMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
-			this.tema.eraseContenido();
-			this.frame.showAsignatura(true, this.tema.getAsignatura());
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea borrar este tema?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.tema.eraseContenido();
+				this.frame.showAsignatura(true, this.tema.getAsignatura());
+			}
 		}
 		else if(arg0.getActionCommand().equals("apuntes")){
 			//TODO Null pointer exception si el tema es la raiz
@@ -85,8 +90,8 @@ public class AsignaturaMenuDerListener implements ActionListener {
 			}
 			new Tema(aux, true, this.asig, this.tema);
 			this.frame.showAsignatura(true, this.asig);
-			Plataforma.plat().saveData();
 		}
+		Plataforma.plat().saveData();
 	}
 }
 

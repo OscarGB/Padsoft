@@ -74,8 +74,11 @@ public class PreguntaMenuDerListener implements ActionListener {
 			}			
 		}
 		else if(arg0.getActionCommand().equals("borrar")){
-			this.ej.removePregunta(this.p);
-			this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
+			int result = JOptionPane.showConfirmDialog(null, "¿Realmente desea borrar esta pregunta?", "Confirmar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.OK_OPTION){
+				this.ej.removePregunta(this.p);
+				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
+			}
 		}
 		else if(arg0.getActionCommand().equals("cancelar")){
 			frame.atras();
