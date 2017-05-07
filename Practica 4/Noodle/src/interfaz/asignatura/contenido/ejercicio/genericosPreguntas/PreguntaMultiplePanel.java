@@ -3,20 +3,16 @@ package interfaz.asignatura.contenido.ejercicio.genericosPreguntas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
-import asignatura.Asignatura;
 import contenido.Opciones;
-import contenido.Pregunta;
 import contenido.PreguntaRespuestaMultiple;
-import contenido.PreguntaRespuestaUnica;
 import persona.Alumno;
 import plataforma.Plataforma;
 import respuestas.RespuestaMultiple;
@@ -85,6 +81,9 @@ public class PreguntaMultiplePanel extends JPanel {
 			this.area.setText(p.getEnunciado());
 			this.radios = new ArrayList<JCheckBox>();
 			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
+			if(flag == true && this.p.getAleatorio() == true){
+				Collections.shuffle(this.opciones);
+			}
 			for(Opciones op : this.opciones){
 				JCheckBox aux = new JCheckBox(op.getRespuesta());
 				if(op.esCorrecta() == true){

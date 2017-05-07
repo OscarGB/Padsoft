@@ -3,6 +3,7 @@ package interfaz.asignatura.contenido.ejercicio.genericosPreguntas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
@@ -87,6 +88,9 @@ public class PreguntaUnicaPanel extends JPanel {
 			this.area.setText(p.getEnunciado());
 			this.radios = new ArrayList<JRadioButton>();
 			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
+			if(flag == true && this.p.getAleatorio() == true){
+				Collections.shuffle(this.opciones);
+			}
 			for(Opciones op : this.opciones){
 				JRadioButton aux = new JRadioButton(op.getRespuesta());
 				if(flag == false){

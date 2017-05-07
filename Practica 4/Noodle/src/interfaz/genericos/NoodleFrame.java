@@ -1,8 +1,6 @@
 package interfaz.genericos;
 
-import java.awt.Component;
 import java.awt.Dimension;
-import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -76,30 +74,7 @@ public class NoodleFrame extends JFrame{
 		NoodleFrame.frame = this;
 		Plataforma.openPlataforma();
 		Plataforma.logout();
-		this.showPanelLogin();
-//		
-//		//--------------------
-//		Plataforma.login("1", "contraseniaprofe");
-//		Asignatura nacho = new Asignatura("Nacho");
-//		Plataforma.addAsignatura(nacho);
-//		Tema tema1 = new Tema("Tema 1", true, nacho);
-//		Ejercicio ej = new Ejercicio(1, true, Plataforma.getFechaActual().plusDays(0), Plataforma.getFechaActual().plusDays(1), tema1,"Ejercicio1", true, nacho);
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 10", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 5", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 6", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 7", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 4", true, 1, true));
-//		ej.addPregunta(new PreguntaRespuestaSimple("2 y 2 son 1", true, 1, true));
-//		
-//		Plataforma.logout();
-//		
-////		this.showPanelLogin();
-//		this.showEjercicioGUI(false, ej, tema1);
-//		//--------------------
-	
+		this.showPanelLogin();	
 	}
 	
 	public AsignaturaGUI getAsignaturaGUI(){
@@ -639,13 +614,15 @@ public class NoodleFrame extends JFrame{
 	public void showResolverEjercicioGUI(boolean back, Ejercicio ejercicio, Tema tema) {
 		
 		if(ejercicio.getEstado().equals(EstadoEjercicio.ESPERA)){
-			//TODO poner aviso de que aun no ha abierto
-			System.out.println("Aun no ha abierto");
+			JOptionPane.showMessageDialog(null, "El ejercicio aun no ha sido abierto", "Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		else if(ejercicio.getEstado().equals(EstadoEjercicio.TERMINADO)){
 			//TODO ir a las respuestas
 			System.out.println("Respuestas");
+			return;
+		}else if(((Alumno)Plataforma.loggedAs()).haRespondidoA(ejercicio)){
+			JOptionPane.showMessageDialog(null, "Ya has respondido a este ejercicio", "Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
@@ -653,12 +630,24 @@ public class NoodleFrame extends JFrame{
 		if(back == false){
 			anterior = this.resolverEjercicioGUI.getAnterior();
 		}
-		this.resolverEjercicioGUI = new ResolverEjercicioGUI(anterior, this, ejercicio, tema);
+		if(this.resolverEjercicioGUI == null){
+			this.resolverEjercicioGUI = new ResolverEjercicioGUI(anterior, this, ejercicio, tema);
+		}
+		else{
+			this.resolverEjercicioGUI.refreshPanel(ejercicio, tema);
+		}
 		
 		this.getContentPane().add(this.resolverEjercicioGUI);
 		
 		this.fin(700,500, this.resolverEjercicioGUI);
 		
+	}
+	
+	/**
+	 * Método que se llamará al responder un ejercicio, forzará la creación de un nuevo panel
+	 */
+	public void responderOCancelarEjercicio(){
+		this.resolverEjercicioGUI = null;
 	}
 	
 }

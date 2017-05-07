@@ -1,15 +1,16 @@
-package interfaz.asignatura.contenido.ejercicio.resolucionEjercicio;
+package interfaz.asignatura.contenido.ejercicio.resolucionPreguntas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import asignatura.Asignatura;
 import contenido.Ejercicio;
-import contenido.Tema;
+import contenido.Pregunta;
+import interfaz.asignatura.contenido.ejercicio.resolucionEjercicio.ResolverEjercicioGUI;
 import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 
-public class ResolverEjercicioMenuDerListener implements ActionListener {
+public class ResponderPreguntaMenuDerListener implements ActionListener{
 
 	/**
 	 * Frame en el que se encuentra
@@ -19,7 +20,7 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 	/**
 	 * Panel al que escucha
 	 */
-	ResolverEjercicioMenuDer panel;
+	ResponderPreguntaMenuDer panel;
 	
 	/**
 	 * Ejercicio al que hace referencia
@@ -29,7 +30,7 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 	/**
 	 * Tema del ejercicio
 	 */
-	Tema tema;
+	Pregunta preg;
 	
 	/**
 	 * Asignatura
@@ -37,17 +38,23 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 	Asignatura asignatura;
 	
 	/**
+	 * Panel gnérico
+	 */
+	ResponderPregunta gen;
+	
+	/**
 	 * Constructor del listener del menu derecho de ejercicio
 	 * @param frame
 	 * @param ejercicio
 	 * @param ejercicioMenuDer
 	 */
-	public ResolverEjercicioMenuDerListener(NoodleFrame frame, Ejercicio ejercicio, ResolverEjercicioMenuDer ejercicioMenuDer, Tema tema){
+	public ResponderPreguntaMenuDerListener(NoodleFrame frame, Ejercicio ejercicio, ResponderPreguntaMenuDer panel, Pregunta preg, ResponderPregunta gen){
 		this.frame = frame;
 		this.ejercicio = ejercicio;
-		this.panel = ejercicioMenuDer;
-		this.tema = tema;
-		this.asignatura = tema.getAsignatura();
+		this.panel = panel;
+		this.preg = preg;
+		this.gen = gen;
+		this.asignatura = ejercicio.getAsignatura();
 	}
 	
 	/**
@@ -60,9 +67,7 @@ public class ResolverEjercicioMenuDerListener implements ActionListener {
 			this.frame.atras();
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
-			//TODO resolver el ejercicio y coger TODAS las respuestas
-			System.out.println("Has clicado en guardar");
-			Plataforma.plat().saveData();
+			ResolverEjercicioGUI.getInstance().addRespuesta(gen.getRespuesta());
 		}
 	}
 }

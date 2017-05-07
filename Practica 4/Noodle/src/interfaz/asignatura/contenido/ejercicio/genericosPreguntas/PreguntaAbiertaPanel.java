@@ -5,20 +5,12 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
-import asignatura.Asignatura;
-import contenido.Opciones;
-import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
-import contenido.PreguntaRespuestaUnica;
-import persona.Alumno;
-import plataforma.Plataforma;
 
 /**
  * Clase PreguntaUniaPanel

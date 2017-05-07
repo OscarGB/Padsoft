@@ -3,19 +3,18 @@ package interfaz.asignatura.contenido.ejercicio.resolucionEjercicio;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
 import asignatura.Asignatura;
 import contenido.Ejercicio;
-import contenido.Pregunta;
 import contenido.Tema;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
+import respuestas.RespuestaPregunta;
 
 /**
  * Clase EjercicioGUI
@@ -65,6 +64,16 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	 * Tema
 	 */
 	private Tema tema;
+	
+	/**
+	 * Respuestas acumuladas
+	 */
+	private ArrayList<RespuestaPregunta> respuestas;
+	
+	/**
+	 * Para poder acceder a el
+	 */
+	private static ResolverEjercicioGUI instance;
 
 	/**
 	 * Constructor del GUI del ejercicio
@@ -82,6 +91,8 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		
 		this.tema = tema;
 		
+		this.respuestas = new ArrayList<RespuestaPregunta>();
+		
 		this.asignatura = tema.getAsignatura();
 	
 		this.der = new ResolverEjercicioMenuDer(frame, ejercicio, tema);
@@ -96,6 +107,8 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		this.add(this.der, BorderLayout.EAST);
 		
 		int w = this.getWidth();
+		
+		this.instance = this;
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
 		
@@ -127,6 +140,8 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	
 	/**
 	 * Método que actualiza el panel
+	 * @param ejercicio
+	 * @param tema
 	 */
 	public void refreshPanel(Ejercicio ejercicio, Tema tema){
 		this.ejercicio = ejercicio;
@@ -141,6 +156,38 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		this.remove(this.der);
 		this.der = new ResolverEjercicioMenuDer(frame, ejercicio, tema);
 		this.add(this.der, BorderLayout.EAST);
+	}
+	
+	/**
+	 * Añade una pregunta al array
+	 * @param res
+	 */
+	public void addRespuesta(RespuestaPregunta res){
+		if(res == null){
+			return;
+		}
+		for (RespuestaPregunta respuesta : this.respuestas){
+			if(respuesta.getPregunta() == res.getPregunta()){
+				this.respuestas.remove(respuesta);
+			}
+		}
+		this.respuestas.add(res);
+	}
+	
+	/**
+	 * Devuelve las respuestas acumuladas
+	 * @return
+	 */
+	public ArrayList<RespuestaPregunta> getRespuestas(){
+		return this.respuestas;
+	}
+	
+	/**
+	 * Devuelve la instancia
+	 * @return
+	 */
+	public static ResolverEjercicioGUI getInstance(){
+		return ResolverEjercicioGUI.instance;
 	}
 
 }

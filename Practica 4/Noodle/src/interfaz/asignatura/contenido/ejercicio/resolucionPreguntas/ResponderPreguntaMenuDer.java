@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio.resolucionEjercicio;
+package interfaz.asignatura.contenido.ejercicio.resolucionPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,16 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
-import contenido.Tema;
+import contenido.Pregunta;
 import interfaz.genericos.NoodleFrame;
 
-/**
- * Clase EjercicioMenuDer
- * @author Jose Ignacio Gomez
- * @author Oscar Gomez
- * @date 18/04/2017
- */
-public class ResolverEjercicioMenuDer extends JPanel {
+public class ResponderPreguntaMenuDer extends JPanel {
 	/**
 	 * Serial
 	 */
@@ -39,9 +33,9 @@ public class ResolverEjercicioMenuDer extends JPanel {
 	private Ejercicio ejercicio;
 	
 	/**
-	 * Tema
+	 * Pregunta
 	 */
-	private Tema tema;
+	private Pregunta pregunta;
 	
 	/**
 	 * Frame
@@ -51,7 +45,12 @@ public class ResolverEjercicioMenuDer extends JPanel {
 	/**
 	 * Listener
 	 */
-	private ResolverEjercicioMenuDerListener list;
+	private ResponderPreguntaMenuDerListener list;
+	
+	/**
+	 * Panel en el que se encuentra
+	 */
+	private ResponderPregunta panel;
 	
 	/**
 	 * Constructor
@@ -59,10 +58,11 @@ public class ResolverEjercicioMenuDer extends JPanel {
 	 * @param ejercicio
 	 * @param tema
 	 */
-	public ResolverEjercicioMenuDer(NoodleFrame frame, Ejercicio ejercicio, Tema tema){
+	public ResponderPreguntaMenuDer(NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta, ResponderPregunta panel){
 		this.ejercicio = ejercicio;
 		this.frame = frame;
-		this.tema = tema;
+		this.pregunta = pregunta;
+		this.panel = panel;
 				
 		this.setBackground(Color.WHITE);
 		
@@ -84,7 +84,7 @@ public class ResolverEjercicioMenuDer extends JPanel {
 		this.guardar.setActionCommand("guardar");
 		this.cancelar.setActionCommand("cancelar");
 		
-		this.list = new ResolverEjercicioMenuDerListener(this.frame, this.ejercicio, this, this.tema);
+		this.list = new ResponderPreguntaMenuDerListener(this.frame, this.ejercicio, this, this.pregunta, panel);
 		;
 		this.guardar.addActionListener(list);
 		this.cancelar.addActionListener(list);

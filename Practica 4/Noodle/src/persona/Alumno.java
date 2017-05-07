@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import asignatura.Asignatura;
+import contenido.Ejercicio;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import estadisticas.EstadisticasAlumno;
+import respuestas.RespuestaEjercicio;
 import solicitud.Solicitud;
 
 /**
@@ -242,6 +244,24 @@ public class Alumno extends Persona implements Serializable{
 				" Estadísticas.";
 	}
 
+	/**
+	 * Método que comprueba si un alumno ha respondido a un ejercicio
+	 * @param ej
+	 * @return
+	 */
+	public boolean haRespondidoA(Ejercicio ej){
+		Asignatura asig = ej.getAsignatura();
+		for(EstadisticasAlumno est : this.getEstadisticas()){
+			if(est.getAsignatura() == asig){
+				for(RespuestaEjercicio res : est.getRespuestas()){
+					if(res.getEjercicio() == ej){
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 	
 	
 	
