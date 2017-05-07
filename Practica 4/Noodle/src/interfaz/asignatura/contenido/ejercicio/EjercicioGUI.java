@@ -126,7 +126,9 @@ public class EjercicioGUI extends NuestroPanel{
 	/**
 	 * Método que actualiza el panel
 	 */
-	public void refreshPanel(){
+	public void refreshPanel(Ejercicio ejercicio, Tema tema){
+		this.ejercicio = ejercicio;
+		this.tema = tema;
 		this.remove(this.panel);
 		this.panel = new PreguntasPanel(this.frame, this.ejercicio);
 		this.remove(this.derecha);

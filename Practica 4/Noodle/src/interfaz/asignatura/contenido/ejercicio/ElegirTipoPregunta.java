@@ -35,6 +35,11 @@ public class ElegirTipoPregunta extends NuestroPanel {
 	Ejercicio ej;
 	
 	/**
+	 * Listener
+	 */
+	ElegirTipoPreguntaListener list;
+	
+	/**
 	 * Botones
 	 */
 	JButton botones[] = {new JButton("Pregunta Simple"), new JButton("Pregunta Unica"), new JButton("Pregunta Multiple"), new JButton("Pregunta Abierta"), new JButton("Cancelar")};
@@ -56,7 +61,7 @@ public class ElegirTipoPregunta extends NuestroPanel {
 		
 		Dimension d = new Dimension(150, 30);
 		
-		ElegirTipoPreguntaListener list = new ElegirTipoPreguntaListener(frame, ej);
+		list = new ElegirTipoPreguntaListener(frame, ej);
 		
 		for(JButton boton : botones){
 			boton.setPreferredSize(d);
@@ -78,6 +83,15 @@ public class ElegirTipoPregunta extends NuestroPanel {
 	 */
 	public void muestraPanel(){
 		this.frame.showElegirTipoPregunta(false, this.ej);
+	}
+	
+	/**
+	 * Refresca el panel
+	 * @param ejer
+	 */
+	public void refreshPanel(Ejercicio ejer){
+		this.ej = ejer;
+		this.list.refresh(this.ej);
 	}
 
 }

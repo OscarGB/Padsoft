@@ -57,6 +57,10 @@ public class EjercicioMenuDerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("borrar")){
+			if(this.ejercicio == null){
+				JOptionPane.showMessageDialog(null, "El ejercicio aun no ha sido guardado", "Error",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			this.ejercicio.eraseContenido();
 			this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 		}

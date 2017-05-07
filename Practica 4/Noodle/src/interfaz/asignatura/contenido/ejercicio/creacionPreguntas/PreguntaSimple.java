@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
+import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaSimplePanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 

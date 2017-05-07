@@ -97,6 +97,13 @@ public class CreaAsignatura extends JPanel {
 	}
 	
 	/**
+	 * Limpia el texto del nombre de la asignatura
+	 */
+	public void cleanTexto(){
+		this.nombre.setText("");
+	}
+	
+	/**
 	 * Devuelve el nombre introducido
 	 * @return
 	 */

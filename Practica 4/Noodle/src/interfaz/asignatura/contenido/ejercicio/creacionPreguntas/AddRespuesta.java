@@ -56,7 +56,7 @@ public class AddRespuesta extends JPanel{
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		
-		this.guardar.setPreferredSize(new Dimension(100, 30));
+		this.guardar.setPreferredSize(new Dimension(200, 30));
 		this.respuesta.setPreferredSize(new Dimension(200, 50));
 		
 		spr.putConstraint(SpringLayout.VERTICAL_CENTER, guardar, 0, SpringLayout.VERTICAL_CENTER, this);

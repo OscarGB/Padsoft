@@ -449,19 +449,17 @@ public class NoodleFrame extends JFrame{
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
-			anterior = null;
+			anterior = this.ejercicioGUI.getAnterior();
 		}
 		
-		if(this.ejercicioGUI == null){
-			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
-		}
-		else{
-			this.ejercicioGUI.setTema(tema);
-			this.ejercicioGUI.setEjercicio(ejercicio);
-			this.ejercicioGUI.refreshPanel();
-			this.ejercicioGUI.setAnterior(anterior);
-		}
-		//this.ejercicioGUI.refreshPanel();
+//		if(this.ejercicioGUI == null){
+//			this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
+//		}
+//		else{
+//			this.ejercicioGUI.refreshPanel(ejercicio,tema);
+//			this.ejercicioGUI.setAnterior(anterior);
+//		}
+		this.ejercicioGUI = new EjercicioGUI(anterior, this, ejercicio, tema);
 		
 		this.getContentPane().add(this.ejercicioGUI);
 		
@@ -483,8 +481,8 @@ public class NoodleFrame extends JFrame{
 		}
 		else{
 			this.elegirTipoPregunta.setAnterior(anterior);
+			this.elegirTipoPregunta.refreshPanel(ejercicio);
 		}
-		//this.ejercicioGUI.refreshPanel();
 		
 		this.getContentPane().add(this.elegirTipoPregunta);
 		
@@ -508,7 +506,6 @@ public class NoodleFrame extends JFrame{
 		else{
 			this.estadisticas.setAnterior(anterior);
 		}
-		//this.ejercicioGUI.refreshPanel();
 		
 		this.getContentPane().add(this.estadisticas);
 		

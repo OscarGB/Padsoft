@@ -19,6 +19,8 @@ import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
+import persona.Profesor;
+import plataforma.Plataforma;
 
 /**
  * Clase PreguntaList
@@ -158,17 +160,33 @@ public class PreguntasPanel extends JPanel{
 	 * @param pregunta
 	 */
 	public void listenerPreguntas(Pregunta pregunta){
-		if(pregunta instanceof PreguntaRespuestaUnica){
-			frame.showPreguntaUnica(true, this.ejercicio, pregunta);
+		if(Plataforma.loggedAs() instanceof Profesor){
+			if(pregunta instanceof PreguntaRespuestaUnica){
+				frame.showPreguntaUnica(true, this.ejercicio, pregunta);
+			}
+			else if(pregunta instanceof PreguntaRespuestaMultiple){
+				frame.showPreguntaMultiple(true, this.ejercicio, pregunta);
+			}
+			else if(pregunta instanceof PreguntaRespuestaAbierta){
+				frame.showPreguntaAbierta(true, this.ejercicio, pregunta);
+			}
+			else if(pregunta instanceof PreguntaRespuestaSimple){
+				frame.showPreguntaSimple(true, this.ejercicio, pregunta);
+			}
 		}
-		else if(pregunta instanceof PreguntaRespuestaMultiple){
-			frame.showPreguntaMultiple(true, this.ejercicio, pregunta);
-		}
-		else if(pregunta instanceof PreguntaRespuestaAbierta){
-			frame.showPreguntaAbierta(true, this.ejercicio, pregunta);
-		}
-		else if(pregunta instanceof PreguntaRespuestaSimple){
-			frame.showPreguntaSimple(true, this.ejercicio, pregunta);
+		else{
+			if(pregunta instanceof PreguntaRespuestaUnica){
+				System.out.println("Pregunta unica alumno");
+			}
+			else if(pregunta instanceof PreguntaRespuestaMultiple){
+				System.out.println("Pregunta multiple alumno");
+			}
+			else if(pregunta instanceof PreguntaRespuestaAbierta){
+				System.out.println("Pregunta abierta alumno");
+			}
+			else if(pregunta instanceof PreguntaRespuestaSimple){
+				System.out.println("Pregunta simple alumno");
+			}
 		}
 	}
 

@@ -55,7 +55,7 @@ public class PreguntaMenuDerListener implements ActionListener {
 		this.frame = frame;
 		this.menu = menu;
 	}
-
+	
 	/**
 	 * Método por si se pulsa algún botón
 	 * @param arg0
@@ -70,8 +70,6 @@ public class PreguntaMenuDerListener implements ActionListener {
 				this.p.setValorPregunta(menu.getValuePesoSpinner());
 				this.p.setPenalizacion(menu.getValuePesoFalloSpinner());
 				this.ej.addPregunta(this.p);
-				System.out.println(this.p);
-				System.out.println(this.ej.getPreguntas());
 				this.frame.showEjercicioGUI(false, this.ej, this.ej.getPadre());
 			}			
 		}

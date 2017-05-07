@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
+package interfaz.asignatura.contenido.ejercicio.genericosPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -86,7 +86,7 @@ public class PreguntaSimplePanel extends JPanel {
 		if(p == null){
 			this.p = new PreguntaRespuestaSimple("", false, 0, 0, false);
 			this.opciones = new ArrayList<Opciones>();
-			this.area.setText("prueba");
+			this.area.setText("Introduzca aquí el enunciado");
 		}
 		else{
 			this.p = p;

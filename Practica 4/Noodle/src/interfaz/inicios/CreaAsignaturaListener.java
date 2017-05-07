@@ -44,6 +44,7 @@ public class CreaAsignaturaListener implements ActionListener {
 		}
 		else if(arg0.getActionCommand().equals("Confirmar")){
 			String name = panel.getNombre();
+			panel.cleanTexto();
 			Plataforma.addAsignatura(new Asignatura(name));
 			panel.cambiarVisibilidad(false);
 			Plataforma.plat().saveData();

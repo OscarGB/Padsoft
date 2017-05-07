@@ -58,4 +58,9 @@ public class ElegirTipoPreguntaListener implements ActionListener {
 		}
 	}
 
+	public void refresh(Ejercicio ej) {
+		this.ej = ej;
+		
+	}
+
 }

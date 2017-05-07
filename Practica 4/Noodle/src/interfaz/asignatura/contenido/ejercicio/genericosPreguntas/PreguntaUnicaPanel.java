@@ -1,4 +1,4 @@
-package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
+package interfaz.asignatura.contenido.ejercicio.genericosPreguntas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -78,7 +78,7 @@ public class PreguntaUnicaPanel extends JPanel {
 			this.p = new PreguntaRespuestaUnica("", false, 0, 0);
 			this.opciones = new ArrayList<Opciones>();
 			this.radios = new ArrayList<JRadioButton>();
-			this.area.setText("prueba");
+			this.area.setText("Introduzca aquí el enunciado");
 		}
 		else{
 			this.p = p;

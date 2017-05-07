@@ -86,6 +86,8 @@ public class EjercicioMenuDer extends JPanel {
 	 */
 	private JDatePickerImpl  fechaFin;
 	
+	private JLabel nombreLabel = new JLabel("Nombre: ");
+	
 	/**
 	 * Nombre
 	 */
@@ -172,11 +174,13 @@ public class EjercicioMenuDer extends JPanel {
 		this.cancelar.setPreferredSize(new Dimension(100, 30));
 		this.peso.setPreferredSize(new Dimension(100, 15));
 		this.aleatLabel.setPreferredSize(new Dimension(100, 15));
+		this.nombreLabel.setPreferredSize(new Dimension(100, 15));
 		this.nombre.setPreferredSize(new Dimension(100, 20));
 		this.inicio.setPreferredSize(new Dimension(100, 15));
 		this.fin.setPreferredSize(new Dimension(100, 15));
 		
-		spr.putConstraint(SpringLayout.EAST, this.nombre, 20, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.WEST, this.nombre, 5, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.EAST, this.nombreLabel, -5, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.pregunta, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.peso, 0, SpringLayout.HORIZONTAL_CENTER, this);
@@ -191,6 +195,7 @@ public class EjercicioMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.WEST, this.cancelar, 10, SpringLayout.HORIZONTAL_CENTER, this);
 		
 		spr.putConstraint(SpringLayout.NORTH, this.nombre, 0, SpringLayout.NORTH, this);
+		spr.putConstraint(SpringLayout.NORTH, this.nombreLabel, 0, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.NORTH, this.pregunta, 20, SpringLayout.SOUTH, this.nombre);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 20, SpringLayout.SOUTH, this.nombre);
 		spr.putConstraint(SpringLayout.NORTH, this.peso, 20, SpringLayout.SOUTH, this.borrar);
@@ -217,6 +222,7 @@ public class EjercicioMenuDer extends JPanel {
 		this.add(this.fin);
 		this.add(this.cancelar);
 		this.add(this.nombre);
+		this.add(this.nombreLabel);
 		
 		this.borrar.setActionCommand("borrar");
 		this.pregunta.setActionCommand("pregunta");

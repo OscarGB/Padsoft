@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaUnica;
+import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaUnicaPanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
