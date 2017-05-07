@@ -17,6 +17,8 @@ import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaUnica;
+import persona.Alumno;
+import plataforma.Plataforma;
 
 /**
  * Clase PreguntaUniaPanel

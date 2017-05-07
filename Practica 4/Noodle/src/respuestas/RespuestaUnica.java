@@ -33,7 +33,7 @@ public class RespuestaUnica extends RespuestaPregunta{
 	 */
 	public RespuestaUnica(Pregunta p, Opciones respuesta) {
 		super(p);
-		this.respuesta=respuesta;
+		this.respuesta = respuesta;
 	}
 	
 	//Método

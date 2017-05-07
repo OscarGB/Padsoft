@@ -17,6 +17,9 @@ import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
+import persona.Alumno;
+import plataforma.Plataforma;
+import respuestas.RespuestaMultiple;
 
 /**
  * Clase PreguntaMultiplePanel
@@ -62,6 +65,7 @@ public class PreguntaMultiplePanel extends JPanel {
 	 */
 	public PreguntaMultiplePanel(PreguntaRespuestaMultiple p){
 		
+		boolean flag = (Plataforma.loggedAs() instanceof Alumno);
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
@@ -168,6 +172,25 @@ public class PreguntaMultiplePanel extends JPanel {
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
 		this.revalidate();
 		this.repaint();
+	}
+	
+	/**
+	 * Devuelve la respuesta del alumno
+	 * @return
+	 */
+	public RespuestaMultiple getRespuesta(){
+		ArrayList<Opciones> aux = new ArrayList<Opciones>();
+		boolean flag = false;
+		for(int i = 0; i < radios.size(); i++){
+			if(radios.get(i).isSelected()){
+				aux.add(this.opciones.get(i));
+				flag = true;
+			}
+		}
+		if(flag == false){
+			return null;
+		}
+		return new RespuestaMultiple(this.p, aux);
 	}
 	
 }

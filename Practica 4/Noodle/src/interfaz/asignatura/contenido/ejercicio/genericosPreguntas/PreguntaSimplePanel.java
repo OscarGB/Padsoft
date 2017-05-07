@@ -17,6 +17,9 @@ import contenido.Opciones;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
+import persona.Alumno;
+import plataforma.Plataforma;
+import respuestas.RespuestaSimple;
 
 /**
  * Clase PreguntaUniaPanel
@@ -67,7 +70,8 @@ public class PreguntaSimplePanel extends JPanel {
 	 * @param p, null si se quiere crear la pregunta
 	 */
 	public PreguntaSimplePanel(PreguntaRespuestaSimple p){
-		
+	
+		boolean flag = (Plataforma.loggedAs() instanceof Alumno);
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
@@ -91,12 +95,18 @@ public class PreguntaSimplePanel extends JPanel {
 		else{
 			this.p = p;
 			this.area.setText(p.getEnunciado());
-			if(this.p.getRespuesta() == true){
-				verdadero.setSelected(true);
+			if(flag == false){
+				if(this.p.getRespuesta() == true){
+					verdadero.setSelected(true);
+				}
+				else{
+					falso.setSelected(true);
+				}
 			}
-			else{
-				falso.setSelected(true);
-			}
+		}
+		
+		if(flag == true){
+			this.area.setEditable(false);
 		}
 	
 		this.add(this.area);
@@ -137,5 +147,21 @@ public class PreguntaSimplePanel extends JPanel {
 		}
 		this.p.setEnunciado(this.getEnunciado());
 		return this.p;
+	}
+	
+	/**
+	 * Devuelve la respuesta del alumno
+	 * @return
+	 */
+	public RespuestaSimple getRespuesta(){
+		if(verdadero.isSelected()){
+			return new RespuestaSimple(this.p, true);
+		}
+		else if(falso.isSelected()){
+			return new RespuestaSimple(this.p, false);
+		}
+		else{
+			return null;
+		}
 	}
 }

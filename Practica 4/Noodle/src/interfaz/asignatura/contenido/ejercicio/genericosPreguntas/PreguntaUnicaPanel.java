@@ -11,10 +11,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
-import asignatura.Asignatura;
 import contenido.Opciones;
-import contenido.Pregunta;
 import contenido.PreguntaRespuestaUnica;
+import persona.Alumno;
+import plataforma.Plataforma;
+import respuestas.RespuestaUnica;
 
 /**
  * Clase PreguntaUniaPanel
@@ -65,6 +66,7 @@ public class PreguntaUnicaPanel extends JPanel {
 	 */
 	public PreguntaUnicaPanel(PreguntaRespuestaUnica p){
 		
+		boolean flag = (Plataforma.loggedAs() instanceof Alumno);
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
@@ -87,8 +89,10 @@ public class PreguntaUnicaPanel extends JPanel {
 			this.opciones = (ArrayList<Opciones>) this.p.getOpciones().clone();
 			for(Opciones op : this.opciones){
 				JRadioButton aux = new JRadioButton(op.getRespuesta());
-				if(op.esCorrecta() == true){
-					aux.setSelected(true);
+				if(flag == false){
+					if(op.esCorrecta() == true){
+						aux.setSelected(true);
+					}
 				}
 				radios.add(aux);
 				grupo.add(aux);
@@ -103,7 +107,9 @@ public class PreguntaUnicaPanel extends JPanel {
 				}
 			}
 		}
-	
+		if(flag == true){
+			this.area.setEditable(false);
+		}
 		this.add(this.area);
 		
 		spr.putConstraint(SpringLayout.NORTH, area, 5, SpringLayout.NORTH, this);
@@ -130,6 +136,7 @@ public class PreguntaUnicaPanel extends JPanel {
 		for(JRadioButton but: radios){
 			if(but.isSelected()){
 				aux = radios.indexOf(but);
+				break;
 			}
 		}
 		
@@ -173,6 +180,25 @@ public class PreguntaUnicaPanel extends JPanel {
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
 		this.revalidate();
 		this.repaint();
+	}
+	
+	/**
+	 * Devuelve la respuesta del alumno
+	 * @return
+	 */
+	public RespuestaUnica getRespuesta(){
+		int aux = -1;
+		for(JRadioButton but: radios){
+			if(but.isSelected()){
+				aux = radios.indexOf(but);
+				break;
+			}
+		}
+		
+		if(aux < 0){
+			return null;
+		}
+		return new RespuestaUnica(this.p, this.p.getOpciones().get(aux));
 	}
 	
 }
