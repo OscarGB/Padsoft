@@ -113,6 +113,7 @@ public class EjercicioMenuDerListener implements ActionListener {
 			}
 			else if (ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
 				JOptionPane.showMessageDialog(null, "El ejercicio no puede ser modificado", "Ejercicio no modificable",JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 			else{
 				

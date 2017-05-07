@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import contenido.Ejercicio;
+import contenido.EstadoEjercicio;
 import contenido.Pregunta;
 import interfaz.genericos.NoodleFrame;
 
@@ -72,6 +73,10 @@ public class PreguntaMenuDerListener implements ActionListener {
 		if(arg0.getActionCommand().equals("guardar")){
 			if((this.p = this.panel.getPregunta()) == null){
 				JOptionPane.showMessageDialog(null, "Seleccione la opción correcta", "Opcion",JOptionPane.ERROR_MESSAGE);
+			}
+			if (this.ej.getEstado() == EstadoEjercicio.RESPONDIDO || this.ej.getEstado() == EstadoEjercicio.TERMINADO){
+				JOptionPane.showMessageDialog(null, "El ejercicio no puede ser modificado", "Ejercicio no modificable",JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 			else {
 				this.p.setValorPregunta(menu.getValuePesoSpinner());
