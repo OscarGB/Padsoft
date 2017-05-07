@@ -1,5 +1,6 @@
 package respuestas;
 
+import java.awt.Component;
 import java.util.ArrayList;
 
 import contenido.Opciones;
@@ -83,6 +84,14 @@ public class RespuestaMultiple extends RespuestaPregunta{
 	@Override
 	public String toString(){
 		return "Pregunta Multiple: '" + this.preguntaRespondida.getEnunciado() + "' Respondido: " + this.respuestas;
+	}
+
+	/**
+	 * Getter de respuestas escogidas por el alumno
+	 * @return
+	 */
+	public ArrayList<Opciones> getEscogidas() {
+		return this.respuestas;
 	}
 
 }

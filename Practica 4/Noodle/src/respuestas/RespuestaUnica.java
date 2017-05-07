@@ -52,6 +52,14 @@ public class RespuestaUnica extends RespuestaPregunta{
 		return false;
 	}
 	
+	/**
+	 * Respuesta escogida por el alumno
+	 * @return
+	 */
+	public Opciones getEscogida(){
+		return this.respuesta;
+	}
+	
 	//Override
 	
 	/**
