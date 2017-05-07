@@ -32,12 +32,17 @@ class EstadisticaList extends MouseAdapter{
 	/**
 	 * Panel al que pertenece
 	 */
-	EstadisticasPanel panel;
+	private EstadisticasPanel panel;
 	
 	/**
 	 * Pregunta a la que hace referencia
 	 */
-	RespuestaEjercicio respuesta;
+	private RespuestaEjercicio respuesta;
+	
+	/**
+	 * Alumno
+	 */
+	private Alumno alumno;
 	
 	// Creador
 	
@@ -46,9 +51,10 @@ class EstadisticaList extends MouseAdapter{
 	 * @param panel
 	 * @param pregunta
 	 */
-	EstadisticaList(EstadisticasPanel panel, RespuestaEjercicio respuesta){
+	EstadisticaList(EstadisticasPanel panel, RespuestaEjercicio respuesta, Alumno alumno){
 		this.panel = panel;
 		this.respuesta = respuesta;
+		this.alumno = alumno;
 	}
 	
 	// Métodos
@@ -58,7 +64,7 @@ class EstadisticaList extends MouseAdapter{
 	  * @param e
 	  */
 	public void mouseClicked(MouseEvent e) {
-		 this.panel.listenerEstadisticas(this.respuesta);
+		 this.panel.listenerEstadisticas(this.respuesta, this.alumno);
 	 } 
 }
 
@@ -93,6 +99,11 @@ public class EstadisticasPanel extends JPanel {
 	 * Label con el resumen
 	 */
 	private JLabel top;
+	
+	/**
+	 * Alumno
+	 */
+	private Alumno alumno;
 	
 	/**
 	 * Cosntructor
@@ -161,7 +172,7 @@ public class EstadisticasPanel extends JPanel {
 					spr.putConstraint(SpringLayout.NORTH, label, 50, SpringLayout.NORTH, previous);
 					//Añadimos un MouseListener para poder clicar en los labels de las
 					//estadisticas
-					labels.get(i).addMouseListener(new EstadisticaList(this, respuestas.get(j)));
+					labels.get(i).addMouseListener(new EstadisticaList(this, respuestas.get(j), this.alumno));
 					label.setFont(new Font("Arial", Font.BOLD, 20));
 				}
 			}
@@ -187,8 +198,8 @@ public class EstadisticasPanel extends JPanel {
 	 * Método por si se pulsa en unas estadisticas
 	 * @param respuesta
 	 */
-	public void listenerEstadisticas(RespuestaEjercicio respuesta) {
-		System.out.println("Se ha seleccionado " + respuesta);
+	public void listenerEstadisticas(RespuestaEjercicio respuesta, Alumno alumno) {
+		this.frame.showConsultarRespuestas(true, respuesta, alumno);
 		
 	}
 

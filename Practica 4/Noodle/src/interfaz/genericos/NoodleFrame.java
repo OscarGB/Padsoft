@@ -30,6 +30,7 @@ import interfaz.login.*;
 import interfaz.solicitudes.*;
 import persona.Alumno;
 import plataforma.Plataforma;
+import respuestas.RespuestaEjercicio;
 
 /**
  * Clase NoodleFrame
@@ -738,13 +739,13 @@ public class NoodleFrame extends JFrame{
 	 * @param back, true si se quiere guardar el panel anterior
 	 * @param ejercicio
 	 */
-	public void showConsultarRespuestas(boolean back, Ejercicio ejercicio, Alumno alumno){
+	public void showConsultarRespuestas(boolean back, RespuestaEjercicio respuesta, Alumno alumno){
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = this.ejercicioGUI.getAnterior();
 		}
-		this.consultarRespuestas = new ConsultarRespuestas(anterior, this, ejercicio, alumno);
+		this.consultarRespuestas = new ConsultarRespuestas(anterior, this, respuesta, alumno);
 		
 		this.getContentPane().add(this.consultarRespuestas);
 		
