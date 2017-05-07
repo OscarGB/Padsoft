@@ -13,6 +13,7 @@ import interfaz.asignatura.asignaturaGUI.estadisticas.Estadisticas;
 import interfaz.asignatura.contenido.apuntes.ApuntesGUI;
 import interfaz.asignatura.contenido.apuntes.ApuntesListener;
 import interfaz.asignatura.contenido.apuntes.SubirApuntes;
+import interfaz.asignatura.contenido.ejercicio.consultarRespuestas.ConsultarRespuestas;
 import interfaz.asignatura.contenido.ejercicio.creacionEjercicio.EjercicioGUI;
 import interfaz.asignatura.contenido.ejercicio.creacionEjercicio.ElegirTipoPregunta;
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaAbierta;
@@ -71,6 +72,7 @@ public class NoodleFrame extends JFrame{
 	private ResponderPreguntaAbierta responderPreguntaAbierta = null;
 	private ResponderPreguntaUnica responderPreguntaUnica = null;
 	private ResponderPreguntaMultiple responderPreguntaMultiple = null;
+	private ConsultarRespuestas consultarRespuestas = null;
 
 	private static NoodleFrame frame;
 	
@@ -732,6 +734,24 @@ public class NoodleFrame extends JFrame{
 		this.getContentPane().add(this.responderPreguntaAbierta);
 		
 		this.fin(700,500, this.responderPreguntaAbierta);
+	}
+	
+	/**
+	 * Muestra el Panel del ejercicio con las respuestas
+	 * @param back, true si se quiere guardar el panel anterior
+	 * @param ejercicio
+	 */
+	public void showConsultarRespuestas(boolean back, Ejercicio ejercicio, Alumno alumno){
+		
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = this.ejercicioGUI.getAnterior();
+		}
+		this.consultarRespuestas = new ConsultarRespuestas(anterior, this, ejercicio, alumno);
+		
+		this.getContentPane().add(this.consultarRespuestas);
+		
+		this.fin(700,500, this.consultarRespuestas);
 	}
 	
 }
