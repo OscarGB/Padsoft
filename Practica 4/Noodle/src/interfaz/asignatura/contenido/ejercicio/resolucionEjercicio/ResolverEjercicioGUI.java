@@ -108,7 +108,7 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		
 		int w = this.getWidth();
 		
-		this.instance = this;
+		ResolverEjercicioGUI.instance = this;
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
 		

@@ -20,6 +20,10 @@ import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaMultipl
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaSimple;
 import interfaz.asignatura.contenido.ejercicio.creacionPreguntas.PreguntaUnica;
 import interfaz.asignatura.contenido.ejercicio.resolucionEjercicio.ResolverEjercicioGUI;
+import interfaz.asignatura.contenido.ejercicio.resolucionPreguntas.ResponderPreguntaAbierta;
+import interfaz.asignatura.contenido.ejercicio.resolucionPreguntas.ResponderPreguntaMultiple;
+import interfaz.asignatura.contenido.ejercicio.resolucionPreguntas.ResponderPreguntaSimple;
+import interfaz.asignatura.contenido.ejercicio.resolucionPreguntas.ResponderPreguntaUnica;
 import interfaz.inicios.*;
 import interfaz.login.*;
 import interfaz.solicitudes.*;
@@ -63,6 +67,10 @@ public class NoodleFrame extends JFrame{
 	private PreguntaAbierta preguntaAbierta = null;
 	private PreguntaSimple preguntaSimple = null;
 	private ResolverEjercicioGUI resolverEjercicioGUI = null;
+	private ResponderPreguntaSimple responderPreguntaSimple = null;
+	private ResponderPreguntaAbierta responderPreguntaAbierta = null;
+	private ResponderPreguntaUnica responderPreguntaUnica = null;
+	private ResponderPreguntaMultiple responderPreguntaMultiple = null;
 
 	private static NoodleFrame frame;
 	
@@ -648,6 +656,82 @@ public class NoodleFrame extends JFrame{
 	 */
 	public void responderOCancelarEjercicio(){
 		this.resolverEjercicioGUI = null;
+	}
+	
+	/**
+	 * Método que muestra ResponderPreguntaSimple
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showResponderPreguntaSimple(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		
+		this.responderPreguntaSimple = new ResponderPreguntaSimple(anterior, this, (PreguntaRespuestaSimple)pregunta, ejercicio);
+		
+		this.getContentPane().add(this.responderPreguntaSimple);
+		
+		this.fin(700,500, this.responderPreguntaSimple);
+	}
+	
+	/**
+	 * Método que muestra ResponderPreguntaMultiple
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showResponderPreguntaMultiple(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		
+		this.responderPreguntaMultiple = new ResponderPreguntaMultiple(anterior, this, (PreguntaRespuestaMultiple)pregunta, ejercicio);		
+		
+		this.getContentPane().add(this.responderPreguntaMultiple);
+		
+		this.fin(700,500, this.responderPreguntaMultiple);
+	}
+	
+	/**
+	 * Método que muestra ResponderPreguntaUnica
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showResponderPreguntaUnica(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		
+		this.responderPreguntaUnica = new ResponderPreguntaUnica(anterior, this, (PreguntaRespuestaUnica)pregunta, ejercicio);	
+		
+		this.getContentPane().add(this.responderPreguntaUnica);
+		
+		this.fin(700,500, this.responderPreguntaUnica);
+	}
+	
+	/**
+	 * Método que muestra ResponderPreguntaAbierta
+	 * @param back
+	 * @param ejercicio
+	 * @param pregunta
+	 */
+	public void showResponderPreguntaAbierta(boolean back, Ejercicio ejercicio, Pregunta pregunta){
+		NuestroPanel anterior = this.ini();
+		if(back == false){
+			anterior = null;
+		}
+		
+		this.responderPreguntaAbierta = new ResponderPreguntaAbierta(anterior, this, (PreguntaRespuestaAbierta)pregunta, ejercicio);
+		
+		this.getContentPane().add(this.responderPreguntaAbierta);
+		
+		this.fin(700,500, this.responderPreguntaAbierta);
 	}
 	
 }
