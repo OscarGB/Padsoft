@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
@@ -14,6 +15,7 @@ import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import persona.Alumno;
+import respuestas.RespuestaEjercicio;
 
 public class ConsultarRespuestas extends NuestroPanel{
 
@@ -43,19 +45,28 @@ public class ConsultarRespuestas extends NuestroPanel{
 	private Ejercicio ejercicio;
 	
 	/**
+	 * Respuesta al ejercicio
+	 */
+	private RespuestaEjercicio respuesta;
+	
+	/**
 	 * Alumno
 	 */
 	private Alumno alumno;
 	
-	public ConsultarRespuestas(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Alumno alumno) {
+	private JLabel nota = new JLabel();
+	
+	public ConsultarRespuestas(NuestroPanel anterior, NoodleFrame frame, RespuestaEjercicio respuesta, Alumno alumno) {
 		super(anterior, frame);
 		this.setSize(700,500);
 		this.setBackground(Color.WHITE);
 		
 		this.setLayout(new BorderLayout());
 		
-		this.ejercicio = ejercicio;
+		this.respuesta = respuesta;
+		this.ejercicio = this.respuesta.getEjercicio();
 		this.alumno = alumno;
+		this.nota.setText("Nota del ejercicio: " + this.ejercicio.getNotaMedia());
 		
 		this.menu = new Menu(frame);
 		this.respuestas = new RespuestasPanel(this.frame, this.ejercicio, this.alumno);
@@ -63,6 +74,7 @@ public class ConsultarRespuestas extends NuestroPanel{
 		
 		this.add(this.menu, BorderLayout.NORTH);
 		this.add(this.scroll, BorderLayout.CENTER);
+		this.add(this.nota, BorderLayout.EAST);
 		
 		int w = this.getWidth();
 		
@@ -74,7 +86,7 @@ public class ConsultarRespuestas extends NuestroPanel{
 	 * Hace que el frame muestre este panel
 	 */
 	public void muestraPanel(){
-		this.frame.showConsultarRespuestas(true, this.ejercicio, this.alumno);
+		this.frame.showConsultarRespuestas(true, this.respuesta, this.alumno);
 	}
 	
 	/**
