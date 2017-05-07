@@ -66,9 +66,6 @@ public class ContenidoMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.SOUTH, this.editar, -30, SpringLayout.VERTICAL_CENTER, this);
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 30, SpringLayout.VERTICAL_CENTER, this.editar);
 		
-//		spr.putConstraint(SpringLayout.EAST, this.editar, -5, SpringLayout.EAST, this);
-//		spr.putConstraint(SpringLayout.EAST, this.borrar, -5, SpringLayout.EAST, this);
-		
 		this.add(this.editar);
 		this.add(this.borrar);
 		

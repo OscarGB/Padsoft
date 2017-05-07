@@ -73,12 +73,14 @@ public class EjercicioMenuDerListener implements ActionListener {
 		}
 		else if(arg0.getActionCommand().equals("guardar")){
 			
+			LocalDate ini = this.panel.getFechaIni();
+			LocalDate fin = this.panel.getFechaFin();
+			boolean aleatorio = this.panel.getAleatorio();
+			int peso = this.panel.getPeso();
+			String nombre = this.panel.getNombre();
+			boolean visibilidad = this.panel.getVisible();
+			
 			if(this.ejercicio == null){
-				LocalDate ini = this.panel.getFechaIni();
-				LocalDate fin = this.panel.getFechaFin();
-				boolean aleatorio = this.panel.getAleatorio();
-				int peso = this.panel.getPeso();
-				String nombre = this.panel.getNombre();
 				
 				if(nombre.length() <= 0){
 					JOptionPane.showMessageDialog(null, "Introduzca un nombre", "Nombre",JOptionPane.ERROR_MESSAGE);
@@ -86,24 +88,20 @@ public class EjercicioMenuDerListener implements ActionListener {
 				else if(ini.isAfter(fin) || ini.isBefore(LocalDate.now())){
 					String nl = System.getProperty("line.separator");
 					JOptionPane.showMessageDialog(null, "Fechas inválidas"+nl+"Se emplearán fechas por defecto", "Error de fechas",JOptionPane.ERROR_MESSAGE);
-					this.ejercicio = new Ejercicio(peso, aleatorio, null, null, tema, nombre, true, this.asignatura);
+					this.ejercicio = new Ejercicio(peso, aleatorio, null, null, tema, nombre, visibilidad, this.asignatura);
 					ini = ejercicio.getFechaIniDefecto();
 					fin = ejercicio.getFechaFinDefecto();
 					this.ejercicio.setFechaFin(fin);
 					this.ejercicio.setFechaIni(ini);
 					this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				} else{
-					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, true, this.asignatura);
+					this.ejercicio = new Ejercicio(peso, aleatorio, ini, fin, tema, nombre, visibilidad, this.asignatura);
 				}
 			}
 			else if (ejercicio.getEstado() == EstadoEjercicio.RESPONDIDO || ejercicio.getEstado() == EstadoEjercicio.TERMINADO){
 				JOptionPane.showMessageDialog(null, "El ejercicio no puede ser modificado", "Ejercicio no modificable",JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				LocalDate ini = this.panel.getFechaIni();
-				LocalDate fin = this.panel.getFechaFin();
-				boolean aleatorio = this.panel.getAleatorio();
-				int peso = this.panel.getPeso();
 				
 				if(ini.isAfter(fin) || ini.isBefore(LocalDate.now()) || ini.isBefore(this.ejercicio.getFechaIni())){
 					String nl = System.getProperty("line.separator");
@@ -116,8 +114,7 @@ public class EjercicioMenuDerListener implements ActionListener {
 				this.ejercicio.setPeso(peso);
 				this.ejercicio.setFechaFin(fin);
 				this.ejercicio.setFechaIni(ini);
-
-				
+				this.ejercicio.setVisibilidad(visibilidad);
 				
 				this.frame.showAsignatura(false, this.ejercicio.getAsignatura());
 				

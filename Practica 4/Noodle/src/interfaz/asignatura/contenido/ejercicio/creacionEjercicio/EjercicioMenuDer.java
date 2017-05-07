@@ -67,6 +67,11 @@ public class EjercicioMenuDer extends JPanel {
 	private JCheckBox aleatorio = new JCheckBox();
 	
 	/**
+	 * CheckBox para la visibilidad
+	 */
+	private JCheckBox visible = new JCheckBox("Visble");
+	
+	/**
 	 * Label fecha inicio
 	 */
 	private JLabel inicio = new JLabel("Fecha inicio: ");
@@ -140,6 +145,10 @@ public class EjercicioMenuDer extends JPanel {
 			this.aleatorio.setSelected(this.ejercicio.esAleatorio());
 			this.nombre.setText(this.ejercicio.getTitulo());
 			this.nombre.setEditable(false);
+			this.visible.setSelected(this.ejercicio.getVisibilidad());
+		}
+		else{
+			this.visible.setSelected(true);
 		}
 		
 	    SpinnerNumberModel m_numberSpinnerModel;
@@ -183,6 +192,7 @@ public class EjercicioMenuDer extends JPanel {
 		this.fin.setPreferredSize(new Dimension(100, 15));
 		
 		spr.putConstraint(SpringLayout.WEST, this.nombre, 5, SpringLayout.HORIZONTAL_CENTER, this);
+		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, this.visible, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.nombreLabel, -5, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.EAST, this.pregunta, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		spr.putConstraint(SpringLayout.WEST, this.borrar, 0, SpringLayout.HORIZONTAL_CENTER, this);
@@ -203,11 +213,12 @@ public class EjercicioMenuDer extends JPanel {
 		spr.putConstraint(SpringLayout.NORTH, this.borrar, 20, SpringLayout.SOUTH, this.nombre);
 		spr.putConstraint(SpringLayout.NORTH, this.peso, 20, SpringLayout.SOUTH, this.borrar);
 		spr.putConstraint(SpringLayout.NORTH, this.aleatLabel, 20, SpringLayout.SOUTH, this.peso);
-		spr.putConstraint(SpringLayout.NORTH, this.inicio, 20, SpringLayout.SOUTH, this.aleatLabel);
+		spr.putConstraint(SpringLayout.NORTH, this.inicio, 20, SpringLayout.SOUTH, this.visible);
 		spr.putConstraint(SpringLayout.NORTH, this.fechaIni, 5, SpringLayout.SOUTH, this.inicio);
 		spr.putConstraint(SpringLayout.NORTH, this.fin, 20, SpringLayout.SOUTH, this.fechaIni);
 		spr.putConstraint(SpringLayout.NORTH, this.fechaFin, 5, SpringLayout.SOUTH, this.fin);
 		spr.putConstraint(SpringLayout.NORTH, this.aleatorio, 20, SpringLayout.SOUTH, this.peso);
+		spr.putConstraint(SpringLayout.NORTH, this.visible, 20,  SpringLayout.SOUTH, this.aleatLabel);
 		spr.putConstraint(SpringLayout.NORTH, this.pesoSpinner, 20, SpringLayout.SOUTH, this.borrar);
 		spr.putConstraint(SpringLayout.NORTH, this.guardar, 30, SpringLayout.SOUTH, this.fechaFin);
 		spr.putConstraint(SpringLayout.NORTH, this.cancelar, 30, SpringLayout.SOUTH, this.fechaFin);
@@ -226,6 +237,7 @@ public class EjercicioMenuDer extends JPanel {
 		this.add(this.cancelar);
 		this.add(this.nombre);
 		this.add(this.nombreLabel);
+		this.add(this.visible);
 		
 		this.borrar.setActionCommand("borrar");
 		this.pregunta.setActionCommand("pregunta");
@@ -257,6 +269,14 @@ public class EjercicioMenuDer extends JPanel {
 	 */
 	public int getPeso(){
 		return (int)this.pesoSpinner.getValue();
+	}
+	
+	/**
+	 * Devuelve la visibilidad
+	 * @return
+	 */
+	public boolean getVisible(){
+		return this.visible.isSelected();
 	}
 	
 	/**
