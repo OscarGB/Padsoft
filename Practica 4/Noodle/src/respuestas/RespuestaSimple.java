@@ -35,6 +35,14 @@ public class RespuestaSimple extends RespuestaPregunta{
 		this.respondido = respondido;
 	}
 	
+	/**
+	 * Getter de la respuesta dada por el alumno
+	 * @return
+	 */
+	public boolean getRespondido(){
+		return this.respondido;
+	}
+	
 	//Métodos
 	
 	/**

@@ -76,7 +76,7 @@ public class NoodleFrame extends JFrame{
 	private ResponderPreguntaUnica responderPreguntaUnica = null;
 	private ResponderPreguntaMultiple responderPreguntaMultiple = null;
 	private ConsultarRespuestas consultarRespuestas = null;
-	private EstPregunta estPreguntaUnica = null;
+	private EstPregunta estPregunta = null;
 
 	private static NoodleFrame frame;
 	
@@ -762,17 +762,17 @@ public class NoodleFrame extends JFrame{
 		this.fin(700,500, this.consultarRespuestas);
 	}
 
-	public void showEstPreguntaUnica(boolean back, RespuestaPregunta respuesta, Ejercicio ejercicio) {
+	public void showEstPregunta(boolean back, RespuestaPregunta respuesta, Ejercicio ejercicio) {
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
-			anterior = this.estPreguntaUnica.getAnterior();
+			anterior = this.estPregunta.getAnterior();
 		}
-		this.estPreguntaUnica = new EstPregunta(anterior, this, respuesta, ejercicio);
+		this.estPregunta = new EstPregunta(anterior, this, respuesta, ejercicio);
 		
-		this.getContentPane().add(this.estPreguntaUnica);
+		this.getContentPane().add(this.estPregunta);
 		
-		this.fin(700,500, this.estPreguntaUnica);
+		this.fin(700,500, this.estPregunta);
 		
 	}
 	

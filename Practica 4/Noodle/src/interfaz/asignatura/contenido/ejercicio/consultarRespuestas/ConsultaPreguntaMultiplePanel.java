@@ -36,11 +36,6 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 	private ArrayList<JCheckBox> radios;
 	
 	/**
-	 * Grupo de Radiobuttons
-	 */
-	private ButtonGroup grupo;
-	
-	/**
 	 * Area para el enunciado
 	 */
 	private JTextArea area;
@@ -73,7 +68,6 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		this.area = new JTextArea(5,20);
 		this.area.setSize(300, 50);
 		
-		grupo = new ButtonGroup();
 		spr = new SpringLayout();
 		setLayout(spr);
 	
@@ -94,7 +88,6 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 			}
 			aux.setEnabled(false);
 			radios.add(aux);
-			grupo.add(aux);
 			this.add(aux);
 			
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, aux, 0, SpringLayout.HORIZONTAL_CENTER, this);

@@ -51,6 +51,14 @@ public class RespuestaAbierta extends RespuestaPregunta {
 		return false;
 	}
 	
+	/**
+	 * Getter de la respuesta del alumno
+	 * @return
+	 */
+	public String getRespondido(){
+		return this.respondido;
+	}
+	
 	//Override
 	
 	/**
