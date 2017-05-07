@@ -3,12 +3,16 @@ package interfaz.asignatura.contenido.ejercicio.consultarRespuestas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.JScrollPane;
+
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaUnicaPanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
+import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
+import respuestas.RespuestaUnica;
 
 public class EstPregunta extends NuestroPanel{
 
@@ -35,7 +39,12 @@ public class EstPregunta extends NuestroPanel{
 	/**
 	 * Panel
 	 */
-	private ConsultaPreguntaUnicaPanel panel;
+	private ConsultaPregunta panel;
+	
+	/**
+	 * Scrolling pane
+	 */
+	private JScrollPane scroll;
 
 	/**
 	 * Constructor de EstPreguntaUnica
@@ -54,9 +63,17 @@ public class EstPregunta extends NuestroPanel{
 		
 		this.setLayout(new BorderLayout());
 		
-		this.panel = new ConsultaPreguntaUnicaPanel(this.respuesta);
+		if(this.respuesta instanceof RespuestaUnica){
+			this.panel = new ConsultaPreguntaUnicaPanel((RespuestaUnica)this.respuesta);
+		}
+		else if(this.respuesta instanceof RespuestaMultiple){
+			this.panel = new ConsultaPreguntaMultiplePanel((RespuestaMultiple)this.respuesta);
+		}
 		
-		this.add(this.panel, BorderLayout.CENTER);
+		this.scroll = new JScrollPane(this.panel);
+		
+		
+		this.add(this.scroll, BorderLayout.CENTER);
 		
 	}
 

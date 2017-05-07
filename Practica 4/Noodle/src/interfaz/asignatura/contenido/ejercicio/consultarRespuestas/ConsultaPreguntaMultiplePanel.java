@@ -6,22 +6,25 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import contenido.Opciones;
+import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaUnica;
+import respuestas.RespuestaMultiple;
 import respuestas.RespuestaUnica;
 
-public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
-	
+public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
+
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * Array de opciones
 	 */
@@ -30,7 +33,7 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 	/**
 	 * Array de radiobuttons
 	 */
-	private ArrayList<JRadioButton> radios;
+	private ArrayList<JCheckBox> radios;
 	
 	/**
 	 * Grupo de Radiobuttons
@@ -50,20 +53,20 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 	/**
 	 * Respuesta
 	 */
-	private RespuestaUnica respuesta;
+	private RespuestaMultiple respuesta;
 	
 	/**
 	 * Pregunta
 	 */
-	private PreguntaRespuestaUnica pregunta;
+	private PreguntaRespuestaMultiple pregunta;
 	
 	/**
 	 * Constructor
 	 * @param respuesta
 	 */
-	public ConsultaPreguntaUnicaPanel(RespuestaUnica respuesta){
+	public ConsultaPreguntaMultiplePanel(RespuestaMultiple respuesta){
 		this.respuesta = respuesta;
-		this.pregunta = (PreguntaRespuestaUnica) this.respuesta.getPregunta();
+		this.pregunta = (PreguntaRespuestaMultiple) this.respuesta.getPregunta();
 		
 		this.setBackground(Color.WHITE);
 		
@@ -75,15 +78,15 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 		setLayout(spr);
 	
 		this.area.setText(pregunta.getEnunciado());
-		this.radios = new ArrayList<JRadioButton>();
+		this.radios = new ArrayList<JCheckBox>();
 		this.opciones = (ArrayList<Opciones>) this.pregunta.getOpciones().clone();
 		
 		for(Opciones op : this.opciones){
-			JRadioButton aux = new JRadioButton(op.getRespuesta());
+			JCheckBox aux = new JCheckBox(op.getRespuesta());
 			if(op.esCorrecta() == true){
 				aux.setBackground(Color.GREEN);
 			}
-			if(op.equals(this.respuesta.getEscogida()) == true){
+			if(this.respuesta.getEscogidas().contains(op) == true){
 				aux.setSelected(true);
 				if(op.esCorrecta() == false){
 					aux.setBackground(Color.RED);
@@ -117,3 +120,4 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 	}
 
 }
+
