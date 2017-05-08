@@ -12,12 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
-import contenido.Pregunta;
 import estadisticas.EstadisticasAlumno;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
 import respuestas.RespuestaEjercicio;
-import respuestas.RespuestaPregunta;
 
 /**
  * Clase EstadisticaList

@@ -11,7 +11,6 @@ import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import contenido.Apuntes;
-import interfaz.genericos.NoodleFrame;
 
 /**
  * Clase ApuntesPanel

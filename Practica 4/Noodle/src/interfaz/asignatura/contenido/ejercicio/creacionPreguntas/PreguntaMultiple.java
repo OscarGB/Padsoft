@@ -1,14 +1,12 @@
 package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaMultiple;
-import contenido.PreguntaRespuestaUnica;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaMultiplePanel;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;

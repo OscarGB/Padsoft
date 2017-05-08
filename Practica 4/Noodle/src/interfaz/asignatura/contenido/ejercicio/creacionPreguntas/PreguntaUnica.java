@@ -1,7 +1,6 @@
 package interfaz.asignatura.contenido.ejercicio.creacionPreguntas;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
