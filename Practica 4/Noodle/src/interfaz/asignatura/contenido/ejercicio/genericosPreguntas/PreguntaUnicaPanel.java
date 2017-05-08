@@ -19,7 +19,7 @@ import plataforma.Plataforma;
 import respuestas.RespuestaUnica;
 
 /**
- * Clase PreguntaUniaPanel
+ * Clase PreguntaUnicaPanel
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017

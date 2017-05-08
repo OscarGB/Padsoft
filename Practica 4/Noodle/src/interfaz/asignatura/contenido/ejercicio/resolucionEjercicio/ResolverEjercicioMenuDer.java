@@ -12,12 +12,15 @@ import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 
 /**
- * Clase EjercicioMenuDer
+ * Clase ResolverEjercicioMenuDer
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class ResolverEjercicioMenuDer extends JPanel {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -52,6 +55,8 @@ public class ResolverEjercicioMenuDer extends JPanel {
 	 * Listener
 	 */
 	private ResolverEjercicioMenuDerListener list;
+	
+	//Constructor
 	
 	/**
 	 * Constructor

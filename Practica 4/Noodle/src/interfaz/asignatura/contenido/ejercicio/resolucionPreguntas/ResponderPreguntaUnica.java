@@ -9,9 +9,17 @@ import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntaUnicaP
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import respuestas.RespuestaPregunta;
-import respuestas.RespuestaUnica;
 
+/**
+ * Clase ResponderPreguntaUnica
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaUnica extends ResponderPregunta {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -36,6 +44,8 @@ public class ResponderPreguntaUnica extends ResponderPregunta {
 	 * Ejercicio
 	 */
 	private Ejercicio ej;
+	
+	//Constructor
 	
 	/**
 	 * Constructor

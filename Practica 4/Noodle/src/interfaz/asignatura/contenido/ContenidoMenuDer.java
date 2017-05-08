@@ -19,6 +19,8 @@ import interfaz.genericos.NoodleFrame;
  */
 public class ContenidoMenuDer extends JPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -43,6 +45,8 @@ public class ContenidoMenuDer extends JPanel {
 	 * Contenido al que ser refiere
 	 */
 	private Contenido con;
+	
+	//Constructor
 	
 	/**
 	 * Creador de ContenidoMenuDer
@@ -72,7 +76,7 @@ public class ContenidoMenuDer extends JPanel {
 		this.borrar.setActionCommand("borrar");
 		this.editar.setActionCommand("editar");
 		
-		ActionListener list = new ContenidoMenuDerListener(frame, con);
+		ActionListener list = new ContenidoMenuDerListener(this.frame, this.con);
 		
 		this.editar.addActionListener(list);
 		this.borrar.addActionListener(list);

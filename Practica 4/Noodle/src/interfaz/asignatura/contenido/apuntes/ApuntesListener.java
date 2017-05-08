@@ -3,9 +3,7 @@ package interfaz.asignatura.contenido.apuntes;
 import java.awt.event.*;
 
 import contenido.Apuntes;
-import interfaz.*;
 import interfaz.genericos.NoodleFrame;
-import persona.Profesor;
 import plataforma.Plataforma;
 
 /**
@@ -33,6 +31,7 @@ public class ApuntesListener implements ActionListener{
 	/**
 	 * Constructor de ApuntesListener
 	 * @param panel
+	 * @param frame
 	 */
 	public ApuntesListener(ApuntesForm panel, NoodleFrame frame){
 		this.panel = panel;

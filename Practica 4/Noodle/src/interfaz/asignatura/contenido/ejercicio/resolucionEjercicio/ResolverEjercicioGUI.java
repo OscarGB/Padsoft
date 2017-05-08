@@ -2,27 +2,26 @@ package interfaz.asignatura.contenido.ejercicio.resolucionEjercicio;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
-import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Tema;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
-import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import respuestas.RespuestaPregunta;
 
 /**
- * Clase EjercicioGUI
+ * Clase ResolverEjercicioGUI
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class ResolverEjercicioGUI extends NuestroPanel{
+	
+	//Variables
 	
 	/**
 	 * Serial
@@ -44,12 +43,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	 */
 	private JScrollPane scroll;
 	
-	
-	/**
-	 * Asignatura
-	 */
-	private Asignatura asignatura;
-	
 	/**
 	 * Menu derecho
 	 */
@@ -70,6 +63,8 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	 */
 	private static ResolverEjercicioGUI instance;
 
+	//Constructor
+	
 	/**
 	 * Constructor del GUI del ejercicio
 	 * @param anterior
@@ -87,8 +82,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		this.tema = tema;
 		
 		this.respuestas = new ArrayList<RespuestaPregunta>();
-		
-		this.asignatura = tema.getAsignatura();
 	
 		this.der = new ResolverEjercicioMenuDer(frame, ejercicio, tema);
 		
@@ -99,16 +92,17 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 		this.add(this.scroll, BorderLayout.CENTER);
 		this.add(this.der, BorderLayout.EAST);
 		
-		int w = this.getWidth();
-		
 		ResolverEjercicioGUI.instance = this;
 		
 		
 	}
+
+	//Métodos
 	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showResolverEjercicioGUI(false, this.ejercicio, this.tema);
 	}
@@ -127,7 +121,6 @@ public class ResolverEjercicioGUI extends NuestroPanel{
 	 */
 	public void setTema(Tema tema){
 		this.tema = tema;
-		this.asignatura = tema.getAsignatura();
 	}
 	
 	/**

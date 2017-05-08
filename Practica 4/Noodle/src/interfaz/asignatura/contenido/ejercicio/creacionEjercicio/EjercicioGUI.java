@@ -3,14 +3,10 @@ package interfaz.asignatura.contenido.ejercicio.creacionEjercicio;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JScrollPane;
 
-import asignatura.Asignatura;
 import contenido.Ejercicio;
-import contenido.Pregunta;
 import contenido.Tema;
 import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
 import interfaz.genericos.Menu;
@@ -24,6 +20,8 @@ import interfaz.genericos.NuestroPanel;
  * @date 18/04/2017
  */
 public class EjercicioGUI extends NuestroPanel{
+	
+	//Variables
 	
 	/**
 	 * Serial
@@ -56,15 +54,12 @@ public class EjercicioGUI extends NuestroPanel{
 	private EjercicioMenuDer derecha;
 	
 	/**
-	 * Asignatura
-	 */
-	private Asignatura asignatura;
-	
-	/**
 	 * Tema
 	 */
 	private Tema tema;
 
+	//Constructor
+	
 	/**
 	 * Constructor del GUI del ejercicio
 	 * @param anterior
@@ -80,8 +75,6 @@ public class EjercicioGUI extends NuestroPanel{
 		this.setLayout(new BorderLayout());
 		
 		this.tema = tema;
-		
-		this.asignatura = tema.getAsignatura();
 	
 		
 		this.menu = new Menu(frame);
@@ -103,6 +96,7 @@ public class EjercicioGUI extends NuestroPanel{
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showEjercicioGUI(false, this.ejercicio, this.tema);
 	}
@@ -121,7 +115,6 @@ public class EjercicioGUI extends NuestroPanel{
 	 */
 	public void setTema(Tema tema){
 		this.tema = tema;
-		this.asignatura = tema.getAsignatura();
 	}
 	
 	/**

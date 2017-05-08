@@ -13,15 +13,17 @@ import javax.swing.SpringLayout;
 import contenido.PreguntaRespuestaAbierta;
 
 /**
- * Clase PreguntaUniaPanel
+ * Clase PreguntaAbiertaPanel
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class PreguntaAbiertaPanel extends JPanel {
 
+	//Variables
+	
 	/**
-	 * 
+	 * Serial
 	 */
 	private static final long serialVersionUID = 5070456134326061574L;
 	
@@ -50,6 +52,8 @@ public class PreguntaAbiertaPanel extends JPanel {
 	 */
 	private PreguntaRespuestaAbierta p;
 
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
@@ -98,6 +102,8 @@ public class PreguntaAbiertaPanel extends JPanel {
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve el enunciado

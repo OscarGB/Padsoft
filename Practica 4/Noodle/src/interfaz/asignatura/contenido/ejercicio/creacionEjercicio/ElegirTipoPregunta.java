@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
-import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
@@ -19,15 +18,12 @@ import interfaz.genericos.NuestroPanel;
  */
 public class ElegirTipoPregunta extends NuestroPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Menú genérico
-	 */
-	private Menu menu;
 	
 	/**
 	 * Ejercicio al que se va a añadir
@@ -43,6 +39,8 @@ public class ElegirTipoPregunta extends NuestroPanel {
 	 * Botones
 	 */
 	JButton botones[] = {new JButton("Pregunta Simple"), new JButton("Pregunta Unica"), new JButton("Pregunta Multiple"), new JButton("Pregunta Abierta"), new JButton("Cancelar")};
+	
+	//Constructor
 	
 	/**
 	 * Creador
@@ -77,6 +75,8 @@ public class ElegirTipoPregunta extends NuestroPanel {
 		spr.putConstraint(SpringLayout.NORTH, this.botones[3], 20, SpringLayout.SOUTH, this.botones[2]);
 		spr.putConstraint(SpringLayout.NORTH, this.botones[4], 20, SpringLayout.SOUTH, this.botones[3]);
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método para mostrar el panel

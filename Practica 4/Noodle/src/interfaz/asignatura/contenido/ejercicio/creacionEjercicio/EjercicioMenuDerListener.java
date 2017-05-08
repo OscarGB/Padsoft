@@ -13,8 +13,16 @@ import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import plataforma.Plataforma;
 
+/**
+ * Clase EjercicioMenuDerListener
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class EjercicioMenuDerListener implements ActionListener {
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -40,11 +48,14 @@ public class EjercicioMenuDerListener implements ActionListener {
 	 */
 	Asignatura asignatura;
 	
+	//Constructor
+	
 	/**
 	 * Constructor del listener del menu derecho de ejercicio
 	 * @param frame
 	 * @param ejercicio
 	 * @param ejercicioMenuDer
+	 * @param tema
 	 */
 	public EjercicioMenuDerListener(NoodleFrame frame, Ejercicio ejercicio, EjercicioMenuDer ejercicioMenuDer, Tema tema){
 		this.frame = frame;
@@ -53,6 +64,8 @@ public class EjercicioMenuDerListener implements ActionListener {
 		this.tema = tema;
 		this.asignatura = tema.getAsignatura();
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método en caso de que se pulse algún botón

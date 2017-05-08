@@ -17,6 +17,8 @@ import interfaz.genericos.NoodleFrame;
  */
 public class PreguntaMenuDerListener implements ActionListener {
 
+	//Variable
+	
 	/**
 	 * Ejercicio
 	 */
@@ -42,8 +44,11 @@ public class PreguntaMenuDerListener implements ActionListener {
 	 */
 	private PreguntaMenuDer menu;
 	
+	//Constructor
+	
 	/**
 	 * Constructor
+	 * @param panel
 	 * @param frame
 	 * @param ej
 	 * @param p, null si se quiere crear una nueva
@@ -55,6 +60,8 @@ public class PreguntaMenuDerListener implements ActionListener {
 		this.frame = frame;
 		this.menu = menu;
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método por si se pulsa algún botón

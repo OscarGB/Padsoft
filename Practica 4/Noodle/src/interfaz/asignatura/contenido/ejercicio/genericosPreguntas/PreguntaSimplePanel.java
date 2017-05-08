@@ -17,22 +17,19 @@ import plataforma.Plataforma;
 import respuestas.RespuestaSimple;
 
 /**
- * Clase PreguntaUniaPanel
+ * Clase PreguntaSimplePanel
  * @author Jose Ignacio Gomez
  * @author Oscar Gomez
  * @date 18/04/2017
  */
 public class PreguntaSimplePanel extends JPanel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5070456134326061574L;
+	//Variables
 	
 	/**
-	 * Array de opciones
+	 * Serial
 	 */
-	private ArrayList<Opciones> opciones;
+	private static final long serialVersionUID = 5070456134326061574L;
 	
 	/**
 	 * radiobuttons
@@ -60,6 +57,8 @@ public class PreguntaSimplePanel extends JPanel {
 	 */
 	private PreguntaRespuestaSimple p;
 
+	//Constructor
+	
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
@@ -84,7 +83,6 @@ public class PreguntaSimplePanel extends JPanel {
 		
 		if(p == null){
 			this.p = new PreguntaRespuestaSimple("", false, 0, 0, false);
-			this.opciones = new ArrayList<Opciones>();
 			this.area.setText("Introduzca aquí el enunciado");
 		}
 		else{
@@ -116,6 +114,8 @@ public class PreguntaSimplePanel extends JPanel {
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 50 + verdadero.getHeight()));
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve el enunciado

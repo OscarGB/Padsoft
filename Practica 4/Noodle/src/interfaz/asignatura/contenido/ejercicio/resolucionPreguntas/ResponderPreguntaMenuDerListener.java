@@ -8,10 +8,17 @@ import contenido.Ejercicio;
 import contenido.Pregunta;
 import interfaz.asignatura.contenido.ejercicio.resolucionEjercicio.ResolverEjercicioGUI;
 import interfaz.genericos.NoodleFrame;
-import plataforma.Plataforma;
 
+/**
+ * Clase ResponderPreguntaMenuDer
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ResponderPreguntaMenuDerListener implements ActionListener{
 
+	//Variables
+	
 	/**
 	 * Frame en el que se encuentra
 	 */
@@ -42,11 +49,15 @@ public class ResponderPreguntaMenuDerListener implements ActionListener{
 	 */
 	ResponderPregunta gen;
 	
+	//Constructor
+	
 	/**
 	 * Constructor del listener del menu derecho de ejercicio
 	 * @param frame
 	 * @param ejercicio
-	 * @param ejercicioMenuDer
+	 * @param panel
+	 * @param preg
+	 * @param gen
 	 */
 	public ResponderPreguntaMenuDerListener(NoodleFrame frame, Ejercicio ejercicio, ResponderPreguntaMenuDer panel, Pregunta preg, ResponderPregunta gen){
 		this.frame = frame;
@@ -56,6 +67,8 @@ public class ResponderPreguntaMenuDerListener implements ActionListener{
 		this.gen = gen;
 		this.asignatura = ejercicio.getAsignatura();
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método por si se pulsa algún botón

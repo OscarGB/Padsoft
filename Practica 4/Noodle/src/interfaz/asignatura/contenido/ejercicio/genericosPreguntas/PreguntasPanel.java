@@ -61,6 +61,7 @@ class PreguntaList extends MouseAdapter{
 	  * Método por si se pulsa
 	  * @param e
 	  */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		 this.panel.listenerPreguntas(this.pregunta);
 	 } 
@@ -74,6 +75,8 @@ class PreguntaList extends MouseAdapter{
  */
 public class PreguntasPanel extends JPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -98,6 +101,8 @@ public class PreguntasPanel extends JPanel{
 	 * Ejercicio
 	 */
 	private Ejercicio ejercicio;
+	
+	//Constructor
 	
 	/**
 	 * Constructor de preugntas panel
@@ -158,6 +163,8 @@ public class PreguntasPanel extends JPanel{
 		this.setPreferredSize(new Dimension(300, (labels.get(0).getHeight() + 50)*(size + 1)));
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Listener para cuando se clique en una pregunta

@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
-import asignatura.Asignatura;
 import contenido.Ejercicio;
 import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
@@ -31,6 +30,9 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
  * @date 18/04/2017
  */
 public class EjercicioMenuDer extends JPanel {
+	
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -131,6 +133,14 @@ public class EjercicioMenuDer extends JPanel {
 	 */
 	private EjercicioMenuDerListener list;
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param frame
+	 * @param ejercicio
+	 * @param tema
+	 */
 	public EjercicioMenuDer(NoodleFrame frame, Ejercicio ejercicio, Tema tema){
 		this.ejercicio = ejercicio;
 		this.frame = frame;
@@ -244,7 +254,7 @@ public class EjercicioMenuDer extends JPanel {
 		this.guardar.setActionCommand("guardar");
 		this.cancelar.setActionCommand("cancelar");
 		
-		this.list = new EjercicioMenuDerListener(frame, ejercicio, this, tema);
+		this.list = new EjercicioMenuDerListener(this.frame, this.ejercicio, this, this.tema);
 		
 		this.borrar.addActionListener(list);
 		this.guardar.addActionListener(list);
@@ -254,6 +264,8 @@ public class EjercicioMenuDer extends JPanel {
 		this.setPreferredSize(new Dimension(250, 400));
 		this.repaint();
 	}
+	
+	//Métodos
 	
 	/**
 	 * Devuelve el nombre del ejercicio
@@ -304,7 +316,5 @@ public class EjercicioMenuDer extends JPanel {
 	public boolean getAleatorio(){
 		return this.aleatorio.isSelected();
 	}
-	
-	//TODO Set del inicio de las fechas en los calendarios. Que no se superpongan.
 	
 }

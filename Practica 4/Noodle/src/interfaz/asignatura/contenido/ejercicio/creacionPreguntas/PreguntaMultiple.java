@@ -21,6 +21,8 @@ import interfaz.genericos.NuestroPanel;
  */
 public class PreguntaMultiple extends PreguntaGenerico {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -36,8 +38,10 @@ public class PreguntaMultiple extends PreguntaGenerico {
 	 */
 	private JScrollPane scroll;
 
+	//Constructor
+	
 	/**
-	 * constructor
+	 * Constructor
 	 * @param anterior
 	 * @param frame
 	 * @param ejercicio
@@ -51,6 +55,8 @@ public class PreguntaMultiple extends PreguntaGenerico {
 		this.add(this.scroll, BorderLayout.CENTER);
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve la pregunta creada en el panel
@@ -89,7 +95,7 @@ public class PreguntaMultiple extends PreguntaGenerico {
 	}
 	
 	/**
-	 * Método para añadir una opcion
+	 * Método para añadir una opción
 	 * @param s
 	 */
 	@Override

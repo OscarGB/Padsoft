@@ -19,6 +19,8 @@ import interfaz.genericos.NoodleFrame;
  * @date 18/04/2017
  */
 public class ApuntesForm extends JPanel{
+	
+	//Variables
 
 	/**
 	 * Serial
@@ -29,17 +31,15 @@ public class ApuntesForm extends JPanel{
 	 * Asignatura a la que hace referencia
 	 */
 	private Asignatura asignatura;
-	
-	/**
-	 * Frame
-	 */
-	private NoodleFrame frame;
-	
+
 	/**
 	 * Tema a introducir
 	 */
 	private Tema tema;
 	
+	/**
+	 * CheckBox para la visibilidad
+	 */
 	private JCheckBox visible = new JCheckBox("Visible");
 	
 	/**
@@ -47,24 +47,53 @@ public class ApuntesForm extends JPanel{
 	 */
 	private Apuntes apuntes;
 	
-	private JButton guardar;
-	private JButton cancelar;
+	/**
+	 * Botón de guardado
+	 */
+	private JButton guardar = new JButton("Guardar");
+	
+	/**
+	 * Botón para cancelar
+	 */
+	private JButton cancelar = new JButton("Cancelar");
+	
+	/**
+	 * Label con el titulo
+	 */
+	private JLabel labeltitulo = new JLabel("Titulo: ");
+	
+	/**
+	 * Label para el texto
+	 */
+	private JLabel labeltexto = new JLabel("Introduzca el texto: ");
+	
+	/**
+	 * Area para introducir el titulo
+	 */
 	private JTextArea titulo;
+	
+	/**
+	 * Area para introducir el texto
+	 */
 	private JTextArea texto;
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param frame
+	 * @param asignatura
+	 * @param tema
+	 * @param apuntes
+	 */
 	public ApuntesForm(NoodleFrame frame, Asignatura asignatura, Tema tema, Apuntes apuntes){
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
 		this.setBackground(Color.WHITE);
 		this.asignatura = asignatura;
 		this.tema = tema;
-		this.frame = frame;
 		this.apuntes = null;
 		
-		guardar = new JButton("Guardar");
-		cancelar = new JButton("Cancelar");
-		JLabel labeltitulo = new JLabel("Titulo: ");
-		JLabel labeltexto = new JLabel("Introduzca el texto: ");
 		titulo = new JTextArea();
 		texto = new JTextArea();
 		JScrollPane scrolltext;

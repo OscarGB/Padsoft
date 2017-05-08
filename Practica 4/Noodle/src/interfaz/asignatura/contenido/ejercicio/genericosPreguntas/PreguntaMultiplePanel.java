@@ -25,8 +25,10 @@ import respuestas.RespuestaMultiple;
  */
 public class PreguntaMultiplePanel extends JPanel {
 
+	//Variables
+	
 	/**
-	 * 
+	 * Serial
 	 */
 	private static final long serialVersionUID = 5070456134326061574L;
 	
@@ -55,6 +57,8 @@ public class PreguntaMultiplePanel extends JPanel {
 	 */
 	private PreguntaRespuestaMultiple p;
 
+	//constructor
+	
 	/**
 	 * Constructor
 	 * @param p, null si se quiere crear la pregunta
@@ -112,6 +116,8 @@ public class PreguntaMultiplePanel extends JPanel {
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Método que devuelve el enunciado

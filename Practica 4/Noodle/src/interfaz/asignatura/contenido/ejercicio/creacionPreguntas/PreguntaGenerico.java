@@ -5,16 +5,23 @@ import java.awt.Color;
 
 import contenido.Ejercicio;
 import contenido.Pregunta;
-import contenido.Tema;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 
+/**
+ * Clase PreguntaGenerico
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class PreguntaGenerico extends NuestroPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 954654897L;
 
 	/**
 	 * Panel anterior
@@ -53,6 +60,7 @@ public class PreguntaGenerico extends NuestroPanel{
 	 * @param anterior
 	 * @param frame
 	 * @param ejercicio
+	 * @param pregunta
 	 */
 	protected PreguntaGenerico(NuestroPanel anterior, NoodleFrame frame, Ejercicio ejercicio, Pregunta pregunta) {
 		super(anterior, frame);
@@ -77,6 +85,11 @@ public class PreguntaGenerico extends NuestroPanel{
 	
 	// Métodos
 	
+	/**
+	 * Método que refresca el panel
+	 * @param pregunta
+	 * @param ejer
+	 */
 	public void refreshPanel(Pregunta pregunta, Ejercicio ejer){
 		this.pregunta = pregunta;
 		this.ejercicio = ejer;
@@ -103,14 +116,13 @@ public class PreguntaGenerico extends NuestroPanel{
 	
 	/**
 	 * Metodo para mostrar el menu sur
-	 * @param tema
 	 */
 	public void showSur(){
 		this.sur.setVisible(true);
 	}
 	
 	/**
-	 * Método para ser sobreescrito
+	 * Método que añade una opcion
 	 * @param s
 	 */
 	public void addOpcion(String s){
@@ -118,12 +130,10 @@ public class PreguntaGenerico extends NuestroPanel{
 	}
 	
 	/**
-	 * Método para hacer override
+	 * Método que devuelve la pregunta
 	 * @return
 	 */
 	public Pregunta getPregunta(){
 		return null;
 	}
-	
-
 }

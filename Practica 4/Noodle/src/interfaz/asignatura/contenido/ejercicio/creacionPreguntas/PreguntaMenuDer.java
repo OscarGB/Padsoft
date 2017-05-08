@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
@@ -23,6 +22,8 @@ import interfaz.genericos.NoodleFrame;
  */
 public class PreguntaMenuDer extends JPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -83,8 +84,11 @@ public class PreguntaMenuDer extends JPanel {
 	 */
 	private PreguntaGenerico panel;
 	
+	//Constructor
+	
 	/**
 	 * Constructor
+	 * @param panel
 	 * @param frame
 	 * @param ej
 	 * @param p, null si se quiere crear una nueva
@@ -150,6 +154,8 @@ public class PreguntaMenuDer extends JPanel {
 		
 		
 	}
+	
+	//Métodos
 	
 	/**
 	 * Devuelve el valor del spinner del peso

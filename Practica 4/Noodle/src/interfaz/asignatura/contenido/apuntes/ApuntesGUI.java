@@ -4,10 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import asignatura.Asignatura;
 import contenido.Apuntes;
 import interfaz.asignatura.contenido.ContenidoMenuDer;
 import interfaz.genericos.Menu;
@@ -24,6 +20,8 @@ import plataforma.Plataforma;
  */
 public class ApuntesGUI extends NuestroPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -49,6 +47,14 @@ public class ApuntesGUI extends NuestroPanel{
 	 */
 	private ApuntesPanel contenido;
 
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param anterior
+	 * @param frame
+	 * @param apuntes
+	 */
 	public ApuntesGUI(NuestroPanel anterior, NoodleFrame frame, Apuntes apuntes) {
 		super(anterior, frame);
 		this.setSize(700,500);
@@ -74,15 +80,19 @@ public class ApuntesGUI extends NuestroPanel{
 		this.menu.setPreferredSize(new Dimension(w, 80));
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showApuntes(true, this.apuntes);
 	}
 	
 	/**
 	 * Método para refrescar el panel
+	 * @apuntes
 	 */
 	public void refreshPanel(Apuntes apuntes){
 		this.apuntes = apuntes;
