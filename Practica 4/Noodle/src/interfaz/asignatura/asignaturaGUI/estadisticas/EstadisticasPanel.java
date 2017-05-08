@@ -8,13 +8,16 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import asignatura.Asignatura;
+import contenido.EstadoEjercicio;
 import estadisticas.EstadisticasAlumno;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
+import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 
 /**
@@ -195,6 +198,13 @@ public class EstadisticasPanel extends JPanel {
 	 * @param respuesta
 	 */
 	public void listenerEstadisticas(RespuestaEjercicio respuesta, Alumno alumno) {
+		
+		if(respuesta.getEjercicio().getEstado() != EstadoEjercicio.TERMINADO && (Plataforma.loggedAs() instanceof Alumno)){
+			JOptionPane.showMessageDialog(null, "Espere a que finalice el ejercicio para consultar la corrección", "Error",JOptionPane.ERROR_MESSAGE);
+			return;
+
+		}
+		
 		this.frame.showConsultarRespuestas(true, respuesta, alumno);
 		
 	}

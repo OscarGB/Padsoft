@@ -8,10 +8,12 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
+import contenido.EstadoEjercicio;
 import contenido.Pregunta;
 import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaMultiple;
@@ -180,6 +182,8 @@ public class RespuestasPanel extends JPanel{
 				respuestaPregunta = res;
 			}
 		}
+		
+		
 		if(pregunta instanceof PreguntaRespuestaUnica){
 			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio, this.al, this.respuesta);
 		}
