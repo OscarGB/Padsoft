@@ -11,6 +11,10 @@ import javax.swing.SpringLayout;
 
 import contenido.Opciones;
 import contenido.PreguntaRespuestaMultiple;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+import persona.Alumno;
+import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaMultiple;
 
 /**
@@ -58,13 +62,29 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 	 */
 	private PreguntaRespuestaMultiple pregunta;
 	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
+	/**
+	 * Respuesta al ejericico
+	 */
+	private RespuestaEjercicio resEjer;
+	
 	//Constructor
 	
 	/**
 	 * Constructor
 	 * @param respuesta
+	 * @param anterior
+	 * @param al
+	 * @param resEjer
 	 */
-	public ConsultaPreguntaMultiplePanel(RespuestaMultiple respuesta){
+	public ConsultaPreguntaMultiplePanel(RespuestaMultiple respuesta, NuestroPanel anterior, Alumno al, RespuestaEjercicio resEjer){
+		super(anterior, NoodleFrame.getInstance());
+		this.al = al;
+		this.resEjer = resEjer;
 		this.respuesta = respuesta;
 		this.pregunta = (PreguntaRespuestaMultiple) this.respuesta.getPregunta();
 		
@@ -115,6 +135,16 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		
 		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
 		
+	}
+	
+	//Métodos
+	
+	/**
+	 * Método para mostrar el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showConsultarRespuestas(false, resEjer,  al);
 	}
 
 }

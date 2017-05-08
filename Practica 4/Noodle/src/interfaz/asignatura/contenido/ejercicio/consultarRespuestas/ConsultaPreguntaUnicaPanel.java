@@ -12,6 +12,10 @@ import javax.swing.SpringLayout;
 
 import contenido.Opciones;
 import contenido.PreguntaRespuestaUnica;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+import persona.Alumno;
+import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaUnica;
 
 /**
@@ -64,14 +68,30 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 	 */
 	private PreguntaRespuestaUnica pregunta;
 	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
+	/**
+	 * Respuesta al ejericico
+	 */
+	private RespuestaEjercicio resEjer;
+	
 	//Constructor
 	
 	/**
 	 * Constructor
 	 * @param respuesta
+	 * @param anterior
+	 * @param al
+	 * @param resEjer
 	 */
-	public ConsultaPreguntaUnicaPanel(RespuestaUnica respuesta){
+	public ConsultaPreguntaUnicaPanel(RespuestaUnica respuesta, NuestroPanel anterior, Alumno al, RespuestaEjercicio resEjer){
+		super(anterior, NoodleFrame.getInstance());
 		this.respuesta = respuesta;
+		this.al = al;
+		this.resEjer = resEjer;
 		this.pregunta = (PreguntaRespuestaUnica) this.respuesta.getPregunta();
 		
 		this.setBackground(Color.WHITE);
@@ -125,4 +145,13 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 		
 	}
 
+	//Métodos
+	
+	/**
+	 * Método para mostrar el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showConsultarRespuestas(false, resEjer,  al);
+	}
 }

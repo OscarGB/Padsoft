@@ -8,7 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 
 import contenido.PreguntaRespuestaAbierta;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+import persona.Alumno;
 import respuestas.RespuestaAbierta;
+import respuestas.RespuestaEjercicio;
 
 /**
  * Clase ConsultaPreguntaAbiertaPanel
@@ -55,14 +59,30 @@ public class ConsultaPreguntaAbiertaPanel extends ConsultaPregunta{
 	 */
 	private String respondida;
 	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
+	/**
+	 * Respuesta al ejericico
+	 */
+	private RespuestaEjercicio resEjer;
+	
 	//Constructor
 	
 	/**
 	 * Constructor
 	 * @param respuesta
+	 * @param anterior
+	 * @param al
+	 * @param resEjer
 	 */
-	public ConsultaPreguntaAbiertaPanel(RespuestaAbierta respuesta){
+	public ConsultaPreguntaAbiertaPanel(RespuestaAbierta respuesta, NuestroPanel anterior, Alumno al, RespuestaEjercicio resEjer){
+		super(anterior, NoodleFrame.getInstance());
 		this.respuesta = respuesta;
+		this.al = al;
+		this.resEjer = resEjer;
 		this.pregunta = (PreguntaRespuestaAbierta) this.respuesta.getPregunta();
 		
 		this.setBackground(Color.WHITE);
@@ -100,5 +120,15 @@ public class ConsultaPreguntaAbiertaPanel extends ConsultaPregunta{
 		this.add(label);
 		
 		this.setPreferredSize(new Dimension(500, (this.respuesta.getPregunta().getNumRespuestas() + 1)*(label.getHeight() + 10)));
+	}
+	
+	//Métodos
+	
+	/**
+	 * Método para mostrar el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showConsultarRespuestas(false, resEjer,  al);
 	}
 }

@@ -11,6 +11,10 @@ import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import contenido.PreguntaRespuestaSimple;
+import interfaz.genericos.NoodleFrame;
+import interfaz.genericos.NuestroPanel;
+import persona.Alumno;
+import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaSimple;
 
 /**
@@ -58,13 +62,29 @@ public class ConsultaPreguntaSimplePanel extends ConsultaPregunta {
 	 */
 	private PreguntaRespuestaSimple pregunta;
 	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
+	/**
+	 * Respuesta al ejericico
+	 */
+	private RespuestaEjercicio resEjer;
+	
 	//Constructor
 	
 	/**
 	 * Constructor
 	 * @param respuesta
+	 * @param anterior
+	 * @param al
+	 * @param resEjer
 	 */
-	public ConsultaPreguntaSimplePanel(RespuestaSimple respuesta){
+	public ConsultaPreguntaSimplePanel(RespuestaSimple respuesta, NuestroPanel anterior, Alumno al, RespuestaEjercicio resEjer){
+		super(anterior, NoodleFrame.getInstance());
+		this.al = al;
+		this.resEjer = resEjer;
 		this.respuesta = respuesta;
 		this.pregunta = (PreguntaRespuestaSimple) this.respuesta.getPregunta();
 		
@@ -142,4 +162,14 @@ public class ConsultaPreguntaSimplePanel extends ConsultaPregunta {
 		
 	}
 
+	//Métodos
+	
+	/**
+	 * Método para mostrar el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showConsultarRespuestas(false, resEjer,  al);
+	}
+	
 }

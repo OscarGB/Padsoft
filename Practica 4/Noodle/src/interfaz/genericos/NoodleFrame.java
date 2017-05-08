@@ -762,13 +762,21 @@ public class NoodleFrame extends JFrame{
 		this.fin(700,500, this.consultarRespuestas);
 	}
 
-	public void showEstPregunta(boolean back, RespuestaPregunta respuesta, Ejercicio ejercicio) {
+	/**
+	 * Muestra EstPregunta
+	 * @param back
+	 * @param respuesta
+	 * @param ejercicio
+	 * @param al
+	 * @param resEjer
+	 */
+	public void showEstPregunta(boolean back, RespuestaPregunta respuesta, Ejercicio ejercicio, Alumno al, RespuestaEjercicio resEjer) {
 		
 		NuestroPanel anterior = this.ini();
 		if(back == false){
 			anterior = this.estPregunta.getAnterior();
 		}
-		this.estPregunta = new EstPregunta(anterior, this, respuesta, ejercicio);
+		this.estPregunta = new EstPregunta(anterior, this, respuesta, ejercicio, al, resEjer);
 		
 		this.getContentPane().add(this.estPregunta);
 		

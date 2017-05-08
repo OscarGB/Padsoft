@@ -10,7 +10,9 @@ import contenido.Ejercicio;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
+import persona.Alumno;
 import respuestas.RespuestaAbierta;
+import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaMultiple;
 import respuestas.RespuestaPregunta;
 import respuestas.RespuestaSimple;
@@ -42,9 +44,24 @@ public class EstPregunta extends NuestroPanel{
 	private ConsultaPregunta panel;
 	
 	/**
+	 * Ejercicio
+	 */
+	private Ejercicio ejercicio;
+	
+	/**
 	 * Scrolling pane
 	 */
 	private JScrollPane scroll;
+	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
+	/**
+	 * Respuesta a Ejercicio
+	 */
+	private RespuestaEjercicio resEjer;
 	
 	/**
 	 * Menu
@@ -59,10 +76,15 @@ public class EstPregunta extends NuestroPanel{
 	 * @param frame
 	 * @param respuesta
 	 * @param ejercicio
+	 * @param al
+	 * @param resEjer
 	 */
-	public EstPregunta(NuestroPanel anterior, NoodleFrame frame, RespuestaPregunta respuesta, Ejercicio ejercicio) {
+	public EstPregunta(NuestroPanel anterior, NoodleFrame frame, RespuestaPregunta respuesta, Ejercicio ejercicio, Alumno al, RespuestaEjercicio resEjer) {
 		super(anterior, frame);
 		this.respuesta = respuesta;
+		this.ejercicio = ejercicio;
+		this.al = al;
+		this.resEjer = resEjer;
 		this.menu = new Menu(frame);
 		
 		this.setBackground(Color.WHITE);
@@ -71,16 +93,16 @@ public class EstPregunta extends NuestroPanel{
 		this.setLayout(new BorderLayout());
 		
 		if(this.respuesta instanceof RespuestaUnica){
-			this.panel = new ConsultaPreguntaUnicaPanel((RespuestaUnica)this.respuesta);
+			this.panel = new ConsultaPreguntaUnicaPanel((RespuestaUnica)this.respuesta, anterior, this.al, this.resEjer);
 		}
 		else if(this.respuesta instanceof RespuestaMultiple){
-			this.panel = new ConsultaPreguntaMultiplePanel((RespuestaMultiple)this.respuesta);
+			this.panel = new ConsultaPreguntaMultiplePanel((RespuestaMultiple)this.respuesta, anterior, this.al, this.resEjer);
 		}
 		else if(this.respuesta instanceof RespuestaAbierta){
-			this.panel = new ConsultaPreguntaAbiertaPanel((RespuestaAbierta)this.respuesta);
+			this.panel = new ConsultaPreguntaAbiertaPanel((RespuestaAbierta)this.respuesta, anterior, this.al, this.resEjer);
 		}
 		else if(this.respuesta instanceof RespuestaSimple){
-			this.panel = new ConsultaPreguntaSimplePanel((RespuestaSimple)this.respuesta);
+			this.panel = new ConsultaPreguntaSimplePanel((RespuestaSimple)this.respuesta, anterior, this.al, this.resEjer);
 		}
 		
 		this.scroll = new JScrollPane(this.panel);
@@ -92,6 +114,16 @@ public class EstPregunta extends NuestroPanel{
 		
 		this.menu.setPreferredSize(new Dimension(w, 80));
 		
+	}
+	
+	//Métodos
+	
+	/**
+	 * Método que muestra el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showEstPregunta(false, respuesta, ejercicio, this.al, this.resEjer);
 	}
 
 }

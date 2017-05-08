@@ -22,6 +22,8 @@ import plataforma.Plataforma;
  */
 public class Estadisticas extends NuestroPanel {
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -57,6 +59,7 @@ public class Estadisticas extends NuestroPanel {
 	 */
 	private JScrollPane scroll;
 	
+	//Constructor
 	
 	/**
 	 * Constructor
@@ -87,6 +90,16 @@ public class Estadisticas extends NuestroPanel {
 		if(Plataforma.loggedAs() instanceof Profesor){
 			this.add(this.panelDer, BorderLayout.EAST);
 		}
+	}
+	
+	//Métodos
+	
+	/**
+	 * Muestra el panel
+	 */
+	@Override
+	public void muestraPanel(){
+		this.frame.showEstadisticas(false, al, asig);
 	}
 
 }

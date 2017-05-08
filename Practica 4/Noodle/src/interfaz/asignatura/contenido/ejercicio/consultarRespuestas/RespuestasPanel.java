@@ -106,6 +106,11 @@ public class RespuestasPanel extends JPanel{
 	 */
 	private RespuestaEjercicio respuesta;
 	
+	/**
+	 * Alumno
+	 */
+	private Alumno al;
+	
 	//Constructor
 	
 	/**
@@ -117,6 +122,7 @@ public class RespuestasPanel extends JPanel{
 	 */
 	public RespuestasPanel(NoodleFrame frame, RespuestaEjercicio respuesta, Ejercicio ejercicio, Alumno alumno){
 		this.frame = frame;
+		this.al = alumno;
 		this.respuesta = respuesta;
 		this.ejercicio = ejercicio;
 		this.preguntas = ejercicio.getPreguntas();
@@ -175,18 +181,18 @@ public class RespuestasPanel extends JPanel{
 			}
 		}
 		if(pregunta instanceof PreguntaRespuestaUnica){
-			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio);
+			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio, this.al, this.respuesta);
 		}
 		else if(pregunta instanceof PreguntaRespuestaMultiple){
-			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio);
+			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio, this.al, this.respuesta);
 
 		}
 		else if(pregunta instanceof PreguntaRespuestaAbierta){
-			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio);
+			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio, this.al, this.respuesta);
 
 		}
 		else if(pregunta instanceof PreguntaRespuestaSimple){
-			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio);
+			frame.showEstPregunta(true, respuestaPregunta, this.ejercicio, this.al, this.respuesta);
 
 		}
 	}

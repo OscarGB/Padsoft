@@ -107,7 +107,7 @@ public class ConsultarRespuestas extends NuestroPanel{
 	 */
 	@Override
 	public void muestraPanel(){
-		this.frame.showConsultarRespuestas(true, this.respuesta, this.alumno);
+		this.frame.showConsultarRespuestas(false, this.respuesta, this.alumno);
 	}
 	
 	/**
