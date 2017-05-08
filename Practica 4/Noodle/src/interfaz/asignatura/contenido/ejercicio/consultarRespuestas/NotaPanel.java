@@ -10,13 +10,27 @@ import javax.swing.SpringLayout;
 
 import contenido.Ejercicio;
 
+/**
+ * Clase NotaPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class NotaPanel extends JPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param ejercicio
+	 */
 	public NotaPanel(Ejercicio ejercicio){
 		SpringLayout spr = new SpringLayout();
 		this.setLayout(spr);
@@ -35,5 +49,4 @@ public class NotaPanel extends JPanel{
 		this.setPreferredSize(new Dimension(150, 400));
 		
 	}
-
 }
