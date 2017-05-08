@@ -2,23 +2,24 @@ package interfaz.asignatura.contenido.ejercicio.consultarRespuestas;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
-import contenido.Opciones;
 import contenido.PreguntaRespuestaAbierta;
-import contenido.PreguntaRespuestaUnica;
 import respuestas.RespuestaAbierta;
-import respuestas.RespuestaUnica;
 
+/**
+ * Clase ConsultaPreguntaAbiertaPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ConsultaPreguntaAbiertaPanel extends ConsultaPregunta{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -53,6 +54,8 @@ public class ConsultaPreguntaAbiertaPanel extends ConsultaPregunta{
 	 * Respuesta dada por el alumno
 	 */
 	private String respondida;
+	
+	//Constructor
 	
 	/**
 	 * Constructor

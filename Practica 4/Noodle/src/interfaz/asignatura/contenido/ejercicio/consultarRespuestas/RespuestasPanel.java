@@ -17,11 +17,8 @@ import contenido.PreguntaRespuestaAbierta;
 import contenido.PreguntaRespuestaMultiple;
 import contenido.PreguntaRespuestaSimple;
 import contenido.PreguntaRespuestaUnica;
-import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
 import interfaz.genericos.NoodleFrame;
 import persona.Alumno;
-import persona.Profesor;
-import plataforma.Plataforma;
 import respuestas.RespuestaEjercicio;
 import respuestas.RespuestaPregunta;
 
@@ -48,7 +45,7 @@ class RespuestaList extends MouseAdapter{
 	// Creador
 	
 	/**
-	 * Constructor de RatonList
+	 * Constructor de RespuestaList
 	 * @param panel
 	 * @param pregunta
 	 */
@@ -63,13 +60,22 @@ class RespuestaList extends MouseAdapter{
 	  * Método por si se pulsa
 	  * @param e
 	  */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		 this.panel.listenerRespuestas(this.pregunta);
 	 } 
 }
 
+/**
+ * Clase RespuestasPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class RespuestasPanel extends JPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -96,18 +102,16 @@ public class RespuestasPanel extends JPanel{
 	private Ejercicio ejercicio;
 	
 	/**
-	 * Alumno
-	 */
-	private Alumno alumno;
-	
-	/**
 	 * Respuesta respondida
 	 */
 	private RespuestaEjercicio respuesta;
 	
+	//Constructor
+	
 	/**
 	 * Constructor de RespuestasPanel
 	 * @param frame
+	 * @param respuesta
 	 * @param ejercicio
 	 * @param alumno
 	 */
@@ -115,7 +119,6 @@ public class RespuestasPanel extends JPanel{
 		this.frame = frame;
 		this.respuesta = respuesta;
 		this.ejercicio = ejercicio;
-		this.alumno = alumno;
 		this.preguntas = ejercicio.getPreguntas();
 		this.labels = new ArrayList<JLabel>();
 		this.setBackground(Color.WHITE);
@@ -157,6 +160,8 @@ public class RespuestasPanel extends JPanel{
 		
 		this.setPreferredSize(new Dimension(300, (labels.get(0).getHeight() + 50)*(size + 1)));
 	}
+	
+	//Métodos
 	
 	/**
 	 * Listener para cuando se clique en una respuesta

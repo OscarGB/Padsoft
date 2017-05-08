@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
@@ -15,7 +14,15 @@ import contenido.Opciones;
 import contenido.PreguntaRespuestaUnica;
 import respuestas.RespuestaUnica;
 
+/**
+ * Clase ConsultaPreguntaUnicaPanel
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
+	
+	//Variables
 	
 	/**
 	 * Serial
@@ -56,6 +63,8 @@ public class ConsultaPreguntaUnicaPanel extends ConsultaPregunta {
 	 * Pregunta
 	 */
 	private PreguntaRespuestaUnica pregunta;
+	
+	//Constructor
 	
 	/**
 	 * Constructor

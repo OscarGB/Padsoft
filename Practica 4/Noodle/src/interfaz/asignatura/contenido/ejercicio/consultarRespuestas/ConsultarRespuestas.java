@@ -8,17 +8,22 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 import contenido.Ejercicio;
-import contenido.Tema;
-import interfaz.asignatura.contenido.ejercicio.genericosPreguntas.PreguntasPanel;
-import interfaz.asignatura.contenido.ejercicio.resolucionEjercicio.ResolverEjercicioMenuDer;
 import interfaz.genericos.Menu;
 import interfaz.genericos.NoodleFrame;
 import interfaz.genericos.NuestroPanel;
 import persona.Alumno;
 import respuestas.RespuestaEjercicio;
 
+/**
+ * Clase ConsultarRespuestas
+ * @author Jose Ignacio Gomez
+ * @author Oscar Gomez
+ * @date 18/04/2017
+ */
 public class ConsultarRespuestas extends NuestroPanel{
 
+	//Variables
+	
 	/**
 	 * Serial
 	 */
@@ -54,8 +59,20 @@ public class ConsultarRespuestas extends NuestroPanel{
 	 */
 	private Alumno alumno;
 	
+	/**
+	 * Etiqueta con la nota
+	 */
 	private JLabel nota = new JLabel();
 	
+	//Constructor
+	
+	/**
+	 * Constructor
+	 * @param anterior
+	 * @param frame
+	 * @param respuesta
+	 * @param alumno
+	 */
 	public ConsultarRespuestas(NuestroPanel anterior, NoodleFrame frame, RespuestaEjercicio respuesta, Alumno alumno) {
 		super(anterior, frame);
 		this.setSize(700,500);
@@ -83,9 +100,12 @@ public class ConsultarRespuestas extends NuestroPanel{
 		
 	}
 	
+	//Métodos
+	
 	/**
 	 * Hace que el frame muestre este panel
 	 */
+	@Override
 	public void muestraPanel(){
 		this.frame.showConsultarRespuestas(true, this.respuesta, this.alumno);
 	}
