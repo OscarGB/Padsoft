@@ -2,6 +2,16 @@ asignatura
 contenido
 estadisticas
 interfaz.asignatura
+interfaz.asignatura.asignaturaGUI
+interfaz.asignatura.asignaturaGUI.estadisticas
+interfaz.asignatura.contenido
+interfaz.asignatura.contenido.apuntes
+interfaz.asignatura.contenido.ejercicio.consultarRespuestas
+interfaz.asignatura.contenido.ejercicio.creacionEjercicio
+interfaz.asignatura.contenido.ejercicio.creacionPreguntas
+interfaz.asignatura.contenido.ejercicio.genericosPreguntas
+interfaz.asignatura.contenido.ejercicio.resolucionEjercicio
+interfaz.asignatura.contenido.ejercicio.resolucionPreguntas
 interfaz.genericos
 interfaz.inicios
 interfaz.login
