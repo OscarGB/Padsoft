@@ -133,8 +133,9 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		spr.putConstraint(SpringLayout.NORTH, area, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, area, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
-		this.setPreferredSize(new Dimension(500, 60 + 35*radios.size()));
-//		this.setPreferredSize(new Dimension(500, 500));
+
+		this.setPreferredSize(new Dimension(this.getWidth(), (this.radios.get(0).getHeight() + 50) * (radios.size() + 1)));
+		
 	}
 	
 	//Métodos

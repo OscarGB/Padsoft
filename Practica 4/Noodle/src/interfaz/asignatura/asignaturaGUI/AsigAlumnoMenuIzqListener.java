@@ -56,7 +56,6 @@ public class AsigAlumnoMenuIzqListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("notas")){
-			System.out.println(this.al.getEstadisticas());
 			frame.showEstadisticas(true, this.al, this.asig);
 		}
 	}

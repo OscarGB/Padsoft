@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import asignatura.Asignatura;
 import contenido.*;
+import estadisticas.EstadisticasAlumno;
 import interfaz.asignatura.*;
 import interfaz.asignatura.asignaturaGUI.AsignaturaGUI;
 import interfaz.asignatura.asignaturaGUI.AsignaturaNoMatriculada;
@@ -638,8 +639,13 @@ public class NoodleFrame extends JFrame{
 			return;
 		}
 		else if(ejercicio.getEstado().equals(EstadoEjercicio.TERMINADO)){
-			//TODO ir a las respuestas
-			System.out.println("Respuestas");
+			for(EstadisticasAlumno est: Plataforma.loggedAs().getEstadisticas()){
+				for(RespuestaEjercicio resp: est.getRespuestas()){
+					if(resp.getEjercicio().equals(ejercicio)){
+						this.showConsultarRespuestas(true, resp, (Alumno) Plataforma.loggedAs());
+					}
+				}
+			}
 			return;
 		}else if(((Alumno)Plataforma.loggedAs()).haRespondidoA(ejercicio)){
 			JOptionPane.showMessageDialog(null, "Ya has respondido a este ejercicio", "Error",JOptionPane.ERROR_MESSAGE);
