@@ -91,7 +91,7 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
-		this.area.setSize(300, 50);
+		this.area.setSize(300, 15);
 		
 		spr = new SpringLayout();
 		setLayout(spr);
@@ -133,6 +133,7 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		spr.putConstraint(SpringLayout.NORTH, area, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, area, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
+
 		this.setPreferredSize(new Dimension(this.getWidth(), (this.radios.get(0).getHeight() + 50) * (radios.size() + 1)));
 		
 	}
