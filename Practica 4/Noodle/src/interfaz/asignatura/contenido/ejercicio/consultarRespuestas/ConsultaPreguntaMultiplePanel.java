@@ -91,7 +91,7 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		this.setBackground(Color.WHITE);
 		
 		this.area = new JTextArea(5,20);
-		this.area.setSize(300, 50);
+		this.area.setSize(300, 15);
 		
 		spr = new SpringLayout();
 		setLayout(spr);
@@ -118,7 +118,7 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 			spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, aux, 0, SpringLayout.HORIZONTAL_CENTER, this);
 			
 			if(radios.size() == 1){
-				spr.putConstraint(SpringLayout.NORTH, aux, 20, SpringLayout.SOUTH, area);
+				spr.putConstraint(SpringLayout.NORTH, aux, 60, SpringLayout.NORTH, this);
 			}else{
 				spr.putConstraint(SpringLayout.NORTH, aux, 20, SpringLayout.SOUTH, radios.get(radios.indexOf(aux) - 1));
 			}
@@ -133,8 +133,8 @@ public class ConsultaPreguntaMultiplePanel extends ConsultaPregunta {
 		spr.putConstraint(SpringLayout.NORTH, area, 5, SpringLayout.NORTH, this);
 		spr.putConstraint(SpringLayout.HORIZONTAL_CENTER, area, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
-		this.setPreferredSize(new Dimension(500, area.getHeight() + 10 + (radios.size()>0?((radios.get(0).getHeight()+20)*radios.size()):0)));
-		
+		this.setPreferredSize(new Dimension(500, 60 + 35*radios.size()));
+//		this.setPreferredSize(new Dimension(500, 500));
 	}
 	
 	//Métodos
